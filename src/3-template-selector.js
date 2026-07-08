@@ -11,80 +11,23 @@ const TEMPLATES = [
 ];
 
 async function selectTemplate(researchData, copyData) {
-  console.log(`[Step 3] Selecting template for ${researchData.title}...`);
+  const rawType = researchData.type || researchData.category || '';
+  const type = (Array.isArray(rawType) ? rawType.join(' ') : String(rawType)).toLowerCase();
+  const title = (researchData.title || researchData.name || '').toLowerCase();
   
-  // Prefer Groq if key exists, else Gemini
-  if (process.env.GROQ_API_KEY) {
-    try {
-      return await selectWithGroq(researchData, copyData);
-    } catch (err) {
-      console.warn('Groq failed, falling back to Gemini...', err.message);
-    }
+  let selected = 'New folder (5)'; // Generalist fallback is the default
+  if (type.includes('restaurant') || type.includes('cafe') || type.includes('food') || type.includes('bakery') || type.includes('beverage') || type.includes('dhaba') || title.includes('restaurant') || title.includes('dhaba') || title.includes('cafe')) {
+    selected = 'New folder (4)';
+  } else if (type.includes('clinic') || type.includes('dentist') || type.includes('doctor') || type.includes('health') || type.includes('medical') || type.includes('hospital') || title.includes('clinic') || title.includes('dental') || title.includes('hospital')) {
+    selected = 'healthcare-dental';
+  } else if (type.includes('real estate') || type.includes('property') || type.includes('builder') || type.includes('reaty') || title.includes('real estate') || title.includes('properties') || title.includes('realty')) {
+    selected = 'realestate';
+  } else if (type.includes('salon') || type.includes('spa') || type.includes('barber') || type.includes('beauty') || type.includes('hair') || title.includes('salon') || title.includes('spa') || title.includes('barber')) {
+    selected = 'beauty and salon';
   }
 
-  const prompt = `
-You must select the most fitting website template for a business.
-Business Name: ${researchData.title}
-Category: ${researchData.category}
-Tone/Standout Traits: ${copyData.tone_summary}
-
-Available Templates:
-${TEMPLATES.map(t => `- ID: "${t.id}", Description: ${t.description}`).join('\n')}
-
-Select the ID of the template that best fits this business. If it's a blended/edge case, use your judgment. If nothing fits well, select "New folder (5)" (Generalist).
-
-Provide a JSON output exactly like this:
-{
-  "selected_template_id": "...",
-  "reasoning": "..."
-}
-`;
-
-  const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
-    contents: prompt,
-    config: {
-      responseMimeType: 'application/json',
-    }
-  });
-
-  const selection = JSON.parse(response.text);
-  console.log(`[Step 3] Selected template: ${selection.selected_template_id} - ${selection.reasoning}`);
-  return selection.selected_template_id;
-}
-
-async function selectWithGroq(researchData, copyData) {
-  // Simple prompt for groq
-  const prompt = `
-Available Templates:
-${TEMPLATES.map(t => `${t.id} (${t.description})`).join('\n')}
-
-Business Name: ${researchData.title}
-Category: ${researchData.category}
-Tone: ${copyData.tone_summary}
-
-Reply with ONLY a JSON object: {"selected_template_id": "...", "reasoning": "..."}
-  `;
-
-  const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      model: 'llama-3.1-8b-instant',
-      messages: [{ role: 'user', content: prompt }],
-      response_format: { type: 'json_object' }
-    })
-  });
-
-  const json = await res.json();
-  if (!res.ok) throw new Error(`Groq error: ${JSON.stringify(json)}`);
-
-  const selection = JSON.parse(json.choices[0].message.content);
-  console.log(`[Step 3] Selected template (via Groq): ${selection.selected_template_id} - ${selection.reasoning}`);
-  return selection.selected_template_id;
+  console.log(`[Step 3] Selected template based on type '${type}' and title '${title}': ${selected}`);
+  return selected;
 }
 
 module.exports = { selectTemplate };

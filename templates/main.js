@@ -144,7 +144,7 @@ function initCartDrawer() {
 
       const id = card.dataset.id || 'prod-custom';
       const title = card.querySelector('.product-title')?.textContent || 'Botanical Elixir';
-      const priceText = card.querySelector('.product-price')?.textContent || '$120';
+      const priceText = card.querySelector('.product-price')?.textContent || '₹120';
       const price = parseInt(priceText.replace(/[^0-9]/g, '')) || 120;
       const category = card.querySelector('.product-category')?.textContent || 'Skincare';
       const image = card.querySelector('img')?.src || 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80';
@@ -198,7 +198,7 @@ function renderCart() {
   });
 
   if (badge) badge.textContent = totalQty;
-  if (subtotalEl) subtotalEl.textContent = `$${totalPrice}`;
+  if (subtotalEl) subtotalEl.textContent = `₹${totalPrice}`;
 
   if (!container) return;
 
@@ -219,7 +219,7 @@ function renderCart() {
         <p style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">${item.category}</p>
         <p style="font-weight: 600; font-size: 0.95rem; margin-bottom: 6px;">${item.title}</p>
         <div style="display: flex; align-items: center; justify-content: space-between;">
-          <span style="font-weight: 600; color: var(--accent);">$${item.price}</span>
+          <span style="font-weight: 600; color: var(--accent);">₹${item.price}</span>
           <div style="display: flex; align-items: center; gap: 8px; background: var(--bg-surface); padding: 2px 8px; border-radius: var(--radius-full);">
             <button onclick="updateQty('${item.id}', -1)" style="font-size: 1.1rem; padding: 0 4px;">-</button>
             <span style="font-size: 0.85rem; font-weight: 600;">${item.qty}</span>
@@ -438,7 +438,7 @@ function initQuickView() {
       if (!card) return;
 
       const title = card.querySelector('.product-title')?.textContent || 'Botanical Elixir';
-      const price = card.querySelector('.product-price')?.textContent || '$145';
+      const price = card.querySelector('.product-price')?.textContent || '₹145';
       const category = card.querySelector('.product-category')?.textContent || 'Skincare';
       const img = card.querySelector('img')?.src || '';
 

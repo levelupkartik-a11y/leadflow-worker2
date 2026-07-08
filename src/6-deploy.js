@@ -3,14 +3,14 @@ const { execSync } = require('child_process');
 async function deployToCloudflare(buildDir, businessName, businessId) {
   console.log('[Step 6] Deploying to Cloudflare Pages...');
 
-  // Create a safe project name from businessName and businessId
-  let projectName = `${businessName.toLowerCase().replace(/[^a-z0-9]/g, '-')}-${businessId}`;
-  
-  // Cloudflare Pages project names have a max length of 58 chars
-  if (projectName.length > 58) {
-    projectName = projectName.substring(0, 58).replace(/-$/, '');
-  }
-
+  // Derive a slug from the business name: lowercase, spaces→hyphens, strip special chars, max 50 chars
+  const slug = businessName
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .substring(0, 40);
+  const projectName = `${slug}-${businessId}`;
   console.log(`Target project name: ${projectName}`);
 
   const createCmd = `npx wrangler pages project create "${projectName}" --production-branch main`;

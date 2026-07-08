@@ -313,45 +313,6 @@
 </div>
 </div>
 </section>
-
-<!-- Why Choose Us Section -->
-<section id="why-choose-us" class="py-24 bg-surface-container px-margin-mobile md:px-margin-desktop border-t border-outline-variant/10">
-  <div class="max-w-container-max mx-auto">
-    <div class="text-center max-w-2xl mx-auto mb-16">
-      <span class="reveal font-label-md text-label-md text-apricot-glaze font-bold uppercase tracking-widest">Our Promise</span>
-      <h2 class="reveal delay-100 font-headline-lg text-headline-lg text-deep-espresso mt-2">Why Choose Us</h2>
-      <p class="reveal delay-200 font-body-md text-body-md text-on-surface-variant mt-4">We are dedicated to providing an exceptional culinary experience grounded in quality, tradition, and hospitality.</p>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-      <!-- Card 1 -->
-      <div class="reveal why-card bg-surface p-8 rounded-xl border border-outline-variant/20 flex flex-col items-center text-center shadow-sm">
-        <span class="material-symbols-outlined text-[40px] text-apricot-glaze mb-4" data-icon="restaurant">restaurant</span>
-        <h3 class="font-headline-sm text-headline-sm text-deep-espresso mb-2 why-title-1">Fresh Ingredients</h3>
-        <p class="font-body-sm text-body-sm text-on-surface-variant why-desc-1">Sourced locally and prepared fresh daily for the finest taste.</p>
-      </div>
-      <!-- Card 2 -->
-      <div class="reveal delay-100 why-card bg-surface p-8 rounded-xl border border-outline-variant/20 flex flex-col items-center text-center shadow-sm">
-        <span class="material-symbols-outlined text-[40px] text-apricot-glaze mb-4" data-icon="menu_book">menu_book</span>
-        <h3 class="font-headline-sm text-headline-sm text-deep-espresso mb-2 why-title-2">Family Recipes</h3>
-        <p class="font-body-sm text-body-sm text-on-surface-variant why-desc-2">Traditional culinary methods passed down through generations.</p>
-      </div>
-      <!-- Card 3 -->
-      <div class="reveal delay-200 why-card bg-surface p-8 rounded-xl border border-outline-variant/20 flex flex-col items-center text-center shadow-sm">
-        <span class="material-symbols-outlined text-[40px] text-apricot-glaze mb-4" data-icon="verified">verified</span>
-        <h3 class="font-headline-sm text-headline-sm text-deep-espresso mb-2 why-title-3">Years of Service</h3>
-        <p class="font-body-sm text-body-sm text-on-surface-variant why-desc-3">Serving our community with pride and quality for years.</p>
-      </div>
-      <!-- Card 4 -->
-      <div class="reveal delay-300 why-card bg-surface p-8 rounded-xl border border-outline-variant/20 flex flex-col items-center text-center shadow-sm">
-        <span class="material-symbols-outlined text-[40px] text-apricot-glaze mb-4" data-icon="delivery_dining">delivery_dining</span>
-        <h3 class="font-headline-sm text-headline-sm text-deep-espresso mb-2 why-title-4">Dine-in & Delivery</h3>
-        <p class="font-body-sm text-body-sm text-on-surface-variant why-desc-4">Enjoy our dishes in our cozy dining area or at your home.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Minimalist Divider/Philosophy Section -->
 <section class="py-24 bg-surface px-margin-mobile md:px-margin-desktop border-t border-outline-variant/10">
 <div class="max-w-3xl mx-auto text-center">
@@ -397,59 +358,7 @@
 </div>
 </div>
 </div>
-<!-- Location & Hours Section -->
-<section id="location" class="py-24 bg-surface px-margin-mobile md:px-margin-desktop border-t border-outline-variant/10">
-  <div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
-    <!-- Map Column -->
-    <div class="reveal lg:col-span-7 w-full h-[350px] md:h-[450px] rounded-xl overflow-hidden border border-outline-variant/20 shadow-sm">
-      <iframe 
-        id="map-embed-iframe"
-        width="100%" 
-        height="100%" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps/embed/v1/place?key=MOCK_MAPS_API_KEY&q=SCO+62-63+Chandigarh+India">
-      </iframe>
-    </div>
-    
-    <!-- Hours & Address Column -->
-    <div class="reveal delay-100 lg:col-span-5 flex flex-col justify-between">
-      <div>
-        <span class="font-label-md text-label-md text-apricot-glaze font-bold uppercase tracking-widest">Find Us</span>
-        <h2 class="font-headline-lg text-headline-lg text-deep-espresso mt-2 mb-4">Location & Hours</h2>
-        
-        <!-- Address -->
-        <div class="flex items-start gap-3 mb-6">
-          <span class="material-symbols-outlined text-[24px] text-apricot-glaze mt-1" data-icon="location_on">location_on</span>
-          <div>
-            <h4 class="font-label-lg text-deep-espresso font-bold">Address</h4>
-            <p id="location-address-text" class="font-body-md text-on-surface-variant mt-1">SCO 62-63, Madhya Marg, Sector 17A, Chandigarh, 160017, India</p>
-            <p id="locality-serving-text" class="font-label-sm text-apricot-glaze font-bold mt-2">Serving Chandigarh and surrounding areas</p>
-          </div>
-        </div>
-        
-        <!-- Hours Table -->
-        <div class="flex items-start gap-3">
-          <span class="material-symbols-outlined text-[24px] text-apricot-glaze mt-1" data-icon="schedule">schedule</span>
-          <div class="w-full">
-            <h4 class="font-label-lg text-deep-espresso font-bold mb-3">Opening Hours</h4>
-            <div id="hours-table-container" class="border border-outline-variant/10 rounded-lg overflow-hidden bg-surface-container-lowest">
-              <table class="w-full text-left font-body-sm text-body-sm text-on-surface-variant">
-                <tbody>
-                  <tr class="border-b border-outline-variant/10"><td class="p-3 font-bold text-deep-espresso">Mon - Fri</td><td class="p-3 text-right">11:00 AM - 11:00 PM</td></tr>
-                  <tr class="border-b border-outline-variant/10"><td class="p-3 font-bold text-deep-espresso">Sat - Sun</td><td class="p-3 text-right">11:00 AM - 11:30 PM</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
-
 </main>
 <!-- Footer Shared Component -->
 <footer class="bg-surface-container w-full py-12 border-t border-surface-container-high/40">

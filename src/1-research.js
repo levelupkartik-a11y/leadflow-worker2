@@ -51,6 +51,14 @@ async function researchBusiness(mapsUrl, rowId, sheetName) {
     photos: (place.photos || []).map(p => p.image || p.link || p).filter(Boolean),
     hours: (() => {
       const h = place.operating_hours || place.hours;
+      if (Array.isArray(h)) {
+        return h.map(item => {
+          if (typeof item === 'object' && item !== null) {
+            return Object.entries(item).map(([day, time]) => `${day}: ${time}`).join(', ');
+          }
+          return item;
+        }).join(', ');
+      }
       if (typeof h === 'object' && h !== null) {
         return Object.entries(h).map(([day, time]) => `${day}: ${time}`).join(', ');
       }
