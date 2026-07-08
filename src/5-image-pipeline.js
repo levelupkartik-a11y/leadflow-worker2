@@ -123,6 +123,10 @@ async function processImages(researchData, copyData, buildDir, templateId) {
       if (!contextText) contextText = img.parent().parent().text().trim();
       contextText = contextText.replace(/\s+/g, ' ').trim().substring(0, 100);
       const parentHtml = img.parent().html()?.slice(0, 300) || '';
+      
+      let basePrompt = '';
+      let finalUrl = '';
+      let isUnsplashDirect = false;
 
       // --- CURATED LOCAL IMAGE FOLDER CONVENTION ---
       // If a curated folder has files, we dynamically map them to people-facing/branded slots.
@@ -130,62 +134,38 @@ async function processImages(researchData, copyData, buildDir, templateId) {
         const parentHtmlLower = parentHtml.toLowerCase();
         const contextLower = contextText.toLowerCase();
 
-        const isPeopleOrBranded = 
-          img.hasClass('author-avatar') || 
-          img.hasClass('avatar') ||
-          parentHtmlLower.includes('avatar') || 
-          parentHtmlLower.includes('testimonial') ||
-          parentHtmlLower.includes('team') ||
-          parentHtmlLower.includes('member') ||
-          parentHtmlLower.includes('staff') ||
-          parentHtmlLower.includes('about') ||
-          contextLower.includes('client') || 
-          contextLower.includes('review') ||
-          contextLower.includes('avatar') ||
-          contextLower.includes('agent') ||
-          contextLower.includes('stylist') ||
-          contextLower.includes('team') ||
-          contextLower.includes('staff') ||
-          contextLower.includes('portrait') ||
-          contextLower.includes('owner') ||
-          contextLower.includes('founder') ||
-          contextLower.includes('doctor') ||
-          contextLower.includes('expert') ||
-          parentHtmlLower.includes('hero-image-wrapper') || 
-          contextLower.includes('hero');
-
         // Check if it is a client avatar specifically
         const isAvatar = img.hasClass('author-avatar') || 
+                         img.hasClass('avatar') ||
                          parentHtmlLower.includes('author-avatar') || 
                          parentHtmlLower.includes('testimonial') ||
                          contextLower.includes('client') || 
-                         contextLower.includes('review');
+                         contextLower.includes('review') ||
+                         contextLower.includes('avatar');
 
-        if (isPeopleOrBranded) {
-          if (isAvatar) {
-            // Testimonial avatars: Use professional, generic portrait headshots from Unsplash (Option A)
-            const avatarList = [
-              'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400',
-              'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400',
-              'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400',
-              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400',
-              'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400'
-            ];
-            const avatarUrl = avatarList[i % avatarList.length];
-            basePrompt = `Client avatar portrait`;
-            finalUrl = avatarUrl;
-            isUnsplashDirect = true;
-            console.log(`Slot ${imgId} -> Curated Client Avatar (Option A): ${finalUrl}`);
-          } else {
-            // General people/branded/lobby slot: map dynamically from the local curated folder
-            const localFile = curatedImages[curatedIndex % curatedImages.length];
-            curatedIndex++;
+        if (isAvatar) {
+          // Testimonial avatars: Use professional, generic portrait headshots from Unsplash (Option A)
+          const avatarList = [
+            'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400',
+            'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400',
+            'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400',
+            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400',
+            'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400'
+          ];
+          const avatarUrl = avatarList[i % avatarList.length];
+          basePrompt = `Client avatar portrait`;
+          finalUrl = avatarUrl;
+          isUnsplashDirect = true;
+          console.log(`Slot ${imgId} -> Curated Client Avatar (Option A): ${finalUrl}`);
+        } else {
+          // General people/branded/lobby/gallery slot: map dynamically from the local curated folder
+          const localFile = curatedImages[curatedIndex % curatedImages.length];
+          curatedIndex++;
 
-            img.attr('src', localFile);
-            img.removeAttr('srcset');
-            console.log(`Slot ${imgId} -> Mapped to Curated Local Photo: ${localFile}`);
-            continue; // Skip Groq matching, Pollinations, and download pipeline
-          }
+          img.attr('src', localFile);
+          img.removeAttr('srcset');
+          console.log(`Slot ${imgId} -> Mapped to Curated Local Photo: ${localFile}`);
+          continue; // Skip Groq matching, Pollinations, and download pipeline
         }
       }
 
@@ -239,14 +219,14 @@ Output strictly as JSON:
         decision = { action: 'generate_new', generation_prompt: `A professional stock photo matching the text: ${contextText.slice(0, 50)}` };
       }
 
-      let basePrompt = '';
-      let finalUrl = '';
+      basePrompt = '';
+      finalUrl = '';
 
       if (decision.action === 'generate_new' && (!decision.generation_prompt || decision.generation_prompt === 'null')) {
          decision.generation_prompt = `High quality, professional stock photography of ${researchData.category}, matching text: ${contextText.slice(0, 100)}`;
       }
 
-      let isUnsplashDirect = false;
+      isUnsplashDirect = false;
 
       if (decision.action === 'use_real_photo' && decision.selected_photo_id !== null && availablePhotos[decision.selected_photo_id]) {
         const originalUrl = availablePhotos[decision.selected_photo_id];
