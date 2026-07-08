@@ -62,6 +62,21 @@ async function processImages(researchData, copyData, buildDir, templateId) {
   }
   let curatedIndex = 0;
 
+  // Helper to format prompt placing the specific context/cuisine at the absolute front
+  function formatPipelinePrompt(baseText, contextText, categoryList) {
+    const cleanContext = (contextText || '').replace(/[^a-zA-Z0-9\s,\-\'&]/g, '').trim().substring(0, 80);
+    const cleanCategories = (Array.isArray(categoryList) ? categoryList.join(', ') : String(categoryList || '')).trim();
+
+    // Determine the primary focus
+    let mainFocus = baseText;
+    if (cleanContext && cleanContext.length > 3) {
+      mainFocus = cleanContext;
+    }
+
+    // Keep it concise and direct for Pollinations AI
+    return `Professional high-end stock photo of ${mainFocus}, styled in the aesthetic of a premium ${cleanCategories}, warm ambient lighting, highly detailed, photorealistic, 4k`;
+  }
+
   const CURATED_FALLBACKS = {
     'healthcare-dental': [
       'https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1200', // Modern clinic lobby
@@ -253,13 +268,15 @@ Output strictly as JSON:
           isUnsplashDirect = true;
           console.log(`Slot ${imgId} -> Curated Unsplash (Healthcare preference): ${finalUrl}`);
         } else {
-          basePrompt = (decision.generation_prompt || '').replace(/\s+/g, ' ').trim();
-          if (!basePrompt || basePrompt === 'null') {
-             basePrompt = `High quality, professional stock photography of ${researchData.category}, matching text: ${contextText.slice(0, 100)}`;
+          let rawPrompt = (decision.generation_prompt || '').replace(/\s+/g, ' ').trim();
+          if (!rawPrompt || rawPrompt === 'null') {
+             rawPrompt = contextText || (Array.isArray(researchData.category) ? researchData.category.join(' ') : String(researchData.category || ''));
           }
+          basePrompt = formatPipelinePrompt(rawPrompt, contextText, researchData.category);
           console.log(`Slot ${imgId} -> Generating New: ${basePrompt}`);
-          const encodedPrompt = encodeURIComponent(basePrompt + `, highly detailed, photorealistic, professional photography, 4k`);
-          finalUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?nologo=true`;
+          const encodedPrompt = encodeURIComponent(basePrompt);
+          const seed = `${Date.now()}_${i}_${Math.floor(Math.random() * 1000)}`;
+          finalUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?nologo=true&seed=${seed}`;
         }
       }
 

@@ -15,7 +15,14 @@ async function checkImageMatch(base64Image, contextText) {
 Does this image accurately and realistically represent the following text from a website?
 Text: "${contextText}"
 
-If it is completely unrelated, generic, or an obvious error (like a blank image or error text in the image), set match to false and provide a reason that can be used to generate a better prompt.
+CRITICAL RULE FOR CUISINE/CATEGORY SPECIFICITY:
+If the text names a specific cuisine, food style, or category (e.g., "North Indian", "Breakfast", "Chinese", "South Indian", "Desserts"), the image MUST strictly show that specific type of cuisine/food or setting.
+- An image showing a Chinese restaurant interior with Chinese lanterns is NOT a match for "North Indian Cuisine", "South Indian Cuisine", or "Breakfast".
+- Mismatched cultural/cuisine elements MUST be rejected (set match to false).
+- A generic restaurant interior is NOT a match for a label describing a specific dish (e.g., "Butter Chicken" must show the dish itself, not just table settings).
+
+If the image is a mismatch, completely unrelated, generic, or an obvious error, set match to false and provide a detailed reason explaining the mismatch so we can generate a better prompt.
+
 Respond strictly in JSON:
 {
   "match": boolean,
