@@ -49,11 +49,24 @@ async function researchBusiness(mapsUrl, rowId, sheetName) {
       return r.map(x => x.text || x.snippet || x.description || '').filter(Boolean);
     })(),
     photos: (place.photos || []).map(p => p.image || p.link || p).filter(Boolean),
-    hours: place.operating_hours || place.hours || '',
+    hours: (() => {
+      const h = place.operating_hours || place.hours;
+      if (typeof h === 'object' && h !== null) {
+        return Object.entries(h).map(([day, time]) => `${day}: ${time}`).join(', ');
+      }
+      return h || '';
+    })(),
     address: place.address || '',
     phone: place.phone || '',
     priceLevel: place.price || place.price_level || '',
-    attributes: place.attributes || {},
+    attributes: (() => {
+      if (typeof place.attributes === 'object' && place.attributes !== null) {
+        return Object.entries(place.attributes)
+          .map(([k, v]) => `${k}: ${Array.isArray(v) ? v.join(', ') : v}`)
+          .join('; ');
+      }
+      return place.attributes || '';
+    })(),
     posts: place.posts || []
   };
 

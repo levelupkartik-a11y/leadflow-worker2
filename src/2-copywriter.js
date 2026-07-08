@@ -34,6 +34,9 @@ Testimonials Rule: ${referenceKit.style_guide.testimonials}
 **Examples of Good Copy:**
 ${referenceKit.examples.map(ex => `- [${ex.category}]: ${ex.text}`).join('\n')}
 
+**Testimonials Instructions:**
+If the Real Reviews array is empty or missing, return an empty array \`[]\` for testimonials. Do NOT hallucinate reviews. If reviews exist, select 2 to 5 of the best ones. Trim each review's text down to 1-2 punchy sentences. Anonymize the reviewer's name (First name + Last initial). Assume a rating of 5 if not provided.
+
 **Required Output (JSON):**
 Produce a JSON object with exactly these keys:
 {
@@ -43,7 +46,11 @@ Produce a JSON object with exactly these keys:
     { "name": "...", "description": "..." }
   ],
   "testimonials": [
-    { "quote": "...", "author_initials": "..." }
+    { 
+      "text": "1-2 punchy sentences...", 
+      "reviewer": "First Name L.", 
+      "rating": 5 
+    }
   ],
   "cta": "...",
   "tone_summary": "Brief summary of the determined tone and standout traits."

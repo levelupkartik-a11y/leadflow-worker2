@@ -38,7 +38,7 @@ async function main() {
     fs.cpSync(templatePath, buildDir, { recursive: true });
 
     // Step 4: Adapt Layout
-    await adaptLayout(templateId, copyData, buildDir);
+    await adaptLayout(templateId, copyData, buildDir, researchData);
 
     // Step 5: Image Pipeline
     await processImages(researchData, copyData, buildDir);
@@ -48,7 +48,8 @@ async function main() {
     const liveUrl = await deployToCloudflare(buildDir, researchData.title, businessId);
 
     // Step 7: Report
-    await reportBackToSheet(liveUrl, sheetName, rowId);
+    const reviewsCount = (researchData.reviews && Array.isArray(researchData.reviews)) ? researchData.reviews.length : 0;
+    await reportBackToSheet(liveUrl, sheetName, rowId, reviewsCount);
 
     // Step 8: Cleanup
     console.log('[Step 9] Cleaning up...');

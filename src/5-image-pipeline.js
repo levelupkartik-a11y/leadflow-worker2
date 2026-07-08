@@ -28,18 +28,28 @@ async function processImages(researchData, copyData, buildDir) {
     for (let i = 0; i < images.length; i++) {
       const img = $(images[i]);
       const imgId = img.attr('id') || `img-${i}`;
+      // Enhanced context extraction
+      let contextText = img.parent().text().trim();
+      if (!contextText) contextText = img.parent().parent().text().trim().substring(0, 200);
       const parentHtml = img.parent().html()?.slice(0, 300) || '';
 
       const prompt = `
-You need to pick the best image for a specific slot on a website.
+You need to pick or generate the best image for a specific slot on a website.
 Business Name: ${researchData.title}
 Category: ${researchData.category}
-Image Slot Context (Surrounding HTML): ${parentHtml}
+Image Slot Context (Surrounding Text/HTML):
+${contextText}
+${parentHtml}
 
 Available Real Photos from the Business:
 ${availablePhotos.map((url, idx) => `[ID: ${idx}] ${url}`).join('\n')}
 
-Task: Decide if one of the real photos fits this slot perfectly. If so, return its ID. If no real photo fits, or there are no photos left, you must provide a detailed prompt to generate a high-quality, realistic stock photo using an AI image generator.
+Task: Decide if one of the real photos fits this slot perfectly. If so, return its ID. If no real photo fits, or there are no photos left, you must provide a detailed prompt to generate a high-quality, realistic stock photo.
+
+CRITICAL RULE: The generation_prompt MUST strictly and directly reflect the specific heading or text of this section.
+- If the section mentions "Chinese Cuisine", the prompt MUST explicitly describe "Chinese food, stir-fry, noodles".
+- If it mentions "Non-Vegetarian", it MUST describe a "meat dish".
+- DO NOT use generic prompts. Tailor the visual exactly to the text context.
 
 Output strictly as JSON:
 {
@@ -59,7 +69,7 @@ Output strictly as JSON:
         decision = JSON.parse(response.text);
       } catch (err) {
         console.warn(`Gemini matching failed for slot ${imgId}, defaulting to generate.`);
-        decision = { action: 'generate_new', generation_prompt: `A professional stock photo for a ${researchData.category} business named ${researchData.title}` };
+        decision = { action: 'generate_new', generation_prompt: `A professional stock photo matching the text: ${contextText.slice(0, 50)}` };
       }
 
       let finalUrl = '';
@@ -67,11 +77,6 @@ Output strictly as JSON:
       if (decision.action === 'use_real_photo' && decision.selected_photo_id !== null && availablePhotos[decision.selected_photo_id]) {
         const originalUrl = availablePhotos[decision.selected_photo_id];
         console.log(`Slot ${imgId} -> Real Photo [${decision.selected_photo_id}]`);
-        // Remove it so it's not reused for another main slot, or keep it. Let's keep it but ideally we'd remove it.
-        // Let's optionally enhance via Replicate if we assume it's low quality, 
-        // but to save time/cost, we will just use it directly, or enhance it if instructed.
-        // The user asked: "enhance low-quality photos via Replicate/Real-ESRGAN". 
-        // We'll run it through Real-ESRGAN to ensure high quality.
         try {
           if (process.env.REPLICATE_API_TOKEN) {
             console.log(`Enhancing photo with Real-ESRGAN...`);
@@ -89,13 +94,34 @@ Output strictly as JSON:
         }
       } else {
         console.log(`Slot ${imgId} -> Generating New: ${decision.generation_prompt}`);
-        // Use Pollinations.ai for free generation
         const encodedPrompt = encodeURIComponent(decision.generation_prompt + `, highly detailed, photorealistic, professional photography, 4k`);
         finalUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?nologo=true`;
       }
 
-      img.attr('src', finalUrl);
-      img.removeAttr('srcset'); // Remove srcset to ensure the new src is used
+      // Download the image so it is hosted locally on Cloudflare Pages
+      try {
+        console.log(`Downloading image for slot ${imgId}...`);
+        const res = await fetch(finalUrl);
+        if (!res.ok) throw new Error(`Failed to fetch image: ${res.statusText}`);
+        const buffer = await res.arrayBuffer();
+        
+        // Ensure assets directory exists
+        const assetsDir = path.join(buildDir, 'assets');
+        if (!fs.existsSync(assetsDir)) {
+          fs.mkdirSync(assetsDir, { recursive: true });
+        }
+        
+        const localFilename = `assets/img-${Date.now()}-${i}.jpg`;
+        const localPath = path.join(buildDir, localFilename);
+        fs.writeFileSync(localPath, Buffer.from(buffer));
+        
+        img.attr('src', localFilename);
+      } catch (downloadErr) {
+        console.warn(`Failed to download image, using remote URL as fallback:`, downloadErr.message);
+        img.attr('src', finalUrl);
+      }
+      
+      img.removeAttr('srcset'); 
     }
 
     fs.writeFileSync(filePath, $.html(), 'utf8');
