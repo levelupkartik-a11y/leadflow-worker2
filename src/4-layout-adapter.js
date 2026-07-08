@@ -214,7 +214,10 @@ async function adaptLayout(templateId, copyData, buildDir, researchData) {
 
           // --- Why Choose Us Section ---
           const cityRest = researchData.address ? researchData.address.split(',').slice(-2, -1)[0]?.trim() || 'Chandigarh' : 'Chandigarh';
-          const cuisineRest = (researchData.category || 'Fine Dining').split('&')[0].trim();
+          const categoryVal = Array.isArray(researchData.category)
+            ? researchData.category.join(' ')
+            : (researchData.category || 'Fine Dining');
+          const cuisineRest = categoryVal.split('&')[0].trim();
           
           const whyTitle1 = isFood ? 'Fresh Ingredients' : 'Quality Service';
           const whyDesc1 = isFood ? 'Sourced locally and prepared fresh daily for the finest taste.' : 'Professional standards and attention to details.';
