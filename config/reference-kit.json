@@ -1,0 +1,24 @@
+{
+  "style_guide": {
+    "tone": "Fill in the default tone guidelines here (e.g., 'professional but conversational', 'no marketing fluff').",
+    "banned_words": ["synergy", "paradigm", "cutting-edge", "revolutionary", "state-of-the-art"],
+    "max_sentence_length": 20,
+    "headlines": "Short, punchy, benefit-driven. No punctuation at the end.",
+    "body_copy": "Direct and factual. Focus on what the business actually does.",
+    "testimonials": "Use exact phrases from reviews, lightly edited for clarity, never invented."
+  },
+  "examples": [
+    {
+      "category": "Salons/Spas",
+      "text": "Expert haircuts and color in a relaxing environment. Book your appointment today."
+    },
+    {
+      "category": "Clinics",
+      "text": "Compassionate care for the whole family. Walk-ins welcome."
+    },
+    {
+      "category": "Restaurants/Cafes",
+      "text": "Fresh, locally sourced ingredients. Family-owned and operated since 2010."
+    }
+  ]
+}

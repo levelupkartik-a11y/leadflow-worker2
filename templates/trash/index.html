@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NŪMA — Quiet Confidence for Your Daily Ritual | Luxury Beauty & Salon</title>
+  <meta name="description" content="Mindful skincare formulations and holistic salon rituals crafted in Seattle to nurture your skin barrier and calm your spirit." />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header id="main-nav" class="nav-header">
+    <div class="container nav-content">
+      <a href="#" class="nav-logo">NŪMA</a>
+      
+      <nav class="nav-links">
+        <a href="#collection" class="nav-link">Shop Collection</a>
+        <a href="#sanctuary" class="nav-link">Salon Sanctuary</a>
+        <a href="#philosophy" class="nav-link">Our Philosophy</a>
+        <a href="#reviews" class="nav-link">Client Reviews</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="nav-icon-btn js-open-booking" data-service="Signature Radiance Facial" aria-label="Book an Appointment" title="Book Salon Ritual">
+          <span class="material-symbols-outlined">calendar_month</span>
+        </button>
+        
+        <button id="open-bag-btn" class="nav-icon-btn" aria-label="Shopping Bag">
+          <span class="material-symbols-outlined">shopping_bag</span>
+          <span id="bag-badge-count" class="bag-badge" style="display: none;">0</span>
+        </button>
+
+        <button id="mobile-menu-btn" class="mobile-toggle" aria-label="Open Mobile Menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Dynamic Rotating Words -->
+  <section class="hero-section">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80" alt="Serene minimalist landscape" class="hero-bg-img" />
+      <div class="hero-gradient"></div>
+    </div>
+    
+    <div class="container hero-content">
+      <span class="label-caps" style="color: var(--secondary); margin-bottom: 24px; display: inline-block;">Seattle Studio & Botanical Lab</span>
+      <h1 class="display-lg" style="color: var(--primary); margin-bottom: 24px;">
+        Quiet confidence for your <br />
+        <span id="typed-words" class="typed-wrapper">daily ritual.</span><span class="typed-cursor">|</span>
+      </h1>
+      <p class="body-lg" style="color: var(--on-surface-variant); max-width: 580px; margin: 0 auto 40px;">
+        Mindful formulations and holistic salon rituals crafted with cold-pressed botanicals to nurture your skin barrier and restore deep calm.
+      </p>
+      <div class="flex-center" style="gap: 16px; flex-wrap: wrap;">
+        <a href="#collection" class="btn btn-primary">Explore Collection</a>
+        <button class="btn btn-secondary js-open-booking" data-service="Signature Radiance Facial">Book a Salon Ritual</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy Section ("Less, but better") -->
+  <section id="philosophy" class="section-gap">
+    <div class="container grid-12" style="align-items: center;">
+      <div style="grid-column: span 12 / span 5;" class="reveal-on-scroll">
+        <span class="label-caps" style="color: var(--secondary); margin-bottom: 16px; display: block;">Our Philosophy</span>
+        <h2 class="headline-lg" style="color: var(--primary); margin-bottom: 24px;">
+          Less, but better. Purity without compromise.
+        </h2>
+        <p class="body-md" style="color: var(--on-surface-variant); margin-bottom: 20px;">
+          We believe that daily skincare should not feel like a complex regimen of correction. NŪMA formulations are intentionally designed around biocompatible lipo-nutrients that recognize and repair your skin's natural architecture.
+        </p>
+        <p class="body-md" style="color: var(--on-surface-variant); margin-bottom: 32px;">
+          Every drop is cold-blended in small batches in our Seattle laboratory, free from synthetic fragrance, essential oil sensitizers, and micro-plastics.
+        </p>
+        <a href="#sanctuary" class="btn btn-text">Explore Our Studio <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span></a>
+      </div>
+      
+      <div style="grid-column: span 12 / span 6; grid-column-start: 7;" class="reveal-on-scroll delay-2">
+        <div style="position: relative; border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 4/3; background: var(--secondary-container);">
+          <img src="https://images.unsplash.com/photo-1608248597359-0e6d526a6c23?auto=format&fit=crop&w=1000&q=80" alt="Macro botanical serum drop" style="width: 100%; height: 100%; object-fit: cover;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bestsellers Bento Grid ("Mindful Formulations") -->
+  <section id="collection" class="section-gap" style="background-color: var(--surface-container-low);">
+    <div class="container">
+      <div class="flex-between" style="margin-bottom: 48px; flex-wrap: wrap; gap: 16px;">
+        <div class="reveal-on-scroll">
+          <span class="label-caps" style="color: var(--secondary); margin-bottom: 8px; display: block;">Curated Essentials</span>
+          <h2 class="headline-lg" style="color: var(--primary);">Mindful Formulations</h2>
+        </div>
+        <button class="btn btn-secondary reveal-on-scroll" onclick="document.getElementById('open-bag-btn').click();">View Ritual Bag</button>
+      </div>
+
+      <div class="grid-12" style="row-gap: 40px;">
+        <!-- Product 1 -->
+        <div style="grid-column: span 12 / span 3;" class="reveal-on-scroll delay-1">
+          <div class="product-card">
+            <div class="product-image-wrap">
+              <span class="badge product-badge">Bestseller</span>
+              <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80" alt="Radiance Ritual Face Oil" />
+              <button class="product-quick-add js-add-to-bag" data-name="Radiance Ritual Face Oil" data-price="85" data-img="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80">Add to Bag — $85</button>
+            </div>
+            <div class="product-info">
+              <div>
+                <h3 class="product-title">Radiance Ritual Face Oil</h3>
+                <p class="product-subtitle">30ml / 1.0 fl oz</p>
+              </div>
+              <span class="product-price">$85</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div style="grid-column: span 12 / span 3;" class="reveal-on-scroll delay-2">
+          <div class="product-card">
+            <div class="product-image-wrap">
+              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="The Restorative Serum" />
+              <button class="product-quick-add js-add-to-bag" data-name="The Restorative Serum" data-price="95" data-img="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80">Add to Bag — $95</button>
+            </div>
+            <div class="product-info">
+              <div>
+                <h3 class="product-title">The Restorative Serum</h3>
+                <p class="product-subtitle">50ml / 1.7 fl oz</p>
+              </div>
+              <span class="product-price">$95</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div style="grid-column: span 12 / span 3;" class="reveal-on-scroll delay-3">
+          <div class="product-card">
+            <div class="product-image-wrap">
+              <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=600&q=80" alt="Nourishing Barrier Cream" />
+              <button class="product-quick-add js-add-to-bag" data-name="Nourishing Barrier Cream" data-price="78" data-img="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=600&q=80">Add to Bag — $78</button>
+            </div>
+            <div class="product-info">
+              <div>
+                <h3 class="product-title">Nourishing Barrier Cream</h3>
+                <p class="product-subtitle">60ml / 2.0 fl oz</p>
+              </div>
+              <span class="product-price">$78</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div style="grid-column: span 12 / span 3;" class="reveal-on-scroll delay-4">
+          <div class="product-card">
+            <div class="product-image-wrap">
+              <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80" alt="Gentle Purifying Wash" />
+              <button class="product-quick-add js-add-to-bag" data-name="Gentle Purifying Wash" data-price="48" data-img="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80">Add to Bag — $48</button>
+            </div>
+            <div class="product-info">
+              <div>
+                <h3 class="product-title">Gentle Purifying Wash</h3>
+                <p class="product-subtitle">150ml / 5.1 fl oz</p>
+              </div>
+              <span class="product-price">$48</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Salon Rituals Feature Section ("The Sanctuary") -->
+  <section id="sanctuary" class="section-gap" style="position: relative; overflow: hidden; background-color: var(--primary); color: var(--on-primary);">
+    <div class="container grid-12" style="align-items: center; position: relative; z-index: 2;">
+      <div style="grid-column: span 12 / span 6;" class="reveal-on-scroll">
+        <span class="label-caps" style="color: var(--tertiary-fixed); margin-bottom: 16px; display: block;">In-Person Sanctuary</span>
+        <h2 class="headline-lg" style="color: var(--on-primary); margin-bottom: 24px;">
+          Holistic Facial & Sculpting Rituals in Seattle
+        </h2>
+        <p class="body-md" style="color: var(--primary-fixed-dim); margin-bottom: 32px; max-width: 480px;">
+          Experience the sensory peace of our Flagship Studio. Our master aestheticians combine manual myofascial lifting techniques with customized botanical infusions for profound relaxation and visible contouring.
+        </p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <button class="btn js-open-booking" data-service="Signature Radiance Facial" style="background: var(--tertiary-fixed); color: var(--on-tertiary-fixed);">Explore Service Menu</button>
+          <button class="btn js-open-booking" data-service="Lymphatic Sculpting Massage" style="border: 1px solid var(--primary-fixed-dim); color: var(--on-primary);">Schedule Appointment</button>
+        </div>
+      </div>
+      
+      <div style="grid-column: span 12 / span 6;" class="reveal-on-scroll delay-2">
+        <div style="border-radius: var(--radius-2xl); overflow: hidden; aspect-ratio: 16/10; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1000&q=80" alt="Serene salon facial treatment" style="width: 100%; height: 100%; object-fit: cover;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Slider (Seattle Dental Co Inspired) -->
+  <section id="reviews" class="section-gap testimonials-section">
+    <div class="container reveal-on-scroll">
+      <div style="text-align: center;">
+        <span class="label-caps" style="color: var(--secondary); margin-bottom: 8px; display: block;">Client Experiences</span>
+        <h2 class="headline-md" style="color: var(--primary);">Words of Radiance</h2>
+      </div>
+
+      <div class="testimonials-slider-wrap">
+        <div id="testimonials-track" class="testimonials-track">
+          <!-- Slide 1 -->
+          <div class="testimonial-slide">
+            <p class="testimonial-quote">
+              "NŪMA has completely transformed my evening routine. The Radiance Oil feels like liquid silk, and the salon facial left my skin glowing for weeks."
+            </p>
+            <h4 class="testimonial-author">Elena R.</h4>
+            <span class="testimonial-role">Verified Studio Client</span>
+          </div>
+          <!-- Slide 2 -->
+          <div class="testimonial-slide">
+            <p class="testimonial-quote">
+              "The quiet luxury of their studio and the purity of their formulations are unmatched in Seattle. It’s truly a sanctuary for both skin and spirit."
+            </p>
+            <h4 class="testimonial-author">Marcus T.</h4>
+            <span class="testimonial-role">Holistic Architect</span>
+          </div>
+          <!-- Slide 3 -->
+          <div class="testimonial-slide">
+            <p class="testimonial-quote">
+              "Minimalist ingredients with maximal impact. As a dermatologist, I appreciate their commitment to barrier health without unnecessary fragrance or fillers."
+            </p>
+            <h4 class="testimonial-author">Dr. Sarah K.</h4>
+            <span class="testimonial-role">Clinical Advisor</span>
+          </div>
+        </div>
+
+        <div class="slider-controls">
+          <button id="slider-prev" class="slider-btn" aria-label="Previous review">
+            <span class="material-symbols-outlined">arrow_back</span>
+          </button>
+          <div class="slider-dots">
+            <span class="slider-dot active"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+          </div>
+          <button id="slider-next" class="slider-btn" aria-label="Next review">
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section ("Join the Ritual") -->
+  <section class="section-gap" style="text-align: center; background-color: var(--surface);">
+    <div class="container reveal-on-scroll">
+      <span class="label-caps" style="color: var(--secondary); margin-bottom: 12px; display: block;">Stay Connected</span>
+      <h2 class="headline-md" style="color: var(--primary); margin-bottom: 16px;">Join the Ritual</h2>
+      <p class="body-md" style="color: var(--on-surface-variant); max-width: 460px; margin: 0 auto 32px;">
+        Subscribe to receive mindful skincare notes, private invitations to Seattle studio events, and 15% off your first formulation.
+      </p>
+      
+      <form class="newsletter-input-wrap" onsubmit="event.preventDefault(); alert('Welcome to the NŪMA community.');">
+        <input type="email" placeholder="Enter your email address" class="newsletter-input" required aria-label="Email address" />
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="nav-logo" style="margin-bottom: 16px; display: inline-block;">NŪMA</a>
+          <p class="body-sm" style="color: var(--on-surface-variant); max-width: 300px; margin-bottom: 24px;">
+            Quiet confidence for your daily ritual. Crafted with organic botanicals and mindful simplicity in Seattle, WA.
+          </p>
+          <div style="display: flex; gap: 16px; color: var(--primary);">
+            <a href="#" aria-label="Instagram"><span class="material-symbols-outlined">photo_camera</span></a>
+            <a href="#" aria-label="Pinterest"><span class="material-symbols-outlined">auto_awesome</span></a>
+            <a href="#" aria-label="Spotify"><span class="material-symbols-outlined">headphones</span></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Collection</h4>
+          <div class="footer-links">
+            <a href="#collection" class="footer-link">All Formulations</a>
+            <a href="#collection" class="footer-link">Radiance Face Oil</a>
+            <a href="#collection" class="footer-link">Barrier Cream</a>
+            <a href="#collection" class="footer-link">Discovery Sets</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Sanctuary</h4>
+          <div class="footer-links">
+            <a href="#sanctuary" class="footer-link">Salon Menu</a>
+            <a href="#sanctuary" class="footer-link">Facial Treatments</a>
+            <a href="#sanctuary" class="footer-link">Lymphatic Sculpting</a>
+            <a href="#sanctuary" class="footer-link">Book Appointment</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">About NŪMA</h4>
+          <div class="footer-links">
+            <a href="#philosophy" class="footer-link">Our Story</a>
+            <a href="#philosophy" class="footer-link">Practitioners</a>
+            <a href="#philosophy" class="footer-link">Sustainability</a>
+            <a href="#philosophy" class="footer-link">Contact Us</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 NŪMA Beauty & Salon LLC. All rights reserved.</p>
+        <div style="display: flex; gap: 24px;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Overlays & Drawers -->
+  <div id="main-overlay" class="overlay"></div>
+
+  <!-- Shopping Bag Drawer -->
+  <aside id="bag-drawer" class="drawer" aria-label="Shopping Bag Drawer">
+    <div class="drawer-header">
+      <h3 class="headline-md" style="font-size: 1.25rem;">Your Ritual Bag</h3>
+      <button id="close-bag-btn" class="nav-icon-btn" aria-label="Close Bag">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div id="bag-items-list" class="drawer-body">
+      <!-- Dynamic Items -->
+    </div>
+    <div class="drawer-footer">
+      <div class="flex-between" style="margin-bottom: 16px; font-weight: 600; color: var(--primary);">
+        <span>Subtotal</span>
+        <span id="bag-subtotal-val">$85.00</span>
+      </div>
+      <p class="body-sm" style="color: var(--secondary); margin-bottom: 20px;">Shipping and taxes calculated at checkout.</p>
+      <button class="btn btn-primary" style="width: 100%;" onclick="alert('Proceeding to secure checkout...');">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Mobile Menu Drawer -->
+  <aside id="mobile-drawer" class="drawer" style="left: 0; right: auto; transform: translateX(-100%);" aria-label="Mobile Navigation Drawer">
+    <div class="drawer-header">
+      <span class="nav-logo">NŪMA</span>
+      <button id="close-mobile-btn" class="nav-icon-btn" aria-label="Close Menu">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="drawer-body" style="display: flex; flex-direction: column; gap: 24px; padding-top: 40px;">
+      <a href="#collection" class="headline-md" style="color: var(--primary);" onclick="closeMobileMenu()">Shop Collection</a>
+      <a href="#sanctuary" class="headline-md" style="color: var(--primary);" onclick="closeMobileMenu()">Salon Sanctuary</a>
+      <a href="#philosophy" class="headline-md" style="color: var(--primary);" onclick="closeMobileMenu()">Our Philosophy</a>
+      <a href="#reviews" class="headline-md" style="color: var(--primary);" onclick="closeMobileMenu()">Client Reviews</a>
+      
+      <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--outline-variant);">
+        <button class="btn btn-primary js-open-booking" style="width: 100%;" data-service="Signature Radiance Facial" onclick="closeMobileMenu()">Book a Salon Ritual</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Booking / Schedule Modal (Seattle Dental Co Inspired) -->
+  <div id="booking-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="flex-between" style="margin-bottom: 24px;">
+      <h3 id="modal-title" class="headline-md" style="color: var(--primary);">Reserve Your Ritual</h3>
+      <button id="close-booking-btn" class="nav-icon-btn" aria-label="Close Modal">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <p class="body-md" style="color: var(--on-surface-variant); margin-bottom: 24px;">
+      Select your preferred treatment and date for our Seattle flagship studio. Our concierge will confirm your reservation.
+    </p>
+    
+    <form id="booking-form">
+      <div class="form-group">
+        <label class="form-label" for="booking-service">Treatment</label>
+        <select id="booking-service" class="form-select" required>
+          <option value="Signature Radiance Facial">Signature Radiance Facial — 75 min ($185)</option>
+          <option value="Lymphatic Sculpting Massage">Lymphatic Sculpting Massage — 60 min ($160)</option>
+          <option value="Holistic Barrier Restoration">Holistic Barrier Restoration — 90 min ($220)</option>
+          <option value="The Full NŪMA Immersion">The Full NŪMA Immersion — 120 min ($295)</option>
+        </select>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <div class="form-group">
+          <label class="form-label" for="booking-date">Preferred Date</label>
+          <input type="date" id="booking-date" class="form-input" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="booking-time">Time Slot</label>
+          <select id="booking-time" class="form-select" required>
+            <option value="Morning (10:00 AM)">Morning (10:00 AM)</option>
+            <option value="Afternoon (1:30 PM)">Afternoon (1:30 PM)</option>
+            <option value="Late Afternoon (4:00 PM)">Late Afternoon (4:00 PM)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="booking-name">Full Name</label>
+        <input type="text" id="booking-name" class="form-input" placeholder="Clara Vance" required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="booking-email">Email Address</label>
+        <input type="email" id="booking-email" class="form-input" placeholder="clara@example.com" required />
+      </div>
+
+      <div style="margin-top: 32px;">
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Request Appointment</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Culinary Craft - Modern Organic Dining</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e4e2dd",
+                        "on-tertiary-container": "#7098a0",
+                        "inverse-primary": "#f5b9a1",
+                        "surface-bright": "#fbf9f4",
+                        "error": "#ba1a1a",
+                        "outline": "#84746e",
+                        "tertiary-container": "#002f36",
+                        "primary-fixed-dim": "#f5b9a1",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1b1c19",
+                        "outline-variant": "#d6c3bc",
+                        "surface-container": "#f0eee9",
+                        "deep-espresso": "#432010",
+                        "on-background": "#1b1c19",
+                        "tertiary": "#00191d",
+                        "surface-container-high": "#eae8e3",
+                        "charcoal-ink": "#1A1A1A",
+                        "surface-tint": "#815340",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#663c2a",
+                        "on-secondary-container": "#663e00",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#321205",
+                        "primary-fixed": "#ffdbcd",
+                        "secondary": "#865300",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#001f24",
+                        "tertiary-fixed-dim": "#a5cdd6",
+                        "surface-container-low": "#f5f3ee",
+                        "primary-container": "#432010",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#ffb961",
+                        "inverse-surface": "#30312e",
+                        "tertiary-fixed": "#c1eaf2",
+                        "surface-dim": "#dbdad5",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-tertiary-fixed-variant": "#254c54",
+                        "paper-white": "#FFFFFF",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "secondary-fixed": "#ffddb8",
+                        "background": "#fbf9f4",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#51443f",
+                        "apricot-glaze": "#F59C00",
+                        "on-secondary-fixed": "#2b1700",
+                        "surface": "#fbf9f4",
+                        "secondary-container": "#fca20f",
+                        "primary": "#2a0c02",
+                        "on-primary-container": "#b9846e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Playfair Display", "serif"],
+                        "label-lg": ["Hanken Grotesk", "sans-serif"],
+                        "body-lg": ["Hanken Grotesk", "sans-serif"],
+                        "headline-lg": ["Playfair Display", "serif"],
+                        "headline-md": ["Playfair Display", "serif"],
+                        "display-lg-mobile": ["Playfair Display", "serif"],
+                        "body-md": ["Hanken Grotesk", "sans-serif"],
+                        "label-sm": ["Hanken Grotesk", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scroll-reveal styles inspired by haberbueni.ch */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Custom delay classes */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+        .delay-500 { transition-delay: 500ms; }
+
+        /* Elegant menu hover line animation */
+        .nav-link {
+            position: relative;
+            padding-bottom: 2px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: currentColor;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased selection:bg-apricot-glaze selection:text-paper-white flex flex-col min-h-screen">
+<!-- TopNavBar Shared Component -->
+<header id="main-header" class="bg-surface/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant/10 transition-all duration-300 py-2">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 max-w-container-max mx-auto w-full">
+<!-- Brand -->
+<a class="font-display-lg text-headline-md text-deep-espresso dark:text-inverse-primary tracking-tight transition-transform duration-300 hover:scale-105" href="#">
+                Culinary Craft
+            </a>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex items-center gap-8 font-label-lg text-label-lg">
+<a class="nav-link active text-secondary dark:text-secondary-fixed-dim hover:text-apricot-glaze dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Home</a>
+<a class="nav-link text-on-surface-variant dark:text-surface-variant hover:text-apricot-glaze dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Recipes</a>
+<a class="nav-link text-on-surface-variant dark:text-surface-variant hover:text-apricot-glaze dark:hover:text-secondary-fixed transition-colors duration-300" href="#">About</a>
+<a class="nav-link text-on-surface-variant dark:text-surface-variant hover:text-apricot-glaze dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Contact</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-6">
+<!-- Search Bar Placeholder (on_right logic) -->
+<button class="text-on-surface hover:text-apricot-glaze transition-colors duration-300 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<!-- Trailing Primary Action -->
+<a class="hidden md:inline-flex items-center justify-center bg-deep-espresso text-paper-white font-label-lg text-label-lg px-6 py-2.5 rounded-full hover:bg-apricot-glaze transition-colors duration-300 scale-95 hover:scale-100 active:scale-95 transition-all" href="#">
+                    Sign In
+                </a>
+<!-- Mobile Menu Toggle -->
+<button id="mobile-menu-btn" class="md:hidden text-on-surface hover:text-apricot-glaze transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px]" data-icon="menu">menu</span>
+</button>
+</div>
+</div>
+</header>
+
+<!-- Mobile Drawer Menu (Off-Canvas overlay) -->
+<div id="mobile-menu-drawer" class="fixed inset-0 z-50 translate-x-full transition-transform duration-500 ease-in-out pointer-events-none">
+    <!-- Overlay backdrop -->
+    <div id="mobile-menu-overlay" class="absolute inset-0 bg-deep-espresso/30 backdrop-blur-sm opacity-0 transition-opacity duration-500 ease-in-out pointer-events-auto cursor-pointer"></div>
+    <!-- Drawer content -->
+    <div class="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-surface-bright p-8 shadow-2xl flex flex-col justify-between pointer-events-auto">
+        <div>
+            <!-- Close Button -->
+            <div class="flex justify-between items-center mb-12">
+                <span class="font-display-lg text-headline-md text-deep-espresso tracking-tight">Culinary Craft</span>
+                <button id="mobile-menu-close" class="text-on-surface hover:text-apricot-glaze transition-colors">
+                    <span class="material-symbols-outlined text-[28px]" data-icon="close">close</span>
+                </button>
+            </div>
+            <!-- Links -->
+            <nav class="flex flex-col gap-8 font-display-lg text-headline-lg">
+                <a class="mobile-nav-link text-secondary transition-colors hover:text-apricot-glaze opacity-0 translate-x-4 transition-all duration-500" href="#" style="transition-delay: 100ms;">Home</a>
+                <a class="mobile-nav-link text-on-surface-variant transition-colors hover:text-apricot-glaze opacity-0 translate-x-4 transition-all duration-500" href="#" style="transition-delay: 200ms;">Recipes</a>
+                <a class="mobile-nav-link text-on-surface-variant transition-colors hover:text-apricot-glaze opacity-0 translate-x-4 transition-all duration-500" href="#" style="transition-delay: 300ms;">About</a>
+                <a class="mobile-nav-link text-on-surface-variant transition-colors hover:text-apricot-glaze opacity-0 translate-x-4 transition-all duration-500" href="#" style="transition-delay: 400ms;">Contact</a>
+            </nav>
+        </div>
+        <!-- Footer in mobile menu -->
+        <div class="opacity-0 translate-y-4 transition-all duration-500 mobile-nav-footer" style="transition-delay: 500ms;">
+            <a class="w-full inline-flex items-center justify-center bg-deep-espresso text-paper-white font-label-lg text-label-lg px-6 py-3.5 rounded-full hover:bg-apricot-glaze transition-colors duration-300 mb-6" href="#">
+                Sign In
+            </a>
+            <p class="font-body-md text-label-sm text-on-surface-variant opacity-60">© 2026 Culinary Craft</p>
+        </div>
+    </div>
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-20">
+<!-- Hero Section: Asymmetric Minimalist Layout -->
+<section class="relative w-full overflow-hidden bg-surface-bright py-20 md:py-32 px-margin-mobile md:px-margin-desktop min-h-[85vh] flex items-center">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter items-center w-full">
+<!-- Typography Content -->
+<div class="md:col-span-5 flex flex-col items-start z-10 space-y-8">
+<div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-apricot-glaze/10 text-secondary font-label-sm text-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]" data-icon="local_dining">local_dining</span>
+<span>Taste the Season</span>
+</div>
+<h1 class="reveal delay-100 font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-deep-espresso leading-tight">
+                        Artisanal recipes for the mindful palate.
+                    </h1>
+<p class="reveal delay-200 font-body-lg text-body-lg text-on-surface-variant max-w-md">
+                        Discover a curated collection of modern organic dishes. Elevate your everyday cooking with tactile sophistication and fresh, seasonal ingredients.
+                    </p>
+<div class="reveal delay-300 pt-4">
+<a class="inline-flex items-center justify-center bg-deep-espresso text-paper-white font-label-lg text-label-lg px-8 py-4 rounded-full hover:bg-apricot-glaze transition-all duration-300 shadow-md hover:scale-[1.02] active:scale-[0.98] group" href="#">
+                            Browse Recipes
+                            <span class="material-symbols-outlined ml-2 group-hover:translate-x-1.5 transition-transform duration-300" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Imagery Container -->
+<div class="reveal delay-400 md:col-span-7 mt-12 md:mt-0 relative aspect-[4/3] md:aspect-square w-full rounded-2xl overflow-hidden shadow-sm group">
+<img class="absolute inset-0 w-full h-full object-cover rounded-2xl transition-transform duration-1000 ease-out group-hover:scale-[1.03]" data-alt="A breathtaking, high-end food photography shot of a rustic Mediterranean feast laid out on a light oak wooden table. The composition is bright, airy, and strictly adheres to a modern organic aesthetic with warm minimalism. Sunlight streams across the scene, highlighting fresh artisanal bread, vibrant roasted vegetables, and a bowl of golden olive oil. The background is softly blurred to emphasize the tactile sophistication of the ingredients, perfectly suited for a light-mode culinary website." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx7slA0J3BLZIjQBoY25v9zM7zuMPTRIAm4B_BNBqhdnl925R4L88lWBAsupcr1Oe5CRaQTKoe47HHzIKOMqy1Dl5VEsSniq4jaGH9511PlfQ6PcsqPfxhf4LgUW2nLV7U9gXGHCgjG8wdrk072Y9vdDIIAtcvLv7giH-sRd8yXOMOlfyIWvRg4UDFF4HwRj37NWG3s3EXfJ7BPHwntmjMHGVQr4mHDCU-YFSGPnbsoBf40YV-abYd00hJmdaIq9VYLK157jbs974"/>
+</div>
+</div>
+
+<!-- Floating Scroll Down Indicator (Haberbueni-inspired) -->
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-10 transition-opacity duration-300 hover:opacity-80" onclick="document.getElementById('seasonal').scrollIntoView({ behavior: 'smooth' })">
+    <span class="font-label-sm text-[10px] text-on-surface-variant/50 uppercase tracking-[0.2em] font-semibold">Scroll</span>
+    <div class="w-[20px] h-[34px] rounded-full border border-on-surface-variant/30 flex justify-center p-1">
+        <div class="w-[2px] h-[6px] bg-apricot-glaze rounded-full animate-bounce"></div>
+    </div>
+</div>
+</section>
+
+<!-- Seasonal Favorites: Bento Grid Section -->
+<section id="seasonal" class="py-24 px-margin-mobile md:px-margin-desktop bg-background">
+<div class="max-w-container-max mx-auto">
+<!-- Section Header -->
+<div class="reveal flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div class="max-w-xl">
+<h2 class="font-headline-lg text-headline-lg text-deep-espresso mb-4">Seasonal Favorites</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Handpicked selections that celebrate the flavors of the current harvest. Grounded in simplicity, elevated by craft.</p>
+</div>
+<a class="inline-flex items-center gap-2 font-label-lg text-label-lg text-secondary hover:text-apricot-glaze transition-colors group" href="#">
+                        View all seasonal
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_right_alt">arrow_right_alt</span>
+</a>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:auto-rows-[300px]">
+<!-- Feature Card (Spans 2 columns on desktop) -->
+<article class="reveal md:col-span-2 md:row-span-2 relative rounded-2xl overflow-hidden group bg-surface-container-lowest shadow-sm cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]" data-alt="A stunning, overhead lifestyle shot of a rustic cast-iron skillet filled with a bubbling, golden-brown summer vegetable tart. The tart is surrounded by fresh sprigs of thyme and scattered flour on a deeply textured, light-colored slate countertop. The lighting is dramatic yet warm, casting gentle shadows that define the modern organic aesthetic. The image exudes a sense of high-end, slow-living culinary craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-K51_WvVRB9Fb3oonlsKfjXhaV4v-uZ399F2JFbbgpl-WYhOnk0LzKKCnW_mDufSdbJkgm42DrtqyiZsGyt7IoiqFWkX_mVf699LEy-ii5ya_dxJ3dMzjTkRXpGP7LjQIUvSbCJoi0XIuQdgHnB26-g5NxJqsDR_8qhAGqvsza63AmYj5oXV6XmpejfxQ6W--UFX9KTinu69JV9tF0i9iAzTaTa9bXJDVvHLMfJa-4EYrd_Lxj5IRoKBpzAPmlze54T_9QANyYW8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-deep-espresso/90 via-deep-espresso/30 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full transition-transform duration-500 ease-out group-hover:translate-y-[-4px]">
+<div class="flex gap-2 mb-4">
+<span class="bg-surface-bright/90 backdrop-blur-sm text-deep-espresso font-label-sm text-label-sm px-3 py-1 rounded-full">Dinner</span>
+<span class="bg-surface-bright/90 backdrop-blur-sm text-deep-espresso font-label-sm text-label-sm px-3 py-1 rounded-full">45 Mins</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-paper-white mb-2">Rustic Heirloom Tomato Galette</h3>
+<p class="font-body-md text-body-md text-surface-container-low max-w-md line-clamp-2">A buttery, flaky crust embracing the peak-season sweetness of multi-colored heirloom tomatoes, finished with fresh thyme.</p>
+</div>
+</article>
+<!-- Smaller Grid Items -->
+<article class="reveal delay-100 relative rounded-2xl overflow-hidden group bg-surface-container-lowest shadow-sm cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]" data-alt="A bright, minimalist, high-end food photograph of a refreshing citrus salad. The salad features vibrant slices of blood orange, grapefruit, and fennel, beautifully arranged on a handmade ceramic off-white plate. The background is a clean, sunlit wooden table, emphasizing warm minimalism and natural textures. The color palette highlights bright oranges against neutral tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8-id5X3ROfe8Wnf2TpxPuBheGh9jq9lORQJURS6obnePXO3fkS8Uvs6j3AZSz2BA7hCEljYiCZbO6y5BrLSPbhmMAthEv__Jm1_AGmS6OtfKxwakHr5zH_5YIyZ2RFC-sVyjjRU2SngY9Pd0GS4l_AFqu1OYiDWtALnf9qUjGz2Z2LXdozzvPh3f0kQYt7tYAAnCvIpcLbG9c-hVYWNcDrVuu9R31GbyKQ53B6YOf2J0AqQj2UQwOUrl37a0sH54epEkJltJp2rA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-deep-espresso/80 via-deep-espresso/10 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6 w-full transition-transform duration-500 ease-out group-hover:translate-y-[-4px]">
+<span class="inline-block bg-apricot-glaze/90 text-paper-white font-label-sm text-label-sm px-3 py-1 rounded-full mb-3">Starter</span>
+<h3 class="font-headline-md text-body-lg text-paper-white">Winter Citrus &amp; Fennel Salad</h3>
+</div>
+</article>
+<article class="reveal delay-200 relative rounded-2xl overflow-hidden group bg-surface-container-lowest shadow-sm cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]" data-alt="A cozy, inviting image of a steaming bowl of creamy mushroom risotto served in a shallow, rustic stoneware bowl. A wooden spoon rests nearby on a woven linen napkin. The scene is illuminated by soft, diffused daylight, highlighting the rich, earthy textures of the dish against a minimalist light-mode background. The overall mood is sophisticated comfort." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9H7qnBjB0wRQt5umzAyp31leEQb1K-oCBrJKUf6lkPVSb4YNDkSGbUo49tV_LsSSCauBR6NVA0AiIgGesHeGzts2R0DN-ghGWRW6NQd3RHLCnd-acg8a9u8mfTZ7PGsjcGvfvRbO3z5TO1oQsY7F_z_pfulIAbVLAtZaGmL1CLIxD9qbcU9ejQeyfkHkdxB7pyxN16YwwiFeR3Pv7NWYe4QFxPUgRQw8Fgl72gKIsn18RPQ3QAa_Wq0VosTxMuxsE9gpQLuT88DY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-deep-espresso/80 via-deep-espresso/10 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6 w-full transition-transform duration-500 ease-out group-hover:translate-y-[-4px]">
+<span class="inline-block bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm px-3 py-1 rounded-full mb-3">Main</span>
+<h3 class="font-headline-md text-body-lg text-paper-white">Wild Mushroom Risotto</h3>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- Minimalist Divider/Philosophy Section -->
+<section class="py-24 bg-surface px-margin-mobile md:px-margin-desktop border-t border-outline-variant/10">
+<div class="max-w-3xl mx-auto text-center">
+<span class="reveal material-symbols-outlined text-[48px] text-apricot-glaze mb-6" data-icon="eco">eco</span>
+<h2 class="reveal delay-100 font-headline-lg text-headline-lg text-deep-espresso mb-8">Rooted in Nature</h2>
+<p class="reveal delay-200 font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    We believe that the best meals begin with the finest, sustainably sourced ingredients. Our culinary approach strips away the unnecessary, focusing entirely on the purity of flavor and the beauty of warm minimalism.
+                </p>
+</div>
+</section>
+</main>
+<!-- Footer Shared Component -->
+<footer class="bg-surface-container w-full py-12 border-t border-surface-container-high/40">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Brand & Copyright Column -->
+<div class="reveal flex flex-col gap-4 md:col-span-2">
+<span class="font-display-lg text-headline-md text-deep-espresso dark:text-inverse-primary">Culinary Craft</span>
+<p class="font-body-md text-body-md text-on-surface dark:text-on-surface-variant max-w-sm mt-2">
+                    Curating high-end, organic recipes for the discerning home chef.
+                </p>
+<p class="font-body-md text-body-md text-on-surface dark:text-on-surface-variant mt-6 opacity-80">
+                    © 2026 Culinary Craft. Sourced with passion.
+                </p>
+</div>
+<!-- Links Column -->
+<div class="reveal delay-100 flex flex-col gap-4">
+<h4 class="font-label-lg text-label-lg text-deep-espresso dark:text-on-surface font-bold uppercase tracking-wider mb-2">Legal</h4>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline hover:text-apricot-glaze dark:hover:text-secondary-fixed transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline hover:text-apricot-glaze dark:hover:text-secondary-fixed transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+</div>
+<!-- Company Column -->
+<div class="reveal delay-200 flex flex-col gap-4">
+<h4 class="font-label-lg text-label-lg text-deep-espresso dark:text-on-surface font-bold uppercase tracking-wider mb-2">Company</h4>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline hover:text-apricot-glaze dark:hover:text-secondary-fixed transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">Careers</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline hover:text-apricot-glaze dark:hover:text-secondary-fixed transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">Sustainability</a>
+</div>
+</div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. Sticky Header Animation ---
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('bg-surface/95', 'backdrop-blur-md', 'shadow-sm', 'py-0.5');
+                header.classList.remove('bg-surface/90', 'py-2');
+            } else {
+                header.classList.add('bg-surface/90', 'py-2');
+                header.classList.remove('bg-surface/95', 'backdrop-blur-md', 'shadow-sm', 'py-0.5');
+            }
+        });
+
+        // --- 2. Scroll Reveal Animation System ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // --- 3. Mobile Menu Drawer Animation ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuCloseBtn = document.getElementById('mobile-menu-close');
+        const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        const mobileNavFooter = document.querySelector('.mobile-nav-footer');
+
+        function openMenu() {
+            mobileMenuDrawer.classList.remove('translate-x-full');
+            mobileMenuDrawer.classList.add('pointer-events-auto');
+            mobileMenuOverlay.classList.remove('opacity-0');
+            mobileMenuOverlay.classList.add('opacity-100');
+            
+            // Staggered links animation
+            mobileNavLinks.forEach(link => {
+                link.classList.remove('opacity-0', 'translate-x-4');
+                link.classList.add('opacity-100', 'translate-x-0');
+            });
+            
+            mobileNavFooter.classList.remove('opacity-0', 'translate-y-4');
+            mobileNavFooter.classList.add('opacity-100', 'translate-y-0');
+        }
+
+        function closeMenu() {
+            mobileMenuDrawer.classList.add('translate-x-full');
+            mobileMenuDrawer.classList.remove('pointer-events-auto');
+            mobileMenuOverlay.classList.remove('opacity-100');
+            mobileMenuOverlay.classList.add('opacity-0');
+            
+            // Reset staggered links
+            mobileNavLinks.forEach(link => {
+                link.classList.remove('opacity-100', 'translate-x-0');
+                link.classList.add('opacity-0', 'translate-x-4');
+            });
+            
+            mobileNavFooter.classList.remove('opacity-100', 'translate-y-0');
+            mobileNavFooter.classList.add('opacity-0', 'translate-y-4');
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMenu);
+        if (mobileMenuCloseBtn) mobileMenuCloseBtn.addEventListener('click', closeMenu);
+        if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMenu);
+    });
+</script>
+</body></html>

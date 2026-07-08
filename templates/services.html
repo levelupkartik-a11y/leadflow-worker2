@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanctuary Treatments &amp; Salon Menu | NUMA Beauty &amp; Salon</title>
+  <meta name="description" content="Explore our curated spa treatments, clinical facials, lymphatic wraps, and holistic therapy rituals at NUMA Sanctuary.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Glass Navigation -->
+  <header class="navbar">
+    <a href="index.html" class="nav-logo">
+      NUMA<span>.</span>
+    </a>
+    
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html" class="active">Treatments &amp; Salon</a>
+      <a href="shop.html">Skincare Shop</a>
+      <a href="about.html">Our Heritage</a>
+      <a href="contact.html">Sanctuary &amp; VIP</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#" class="cart-trigger" aria-label="Shopping Bag" title="Shopping Bag">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="cart-badge">2</span>
+      </a>
+      <button class="btn btn-primary btn-book-trigger btn-magnetic">Reserve Treatment</button>
+      <button class="mobile-menu-btn" aria-label="Open Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav">
+    <button class="mobile-nav-close" aria-label="Close Menu">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="services.html">Treatments &amp; Salon</a>
+    <a href="shop.html">Skincare Shop</a>
+    <a href="about.html">Our Heritage</a>
+    <a href="contact.html">Sanctuary &amp; VIP</a>
+    <button class="btn btn-primary btn-book-trigger" style="margin-top: 24px; width: 80%;">Reserve Treatment</button>
+  </div>
+
+  <!-- Hero Header -->
+  <section class="container" style="padding-top: 140px; padding-bottom: 60px; text-align: center;">
+    <div class="reveal-up" style="max-width: 760px; margin: 0 auto;">
+      <span class="text-caption">Sanctuary Menu</span>
+      <h1 class="text-h1" style="margin-top: 12px; margin-bottom: 20px;">
+        Clinical Facials &amp; <span class="text-accent">Holistic</span> Rituals
+      </h1>
+      <p class="text-subtitle">
+        Every treatment begins with a multi-spectral dermal diagnostic scan. Our master aestheticians calibrate Swiss cellular serums and acoustic resonance to your exact biological signature.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Treatment Menu -->
+  <section class="section-padding container">
+    <!-- Category Tabs -->
+    <div class="treatment-tabs reveal-fade" style="margin-bottom: 60px;">
+      <button class="tab-btn active" data-category="all">All Treatments (8)</button>
+      <button class="tab-btn" data-category="facials">Facial Therapies (3)</button>
+      <button class="tab-btn" data-category="body">Body &amp; Massage (2)</button>
+      <button class="tab-btn" data-category="holistic">Holistic &amp; Energy (2)</button>
+      <button class="tab-btn" data-category="bridal">Bridal &amp; VIP (1)</button>
+    </div>
+
+    <!-- Treatment List -->
+    <div class="treatment-list">
+      <!-- Item 1: Facials -->
+      <div class="treatment-item reveal-up stagger-1" data-category="facials">
+        <div style="flex-grow: 1; padding-right: 24px;">
+          <span class="text-caption" style="color: var(--accent);">Facial Therapy</span>
+          <h3 class="text-h3" style="margin-top: 4px; margin-bottom: 8px;">The Cellular Infusion Facial</h3>
+          <p class="text-subtitle" style="font-size: 0.95rem; margin-bottom: 12px;">
+            A deeply stimulating oxygen and peptide treatment that awakens sluggish cellular metabolism and restores youthful firmness and luminosity. Includes lymphatic face sculpting.
+          </p>
+          <div style="display: flex; gap: 16px; font-size: 0.8rem; color: var(--text-muted);">
+            <span>✦ 20% Vitamin C Nectar</span>
+            <span>✦ LED Collagen Stimulation</span>
+            <span>✦ No Downtime</span>
+          </div>
+        </div>
+        <div class="treatment-meta">
+          <span class="treatment-duration">75 min</span>
+          <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;">$240</span>
+          <button class="btn btn-primary btn-book-trigger" data-treatment="The Cellular Infusion Facial">Reserve</button>
+        </div>
+      </div>
+
+      <!-- Item 2: Facials -->
+      <div class="treatment-item reveal-up stagger-2" data-category="facials">
+        <div style="flex-grow: 1; padding-right: 24px;">
+          <span class="text-caption" style="color: var(--accent);">Facial Therapy</span>
+          <h3 class="text-h3" style="margin-top: 4px; margin-bottom: 8px;">Micro-Current Sculpt &amp; Lift</h3>
+          <p class="text-subtitle" style="font-size: 0.95rem; margin-bottom: 12px;">
+            Non-invasive bio-electric stimulation sculpts facial contours, lifts cheekbones, and stimulates adenosine triphosphate (ATP) production for an instant non-surgical face lift.
+          </p>
+          <div style="display: flex; gap: 16px; font-size: 0.8rem; color: var(--text-muted);">
+            <span>✦ Bio-Electric ATP Boost</span>
+            <span>✦ Jawline Sculpting</span>
+            <span>✦ Immediate Results</span>
+          </div>
+        </div>
+        <div class="treatment-meta">
+          <span class="treatment-duration">60 min</span>
+          <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;">$210</span>
+          <button class="btn btn-primary btn-book-trigger" data-treatment="Micro-Current Sculpt &amp; Lift">Reserve</button>
+        </div>
+      </div>
+
+      <!-- Item 3: Facials -->
+      <div class="treatment-item reveal-up stagger-3" data-category="facials">
+        <div style="flex-grow: 1; padding-right: 24px;">
+          <span class="text-caption" style="color: var(--accent);">Facial Therapy</span>
+          <h3 class="text-h3" style="margin-top: 4px; margin-bottom: 8px;">Swiss Bio-Peptide Resurfacing Peel</h3>
+          <p class="text-subtitle" style="font-size: 0.95rem; margin-bottom: 12px;">
+            A clinical-grade botanical acid peel that dissolves hyperpigmentation, minimizes pore architecture, and stimulates epidermal renewal without peeling or inflammation.
+          </p>
+          <div style="display: flex; gap: 16px; font-size: 0.8rem; color: var(--text-muted);">
+            <span>✦ Lactic &amp; Mandelic Complex</span>
+            <span>✦ Pigment Correction</span>
+            <span>✦ Cryo-Soothe Mask</span>
+          </div>
+        </div>
+        <div class="treatment-meta">
+          <span class="treatment-duration">60 min</span>
+          <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;">$260</span>
+          <button class="btn btn-primary btn-book-trigger" data-treatment="Swiss Bio-Peptide Resurfacing Peel">Reserve</button>
+        </div>
+      </div>
+
+      <!-- Item 4: Body -->
+      <div class="treatment-item reveal-up stagger-4" data-category="body">
+        <div style="flex-grow: 1; padding-right: 24px;">
+          <span class="text-caption" style="color: var(--accent);">Body Ritual</span>
+          <h3 class="text-h3" style="margin-top: 4px; margin-bottom: 8px;">Botanical Detox &amp; Lymphatic Wrap</h3>
+          <p class="text-subtitle" style="font-size: 0.95rem; margin-bottom: 12px;">
+            Warm organic mineral clay and essential eucalyptus oils stimulate lymphatic drainage, release deep muscle tension, and purify dermal layers from head to toe.
+          </p>
+          <div style="display: flex; gap: 16px; font-size: 0.8rem; color: var(--text-muted);">
+            <span>✦ Mineral Clay Infusion</span>
+            <span>✦ Full Body Lymphatic Drainage</span>
+            <span>✦ Infrared Cocoon</span>
+          </div>
+        </div>
+        <div class="treatment-meta">
+          <span class="treatment-duration">90 min</span>
+          <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;">$290</span>
+          <button class="btn btn-primary btn-book-trigger" data-treatment="Botanical Detox &amp; Lymphatic Wrap">Reserve</button>
+        </div>
+      </div>
+
+      <!-- Item 5: Body -->
+      <div class="treatment-item reveal-up stagger-1" data-category="body">
+        <div style="flex-grow: 1; padding-right: 24px;">
+          <span class="text-caption" style="color: var(--accent);">Body Ritual</span>
+          <h3 class="text-h3" style="margin-top: 4px; margin-bottom: 8px;">Warm Stone Squalane &amp; Neroli Massage</h3>
+          <p class="text-subtitle" style="font-size: 0.95rem; margin-bottom: 12px;">
+            Basalt volcanic stones infused with organic neroli and squalane oil melt chronic fascial tightness while nourishing dry body skin with essential fatty acids.
+          </p>
+          <div style="display: flex; gap: 16px; font-size: 0.8rem; color: var(--text-muted);">
+            <span>✦ Basalt Volcanic Stones</span>
+            <span>✦ Deep Tissue &amp; Fascia Release</span>
+            <span>✦ Organic Neroli Aromatherapy</span>
+          </div>
+        </div>
+        <div class="treatment-meta">
+          <span class="treatment-duration">90 min</span>
+          <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;">$280</span>
+          <button class="btn btn-primary btn-book-trigger" data-treatment="Warm Stone Squalane &amp; Neroli Massage">Reserve</button>
+        </div>
+      </div>
+
+      <!-- Item 6: Holistic -->
+      <div class="treatment-item reveal-up stagger-2" data-category="holistic">
+        <div style="flex-grow: 1; padding-right: 24px;">
+          <span class="text-caption" style="color: var(--accent);">Holistic Therapy</span>
+          <h3 class="text-h3" style="margin-top: 4px; margin-bottom: 8px;">Rose Quartz Sound Bath &amp; Facial</h3>
+          <p class="text-subtitle" style="font-size: 0.95rem; margin-bottom: 12px;">
+            Harmonizing crystal bowl acoustics combined with a cooling rose quartz facial gua-sha massage to melt nervous system fatigue and restore aura glow.
+          </p>
+          <div style="display: flex; gap: 16px; font-size: 0.8rem; color: var(--text-muted);">
+            <span>✦ 432Hz Acoustic Resonance</span>
+            <span>✦ Rose Quartz Gua-Sha</span>
+            <span>✦ Vagus Nerve Reset</span>
+          </div>
+        </div>
+        <div class="treatment-meta">
+          <span class="treatment-duration">90 min</span>
+          <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;">$310</span>
+          <button class="btn btn-primary btn-book-trigger" data-treatment="Rose Quartz Sound Bath &amp; Facial">Reserve</button>
+        </div>
+      </div>
+
+      <!-- Item 7: Holistic -->
+      <div class="treatment-item reveal-up stagger-3" data-category="holistic">
+        <div style="flex-grow: 1; padding-right: 24px;">
+          <span class="text-caption" style="color: var(--accent);">Holistic Therapy</span>
+          <h3 class="text-h3" style="margin-top: 4px; margin-bottom: 8px;">Ayurvedic Shirodhara &amp; Scalp Ritual</h3>
+          <p class="text-subtitle" style="font-size: 0.95rem; margin-bottom: 12px;">
+            A continuous, rhythmic stream of warm herbal sesame oil poured gently over the third eye, followed by an intensive acupressure scalp and shoulder massage.
+          </p>
+          <div style="display: flex; gap: 16px; font-size: 0.8rem; color: var(--text-muted);">
+            <span>✦ Warm Herbal Oil Stream</span>
+            <span>✦ Deep Sleep Induction</span>
+            <span>✦ Hair Follicle Nourishment</span>
+          </div>
+        </div>
+        <div class="treatment-meta">
+          <span class="treatment-duration">60 min</span>
+          <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;">$220</span>
+          <button class="btn btn-primary btn-book-trigger" data-treatment="Ayurvedic Shirodhara &amp; Scalp Ritual">Reserve</button>
+        </div>
+      </div>
+
+      <!-- Item 8: Bridal -->
+      <div class="treatment-item reveal-up stagger-4" data-category="bridal">
+        <div style="flex-grow: 1; padding-right: 24px;">
+          <span class="text-caption" style="color: var(--accent);">Bridal &amp; VIP</span>
+          <h3 class="text-h3" style="margin-top: 4px; margin-bottom: 8px;">The NUMA Couture Bridal Immersion</h3>
+          <p class="text-subtitle" style="font-size: 0.95rem; margin-bottom: 12px;">
+            A bespoke half-day sanctuary experience including our Cellular Infusion Facial, Lymphatic Wrap, Rose Quartz Sound Bath, and champagne caviar service.
+          </p>
+          <div style="display: flex; gap: 16px; font-size: 0.8rem; color: var(--text-muted);">
+            <span>✦ Half-Day Sanctuary Access</span>
+            <span>✦ Private Suite &amp; Champagne</span>
+            <span>✦ Complete Bridal Glow</span>
+          </div>
+        </div>
+        <div class="treatment-meta">
+          <span class="treatment-duration">240 min</span>
+          <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;">$850</span>
+          <button class="btn btn-primary btn-book-trigger" data-treatment="The NUMA Couture Bridal Immersion">Reserve</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Diagnostic Telemetry Section -->
+  <section class="section-padding container" style="background: var(--bg-surface); border-radius: var(--radius-lg); padding-left: 5%; padding-right: 5%; margin-bottom: 80px;">
+    <div class="grid-2" style="align-items: center;">
+      <div class="reveal-up">
+        <span class="text-caption">Empirical Precision</span>
+        <h2 class="text-h2" style="margin-top: 12px; margin-bottom: 20px;">Live Multi-Spectral Skin Diagnostic</h2>
+        <p class="text-subtitle" style="margin-bottom: 24px;">
+          We leave nothing to guesswork. Before any facial or treatment begins, our diagnostic imaging apparatus analyzes dermal UV damage, pore depth, vascular inflammation, and lipid barrier hydration.
+        </p>
+        <ul style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; font-weight: 500;">
+          <li style="display: flex; align-items: center; gap: 12px;">
+            <span style="color: var(--accent);">✦</span> Sub-surface UV pigmentation &amp; sun damage mapping
+          </li>
+          <li style="display: flex; align-items: center; gap: 12px;">
+            <span style="color: var(--accent);">✦</span> Real-time collagen density &amp; elasticity scoring
+          </li>
+          <li style="display: flex; align-items: center; gap: 12px;">
+            <span style="color: var(--accent);">✦</span> Customized home formulation prescription post-treatment
+          </li>
+        </ul>
+        <button class="btn btn-primary btn-book-trigger btn-magnetic">Book Diagnostic Consultation</button>
+      </div>
+      <div class="reveal-scale stagger-2">
+        <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-float); aspect-ratio: 4/3;">
+          <img src="https://images.unsplash.com/photo-1512290900672-1f04e15efdf8?auto=format&fit=crop&w=800&q=80" alt="NUMA Dermal Diagnostic Consultation" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sanctuary FAQ Accordion -->
+  <section class="section-padding container" style="max-width: 880px; margin: 0 auto; margin-bottom: 60px;">
+    <div style="text-align: center; margin-bottom: 48px;" class="reveal-up">
+      <span class="text-caption">Sanctuary Guidance</span>
+      <h2 class="text-h2" style="margin-top: 8px;">Frequently Asked Questions</h2>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px;" class="reveal-up">
+      <details style="background: var(--bg-surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; cursor: pointer;">
+        <summary style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; display: flex; justify-content: space-between; align-items: center; list-style: none;">
+          <span>What should I expect during my first sanctuary appointment?</span>
+          <span style="color: var(--accent); font-size: 1.5rem;">+</span>
+        </summary>
+        <p class="text-subtitle" style="margin-top: 16px; font-size: 0.95rem; border-top: 1px solid var(--border); padding-top: 16px;">
+          We recommend arriving 20 minutes prior to your scheduled time. You will be welcomed with our signature chilled organic herbal tea and guided to our relaxation lounge before undergoing your complimentary 15-minute multi-spectral dermal diagnostic scan.
+        </p>
+      </details>
+
+      <details style="background: var(--bg-surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; cursor: pointer;">
+        <summary style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; display: flex; justify-content: space-between; align-items: center; list-style: none;">
+          <span>Can I combine clinical facial treatments with body massages?</span>
+          <span style="color: var(--accent); font-size: 1.5rem;">+</span>
+        </summary>
+        <p class="text-subtitle" style="margin-top: 16px; font-size: 0.95rem; border-top: 1px solid var(--border); padding-top: 16px;">
+          Absolutely. Our master aestheticians and holistic massage therapists work in tandem. We frequently curate bespoke 2.5-hour immersion rituals that pair our Lymphatic Body Wrap with the Cellular Infusion Facial.
+        </p>
+      </details>
+
+      <details style="background: var(--bg-surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; cursor: pointer;">
+        <summary style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; display: flex; justify-content: space-between; align-items: center; list-style: none;">
+          <span>Are all NUMA skincare formulations pregnancy-safe?</span>
+          <span style="color: var(--accent); font-size: 1.5rem;">+</span>
+        </summary>
+        <p class="text-subtitle" style="margin-top: 16px; font-size: 0.95rem; border-top: 1px solid var(--border); padding-top: 16px;">
+          Over 90% of our botanical boutique formulations are entirely pregnancy and nursing safe, utilizing bio-mimetic bakuchiol instead of harsh retinoids. During your consultation, your therapist will tailor your protocol to ensure complete maternal safety and comfort.
+        </p>
+      </details>
+
+      <details style="background: var(--bg-surface-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; cursor: pointer;">
+        <summary style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; display: flex; justify-content: space-between; align-items: center; list-style: none;">
+          <span>What is your cancellation and rescheduling etiquette?</span>
+          <span style="color: var(--accent); font-size: 1.5rem;">+</span>
+        </summary>
+        <p class="text-subtitle" style="margin-top: 16px; font-size: 0.95rem; border-top: 1px solid var(--border); padding-top: 16px;">
+          Because our treatment rooms and master therapists are reserved exclusively for you, we respectfully request a 24-hour notice for any cancellations or schedule modifications to avoid a 50% reservation fee.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Deep Obsidian Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand -->
+        <div>
+          <a href="index.html" class="nav-logo" style="color: var(--text-light); font-size: 1.8rem; margin-bottom: 16px;">
+            NUMA<span style="color: var(--accent);">.</span>
+          </a>
+          <p class="text-subtitle" style="color: var(--text-light-muted); max-width: 320px; font-size: 0.95rem; margin-bottom: 24px;">
+            Clinical botanical skincare formulations and restorative salon rituals designed for cellular clarity and timeless grace.
+          </p>
+          <div style="display: flex; gap: 16px;">
+            <a href="#" style="color: var(--text-light-muted); font-size: 0.9rem;">Instagram</a>
+            <a href="#" style="color: var(--text-light-muted); font-size: 0.9rem;">TikTok</a>
+            <a href="#" style="color: var(--text-light-muted); font-size: 0.9rem;">Pinterest</a>
+            <a href="#" style="color: var(--text-light-muted); font-size: 0.9rem;">Spotify</a>
+          </div>
+        </div>
+
+        <!-- Col 2: Treatments -->
+        <div>
+          <h4 class="footer-title">Sanctuary Menu</h4>
+          <div class="footer-links">
+            <a href="services.html">Facial Therapies</a>
+            <a href="services.html">Lymphatic Wraps</a>
+            <a href="services.html">Micro-Current Sculpt</a>
+            <a href="services.html">Holistic Sound Bath</a>
+            <a href="services.html">Bridal Packages</a>
+          </div>
+        </div>
+
+        <!-- Col 3: Boutique -->
+        <div>
+          <h4 class="footer-title">Skincare Shop</h4>
+          <div class="footer-links">
+            <a href="shop.html">Radiance Nectar</a>
+            <a href="shop.html">Cellular Creams</a>
+            <a href="shop.html">Botanical Elixirs</a>
+            <a href="shop.html">Eye Concentrates</a>
+            <a href="shop.html">Gift Cards</a>
+          </div>
+        </div>
+
+        <!-- Col 4: Newsletter -->
+        <div>
+          <h4 class="footer-title">Join Our Inner Circle</h4>
+          <p style="color: var(--text-light-muted); font-size: 0.9rem; margin-bottom: 16px;">
+            Receive private invitations to seasonal formulation drops and exclusive salon masterclasses.
+          </p>
+          <form onsubmit="event.preventDefault(); alert('Thank you for joining the NUMA Inner Circle. Please check your email.');" style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Enter your email" required style="flex-grow: 1; padding: 12px 16px; border-radius: var(--radius-full); border: 1px solid var(--border-dark); background: var(--bg-dark-surface); color: var(--text-light); font-size: 0.9rem;">
+            <button type="submit" class="btn btn-accent" style="padding: 12px 24px; font-size: 0.85rem;">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 NUMA Beauty &amp; Salon Sanctuary. All rights reserved.</p>
+        <div style="display: flex; gap: 24px;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Sanctuary</a>
+          <a href="#">Accessibility Statement</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-Over Shopping Bag Drawer -->
+  <div class="overlay cart-overlay"></div>
+  <aside class="cart-drawer" aria-label="Shopping Bag Drawer">
+    <div class="drawer-header">
+      <h3 class="text-h3" style="font-size: 1.25rem;">Your Shopping Bag (<span class="cart-badge" style="position: static; display: inline-flex; width: 22px; height: 22px;">0</span>)</h3>
+      <button class="drawer-close" style="font-size: 1.8rem; color: var(--text-main);">&times;</button>
+    </div>
+    <div class="drawer-body cart-items-list">
+      <!-- Dynamically rendered by main.js -->
+    </div>
+    <div class="drawer-footer">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 1.1rem; font-weight: 600;">
+        <span>Subtotal</span>
+        <span class="cart-subtotal">$0</span>
+      </div>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px;">
+        Complimentary express carbon-neutral shipping on all botanical formulations.
+      </p>
+      <button class="btn btn-primary" style="width: 100%;" onclick="alert('Proceeding to NUMA secure botanical checkout...');">Proceed to Checkout →</button>
+    </div>
+  </aside>
+
+  <!-- Salon Treatment Booking Wizard Modal -->
+  <div class="overlay booking-overlay"></div>
+  <div class="modal-window booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+      <h3 id="booking-title" class="text-h3">Reserve Your Sanctuary Ritual</h3>
+      <button class="booking-close" style="font-size: 1.8rem; color: var(--text-main);">&times;</button>
+    </div>
+
+    <!-- Wizard Step Indicators -->
+    <div class="wizard-steps">
+      <span class="wizard-step-ind active">1. Treatment</span>
+      <span class="wizard-step-ind">2. Date &amp; Time</span>
+      <span class="wizard-step-ind">3. Client Details</span>
+      <span class="wizard-step-ind">4. Confirmation</span>
+    </div>
+
+    <!-- Step 1: Treatment Selection -->
+    <div class="wizard-step-pane" data-step="1">
+      <div class="form-group">
+        <label class="form-label" for="wizard-treatment-select">Select Spa Ritual</label>
+        <select id="wizard-treatment-select" class="form-select">
+          <option value="cellular-infusion">The Cellular Infusion Facial (75 min / $240)</option>
+          <option value="botanical-detox">Botanical Detox &amp; Lymphatic Wrap (90 min / $290)</option>
+          <option value="micro-current">Micro-Current Sculpt &amp; Lift (60 min / $210)</option>
+          <option value="rose-quartz">Rose Quartz Sound Bath &amp; Facial (90 min / $310)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="wizard-therapist">Select Master Aesthetician</label>
+        <select id="wizard-therapist" class="form-select">
+          <option value="any">First Available Master Aesthetician</option>
+          <option value="claire">Claire Dubois (Master Facialist)</option>
+          <option value="soraya">Soraya Vance (Holistic Therapist)</option>
+          <option value="elena">Dr. Elena Rostova (Skin Diagnostic Specialist)</option>
+        </select>
+      </div>
+      <div style="display: flex; justify-content: flex-end; margin-top: 32px;">
+        <button class="btn btn-primary btn-wizard-next">Continue to Date &amp; Time →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Date & Time -->
+    <div class="wizard-step-pane" data-step="2" style="display: none;">
+      <div class="form-group">
+        <label class="form-label" for="wizard-date">Preferred Date</label>
+        <input type="date" id="wizard-date" class="form-input" value="2026-07-15" min="2026-07-07">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Available Sanctuary Times</label>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 8px;">
+          <button type="button" class="btn btn-secondary" style="padding: 10px; font-size: 0.85rem;" onclick="this.style.background='var(--bg-dark)'; this.style.color='var(--text-light)';">10:00 AM</button>
+          <button type="button" class="btn btn-secondary" style="padding: 10px; font-size: 0.85rem;" onclick="this.style.background='var(--bg-dark)'; this.style.color='var(--text-light)';">11:30 AM</button>
+          <button type="button" class="btn btn-secondary" style="padding: 10px; font-size: 0.85rem;" onclick="this.style.background='var(--bg-dark)'; this.style.color='var(--text-light)';">02:00 PM</button>
+          <button type="button" class="btn btn-secondary" style="padding: 10px; font-size: 0.85rem;" onclick="this.style.background='var(--bg-dark)'; this.style.color='var(--text-light)';">03:30 PM</button>
+          <button type="button" class="btn btn-secondary" style="padding: 10px; font-size: 0.85rem;" onclick="this.style.background='var(--bg-dark)'; this.style.color='var(--text-light)';">05:00 PM</button>
+          <button type="button" class="btn btn-secondary" style="padding: 10px; font-size: 0.85rem;" onclick="this.style.background='var(--bg-dark)'; this.style.color='var(--text-light)';">06:30 PM</button>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: space-between; margin-top: 32px;">
+        <button class="btn btn-secondary btn-wizard-prev">← Back</button>
+        <button class="btn btn-primary btn-wizard-next">Continue to Details →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Client Details -->
+    <div class="wizard-step-pane" data-step="3" style="display: none;">
+      <div class="form-group">
+        <label class="form-label" for="client-name">Full Name</label>
+        <input type="text" id="client-name" class="form-input" placeholder="Genevieve Laurent" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="client-email">Email Address (for calendar invitation)</label>
+        <input type="email" id="client-email" class="form-input" placeholder="genevieve@vogue.fr" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="client-phone">Phone Number (WhatsApp Concierge)</label>
+        <input type="tel" id="client-phone" class="form-input" placeholder="+33 6 12 34 56 78" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="client-notes">Skin Diagnostic Notes or Sensitivities</label>
+        <textarea id="client-notes" class="form-textarea" rows="3" placeholder="Please mention any retinoid use, rosacea, or botanical allergies..."></textarea>
+      </div>
+      <div style="display: flex; justify-content: space-between; margin-top: 32px;">
+        <button class="btn btn-secondary btn-wizard-prev">← Back</button>
+        <button class="btn btn-accent btn-wizard-next">Confirm Sanctuary Reservation →</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Confirmation -->
+    <div class="wizard-step-pane" data-step="4" style="display: none; text-align: center; padding: 20px 0;">
+      <div style="width: 64px; height: 64px; border-radius: 50%; background: #10B981; color: white; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto; margin-bottom: 20px;">✓</div>
+      <h3 class="text-h2" style="margin-bottom: 12px;">Reservation Confirmed</h3>
+      <p class="text-subtitle" style="margin-bottom: 24px;">
+        Your sanctuary ritual is booked for <strong style="color: var(--text-main);">July 15, 2026 at 02:00 PM</strong>. A private calendar invitation and pre-treatment preparation guide have been dispatched to your email.
+      </p>
+      <div style="background: var(--bg-surface); padding: 20px; border-radius: var(--radius-md); margin-bottom: 32px; text-align: left; font-size: 0.9rem;">
+        <p><strong>Booking Reference:</strong> NUMA-2026-8849</p>
+        <p><strong>Sanctuary Location:</strong> 42 Avenue Montaigne, 75008 Paris</p>
+        <p><strong>Concierge WhatsApp:</strong> +33 1 42 68 55 00</p>
+      </div>
+      <button class="btn btn-primary" onclick="document.querySelector('.booking-close').click();">Return to Sanctuary</button>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radiance Ritual Face Oil — NŪMA Beauty & Salon</title>
+  <meta name="description" content="A potent, lightweight botanical oil crafted with cold-pressed rosehip, sea buckthorn, and squalane to deeply nourish the skin barrier." />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header id="main-nav" class="nav-header">
+    <div class="container nav-content">
+      <a href="index.html" class="nav-logo">NŪMA</a>
+      <nav class="nav-links">
+        <a href="shop.html" class="nav-link active">Shop Collection</a>
+        <a href="rituals.html" class="nav-link">Salon Rituals</a>
+        <a href="about.html" class="nav-link">Our Story</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="nav-icon-btn js-open-booking" data-service="Signature Radiance Facial"><span class="material-symbols-outlined">calendar_month</span></button>
+        <button id="open-bag-btn" class="nav-icon-btn"><span class="material-symbols-outlined">shopping_bag</span><span id="bag-badge-count" class="bag-badge" style="display: none;">0</span></button>
+        <button id="mobile-menu-btn" class="mobile-toggle"><span class="material-symbols-outlined">menu</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Product Detail Section -->
+  <section style="padding-top: 120px; padding-bottom: 80px;">
+    <div class="container">
+      <div style="font-size: 0.875rem; color: var(--secondary); margin-bottom: 32px;">
+        <a href="shop.html" style="text-decoration: underline;">Shop</a> / Face Care / Radiance Ritual Face Oil
+      </div>
+
+      <div class="grid-12" style="align-items: flex-start;">
+        <!-- Left: Image Gallery -->
+        <div style="grid-column: span 12 / span 7;" class="reveal-on-scroll">
+          <div style="border-radius: var(--radius-xl); overflow: hidden; background: var(--secondary-container); aspect-ratio: 4/5; margin-bottom: 16px; position: relative;">
+            <span class="badge" style="position: absolute; top: 24px; left: 24px; z-index: 2;">Bestseller</span>
+            <img id="main-gallery-img" src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1000&q=80" alt="Radiance Ritual Face Oil" style="width: 100%; height: 100%; object-fit: cover; transition: opacity 200ms ease;" />
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+            <img class="gallery-thumb" data-src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1000&q=80" src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=300&q=80" style="border-radius: var(--radius); cursor: pointer; aspect-ratio: 1; object-fit: cover; border: 2px solid var(--primary);" alt="Thumb 1" />
+            <img class="gallery-thumb" data-src="https://images.unsplash.com/photo-1608248597359-0e6d526a6c23?auto=format&fit=crop&w=1000&q=80" src="https://images.unsplash.com/photo-1608248597359-0e6d526a6c23?auto=format&fit=crop&w=300&q=80" style="border-radius: var(--radius); cursor: pointer; aspect-ratio: 1; object-fit: cover; border: 2px solid transparent;" alt="Thumb 2" />
+            <img class="gallery-thumb" data-src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=1000&q=80" src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=300&q=80" style="border-radius: var(--radius); cursor: pointer; aspect-ratio: 1; object-fit: cover; border: 2px solid transparent;" alt="Thumb 3" />
+          </div>
+        </div>
+
+        <!-- Right: Sticky Product Info -->
+        <div style="grid-column: span 12 / span 5; position: sticky; top: 120px;" class="reveal-on-scroll delay-1">
+          <span class="label-caps" style="color: var(--secondary); margin-bottom: 8px; display: block;">Rosehip & Sea Buckthorn</span>
+          <h1 class="headline-lg" style="color: var(--primary); margin-bottom: 12px;">Radiance Ritual Face Oil</h1>
+          <p class="body-lg" style="color: var(--primary); font-weight: 600; margin-bottom: 24px;">$85.00 <span style="font-size: 0.875rem; font-weight: 400; color: var(--secondary);">/ 30ml (1.0 fl oz)</span></p>
+          
+          <p class="body-md" style="color: var(--on-surface-variant); margin-bottom: 32px;">
+            A potent, lightweight botanical oil crafted with cold-pressed rosehip seed, sea buckthorn berry, and olive-derived squalane. Designed to deeply nourish the lipid barrier, calm redness, and restore luminous vitality without clogging pores.
+          </p>
+
+          <div style="display: flex; gap: 16px; margin-bottom: 40px;">
+            <button class="btn btn-primary js-add-to-bag" style="flex: 1; padding: 20px;" data-name="Radiance Ritual Face Oil" data-price="85" data-img="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80">
+              Add to Bag — $85.00
+            </button>
+            <button class="btn btn-secondary" style="padding: 20px;" aria-label="Save to Wishlist">
+              <span class="material-symbols-outlined">favorite</span>
+            </button>
+          </div>
+
+          <!-- Accordion Tabs -->
+          <div style="border-top: 1px solid rgba(196, 200, 193, 0.4);">
+            <!-- Item 1 -->
+            <div class="accordion-item active">
+              <button class="accordion-header">
+                <span>01 / Key Ingredients</span>
+                <span class="material-symbols-outlined accordion-icon">expand_more</span>
+              </button>
+              <div class="accordion-content" style="max-height: 200px;">
+                <div class="accordion-body">
+                  <strong>Rosehip Seed Oil:</strong> Rich in trans-retinoic acid and essential fatty acids to repair cellular damage.<br /><br />
+                  <strong>Sea Buckthorn Berry:</strong> Packed with rare Omega-7 and antioxidants for instant radiance.<br /><br />
+                  <strong>Squalane:</strong> Biomimetic moisture magnet that seals in hydration without greasiness.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>02 / The Benefits</span>
+                <span class="material-symbols-outlined accordion-icon">expand_more</span>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  • Restores compromised lipid barrier within 7 days.<br />
+                  • Calms inflammation and environmental sensitizers.<br />
+                  • Imparts a non-greasy, lit-from-within glow.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>03 / How to Use</span>
+                <span class="material-symbols-outlined accordion-icon">expand_more</span>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  Warm 4–5 drops between clean palms. Gently press into damp skin every morning and evening after cleansing and misting. For enhanced lymphatic drainage, pair with our Sculpting Gua Sha stone.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- "The Ritual" 3-Step Guide -->
+  <section class="section-gap" style="background-color: var(--surface-container-low);">
+    <div class="container reveal-on-scroll">
+      <div style="text-align: center; margin-bottom: 64px;">
+        <span class="label-caps" style="color: var(--secondary); margin-bottom: 8px; display: block;">Daily Practice</span>
+        <h2 class="headline-lg" style="color: var(--primary);">The Radiance Ritual</h2>
+      </div>
+
+      <div class="grid-12" style="row-gap: 40px;">
+        <div style="grid-column: span 12 / span 4; text-align: center; padding: 24px;" class="reveal-on-scroll delay-1">
+          <span style="font-family: var(--font-display); font-size: 3rem; color: var(--tertiary-fixed-dim); display: block; margin-bottom: 16px;">01</span>
+          <h3 class="headline-md" style="color: var(--primary); margin-bottom: 12px;">Purify & Mist</h3>
+          <p class="body-md" style="color: var(--on-surface-variant);">Cleanse with Gentle Purifying Wash and saturate skin with botanical mist to create a damp, receptive base.</p>
+        </div>
+        
+        <div style="grid-column: span 12 / span 4; text-align: center; padding: 24px;" class="reveal-on-scroll delay-2">
+          <span style="font-family: var(--font-display); font-size: 3rem; color: var(--tertiary-fixed-dim); display: block; margin-bottom: 16px;">02</span>
+          <h3 class="headline-md" style="color: var(--primary); margin-bottom: 12px;">Warm & Press</h3>
+          <p class="body-md" style="color: var(--on-surface-variant);">Dispense 4 drops of Radiance Oil into palms. Breathe in the grounding aroma and press firmly into face and neck.</p>
+        </div>
+
+        <div style="grid-column: span 12 / span 4; text-align: center; padding: 24px;" class="reveal-on-scroll delay-3">
+          <span style="font-family: var(--font-display); font-size: 3rem; color: var(--tertiary-fixed-dim); display: block; margin-bottom: 16px;">03</span>
+          <h3 class="headline-md" style="color: var(--primary); margin-bottom: 12px;">Sculpt & Drain</h3>
+          <p class="body-md" style="color: var(--on-surface-variant);">Glide the Bian Stone Gua Sha outward along jawline, cheekbones, and brow to release facial tension and depuff.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="nav-logo" style="margin-bottom: 16px; display: inline-block;">NŪMA</a>
+          <p class="body-sm" style="color: var(--on-surface-variant); max-width: 300px; margin-bottom: 24px;">Quiet confidence for your daily ritual.</p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Collection</h4>
+          <div class="footer-links"><a href="shop.html" class="footer-link">All Formulations</a></div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Sanctuary</h4>
+          <div class="footer-links"><a href="rituals.html" class="footer-link">Salon Menu</a></div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">About</h4>
+          <div class="footer-links"><a href="about.html" class="footer-link">Our Story</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 NŪMA Beauty & Salon LLC.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Overlays & Drawers -->
+  <div id="main-overlay" class="overlay"></div>
+  <aside id="bag-drawer" class="drawer">
+    <div class="drawer-header"><h3 class="headline-md">Your Ritual Bag</h3><button id="close-bag-btn" class="nav-icon-btn"><span class="material-symbols-outlined">close</span></button></div>
+    <div id="bag-items-list" class="drawer-body"></div>
+    <div class="drawer-footer"><div class="flex-between"><span>Subtotal</span><span id="bag-subtotal-val">$85.00</span></div><button class="btn btn-primary" style="width: 100%;">Checkout</button></div>
+  </aside>
+  <aside id="mobile-drawer" class="drawer" style="left: 0; right: auto; transform: translateX(-100%);">
+    <div class="drawer-header"><span class="nav-logo">NŪMA</span><button id="close-mobile-btn" class="nav-icon-btn"><span class="material-symbols-outlined">close</span></button></div>
+    <div class="drawer-body" style="display: flex; flex-direction: column; gap: 24px; padding-top: 40px;"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="rituals.html">Rituals</a><a href="about.html">About</a></div>
+  </aside>
+  <div id="booking-modal" class="modal">
+    <div class="flex-between"><h3 class="headline-md">Reserve Your Ritual</h3><button id="close-booking-btn" class="nav-icon-btn"><span class="material-symbols-outlined">close</span></button></div>
+    <form id="booking-form"><div class="form-group"><label class="form-label">Treatment</label><select id="booking-service" class="form-select"><option>Signature Radiance Facial ($185)</option></select></div><button type="submit" class="btn btn-primary" style="width: 100%;">Request Appointment</button></form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

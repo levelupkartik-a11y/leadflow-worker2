@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Signature Realty NJ - Premium Real Estate Brokerage</title>
+    
+    <!-- Tailwind CSS CDN with forms & container queries -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Premium Google Fonts pairing: Playfair Display (Serif) + Hanken Grotesk (Sans) -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+    
+    <!-- Material Symbols for premium iconography -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css"/>
+
+    <!-- Tailwind Config -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "heritage-gold": "#D3A550",
+                        "heritage-gold-dark": "#B88E3E",
+                        "onyx-black": "#010203",
+                        "alabaster-silk": "#F9F7F2",
+                        "graphite": "#454545",
+                        "charcoal": "#1C1C1E",
+                        "soft-gray": "#F4F4F6",
+                        "ink": "#111111",
+                        "border-gold": "rgba(211, 165, 80, 0.2)",
+                    },
+                    spacing: {
+                        "container-max": "1440px",
+                        "gutter": "32px",
+                        "stack-lg": "48px",
+                        "stack-md": "24px",
+                        "stack-sm": "12px",
+                        "section-gap": "120px",
+                    },
+                    fontFamily: {
+                        "serif": ["Playfair Display", "Georgia", "serif"],
+                        "sans": ["Hanken Grotesk", "system-ui", "sans-serif"],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-alabaster-silk text-ink font-sans antialiased selection:bg-heritage-gold selection:text-onyx-black overflow-x-hidden">
+
+    <!-- Top Navigation Bar -->
+    <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-500 ease-out border-b border-transparent">
+        <div class="flex justify-between items-center px-6 py-4 md:px-12 max-w-container-max mx-auto">
+            <!-- Logo -->
+            <a class="flex-shrink-0 focus-visible:outline-gold" href="#" aria-label="Signature Realty NJ Home">
+                <img id="header-logo" alt="SIGNATURE REALTY NJ" class="h-8 md:h-9 w-auto object-contain transition-all duration-500 brightness-0 invert" src="https://lh3.googleusercontent.com/aida/AP1WRLtPMkO_deENfWqCGZ6jNLnZ_zqGPB7MxctuHcVPaIF3IWsb4jPB7jYN4vF1KXUVTNIyRL2RTNfWSRKASSuhP7hRAHGMUxYdYENaV2osgCq0-9Qb6g4ZJqY99Yp0Wh7vhEAm6yeV9oMXKSC2L5_hC31KkACqrW5uJhTQ09r7f8mSlbuX2h5aMCmGIeN3fnA1FcCIQ8cW1dF0dcxY9gcd6PQ3O43mAFmQOiZ93io8FggCBsDuDFkF5pnUGy6I"/>
+            </a>
+            
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-8" aria-label="Main Navigation">
+                <a class="nav-link text-xs uppercase tracking-widest text-white/85 hover:text-heritage-gold transition-colors duration-300 font-semibold focus-visible:outline-gold" href="#">Properties</a>
+                <a class="nav-link text-xs uppercase tracking-widest text-white/85 hover:text-heritage-gold transition-colors duration-300 font-semibold focus-visible:outline-gold" href="#">Sell</a>
+                <a class="nav-link text-xs uppercase tracking-widest text-white/85 hover:text-heritage-gold transition-colors duration-300 font-semibold focus-visible:outline-gold" href="#">Buy</a>
+                <a class="nav-link text-xs uppercase tracking-widest text-white/85 hover:text-heritage-gold transition-colors duration-300 font-semibold focus-visible:outline-gold" href="#">Why Us</a>
+                <a class="nav-link text-xs uppercase tracking-widest text-white/85 hover:text-heritage-gold transition-colors duration-300 font-semibold focus-visible:outline-gold" href="#">Careers</a>
+                <a class="nav-link text-xs uppercase tracking-widest text-white/85 hover:text-heritage-gold transition-colors duration-300 font-semibold focus-visible:outline-gold" href="#">Shop</a>
+                <a class="nav-link text-xs uppercase tracking-widest text-white/85 hover:text-heritage-gold transition-colors duration-300 font-semibold focus-visible:outline-gold" href="#">Contact</a>
+            </nav>
+            
+            <!-- Quick Actions -->
+            <div class="flex items-center gap-4 text-white" id="header-actions">
+                <button class="hover:text-heritage-gold transition-colors duration-300 p-2 flex items-center justify-center focus-visible:outline-gold" aria-label="Search properties">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+                <button class="hover:text-heritage-gold transition-colors duration-300 p-2 flex items-center justify-center focus-visible:outline-gold" aria-label="User account">
+                    <span class="material-symbols-outlined">person</span>
+                </button>
+                <!-- Mobile menu toggle button -->
+                <button id="mobile-menu-btn" class="lg:hidden hover:text-heritage-gold transition-colors duration-300 p-2 flex items-center justify-center focus-visible:outline-gold" aria-label="Toggle Navigation Menu" aria-expanded="false">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-drawer" class="fixed inset-0 z-40 bg-onyx-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden" aria-hidden="true">
+        <div id="drawer-content" class="absolute right-0 top-0 bottom-0 w-80 bg-onyx-black text-white p-8 flex flex-col justify-between translate-x-full transition-transform duration-500 ease-drawer">
+            <div>
+                <div class="flex justify-between items-center mb-12">
+                    <span class="text-heritage-gold font-serif text-lg tracking-wider italic">Signature Realty</span>
+                    <button id="close-drawer-btn" class="text-white hover:text-heritage-gold transition-colors p-1" aria-label="Close Menu">
+                        <span class="material-symbols-outlined text-2xl">close</span>
+                    </button>
+                </div>
+                <nav class="flex flex-col gap-6" aria-label="Mobile Navigation">
+                    <a class="text-sm uppercase tracking-widest text-white/90 hover:text-heritage-gold transition-colors duration-300 font-semibold" href="#">Properties</a>
+                    <a class="text-sm uppercase tracking-widest text-white/90 hover:text-heritage-gold transition-colors duration-300 font-semibold" href="#">Sell</a>
+                    <a class="text-sm uppercase tracking-widest text-white/90 hover:text-heritage-gold transition-colors duration-300 font-semibold" href="#">Buy</a>
+                    <a class="text-sm uppercase tracking-widest text-white/90 hover:text-heritage-gold transition-colors duration-300 font-semibold" href="#">Why Us</a>
+                    <a class="text-sm uppercase tracking-widest text-white/90 hover:text-heritage-gold transition-colors duration-300 font-semibold" href="#">Careers</a>
+                    <a class="text-sm uppercase tracking-widest text-white/90 hover:text-heritage-gold transition-colors duration-300 font-semibold" href="#">Shop</a>
+                    <a class="text-sm uppercase tracking-widest text-white/90 hover:text-heritage-gold transition-colors duration-300 font-semibold" href="#">Contact</a>
+                </nav>
+            </div>
+            
+            <div class="border-t border-white/10 pt-6">
+                <p class="text-xs text-white/40 tracking-wider">© 2026 SIGNATURE REALTY NJ.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative w-full min-h-[95vh] flex flex-col justify-end pb-16 px-6 md:px-12 pt-32 overflow-hidden bg-onyx-black">
+        <!-- Hero Background Images (Slideshow simulation) -->
+        <div class="absolute inset-0 z-0">
+            <!-- Slide 1 -->
+            <div class="hero-slide active absolute inset-0 bg-cover bg-center scale-[1.05] transition-all duration-[6000ms] ease-out-slow" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLvhiSLNhz6utQgR_Tc75Emqw4hYqSmpxkEeHnr2gG2fF07xET80OuvuixdUqWvJxbtsRDR33EnieXA1V9FiX4OyWIrKgVI6CvbrWQrpPUJ2E0fSY3lt_18wy2LXHC2ZWDBCdDe9EKMhoI6Y6y9yFWUFbUzcP1S-Bb2koXImyu1ShPIOiu-YtuY20da9-4LDqbUcvgPWCHs4B8IarwUQPNTHP4_Ytk9mF0SfMaHCOgo4sD3-OJxMZaE0ny0-')"></div>
+            <!-- Slide 2 -->
+            <div class="hero-slide absolute inset-0 bg-cover bg-center transition-all duration-[6000ms] ease-out-slow" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLvhiSLNhz6utQgR_Tc75Emqw4hYqSmpxkEeHnr2gG2fF07xET80OuvuixdUqWvJxbtsRDR33EnieXA1V9FiX4OyWIrKgVI6CvbrWQrpPUJ2E0fSY3lt_18wy2LXHC2ZWDBCdDe9EKMhoI6Y6y9yFWUFbUzcP1S-Bb2koXImyu1ShPIOiu-YtuY20da9-4LDqbUcvgPWCHs4B8IarwUQPNTHP4_Ytk9mF0SfMaHCOgo4sD3-OJxMZaE0ny0-')"></div>
+            <!-- Gradient Overlay for visual hierarchy & text contrast -->
+            <div class="absolute inset-0 bg-gradient-to-t from-onyx-black via-onyx-black/40 to-onyx-black/35 z-10"></div>
+        </div>
+
+        <div class="relative z-10 max-w-container-max mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+            <!-- Hero Text -->
+            <div class="lg:col-span-7 xl:col-span-8 text-white mb-8 lg:mb-0 space-y-6">
+                <span class="inline-block px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-semibold tracking-widest text-heritage-gold uppercase anim-fade-in-up">Luxury Brokerage</span>
+                <h1 class="font-serif text-5xl md:text-6xl xl:text-7xl leading-tight tracking-tight text-balance anim-fade-in-up anim-delay-100">
+                    Find Your <br/><span class="italic text-heritage-gold font-light">Dream Home</span> In NJ
+                </h1>
+                <p class="text-white/80 text-base md:text-lg max-w-xl leading-relaxed text-pretty anim-fade-in-up anim-delay-200">
+                    Experience luxury real estate in New Jersey with our award-winning boutique brokerage. We represent a broad spectrum of classes with unparalleled expertise, dedication, and personal service.
+                </p>
+            </div>
+            
+            <!-- Quick Search Card Widget -->
+            <div class="lg:col-span-5 xl:col-span-4 bg-alabaster-silk p-8 md:p-10 shadow-premium border border-border-gold anim-fade-in-up anim-delay-300 relative z-20">
+                <!-- Search Type Tabs -->
+                <div class="relative flex border-b border-ink/10 pb-3 mb-8" id="search-tabs">
+                    <button class="search-tab active relative flex-1 text-center font-semibold text-xs tracking-widest uppercase text-ink hover:text-heritage-gold transition-colors duration-300 pb-2 focus:outline-none" data-tab="buy">Buy</button>
+                    <button class="search-tab relative flex-1 text-center font-semibold text-xs tracking-widest uppercase text-ink/50 hover:text-heritage-gold transition-colors duration-300 pb-2 focus:outline-none" data-tab="rent">Rent</button>
+                    <button class="search-tab relative flex-1 text-center font-semibold text-xs tracking-widest uppercase text-ink/50 hover:text-heritage-gold transition-colors duration-300 pb-2 focus:outline-none" data-tab="sell">Sell</button>
+                    <!-- Sliding Underline Indicator -->
+                    <span id="tab-underline" class="absolute bottom-0 left-0 w-1/3 h-[2px] bg-heritage-gold transition-all duration-300 ease-out"></span>
+                </div>
+                
+                <form class="flex flex-col gap-6" id="search-form">
+                    <div class="relative group">
+                        <label class="text-[10px] font-bold tracking-widest uppercase text-heritage-gold absolute -top-3 left-0">Location</label>
+                        <input class="w-full bg-transparent border-0 border-b border-ink focus:ring-0 focus:border-heritage-gold px-0 py-2 text-sm text-ink placeholder:text-ink/30 transition-colors" placeholder="City, Zip, or Neighborhood" type="text" required/>
+                    </div>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="relative">
+                            <label class="text-[10px] font-bold tracking-widest uppercase text-heritage-gold absolute -top-3 left-0">Min Price</label>
+                            <select class="w-full bg-transparent border-0 border-b border-ink focus:ring-0 focus:border-heritage-gold px-0 py-2 text-sm text-ink appearance-none cursor-pointer">
+                                <option>Any</option>
+                                <option>₹50 Lakhs</option>
+                                <option>₹1 Crore</option>
+                                <option>₹2 Crores</option>
+                            </select>
+                        </div>
+                        <div class="relative">
+                            <label class="text-[10px] font-bold tracking-widest uppercase text-heritage-gold absolute -top-3 left-0">Max Price</label>
+                            <select class="w-full bg-transparent border-0 border-b border-ink focus:ring-0 focus:border-heritage-gold px-0 py-2 text-sm text-ink appearance-none cursor-pointer">
+                                <option>Any</option>
+                                <option>₹1 Crore</option>
+                                <option>₹2 Crores</option>
+                                <option>₹5 Crores+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="relative">
+                            <label class="text-[10px] font-bold tracking-widest uppercase text-heritage-gold absolute -top-3 left-0">Beds</label>
+                            <select class="w-full bg-transparent border-0 border-b border-ink focus:ring-0 focus:border-heritage-gold px-0 py-2 text-sm text-ink appearance-none cursor-pointer">
+                                <option>Any</option>
+                                <option>2+</option>
+                                <option>3+</option>
+                                <option>4+</option>
+                            </select>
+                        </div>
+                        <div class="relative">
+                            <label class="text-[10px] font-bold tracking-widest uppercase text-heritage-gold absolute -top-3 left-0">Baths</label>
+                            <select class="w-full bg-transparent border-0 border-b border-ink focus:ring-0 focus:border-heritage-gold px-0 py-2 text-sm text-ink appearance-none cursor-pointer">
+                                <option>Any</option>
+                                <option>2+</option>
+                                <option>3+</option>
+                                <option>4+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="mt-4 bg-onyx-black text-white text-xs font-bold tracking-widest uppercase py-4 px-8 hover:bg-heritage-gold hover:text-onyx-black transition-all duration-300 w-full flex justify-between items-center group btn-press" type="submit">
+                        <span>SEARCH PROPERTIES</span>
+                        <span class="material-symbols-outlined transform group-hover:translate-x-2 transition-transform duration-300">arrow_forward</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editorial Statement -->
+    <section class="py-24 px-6 md:px-12 bg-white relative overflow-hidden border-b border-ink/5">
+        <div class="max-w-4xl mx-auto text-center space-y-8 scroll-reveal">
+            <span class="text-[10px] font-bold tracking-widest uppercase text-heritage-gold">Our Philosophy</span>
+            <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl text-ink leading-tight text-balance">
+                Extending Far Beyond a <br/><span class="italic font-light">Conventional Brokerage Firm</span>
+            </h2>
+            <div class="w-16 h-[2px] bg-heritage-gold mx-auto my-6"></div>
+            <p class="text-base md:text-lg text-graphite leading-relaxed text-pretty font-light">
+                Signature Realty has redefined the business of selling homes, modernizing and advancing the industry by fostering a culture of partnership in which listings and clients are represented in a collaborative environment by all of our agents.
+            </p>
+            <p class="text-sm md:text-base text-graphite/80 leading-relaxed max-w-2xl mx-auto font-light">
+                Signature Realty NJ is an award-winning boutique brokerage specializing in Luxury Real Estate in New Jersey. Our team of highly skilled professionals have the knowledge and know-how of representing a broad spectrum of classes, including residential real estate, new development, and investment properties.
+            </p>
+        </div>
+    </section>
+
+    <!-- Featured Properties Bento Section -->
+    <section class="py-24 px-6 md:px-12 bg-alabaster-silk">
+        <div class="max-w-container-max mx-auto">
+            <div class="flex justify-between items-end mb-16 scroll-reveal">
+                <div class="space-y-3">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-heritage-gold">Curated Collection</span>
+                    <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl text-ink">Featured Properties</h2>
+                </div>
+                <a class="text-xs font-bold tracking-widest uppercase text-ink border-b-2 border-heritage-gold pb-2 hover:text-heritage-gold hover:border-ink transition-all duration-300 flex items-center gap-2 group focus-visible:outline-gold" href="#">
+                    <span>VIEW ALL PROPERTIES</span> 
+                    <span class="material-symbols-outlined text-sm transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </a>
+            </div>
+            
+            <!-- Bento Asymmetric Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
+                <!-- Large Feature Card (Edison NJ) -->
+                <div class="md:col-span-8 group cursor-pointer relative flex flex-col justify-between scroll-reveal shadow-premium bg-white p-4 border border-ink/5">
+                    <div class="relative w-full aspect-[4/3] bg-soft-gray overflow-hidden">
+                        <!-- Image with zoom-on-hover effect -->
+                        <img alt="Luxury home exterior in Edison, NJ" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLt7SntRI1xZNJW_f2X6Hut9_qz1ZR1_JoMWO8lXIiQmB3fZD1hKgXOWRsT8Xur1rpdS7JEpJQ4ikp2m6KVrY7-geFZ987YcAI0jgdLx1QbaJrxuO7WCeTr9AptoefBXISmH46j0U0Lx9Yli7ER04FzAFmuUF2mnLsE3Gc92zATf4RrQTwGFreIUcgs3wGAshR3HskRALr8nMtCIdW7u5tS43jyDSEcKSmeI-nn9qZYPH-bIfv1KnyNJ_j_z"/>
+                        <div class="absolute top-4 left-4 bg-onyx-black text-white text-[9px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-none border border-border-gold">JUST LISTED</div>
+                    </div>
+                    <div class="pt-6 pb-2 flex flex-col justify-between flex-grow px-2">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-serif text-2xl md:text-3xl text-ink font-semibold group-hover:text-heritage-gold transition-colors duration-300">₹2,15,00,000</h3>
+                                <p class="text-sm text-graphite mt-1">1684 Frank Street, Edison, NJ 08820</p>
+                            </div>
+                            <span class="material-symbols-outlined text-ink/30 group-hover:text-heritage-gold group-hover:translate-x-1 transition-all duration-300">arrow_forward</span>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-ink/5 flex gap-6 text-[10px] font-bold tracking-widest text-heritage-gold uppercase">
+                            <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">bed</span> 6 BEDS</span>
+                            <span>•</span>
+                            <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">bathtub</span> 7.1 BATHS</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Secondary Narrow Feature Card (Florham Park) -->
+                <div class="md:col-span-4 group cursor-pointer flex flex-col justify-between scroll-reveal shadow-premium bg-white p-4 border border-ink/5 anim-delay-100">
+                    <div class="relative w-full aspect-[3/4] bg-soft-gray overflow-hidden">
+                        <!-- Image with zoom-on-hover effect -->
+                        <img alt="Exclusive custom estate in Florham Park, NJ" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLvgeea9fN9zWdq4PFCIb2tl8nJ9va2OwiNcv4JxYmzYmnHS8Kyu4wx7YtHe9GNCXclMrvPBMMqFCYPO-OUwQGbLd8gNH3zt9iz151D3f4d5dOKxDrm8ZUQgevtGKZ9fDOWHD-KicN8HsAtX6fRazMACc00lmnFjyhgoU0FX12v6DBAWLb04MtdtJEL3LF-ooA_UDCOJnGJ8lR_QL27FebHtNhPfKAKDziBFm8GxbQnCG-Opvk9DCZC3nRU"/>
+                        <div class="absolute top-4 left-4 bg-heritage-gold text-onyx-black text-[9px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-none">EXCLUSIVE</div>
+                    </div>
+                    <div class="pt-6 pb-2 flex flex-col justify-between flex-grow px-2">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-serif text-2xl md:text-3xl text-ink font-semibold group-hover:text-heritage-gold transition-colors duration-300">₹2,39,99,999</h3>
+                                <p class="text-sm text-graphite mt-1">266 Brooklake Rd, Florham Park, NJ</p>
+                            </div>
+                            <span class="material-symbols-outlined text-ink/30 group-hover:text-heritage-gold group-hover:translate-x-1 transition-all duration-300">arrow_forward</span>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-ink/5 flex gap-6 text-[10px] font-bold tracking-widest text-heritage-gold uppercase">
+                            <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">bed</span> 6 BEDS</span>
+                            <span>•</span>
+                            <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-sm">bathtub</span> 6 BATHS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Value Proposition Section -->
+    <section class="py-24 px-6 md:px-12 bg-onyx-black text-white relative">
+        <div class="max-w-container-max mx-auto space-y-16">
+            <div class="max-w-2xl space-y-4 scroll-reveal">
+                <span class="text-[10px] font-bold tracking-widest uppercase text-heritage-gold">The Signature Advantage</span>
+                <h2 class="font-serif text-3xl md:text-4xl xl:text-5xl text-white">Why Select Signature Realty</h2>
+                <p class="text-white/60 text-sm md:text-base leading-relaxed">We leverage state-of-the-art marketing, an unparalleled broker network, and extensive local experience to yield elite results.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                <!-- Value 1 -->
+                <div class="space-y-6 p-8 border border-white/10 hover:border-heritage-gold/50 transition-colors duration-500 bg-white/[0.02] scroll-reveal">
+                    <div class="w-12 h-12 rounded-full border border-heritage-gold/30 flex items-center justify-center text-heritage-gold">
+                        <span class="material-symbols-outlined text-2xl">handshake</span>
+                    </div>
+                    <h3 class="font-serif text-xl text-white">Colleague Co-brokerage</h3>
+                    <p class="text-white/60 text-sm leading-relaxed font-light font-light">Every listing is cross-promoted and shared across our complete network of expert boutique agents for maximum local market saturation.</p>
+                </div>
+                <!-- Value 2 -->
+                <div class="space-y-6 p-8 border border-white/10 hover:border-heritage-gold/50 transition-colors duration-500 bg-white/[0.02] scroll-reveal anim-delay-100">
+                    <div class="w-12 h-12 rounded-full border border-heritage-gold/30 flex items-center justify-center text-heritage-gold">
+                        <span class="material-symbols-outlined text-2xl">analytics</span>
+                    </div>
+                    <h3 class="font-serif text-xl text-white">Intelligent Data Marketing</h3>
+                    <p class="text-white/60 text-sm leading-relaxed font-light">We use targeted programmatic ads, high-production cinematic tours, and dynamic listing optimization to reach qualified buyers directly.</p>
+                </div>
+                <!-- Value 3 -->
+                <div class="space-y-6 p-8 border border-white/10 hover:border-heritage-gold/50 transition-colors duration-500 bg-white/[0.02] scroll-reveal anim-delay-200">
+                    <div class="w-12 h-12 rounded-full border border-heritage-gold/30 flex items-center justify-center text-heritage-gold">
+                        <span class="material-symbols-outlined text-2xl">workspace_premium</span>
+                    </div>
+                    <h3 class="font-serif text-xl text-white">Award-Winning Boutique</h3>
+                    <p class="text-white/60 text-sm leading-relaxed font-light">Bespoke service with top-tier brokers who limit their active portfolios to guarantee focused attention and elite staging details.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketing Banner CTA Section -->
+    <section class="py-24 px-6 md:px-12 bg-white border-b border-ink/5">
+        <div class="max-w-container-max mx-auto text-center space-y-8 scroll-reveal">
+            <span class="text-[10px] font-bold tracking-widest uppercase text-heritage-gold">Partner With Us</span>
+            <h2 class="font-serif text-3xl md:text-5xl text-ink max-w-3xl mx-auto leading-tight text-balance">
+                Ready to List Your Home or Start Your Search?
+            </h2>
+            <p class="text-base text-graphite max-w-xl mx-auto leading-relaxed">
+                Connect with one of our specialized boutique real estate consultants today for a private, confidential consultation.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+                <button class="bg-onyx-black text-white text-xs font-bold tracking-widest uppercase py-4 px-8 hover:bg-heritage-gold hover:text-onyx-black transition-all duration-300 btn-press">
+                    TALK TO AN AGENT
+                </button>
+                <button class="bg-transparent border border-onyx-black text-ink text-xs font-bold tracking-widest uppercase py-4 px-8 hover:bg-onyx-black hover:text-white transition-all duration-300 btn-press">
+                    REQUEST VALUATION
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-onyx-black text-white py-20 px-6 md:px-12 border-t border-white/5">
+        <div class="max-w-container-max mx-auto flex flex-col items-center gap-12 text-center">
+            <!-- Brand Mark -->
+            <div class="font-serif text-2xl md:text-3xl text-white tracking-widest uppercase">
+                SIGNATURE REALTY <span class="text-heritage-gold font-light italic text-xl lowercase">nj</span>
+            </div>
+            
+            <!-- Navigation links -->
+            <nav class="flex flex-wrap justify-center gap-x-8 gap-y-4" aria-label="Footer Navigation">
+                <a class="text-xs uppercase tracking-widest text-white/50 hover:text-heritage-gold transition-colors duration-300 font-semibold focus-visible:outline-gold" href="#">Properties</a>
+                <a class="text-xs uppercase tracking-widest text-white/50 hover:text-heritage-gold transition-colors duration-300 font-semibold focus-visible:outline-gold" href="#">Communities</a>
+                <a class="text-xs uppercase tracking-widest text-white/50 hover:text-heritage-gold transition-colors duration-300 font-semibold focus-visible:outline-gold" href="#">Buy A Home</a>
+                <a class="text-xs uppercase tracking-widest text-white/50 hover:text-heritage-gold transition-colors duration-300 font-semibold focus-visible:outline-gold" href="#">Sell My Home</a>
+                <a class="text-xs uppercase tracking-widest text-white/50 hover:text-heritage-gold transition-colors duration-300 font-semibold focus-visible:outline-gold" href="#">Why Signature</a>
+                <a class="text-xs uppercase tracking-widest text-white/50 hover:text-heritage-gold transition-colors duration-300 font-semibold focus-visible:outline-gold" href="#">Careers</a>
+                <a class="text-xs uppercase tracking-widest text-white/50 hover:text-heritage-gold transition-colors duration-300 font-semibold focus-visible:outline-gold" href="#">Contact</a>
+            </nav>
+            
+            <!-- Divider -->
+            <div class="w-full max-w-md h-px bg-white/10"></div>
+            
+            <!-- Details -->
+            <div class="space-y-2 text-xs text-white/40 tracking-wider">
+                <p>Licensed Brokerage Firm in New Jersey.</p>
+                <p>© 2026 SIGNATURE REALTY NJ. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript Logic -->
+    <script src="main.js"></script>
+</body>
+</html>

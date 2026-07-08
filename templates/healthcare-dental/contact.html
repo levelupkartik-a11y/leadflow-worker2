@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us & Book Appointment | Aura Dental & Wellness Co.</title>
+  <meta name="description" content="Schedule your appointment at Aura Dental in downtown Seattle. Interactive booking form, office hours, emergency contact, and map directions.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-info">
+        <span>✦ Welcoming New Patients for 2026</span>
+        <a href="patient-resources.html" class="top-bar-link">View Insurance & Financing</a>
+      </div>
+      <div class="top-bar-contact">
+        <span>📍 Downtown Seattle Medical District</span>
+        <span>📞 (206) 555-0199</span>
+        <span>🕒 Mon-Fri: 7am - 6pm</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Header -->
+  <header class="header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">A</div>
+        <span>Aura Dental & Wellness Co.</span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        
+        <div class="dropdown-wrap">
+          <a href="services.html" class="nav-link">Services ▾</a>
+          <div class="dropdown-menu">
+            <a href="services.html#preventative" class="dropdown-item">Preventative & Hygiene</a>
+            <a href="services.html#cosmetic" class="dropdown-item">Cosmetic Smile Makeovers</a>
+            <a href="services.html#restorative" class="dropdown-item">Biomimetic Restorations</a>
+            <a href="services.html#invisalign" class="dropdown-item">Invisalign & Orthodontics</a>
+            <a href="services.html#sedation" class="dropdown-item">Gentle Sedation Options</a>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link">About Sanctuary</a>
+
+        <div class="dropdown-wrap">
+          <a href="patient-resources.html" class="nav-link">For Patients ▾</a>
+          <div class="dropdown-menu">
+            <a href="patient-resources.html#first-visit" class="dropdown-item">Your First Visit</a>
+            <a href="patient-resources.html#insurance" class="dropdown-item">Insurance & Membership</a>
+            <a href="patient-resources.html#forms" class="dropdown-item">Patient Intake Forms</a>
+            <a href="patient-resources.html#faq" class="dropdown-item">Frequently Asked Questions</a>
+          </div>
+        </div>
+
+        <a href="contact.html" class="nav-link active">Contact & Map</a>
+      </nav>
+
+      <div class="flex-center" style="gap: 16px;">
+        <a href="contact.html" class="btn btn-primary">Book Appointment</a>
+        <div class="menu-toggle" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="section section-bg-surface" style="padding-top: 80px; padding-bottom: 80px;">
+    <div class="container container-narrow" style="text-align: center;">
+      <span class="label-caps accent reveal-up">We Look Forward To Welcoming You</span>
+      <h1 class="display-xl reveal-up delay-100" style="margin-top: 8px; margin-bottom: 24px;">
+        Schedule Your Visit & Map
+      </h1>
+      <p class="lead reveal-up delay-200" style="max-width: 640px; margin: 0 auto;">
+        Request an appointment online below or reach out directly to our patient concierge team. We are conveniently located in downtown Seattle with complimentary parking validation.
+      </p>
+    </div>
+  </section>
+
+  <!-- BOOKING FORM & CONTACT GRID -->
+  <section class="section">
+    <div class="container grid-2" style="display: grid; gap: 64px; align-items: start;">
+      
+      <!-- Left Column: Booking Form -->
+      <div class="card reveal-up" style="background: var(--bg-card-light); padding: 40px; border-top: 4px solid var(--primary);">
+        <span class="label-caps accent">Online Reservation</span>
+        <h2 class="display-md" style="margin-top: 8px; margin-bottom: 8px;">Request An Appointment</h2>
+        <p style="font-size: 0.95rem; margin-bottom: 24px;">Fill out the brief form below and Chloe, our patient concierge, will contact you within 2 business hours to confirm your suite and timing.</p>
+
+        <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
+          <div class="form-group">
+            <label class="form-label" for="fullName">Full Name *</label>
+            <input type="text" id="fullName" class="form-input" placeholder="e.g., Jane Doe" required>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address *</label>
+              <input type="email" id="email" class="form-input" placeholder="jane@example.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number *</label>
+              <input type="tel" id="phone" class="form-input" placeholder="(206) 555-0100" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="serviceType">Primary Service Interest *</label>
+            <select id="serviceType" class="form-select" required>
+              <option value="">-- Select Treatment --</option>
+              <option value="new_patient">New Patient Comprehensive Consultation (90 mins)</option>
+              <option value="hygiene">Guided Biofilm Spa Cleaning</option>
+              <option value="cosmetic">Cosmetic Smile Makeover / Veneers Consultation</option>
+              <option value="restorative">Biomimetic Restoration / Same-Day Crown</option>
+              <option value="invisalign">Invisalign Clear Aligners 3D Simulation</option>
+              <option value="emergency">Emergency Pain Relief / Broken Tooth</option>
+              <option value="sedation">Sedation Dentistry Consultation</option>
+            </select>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label" for="preferredDay">Preferred Day</label>
+              <select id="preferredDay" class="form-select">
+                <option value="any">First Available</option>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="preferredTime">Preferred Time</label>
+              <select id="preferredTime" class="form-select">
+                <option value="any">Any Time</option>
+                <option value="morning">Morning (7am - 11am)</option>
+                <option value="afternoon">Afternoon (12pm - 4pm)</option>
+                <option value="late">Late Afternoon (4pm - 6pm)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="insuranceInfo">Insurance or Membership Plan</label>
+            <input type="text" id="insuranceInfo" class="form-input" placeholder="e.g., Delta Dental PPO or Aura Membership Plan">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="notes">Special Requests / Anxiety Accommodation</label>
+            <textarea id="notes" class="form-textarea" rows="3" placeholder="Let us know if you prefer noise-canceling headphones, weighted blankets, laughing gas, or have any specific concerns..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">Request Reservation Suite →</button>
+        </form>
+
+        <div id="formSuccess" style="display: none; background: var(--accent-sage-light); color: var(--primary); padding: 24px; border-radius: var(--radius-sm); margin-top: 24px; text-align: center; font-weight: 500;">
+          <div style="font-size: 1.5rem; margin-bottom: 8px;">✦ Reservation Requested!</div>
+          <p style="margin-bottom: 0; color: var(--primary);">Thank you! Our concierge team has received your request and will contact you shortly to confirm your appointment time.</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Direct Contact & Location -->
+      <div class="reveal-up delay-200">
+        <span class="label-caps accent">Sanctuary Location</span>
+        <h2 class="display-lg" style="margin-top: 8px; margin-bottom: 24px;">Downtown Seattle Medical District</h2>
+        
+        <div class="card" style="margin-bottom: 24px; background: var(--bg-surface);">
+          <h3 class="display-sm" style="margin-bottom: 12px;">📍 Office Address</h3>
+          <p style="margin-bottom: 8px; font-weight: 600; color: var(--text-main);">Aura Dental & Wellness Co.</p>
+          <p style="margin-bottom: 16px;">1200 5th Avenue, Suite 1400<br>Seattle, WA 98101<br>(Directly across from Seattle Public Library central branch)</p>
+          
+          <div style="background: white; padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-light); font-size: 0.85rem; color: var(--primary); font-weight: 600;">
+            🚗 Complimentary 100% Parking Validation for underground garage!
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 24px; background: var(--bg-surface);">
+          <h3 class="display-sm" style="margin-bottom: 12px;">📞 Direct Contact</h3>
+          <p style="margin-bottom: 8px;"><strong>Main Concierge Line:</strong> <a href="tel:2065550199" style="color: var(--primary); font-weight: 600;">(206) 555-0199</a></p>
+          <p style="margin-bottom: 8px;"><strong>24/7 Patient Emergency:</strong> <a href="tel:2065550190" style="color: var(--primary); font-weight: 600;">(206) 555-0190</a></p>
+          <p style="margin-bottom: 0;"><strong>Email Inquiries:</strong> <a href="mailto:concierge@auradentalco.com" style="color: var(--primary); font-weight: 600;">concierge@auradentalco.com</a></p>
+        </div>
+
+        <div class="card" style="background: var(--bg-surface);">
+          <h3 class="display-sm" style="margin-bottom: 12px;">🕒 Sanctuary Hours</h3>
+          <ul style="display: flex; flex-direction: column; gap: 8px; font-size: 0.95rem; color: var(--text-main);">
+            <li class="flex-between"><span>Monday - Thursday:</span> <strong>7:00 AM - 6:00 PM</strong></li>
+            <li class="flex-between"><span>Friday:</span> <strong>7:00 AM - 4:00 PM</strong></li>
+            <li class="flex-between"><span>Saturday:</span> <strong>By Appointment Only</strong></li>
+            <li class="flex-between"><span>Sunday:</span> <span>Closed</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE GOOGLE MAP EMBED -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="reveal-up" style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-floating); height: 480px; border: 1px solid var(--border-medium);">
+        <!-- Interactive map centered on downtown Seattle / 5th Ave -->
+        <iframe 
+          title="Aura Dental Location Map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2689.516599298492!2d-122.33534568436952!3d47.60620957918451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906ab2f6a80435%3A0x6e9a6c76dbb4a45!2s1200%205th%20Ave%2C%20Seattle%2C%20WA%2098101!5e0!3m2!1sen!2sus!4v1672531111111!5m2!1sen!2sus" 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="color: var(--text-inverse); margin-bottom: 16px;">
+            <div class="logo-icon" style="background: var(--accent-sage-light); color: var(--primary);">A</div>
+            <span>Aura Dental & Wellness Co.</span>
+          </div>
+          <p style="color: rgba(250,249,246,0.7); max-width: 320px; font-size: 0.95rem;">
+            A premier biomimetic dental sanctuary in Seattle. Where uncompromising clinical excellence meets mindful, anxiety-free comfort.
+          </p>
+          <div style="margin-top: 20px; font-size: 0.9rem; color: var(--accent-sage-light);">
+            📍 1200 5th Avenue, Suite 1400, Seattle, WA 98101
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home Sanctuary</a></li>
+            <li><a href="services.html">Dental Treatments</a></li>
+            <li><a href="about.html">About & Doctors</a></li>
+            <li><a href="patient-resources.html">Patient Resources</a></li>
+            <li><a href="contact.html">Contact & Location</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Treatments</h4>
+          <ul class="footer-links">
+            <li><a href="services.html#preventative">Guided Biofilm Hygiene</a></li>
+            <li><a href="services.html#cosmetic">Porcelain Veneers</a></li>
+            <li><a href="services.html#restorative">Biomimetic Ceramics</a></li>
+            <li><a href="services.html#invisalign">Invisalign Aligners</a></li>
+            <li><a href="services.html#sedation">Anxiety-Free Sedation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Office Hours</h4>
+          <ul class="footer-links" style="color: rgba(250,249,246,0.8); font-size: 0.9rem;">
+            <li class="flex-between"><span>Mon - Thu:</span> <span>7:00 AM - 6:00 PM</span></li>
+            <li class="flex-between"><span>Friday:</span> <span>7:00 AM - 4:00 PM</span></li>
+            <li class="flex-between"><span>Saturday:</span> <span>By Appointment Only</span></li>
+            <li class="flex-between"><span>Sunday:</span> <span>Closed</span></li>
+            <li style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); color: #E5B869;">
+              ✦ 24/7 Emergency Line Available
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Aura Dental & Wellness Co. All Rights Reserved. Designed with Stitch MCP & Seattle Dental Co Aesthetics.</div>
+        <div style="display: flex; gap: 24px;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">HIPAA Compliance</a>
+          <a href="#">Accessibility Statement</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    function handleBookingSubmit(event) {
+      event.preventDefault();
+      const form = document.getElementById('bookingForm');
+      const success = document.getElementById('formSuccess');
+      form.style.display = 'none';
+      success.style.display = 'block';
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  </script>
+</body>
+</html>
