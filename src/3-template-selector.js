@@ -54,7 +54,6 @@ Provide a JSON output exactly like this:
 }
 
 async function selectWithGroq(researchData, copyData) {
-  const fetch = require('node-fetch');
   // Simple prompt for groq
   const prompt = `
 Available Templates:
@@ -74,7 +73,7 @@ Reply with ONLY a JSON object: {"selected_template_id": "...", "reasoning": "...
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      model: 'llama3-8b-8192',
+      model: 'llama-3.1-8b-instant',
       messages: [{ role: 'user', content: prompt }],
       response_format: { type: 'json_object' }
     })

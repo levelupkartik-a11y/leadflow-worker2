@@ -45,12 +45,23 @@ ${htmlContent}
 `;
 
     try {
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: prompt
+      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: 'llama-3.3-70b-versatile',
+          messages: [{ role: 'user', content: prompt }]
+        })
       });
 
-      let newHtml = response.text;
+      const json = await res.json();
+      if (!res.ok) throw new Error(`Groq error: ${JSON.stringify(json)}`);
+      
+      let newHtml = json.choices[0].message.content;
+
       // Strip markdown backticks if Gemini includes them anyway
       if (newHtml.startsWith('\`\`\`html')) {
         newHtml = newHtml.replace(/^\`\`\`html/, '').replace(/\`\`\`$/, '');

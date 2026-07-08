@@ -24,8 +24,10 @@ async function processImages(researchData, copyData, buildDir) {
     if (images.length === 0) continue;
 
     console.log(`Processing ${images.length} images in ${file}...`);
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
 
     for (let i = 0; i < images.length; i++) {
+      await sleep(6000); // Sleep for 6 seconds to respect rate limits
       const img = $(images[i]);
       const imgId = img.attr('id') || `img-${i}`;
       // Enhanced context extraction
@@ -61,14 +63,25 @@ Output strictly as JSON:
 
       let decision;
       try {
-        const response = await ai.models.generateContent({
-          model: 'gemini-2.5-flash',
-          contents: prompt,
-          config: { responseMimeType: 'application/json' }
+        const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model: 'llama-3.1-8b-instant',
+            messages: [{ role: 'user', content: prompt }],
+            response_format: { type: 'json_object' }
+          })
         });
-        decision = JSON.parse(response.text);
+
+        const json = await res.json();
+        if (!res.ok) throw new Error(`Groq error: ${JSON.stringify(json)}`);
+        
+        decision = JSON.parse(json.choices[0].message.content);
       } catch (err) {
-        console.warn(`Gemini matching failed for slot ${imgId}, defaulting to generate.`);
+        console.warn(`Groq matching failed for slot ${imgId}, defaulting to generate.`);
         decision = { action: 'generate_new', generation_prompt: `A professional stock photo matching the text: ${contextText.slice(0, 50)}` };
       }
 

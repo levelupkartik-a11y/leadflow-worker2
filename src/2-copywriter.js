@@ -57,15 +57,23 @@ Produce a JSON object with exactly these keys:
 }
 `;
 
-  const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
-    contents: prompt,
-    config: {
-      responseMimeType: 'application/json',
-    }
+  const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      model: 'llama-3.1-8b-instant',
+      messages: [{ role: 'user', content: prompt }],
+      response_format: { type: 'json_object' }
+    })
   });
 
-  const text = response.text;
+  const json = await res.json();
+  if (!res.ok) throw new Error(`Groq error: ${JSON.stringify(json)}`);
+  
+  const text = json.choices[0].message.content;
   const copy = JSON.parse(text);
 
   console.log(`[Step 2] Copy generation complete.`);
