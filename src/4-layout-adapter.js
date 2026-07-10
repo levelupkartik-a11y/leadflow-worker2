@@ -182,7 +182,7 @@ async function adaptLayout(templateId, copyData, buildDir, researchData) {
             testimonialSectionRest.find('h2').text('Client Testimonials');
             testimonialSectionRest.find('p').first().text('Read genuine feedback from our clients.');
             
-            const testCards = testimonialSectionRest.find('.grid > div');
+            const testCards = testimonialSectionRest.find('.grid').first().find('> div');
             testCards.each((i, el) => {
               const t = copyData.testimonials[i];
               if (t) {
