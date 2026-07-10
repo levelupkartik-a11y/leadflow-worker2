@@ -4,12 +4,15 @@ async function researchBusiness(mapsUrl, rowId, sheetName) {
   console.log(`[Step 1] Researching business using Maps link: ${mapsUrl}`);
   
   // To ensure a reliable deep search, we fetch the business name from the sheet.
-  // Exception: If the Maps URL is already a specific place ID link, we keep the mapsUrl
-  // directly as the query to avoid name collision searches.
+  // Exception: If the Maps URL contains a specific place ID, we extract the place_id query
+  // directly to avoid name collision searches or generic URL failures.
   let query = mapsUrl;
-  const isPlaceId = mapsUrl && mapsUrl.includes('place_id:');
-
-  if (rowId && sheetName && !isPlaceId) {
+  const placeIdMatch = mapsUrl && mapsUrl.match(/place_id:([a-zA-Z0-9_-]+)/);
+  
+  if (placeIdMatch) {
+    query = placeIdMatch[0]; // e.g. "place_id:ChIJAUNBXrjtDzkRgk_PQtZnOZU"
+    console.log(`[Step 1] Extracted place_id query: ${query}`);
+  } else if (rowId && sheetName) {
     try {
       const sheetResult = await composioExecute('GOOGLESHEETS_VALUES_GET', {
         spreadsheet_id: '1fWDfzFew_vKfKErtoBzahlyDbG_NMvcZDpXPSDaMJ9k',
