@@ -52,14 +52,17 @@ async function main() {
   }
 
   let buildDir = null;
+  let deploymentSucceeded = false;
   const cleanup = () => {
-    if (buildDir && fs.existsSync(buildDir)) {
+    if (deploymentSucceeded && buildDir && fs.existsSync(buildDir)) {
       console.log('[Cleanup] Cleaning up build directory...');
       try {
         fs.rmSync(buildDir, { recursive: true, force: true });
       } catch (e) {
         console.error('[Cleanup] Failed to delete build directory:', e.message);
       }
+    } else if (buildDir && fs.existsSync(buildDir)) {
+      console.log(`[Cleanup] Keeping local build directory '${buildDir}' for inspection due to failure or exit before deployment.`);
     }
   };
 
@@ -106,9 +109,8 @@ async function main() {
 
     if (qaResult.success) {
       // Step 6: Deploy
-      const projectName = `7ven-11ven-restaurant-x3fdd`;
-      const businessId = Math.random().toString(36).substring(2, 7);
-      liveUrl = await deployToCloudflare(buildDir, researchData.title, businessId);
+      liveUrl = await deployToCloudflare(buildDir, researchData.title, rowId, sheetName);
+      deploymentSucceeded = true;
       
       // Step 7: Report
       if (rowId) await reportBackToSheet(liveUrl, sheetName, rowId, reviewsCount, isSheet1);
