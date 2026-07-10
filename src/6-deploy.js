@@ -115,7 +115,7 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
     // 5. Cloudflare Pages Project Creation & Deploy
     console.log('[Cloudflare] Deploying to Cloudflare Pages...');
     const createCmd = `npx wrangler pages project create "${projectName}" --production-branch main`;
-    const deployCmd = `npx wrangler pages deploy "${buildDir}" --project-name "${projectName}" --commit-dirty=true`;
+    const deployCmd = `npx wrangler pages deploy . --project-name "${projectName}" --commit-dirty=true`;
 
     try {
       execSync(createCmd, { env: { ...process.env, CI: 'true' }, encoding: 'utf8', stdio: 'pipe' });
@@ -141,6 +141,7 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
     }
 
     const output = execSync(deployCmd, { 
+      cwd: buildDir,
       env: { ...process.env, CI: 'true' }, 
       encoding: 'utf8',
       stdio: 'pipe'
