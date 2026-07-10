@@ -833,6 +833,408 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
         metaDesc.attr('content', copyData.about_section.substring(0, 160));
       }
 
+      // --- Inject Secure AI Host Chatbot ---
+      console.log('[Layout Adapter] Injecting AI Host Chatbot widget into page...');
+      
+      const faqsJson = JSON.stringify(copyData.faqs || []);
+      const bizName = researchData.title || 'us';
+
+      const chatbotHtml = `
+      <!-- AI Host Chatbot Style -->
+      <style>
+        .host-launcher {
+          position: fixed;
+          z-index: 9999;
+          right: 24px;
+          bottom: 24px;
+          border: 0;
+          border-radius: 9999px;
+          padding: 14px 22px;
+          background: #111;
+          color: #fff;
+          font-family: inherit;
+          font-size: 15px;
+          font-weight: 600;
+          box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .host-launcher:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+          background: #222;
+        }
+        .host-drawer {
+          position: fixed;
+          z-index: 10000;
+          right: 24px;
+          bottom: 88px;
+          width: min(400px, calc(100vw - 32px));
+          height: min(580px, calc(100vh - 120px));
+          display: none;
+          flex-direction: column;
+          background: #fff;
+          border: 1px solid #e5e7eb;
+          border-radius: 20px;
+          box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+          overflow: hidden;
+          font-family: inherit;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .host-drawer.open {
+          display: flex;
+        }
+        .host-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 16px 20px;
+          border-bottom: 1px solid #f3f4f6;
+          background: #111;
+          color: #fff;
+        }
+        .host-header-title {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .host-avatar {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: #e2e8f0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 16px;
+          color: #111;
+          font-weight: 700;
+        }
+        .host-header-text strong {
+          display: block;
+          font-size: 14px;
+        }
+        .host-header-text small {
+          display: block;
+          font-size: 11px;
+          opacity: 0.8;
+        }
+        .host-close-btn {
+          border: 0;
+          background: transparent;
+          color: #fff;
+          font-size: 24px;
+          cursor: pointer;
+          padding: 4px;
+          opacity: 0.8;
+          transition: opacity 0.2s;
+        }
+        .host-close-btn:hover {
+          opacity: 1;
+        }
+        .host-chat-body {
+          flex: 1;
+          padding: 20px;
+          overflow-y: auto;
+          background: #f9fafb;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        .host-bubble {
+          max-width: 85%;
+          padding: 12px 16px;
+          border-radius: 16px;
+          font-size: 14px;
+          line-height: 1.5;
+        }
+        .host-bubble.agent {
+          background: #e5e7eb;
+          color: #1f2937;
+          align-self: flex-start;
+          border-top-left-radius: 4px;
+        }
+        .host-bubble.user {
+          background: #111;
+          color: #fff;
+          align-self: flex-end;
+          border-top-right-radius: 4px;
+        }
+        .host-bubble.system-error {
+          background: #fee2e2;
+          color: #991b1b;
+          align-self: center;
+          font-size: 12px;
+          border-radius: 8px;
+          text-align: center;
+        }
+        .host-suggestions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          padding: 0 20px 10px;
+          background: #f9fafb;
+        }
+        .host-suggestion-btn {
+          border: 1px solid #e5e7eb;
+          background: #fff;
+          border-radius: 999px;
+          padding: 8px 12px;
+          font-size: 12px;
+          color: #4b5563;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+        .host-suggestion-btn:hover {
+          background: #f3f4f6;
+          color: #111;
+          border-color: #d1d5db;
+        }
+        .host-input-area {
+          padding: 14px 20px;
+          border-top: 1px solid #e5e7eb;
+          background: #fff;
+        }
+        .host-form {
+          display: flex;
+          gap: 8px;
+        }
+        .host-input {
+          flex: 1;
+          border: 1px solid #d1d5db;
+          border-radius: 999px;
+          padding: 10px 18px;
+          font-size: 14px;
+          outline: none;
+          transition: border-color 0.2s;
+        }
+        .host-input:focus {
+          border-color: #111;
+        }
+        .host-send-btn {
+          border: 0;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          background: #111;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        .host-send-btn:hover {
+          background: #222;
+        }
+        .host-footer-note {
+          font-size: 10px;
+          color: #9ca3af;
+          text-align: center;
+          margin-top: 6px;
+        }
+      </style>
+
+      <!-- AI Host Chat Drawer Widget -->
+      <button class="host-launcher" id="host-launcher" aria-expanded="false">
+        <span>✦</span> Ask Host
+      </button>
+
+      <aside class="host-drawer" id="host-drawer">
+        <div class="host-header">
+          <div class="host-header-title">
+            <div class="host-avatar">✦</div>
+            <div class="host-header-text">
+              <strong>${bizName} Host</strong>
+              <small>Ask me anything</small>
+            </div>
+          </div>
+          <button class="host-close-btn" id="host-close-btn">&times;</button>
+        </div>
+        <div class="host-chat-body" id="host-chat-body">
+          <div class="host-bubble agent">
+            Welcome to ${bizName}! I'm your digital host. Ask me about our hours, location, or services.
+          </div>
+        </div>
+        <div class="host-suggestions" id="host-suggestions">
+          <button class="host-suggestion-btn">What are your hours?</button>
+          <button class="host-suggestion-btn">Where are you located?</button>
+          <button class="host-suggestion-btn">What services do you offer?</button>
+        </div>
+        <div class="host-input-area">
+          <form class="host-form" id="host-form">
+            <input type="text" class="host-input" id="host-input" placeholder="Ask a question..." required autocomplete="off">
+            <button type="submit" class="host-send-btn" id="host-send-btn">➔</button>
+          </form>
+          <div class="host-footer-note">Powered by LeadFlow AI</div>
+        </div>
+      </aside>
+
+      <!-- Chat Logic -->
+      <script>
+        (function() {
+          const launcher = document.getElementById('host-launcher');
+          const drawer = document.getElementById('host-drawer');
+          const closeBtn = document.getElementById('host-close-btn');
+          const chatBody = document.getElementById('host-chat-body');
+          const form = document.getElementById('host-form');
+          const input = document.getElementById('host-input');
+          const sendBtn = document.getElementById('host-send-btn');
+          const suggestions = document.getElementById('host-suggestions');
+
+          const faqs = ${faqsJson};
+          const conversation = [];
+
+          launcher.addEventListener('click', () => {
+            const isOpen = drawer.classList.toggle('open');
+            launcher.setAttribute('aria-expanded', String(isOpen));
+            if (isOpen) {
+              input.focus();
+            }
+          });
+
+          closeBtn.addEventListener('click', () => {
+            drawer.classList.remove('open');
+            launcher.setAttribute('aria-expanded', 'false');
+          });
+
+          function addBubble(text, sender = 'agent') {
+            const bubble = document.createElement('div');
+            bubble.className = 'host-bubble ' + sender;
+            bubble.textContent = text;
+            chatBody.appendChild(bubble);
+            chatBody.scrollTop = chatBody.scrollHeight;
+            return bubble;
+          }
+
+          function getKeywordOverlap(s1, s2) {
+            const clean = s => s.toLowerCase().replace(/[^a-z0-9\\s]/g, '').split(/\\s+/).filter(Boolean);
+            const w1 = new Set(clean(s1));
+            const w2 = clean(s2);
+            let overlap = 0;
+            w2.forEach(w => {
+              if (w1.has(w)) overlap++;
+            });
+            return overlap;
+          }
+
+          async function handleUserMessage(text) {
+            const userMsg = text.trim();
+            if (!userMsg) return;
+
+            // Remove suggestions once conversation starts
+            if (suggestions) suggestions.style.display = 'none';
+
+            addBubble(userMsg, 'user');
+            conversation.push({ role: 'user', content: userMsg });
+            input.value = '';
+            
+            // 1. Local FAQ Deflection Check
+            let bestMatch = null;
+            let maxOverlap = 0;
+            
+            faqs.forEach(faq => {
+              const overlap = getKeywordOverlap(faq.q, userMsg);
+              if (overlap > maxOverlap) {
+                maxOverlap = overlap;
+                bestMatch = faq;
+              }
+            });
+
+            // Threshold: at least 2 words or 40% of input words overlap
+            const cleanInput = userMsg.toLowerCase().replace(/[^a-z0-9\\s]/g, '').split(/\\s+/).filter(Boolean);
+            const threshold = Math.max(2, Math.floor(cleanInput.length * 0.4));
+
+            if (bestMatch && maxOverlap >= threshold) {
+              console.log('[Chat] Local FAQ Match Found: ', bestMatch.q);
+              setTimeout(() => {
+                addBubble(bestMatch.a, 'agent');
+                conversation.push({ role: 'assistant', content: bestMatch.a });
+              }, 400);
+              return;
+            }
+
+            // 2. Fallback to API Worker
+            console.log('[Chat] Falling back to secure API...');
+            const loader = addBubble('Typing...', 'agent');
+            
+            try {
+              const res = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ messages: conversation.slice(-8) }) // Max 8 context length
+              });
+              
+              const data = await res.json();
+              loader.remove();
+
+              if (!res.ok) {
+                throw new Error(data.error || 'Server error.');
+              }
+
+              addBubble(data.reply, 'agent');
+              conversation.push({ role: 'assistant', content: data.reply });
+            } catch (err) {
+              loader.remove();
+              addBubble('I am having trouble connecting right now. Please reach out to us using the contact details below!', 'system-error');
+              console.error('[Chat Error]', err.message);
+            }
+          }
+
+          form.addEventListener('submit', e => {
+            e.preventDefault();
+            handleUserMessage(input.value);
+          });
+
+          // Handle Suggestion Buttons
+          document.querySelectorAll('.host-suggestion-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+              handleUserMessage(btn.textContent);
+            });
+          });
+        })();
+      </script>
+      `;
+
+      $('body').append(chatbotHtml);
+
+      // --- Copy and Compile Serverless API Chat Function ---
+      const srcFunctionsDir = path.join(__dirname, '../functions');
+      const destFunctionsDir = path.join(buildDir, 'functions');
+      
+      if (fs.existsSync(srcFunctionsDir)) {
+        console.log('[Layout Adapter] Copying and compiling serverless function to build folder...');
+        if (!fs.existsSync(destFunctionsDir)) {
+          fs.mkdirSync(destFunctionsDir, { recursive: true });
+        }
+        
+        // Copy recursively
+        fs.cpSync(srcFunctionsDir, destFunctionsDir, { recursive: true });
+        
+        // Compile functions/api/chat.js with business facts
+        const chatFunctionPath = path.join(destFunctionsDir, 'api/chat.js');
+        if (fs.existsSync(chatFunctionPath)) {
+          let chatCode = fs.readFileSync(chatFunctionPath, 'utf8');
+          
+          const facts = {
+            name: researchData.title,
+            category: researchData.category,
+            description: researchData.description,
+            address: researchData.address,
+            phone: researchData.phone,
+            hours: researchData.hours,
+            services: copyData.services || []
+          };
+          
+          chatCode = chatCode.replace('__BIZ_FACTS__', JSON.stringify(facts, null, 2));
+          fs.writeFileSync(chatFunctionPath, chatCode, 'utf8');
+          console.log('[Layout Adapter] Compiled serverless chat function with business facts.');
+        }
+      }
+
       const finalHtml = $.html();
       fs.writeFileSync(filePath, finalHtml, 'utf8');
       console.log(`Successfully adapted ${file} using dynamic Cheerio config`);

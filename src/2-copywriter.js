@@ -52,6 +52,9 @@ If the Real Reviews array is empty or missing, generate 3 realistic, anonymous t
 **Team Members Instructions:**
 Only populate team_members from the Business Research above. If no named staff are mentioned, return [].
 
+**FAQs Instructions:**
+Generate exactly 10 common questions and short, helpful answers (1-2 sentences each) for the business. These MUST cover: Hours, Location/Address, Price range/pricing info, how to book/contact, and details about specific services or popular menu items based on the research. If facts are not in the research, answer using general helpful info (e.g. "Please call us to confirm prices/availability").
+
 **Required Output (JSON):**
 Produce a JSON object with exactly these keys:
 {
@@ -73,6 +76,12 @@ Produce a JSON object with exactly these keys:
       "name": "Real name from research only",
       "role": "Real role from research only",
       "bio": "1-2 sentences from research only"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What are your operating hours?",
+      "a": "We are open..."
     }
   ],
   "cta": "...",
@@ -129,6 +138,20 @@ Produce a JSON object with exactly these keys:
         { text: `A pleasure to work with. They deliver excellent results and represent great value.`, reviewer: 'Rohan B.', rating: 5 }
       ];
     }
+  }
+
+  // Programmatic fallback for FAQs if they are missing or empty
+  if (!copy.faqs || !Array.isArray(copy.faqs) || copy.faqs.length === 0) {
+    console.log('[Step 2] FAQs were empty. Populating programmatic fallback FAQs.');
+    const bizHours = researchData.hours || 'our regular business hours';
+    const bizAddress = researchData.address || 'our main location';
+    copy.faqs = [
+      { q: `What are your operating hours?`, a: `We are open during the following hours: ${bizHours}.` },
+      { q: `Where are you located?`, a: `You can find us at ${bizAddress}.` },
+      { q: `How can I contact you?`, a: `Please contact us directly for reservations or general inquiries.` },
+      { q: `Do you offer standard services?`, a: `Yes, we offer a full range of services tailored to your needs. Please visit our services section above.` },
+      { q: `How can I make a booking?`, a: `You can make a booking or inquiry directly through the contact details on our website.` }
+    ];
   }
 
   console.log(`[Step 2] Copy generation complete.`);

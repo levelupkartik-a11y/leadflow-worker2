@@ -128,6 +128,18 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
       }
     }
 
+    // Upload GROQ_API_KEY secret securely
+    if (process.env.GROQ_API_KEY) {
+      console.log(`[Cloudflare] Uploading GROQ_API_KEY secret to Pages project "${projectName}"...`);
+      try {
+        const secretCmd = `echo ${process.env.GROQ_API_KEY} | npx wrangler pages secret put GROQ_API_KEY --project-name "${projectName}"`;
+        execSync(secretCmd, { env: { ...process.env, CI: 'true' }, encoding: 'utf8', stdio: 'pipe' });
+        console.log(`[Cloudflare] Secret GROQ_API_KEY uploaded successfully.`);
+      } catch (secretErr) {
+        console.warn(`[Cloudflare] Non-fatal secret upload warning:`, secretErr.message);
+      }
+    }
+
     const output = execSync(deployCmd, { 
       env: { ...process.env, CI: 'true' }, 
       encoding: 'utf8',
