@@ -119,9 +119,12 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
 
     try {
       execSync(createCmd, { env: { ...process.env, CI: 'true' }, encoding: 'utf8', stdio: 'pipe' });
+      console.log(`[Cloudflare] Created new Pages project "${projectName}".`);
     } catch (e) {
-      if (!e.message.includes('already exists') && !e.stderr?.includes('already exists')) {
-        console.warn('[Cloudflare] Project create warning:', e.message);
+      if (e.message.includes('already exists') || e.stderr?.includes('already exists') || e.stdout?.includes('already exists')) {
+        console.log(`[Cloudflare] Pages project "${projectName}" already exists. Deploying update to it.`);
+      } else {
+        console.warn('[Cloudflare] Project creation returned error/warning:', e.message);
       }
     }
 
@@ -132,9 +135,19 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
     });
     console.log(output);
 
-    // Extract the URL
-    const match = output.match(/https:\/\/[a-zA-Z0-9-]+\.${projectName}\.pages\.dev/);
-    const url = match ? match[0] : `https://${projectName}.pages.dev`;
+    // 6. Extract the correct main project URL from Wrangler output dynamically
+    const match = output.match(/https:\/\/[a-zA-Z0-9.-]+\.pages\.dev/);
+    let url = match ? match[0] : `https://${projectName}.pages.dev`;
+    if (match) {
+      const parsedUrl = new URL(match[0]);
+      const hostnameParts = parsedUrl.hostname.split('.');
+      if (hostnameParts.length > 3) {
+        // Strip the unique hash prefix (e.g., "9e5d5fcc.punjabi-dhaba-c8u.pages.dev" -> "punjabi-dhaba-c8u.pages.dev")
+        hostnameParts.shift();
+      }
+      url = `https://${hostnameParts.join('.')}`;
+    }
+
     console.log(`[Step 6] Deployed successfully to: ${url}`);
     return url;
 
