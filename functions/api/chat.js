@@ -16,6 +16,42 @@ export async function onRequestPost(context) {
       return new Response(null, { headers, status: 204 });
     }
 
+    // 1.5. IP Rate Limiting (Max 20 requests per hour per IP)
+    const ip = request.headers.get('CF-Connecting-IP') || 'anonymous';
+    if (ip !== 'anonymous') {
+      try {
+        const cache = caches.default;
+        // Segment time into 1-hour blocks (3600 seconds)
+        const hourSegment = Math.floor(Date.now() / (3600 * 1000));
+        const cacheKey = `https://rate-limit.local/ip/${ip}/${hourSegment}`;
+        
+        const cachedResponse = await cache.match(cacheKey);
+        let count = 0;
+        if (cachedResponse) {
+          count = parseInt(await cachedResponse.text(), 10) || 0;
+        }
+        
+        if (count >= 20) {
+          return new Response(JSON.stringify({ error: 'Too many requests from this IP. Please try again in an hour or contact the business directly.' }), {
+            status: 429,
+            headers
+          });
+        }
+        
+        // Save updated count back to cache
+        count++;
+        const newResponse = new Response(count.toString(), {
+          headers: {
+            'Cache-Control': 'public, max-age=3600'
+          }
+        });
+        context.waitUntil(cache.put(cacheKey, newResponse));
+      } catch (cacheErr) {
+        console.warn('Rate limiter warning:', cacheErr.message);
+        // Fallback: don't block the user if cache API has temporary issues
+      }
+    }
+
     // 2. Read GROQ_API_KEY from environment secrets
     const apiKey = env.GROQ_API_KEY;
     if (!apiKey) {
