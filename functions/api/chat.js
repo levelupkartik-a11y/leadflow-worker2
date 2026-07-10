@@ -29,6 +29,15 @@ export async function onRequestPost(context) {
     const payload = await request.json();
     const userMessages = payload.messages || [];
 
+    // Enforce server-side limit of 8 custom messages per session to prevent API abuse
+    const userQueryCount = userMessages.filter(m => m.role === 'user').length;
+    if (userQueryCount > 8) {
+      return new Response(JSON.stringify({ error: 'You have reached the limit of 8 custom questions for this session.' }), {
+        status: 429,
+        headers
+      });
+    }
+
     // 4. Construct System Prompt using compiled business facts
     const bizFacts = __BIZ_FACTS__;
     

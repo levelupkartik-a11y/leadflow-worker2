@@ -1087,6 +1087,7 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
 
           const faqs = ${faqsJson};
           const conversation = [];
+          let customQueryCount = 0;
 
           launcher.addEventListener('click', () => {
             const isOpen = drawer.classList.toggle('open');
@@ -1165,6 +1166,13 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
             }
 
             // 2. Fallback to API Worker
+            if (customQueryCount >= 8) {
+              addBubble("You have reached the limit of 8 custom questions for this session. Please call or contact us directly using the details below!", "system-error");
+              input.disabled = true;
+              sendBtn.disabled = true;
+              return;
+            }
+
             console.log('[Chat] Falling back to secure API...');
             const loader = addBubble('Typing...', 'agent');
             
@@ -1182,6 +1190,7 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
                 throw new Error(data.error || 'Server error.');
               }
 
+              customQueryCount++;
               addBubble(data.reply, 'agent');
               conversation.push({ role: 'assistant', content: data.reply });
             } catch (err) {
