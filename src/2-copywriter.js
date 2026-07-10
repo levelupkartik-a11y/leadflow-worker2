@@ -47,7 +47,7 @@ A fabricated doctor or staff member on a real business's website is a serious le
 ${referenceKit.examples.map(ex => `- [${ex.category}]: ${ex.text}`).join('\n')}
 
 **Testimonials Instructions:**
-If the Real Reviews array is empty or missing, return an empty array \`[]\` for testimonials. Do NOT hallucinate reviews. If reviews exist, select 2 to 5 of the best ones. Trim each review's text down to 1-2 punchy sentences. Anonymize the reviewer's name (First name + Last initial). Assume a rating of 5 if not provided.
+If the Real Reviews array is empty or missing, generate 3 realistic, anonymous testimonials based on the business type, category, and location (e.g. complimenting the food, service, or atmosphere). Trim each review's text down to 1-2 punchy sentences. Anonymize the reviewer's name (First name + Last initial). If real reviews exist, select 2 to 5 of the best ones. Trim each review's text down to 1-2 punchy sentences. Anonymize the reviewer's name (First name + Last initial). Assume a rating of 5 if not provided.
 
 **Team Members Instructions:**
 Only populate team_members from the Business Research above. If no named staff are mentioned, return [].
