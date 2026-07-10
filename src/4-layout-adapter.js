@@ -1111,7 +1111,18 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
           }
 
           function getKeywordOverlap(s1, s2) {
-            const clean = s => s.toLowerCase().replace(/[^a-z0-9\\s]/g, '').split(/\\s+/).filter(Boolean);
+            const stopWords = new Set([
+              "i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", "yours", "yourself", "yourselves",
+              "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its", "itself", "they", "them", "their",
+              "theirs", "themselves", "what", "which", "who", "whom", "this", "that", "these", "those", "am", "is", "are",
+              "was", "were", "be", "been", "being", "have", "has", "had", "having", "do", "does", "did", "doing", "a", "an",
+              "the", "and", "but", "if", "or", "because", "as", "until", "while", "of", "at", "by", "for", "with", "about",
+              "against", "between", "into", "through", "during", "before", "after", "above", "below", "to", "from", "up",
+              "down", "in", "out", "on", "off", "over", "under", "again", "further", "then", "once", "here", "there", "when",
+              "where", "why", "how", "all", "any", "both", "each", "few", "more", "most", "other", "some", "such", "no",
+              "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", "t", "can", "will", "just", "should", "now", "get"
+            ]);
+            const clean = s => s.toLowerCase().replace(/[^a-z0-9\\s]/g, '').split(/\\s+/).filter(w => w && !stopWords.has(w));
             const w1 = new Set(clean(s1));
             const w2 = clean(s2);
             let overlap = 0;
@@ -1144,11 +1155,7 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
               }
             });
 
-            // Threshold: at least 2 words or 40% of input words overlap
-            const cleanInput = userMsg.toLowerCase().replace(/[^a-z0-9\\s]/g, '').split(/\\s+/).filter(Boolean);
-            const threshold = Math.max(2, Math.floor(cleanInput.length * 0.4));
-
-            if (bestMatch && maxOverlap >= threshold) {
+            if (bestMatch && maxOverlap >= 1) {
               console.log('[Chat] Local FAQ Match Found: ', bestMatch.q);
               setTimeout(() => {
                 addBubble(bestMatch.a, 'agent');
