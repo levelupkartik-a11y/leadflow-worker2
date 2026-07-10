@@ -3,26 +3,29 @@ const { composioExecute } = require('./utils');
 async function researchBusiness(mapsUrl, rowId, sheetName) {
   console.log(`[Step 1] Researching business using Maps link: ${mapsUrl}`);
   
-  // To ensure a reliable deep search, we fetch the business name from the sheet.
-  // Exception: If the Maps URL contains a specific place ID, we extract the place_id query
-  // directly to avoid name collision searches or generic URL failures.
+  // To ensure a reliable deep search, we fetch the business details from the sheet.
+  // If the business name is generic (e.g. "Restaurant", "Salon"), we combine it with the address to ensure a precise match.
   let query = mapsUrl;
-  const placeIdMatch = mapsUrl && mapsUrl.match(/place_id:([a-zA-Z0-9_-]+)/);
-  
-  if (placeIdMatch) {
-    query = placeIdMatch[0]; // e.g. "place_id:ChIJAUNBXrjtDzkRgk_PQtZnOZU"
-    console.log(`[Step 1] Extracted place_id query: ${query}`);
-  } else if (rowId && sheetName) {
+  if (rowId && sheetName) {
     try {
       const sheetResult = await composioExecute('GOOGLESHEETS_VALUES_GET', {
         spreadsheet_id: '1fWDfzFew_vKfKErtoBzahlyDbG_NMvcZDpXPSDaMJ9k',
-        range: `${sheetName}!A${rowId}:A${rowId}`,
+        range: `${sheetName}!A${rowId}:D${rowId}`,
         value_render_option: 'FORMATTED_VALUE'
       });
       const rows = sheetResult?.data?.values || [];
       if (rows.length > 0 && rows[0][0]) {
-        query = `${rows[0][0]} in ${sheetName}`;
-        console.log(`[Step 1] Extracted business name from sheet for reliable search: ${query}`);
+        const name = rows[0][0].trim();
+        const address = rows[0][3] ? rows[0][3].trim() : '';
+        const genericNames = new Set(['restaurant', 'salon', 'spa', 'shop', 'store', 'hotel', 'dhaba', 'cafe', 'bar', 'gym', 'clinic', 'hospital']);
+        
+        if (genericNames.has(name.toLowerCase()) && address) {
+          query = `${name} ${address}`;
+          console.log(`[Step 1] Generic name detected. Extracted combined query from sheet: ${query}`);
+        } else {
+          query = `${name} in ${sheetName}`;
+          console.log(`[Step 1] Extracted business name from sheet for reliable search: ${query}`);
+        }
       }
     } catch (e) {
       console.warn('Failed to fetch business name from sheet, falling back to URL extraction.', e.message);
