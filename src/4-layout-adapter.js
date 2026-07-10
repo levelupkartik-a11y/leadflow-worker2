@@ -186,9 +186,15 @@ async function adaptLayout(templateId, copyData, buildDir, researchData) {
             testCards.each((i, el) => {
               const t = copyData.testimonials[i];
               if (t) {
-                $(el).find('p').text(`"${t.text}"`);
+                $(el).find('p').first().text(`"${t.text}"`);
                 $(el).find('h4').text(t.reviewer);
-                $(el).find('span').text('Verified Client');
+                $(el).find('h4').siblings('span').text('Verified Client');
+                
+                // Update avatar initials
+                const avatar = $(el).find('.w-10.h-10');
+                if (avatar.length && t.reviewer) {
+                  avatar.text(t.reviewer.trim().charAt(0).toUpperCase());
+                }
               } else {
                 $(el).remove();
               }
@@ -754,10 +760,12 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
             testCardsReal.each((i, el) => {
                const t = copyData.testimonials[i];
                if (t) {
-                  const p = $(el).find('p');
-                  const author = $(el).find('h4, .author');
-                  if (p.length) p.text(`"${t.text}"`);
-                  if (author.length) author.text(t.reviewer);
+                  const quote = $(el).find('p.italic');
+                  const authorName = $(el).find('p.font-semibold, p.font-serif, h4');
+                  const authorRole = $(el).find('p.text-xs, span.role');
+                  if (quote.length) quote.text(`"${t.text}"`);
+                  if (authorName.length) authorName.text(t.reviewer);
+                  if (authorRole.length) authorRole.text('Verified Client');
                } else {
                   $(el).remove();
                }
