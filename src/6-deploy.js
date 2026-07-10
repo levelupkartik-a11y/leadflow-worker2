@@ -14,7 +14,8 @@ function slugify(text) {
     .replace(/[^a-z0-9\s-]/g, '')
     .replace(/\s+/g, '-')
     .replace(/\-\-+/g, '-')
-    .substring(0, 40);
+    .substring(0, 40)
+    .replace(/^-|-$/g, '');
 }
 
 /**
