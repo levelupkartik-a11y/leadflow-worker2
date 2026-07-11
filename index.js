@@ -9,6 +9,38 @@ const { processImages } = require('./src/5-image-pipeline');
 const { deployToCloudflare } = require('./src/6-deploy');
 const { reportBackToSheet } = require('./src/7-report');
 
+/**
+ * Deep-scan every string in the copy object and replace any LLM placeholder
+ * tokens (e.g. "[Insert phone number]") with the real research-data value.
+ * Prevents those tokens from ever making it into the final HTML.
+ */
+function sanitizeCopy(copy, researchData) {
+  const phone   = researchData.phone   || '';
+  const address = researchData.address || '';
+
+  function replacePlaceholders(val) {
+    if (typeof val !== 'string') return val;
+    return val
+      .replace(/\[Insert phone number\]/gi,  phone)
+      .replace(/\[Insert address\]/gi,        address)
+      .replace(/\[Insert email[^\]]*\]/gi,    '')
+      .replace(/\[Insert[^\]]*\]/gi,          '');  // catch-all for any other token
+  }
+
+  function deepSanitize(obj) {
+    if (typeof obj === 'string')  return replacePlaceholders(obj);
+    if (Array.isArray(obj))       return obj.map(deepSanitize);
+    if (obj && typeof obj === 'object') {
+      const out = {};
+      for (const [k, v] of Object.entries(obj)) out[k] = deepSanitize(v);
+      return out;
+    }
+    return obj;
+  }
+
+  return deepSanitize(copy);
+}
+
 async function main() {
   const mapsUrl = process.argv[2];
   const rowId = process.argv[3];
@@ -80,7 +112,8 @@ async function main() {
     const researchData = await researchBusiness(mapsUrl, rowId, sheetName);
 
     // Step 2: Copywriting
-    const copyData = await generateCopy(researchData);
+    let copyData = await generateCopy(researchData);
+    copyData = sanitizeCopy(copyData, researchData);  // strip any [Insert ...] LLM placeholders
 
     // Step 3: Template Selection
     const templateId = await selectTemplate(researchData, copyData);

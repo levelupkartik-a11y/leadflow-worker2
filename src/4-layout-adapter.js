@@ -1322,6 +1322,18 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
         }
       }
 
+      // --- Final safety net: headline must always appear in the body ---
+      // If none of the template-specific h1 selectors matched, the headline
+      // never got written. This catch-all guarantees it always does.
+      if (copyData.headline) {
+        const normalise = s => s.replace(/\s+/g, ' ').toLowerCase().trim();
+        const anchor = normalise(copyData.headline).substring(0, 40);
+        if (anchor.length > 5 && !normalise($('body').text()).includes(anchor)) {
+          console.log('[Layout Adapter] Headline missing from body — injecting via first h1 fallback.');
+          $('h1').first().text(copyData.headline);
+        }
+      }
+
       let finalHtml = $.html();
       if (templateId === 'realestate') {
         const cityReal = researchData.address ? researchData.address.split(',').slice(-2, -1)[0]?.trim() || 'Chandigarh' : 'Chandigarh';
