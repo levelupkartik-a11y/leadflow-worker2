@@ -62,12 +62,12 @@ Output format: {"selected_template": "New folder (5)"}
   let selected = 'New folder (5)'; // Generalist fallback is the default
   if (type.includes('restaurant') || type.includes('cafe') || type.includes('food') || type.includes('bakery') || type.includes('beverage') || type.includes('dhaba') || title.includes('restaurant') || title.includes('dhaba') || title.includes('cafe')) {
     selected = 'New folder (4)';
+  } else if (type.includes('salon') || type.includes('spa') || type.includes('barber') || type.includes('beauty') || type.includes('hair') || title.includes('salon') || title.includes('spa') || title.includes('barber')) {
+    selected = 'beauty and salon';
   } else if (type.includes('clinic') || type.includes('dentist') || type.includes('doctor') || type.includes('health') || type.includes('medical') || type.includes('hospital') || title.includes('clinic') || title.includes('dental') || title.includes('hospital')) {
     selected = 'healthcare-dental';
   } else if (type.includes('real estate') || type.includes('property') || type.includes('builder') || type.includes('reaty') || title.includes('real estate') || title.includes('properties') || title.includes('realty')) {
     selected = 'realestate';
-  } else if (type.includes('salon') || type.includes('spa') || type.includes('barber') || type.includes('beauty') || type.includes('hair') || title.includes('salon') || title.includes('spa') || title.includes('barber')) {
-    selected = 'beauty and salon';
   }
 
   console.log(`[Step 3] Selected template (local fallback) based on type '${type}' and title '${title}': ${selected}`);

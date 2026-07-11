@@ -291,10 +291,11 @@ Output strictly as JSON:
       const localFilename = `assets/img-${Date.now()}-${i}.jpg`;
       const localPath = path.join(buildDir, localFilename);
 
-      const MAX_ATTEMPTS = isUnsplashDirect ? 1 : 3; // Unsplash links never fail, no need for multiple retries
+      const MAX_ATTEMPTS = isUnsplashDirect ? 1 : 3;
       let downloaded = false;
+      let attempt = 1;
 
-      for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+      for (attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
         // On retries, generate a fresh Pollinations URL with a simplified prompt
         if (attempt > 1 && basePrompt) {
           const retryPrompt = `Professional photo of ${researchData.category} representing ${contextText.slice(0, 60)}`;
@@ -304,17 +305,17 @@ Output strictly as JSON:
           await sleep(8000); // extra pause before retry
         }
 
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 60000); // 60s timeout for full download
+
         try {
           console.log(`  Downloading image for slot ${imgId} (attempt ${attempt})...`);
-          const controller = new AbortController();
-          // Generous 45s timeout — Pollinations can take 20–30s on first generation
-          const timeout = setTimeout(() => controller.abort(), 45000);
           const imgRes = await fetch(finalUrl, { signal: controller.signal });
-          clearTimeout(timeout);
-
           if (!imgRes.ok) throw new Error(`HTTP ${imgRes.status}: ${imgRes.statusText}`);
 
           const buffer = Buffer.from(await imgRes.arrayBuffer());
+          clearTimeout(timeout);
+
           // Reject placeholder/error responses that are suspiciously small (<5KB)
           if (buffer.length < 5000) throw new Error(`Response too small (${buffer.length} bytes) — likely an error page`);
 
@@ -325,6 +326,7 @@ Output strictly as JSON:
           console.log(`  ✓ Saved ${localFilename} (${(buffer.length / 1024).toFixed(0)} KB)`);
           break;
         } catch (err) {
+          clearTimeout(timeout);
           console.warn(`  ✗ Attempt ${attempt} failed: ${err.message}`);
         }
       }
@@ -335,18 +337,21 @@ Output strictly as JSON:
         const fallbacksList = CURATED_FALLBACKS[templateId] || CURATED_FALLBACKS['healthcare-dental'];
         const fallbackUrl = fallbacksList[i % fallbacksList.length];
         console.warn(`  All ${MAX_ATTEMPTS} attempts failed. Falling back to curated Unsplash image for slot ${imgId}.`);
+        
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 30000); // 30s fallback timeout
+
         try {
-          const controller = new AbortController();
-          const timeout = setTimeout(() => controller.abort(), 20000);
           const fbRes = await fetch(fallbackUrl, { signal: controller.signal });
-          clearTimeout(timeout);
           if (!fbRes.ok) throw new Error(`Unsplash HTTP ${fbRes.status}`);
           const buffer = Buffer.from(await fbRes.arrayBuffer());
+          clearTimeout(timeout);
           fs.writeFileSync(localPath, buffer);
           img.attr('src', localFilename);
           img.removeAttr('srcset');
           console.log(`  ✓ Curated Unsplash fallback saved for slot ${imgId}`);
         } catch (fbErr) {
+          clearTimeout(timeout);
           // Absolute last resort: omit the image src so the browser shows nothing
           // rather than a broken link icon. The QA step will flag this slot.
           console.error(`  ✗ Unsplash fallback also failed: ${fbErr.message}. Slot ${imgId} will be empty.`);

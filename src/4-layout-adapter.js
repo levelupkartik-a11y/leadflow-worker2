@@ -407,6 +407,13 @@ You are an expert copywriter for ${researchData.title}, a ${researchData.categor
 Write 4 highly relevant, realistic FAQ questions and answers matching this specific business and its service offerings.
 If it is a general medical clinic/hospital, write general medical/clinic FAQs. Do NOT include dental, teeth, aligners, or crowns unless the business category explicitly contains "dental" or "dentist".
 
+**Business contact info for reference (use these EXACTLY if needed, or simply do not mention contact details if not needed):**
+- Phone: ${researchData.phone || 'Contact us via our booking form'}
+- Address: ${researchData.address || ''}
+- Hours: ${researchData.hours || ''}
+
+**CRITICAL RULE:** Do NOT include any placeholders, bracketed instructions, or draft tokens (e.g. "[insert contact number]", "[insert hours]", "[insert address]"). Output only final, clean user-facing copy.
+
 Format the output strictly as a JSON object with a single key "faqs" containing an array of objects:
 {
   "faqs": [
@@ -430,11 +437,21 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
               if (groqRes.ok) {
                 const parsed = JSON.parse(groqJson.choices[0].message.content);
                 const list = parsed.faqs || [];
+                const phone = researchData.phone || '';
+                const address = researchData.address || '';
+                const cleanText = (val) => {
+                  if (typeof val !== 'string') return val;
+                  return val
+                    .replace(/\[insert phone[^\]]*\]/gi, phone)
+                    .replace(/\[insert contact[^\]]*\]/gi, phone)
+                    .replace(/\[insert address[^\]]*\]/gi, address)
+                    .replace(/\[insert[^\]]*\]/gi, '');
+                };
                 faqItems.each((i, el) => {
                   const faq = list[i];
                   if (faq) {
-                    $(el).find('.accordion-header span').text(faq.q);
-                    $(el).find('.accordion-body p').text(faq.a);
+                    $(el).find('.accordion-header span').text(cleanText(faq.q || ''));
+                    $(el).find('.accordion-body p').text(cleanText(faq.a || ''));
                   } else {
                     $(el).remove();
                   }
