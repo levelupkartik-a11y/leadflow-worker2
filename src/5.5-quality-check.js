@@ -204,6 +204,36 @@ async function runQualityCheck(buildDir, researchData, copyData) {
        result.failedReason = `Placeholder token left in HTML: ${brokenTokens[0]}`;
     }
 
+    // E. Icon Link & Ligature Check
+    console.log(`[QA] Checking icon library linkages and ligatures in ${file}...`);
+    const iconSpans = $('.material-symbols-outlined');
+    if (iconSpans.length > 0) {
+      const hasLink = $('head link[href*="Material+Symbols"]').length > 0 || 
+                      $('head link[href*="material-symbols"]').length > 0 ||
+                      $('head link[href*="Material+Icons"]').length > 0;
+      if (!hasLink) {
+        console.error(`[QA] MISSING ICON STYLESHEET: Found ${iconSpans.length} elements with class 'material-symbols-outlined', but no Material Symbols stylesheet is loaded in head.`);
+        result.success = false;
+        result.failedReason = 'Missing Material Symbols stylesheet in head';
+      }
+    }
+
+    const suspectIconWords = new Set(['eco', 'local_dining', 'restaurant', 'menu_book', 'verified', 'delivery_dining', 'handshake', 'location_on', 'schedule']);
+    $('span, i, em, div').each((_, el) => {
+      const text = $(el).text().trim();
+      if (suspectIconWords.has(text) && $(el).children().length === 0) {
+        const hasIconClass = $(el).hasClass('material-symbols-outlined') || 
+                             $(el).hasClass('material-icons') || 
+                             $(el).closest('.material-symbols-outlined').length > 0 ||
+                             $(el).closest('.material-icons').length > 0;
+        if (!hasIconClass) {
+          console.error(`[QA] RAW ICON WORD AS VISIBLE TEXT: Element <${el.tagName}> contains raw icon-ligature text "${text}" without icon class.`);
+          result.success = false;
+          result.failedReason = `Raw icon word visible as text: "${text}"`;
+        }
+      }
+    });
+
     fs.writeFileSync(filePath, $.html(), 'utf8');
   }
 
