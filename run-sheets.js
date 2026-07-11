@@ -7,39 +7,68 @@ const { composioExecute } = require('./src/utils');
 const SPREADSHEET_ID = '1fWDfzFew_vKfKErtoBzahlyDbG_NMvcZDpXPSDaMJ9k';
 const CONCURRENCY_LIMIT = 2; // Safe limit to prevent Groq/Gemini/Cloudflare API exhaustion
 
-// Run a list of commands with a max concurrency limit
-async function runWithConcurrencyLimit(tasks, limit) {
-  const results = [];
+// Run a list of commands with limits checks, allowing active tasks to finish before stopping
+async function runWithLimitChecks(tasks, limit, startTime, maxDurationMs, maxBuilds) {
+  let buildsCount = 0;
   const executing = [];
   
   for (const task of tasks) {
+    // Check limit conditions before starting any new website build task
+    const elapsed = Date.now() - startTime;
+    if (elapsed > maxDurationMs) {
+      console.log(`\n[Limit Check] Time limit reached (${Math.round(elapsed / 60000)} minutes elapsed). Stopping new tasks queue...`);
+      break;
+    }
+    if (buildsCount >= maxBuilds) {
+      console.log(`\n[Limit Check] Batch limit of ${maxBuilds} builds reached. Stopping new tasks queue...`);
+      break;
+    }
+    
+    console.log(`[Runner] Starting Row ${task.row}: ${task.name}...`);
     const p = execPromise(task.command)
       .then((res) => {
         console.log(`[SUCCESS] Sheet: "${task.sheet}", Row ${task.row}: ${task.name}`);
-        return { task, success: true, stdout: res.stdout };
+        return { success: true };
       })
       .catch((err) => {
         console.error(`[FAILED] Sheet: "${task.sheet}", Row ${task.row}: ${task.name} - ${err.message}`);
-        return { task, success: false, error: err };
+        return { success: false };
       });
       
-    results.push(p);
-    const e = p.then(() => executing.splice(executing.indexOf(e), 1));
-    executing.push(e);
+    executing.push(p);
+    buildsCount++;
+    
+    // Remove completed promises from the executing array
+    p.then(() => executing.splice(executing.indexOf(p), 1));
     
     if (executing.length >= limit) {
       await Promise.race(executing);
     }
     
-    // Add an artificial delay between task starts to stagger API bursts
+    // Add artificial delay between task starts to stagger API bursts
     await new Promise(r => setTimeout(r, 5000));
   }
   
-  return Promise.all(results);
+  // Wait for all currently running active tasks to finish completely
+  if (executing.length > 0) {
+    console.log(`[Runner] Waiting for ${executing.length} active builds to finish...`);
+    await Promise.all(executing);
+  }
+  
+  return buildsCount;
 }
 
 async function main() {
   console.log('Starting Batch Sheet Runner...');
+  
+  const startTime = Date.now();
+  const maxBuilds = parseInt(process.env.MAX_BUILDS_PER_DAY || '100', 10);
+  const maxDurationMinutes = parseInt(process.env.MAX_RUN_TIME_MINUTES || '330', 10); // 5.5 hours default to prevent GitHub Action 6-hour force kills
+  const maxDurationMs = maxDurationMinutes * 60 * 1000;
+  
+  console.log(`[Runner] Settings: MAX_BUILDS_PER_DAY=${maxBuilds}, MAX_RUN_TIME_MINUTES=${maxDurationMinutes}`);
+  
+  let totalBuildsCompleted = 0;
   
   try {
     // 1. Fetch all sheet names in the spreadsheet
@@ -55,16 +84,22 @@ async function main() {
     console.log(`[Runner] Found sheets to process: ${targetSheets.join(', ')}`);
     
     for (const sheetName of targetSheets) {
+      const elapsed = Date.now() - startTime;
+      if (elapsed > maxDurationMs) {
+        console.log(`\n[Runner] Time limit reached before starting sheet "${sheetName}". Exiting.`);
+        break;
+      }
+      const remainingBuilds = maxBuilds - totalBuildsCompleted;
+      if (remainingBuilds <= 0) {
+        console.log(`\n[Runner] Global daily build cap of ${maxBuilds} reached before starting sheet "${sheetName}". Exiting.`);
+        break;
+      }
+      
       console.log(`\n========================================`);
       console.log(`PROCESSING SHEET: "${sheetName}"`);
       console.log(`========================================`);
       
       // 2. Fetch rows (cols A to N) to inspect which rows need websites built.
-      // Column A: Business Title
-      // Column D: Maps URL (or Query)
-      // Column I: Scraped website (if present, we skip)
-      // Column K: Created website (for Sheet 1)
-      // Column N: Created website (for Sheet 2+)
       console.log(`[Runner] Fetching row values from "${sheetName}" (Range A2:N150)...`);
       const valRes = await composioExecute('GOOGLESHEETS_VALUES_GET', {
         spreadsheet_id: SPREADSHEET_ID,
@@ -104,7 +139,7 @@ async function main() {
           return;
         }
         
-        // Build maps link query - if it's already a full maps URL, use it; otherwise create a query link
+        // Build maps link query
         let queryUrl = mapsLink;
         if (!mapsLink.startsWith('http')) {
           queryUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsLink)}`;
@@ -123,15 +158,15 @@ async function main() {
         continue;
       }
       
-      console.log(`[Runner] Found ${tasks.length} rows to build in "${sheetName}". Starting batch run...`);
-      const results = await runWithConcurrencyLimit(tasks, CONCURRENCY_LIMIT);
+      console.log(`[Runner] Found ${tasks.length} rows to build in "${sheetName}". Starting run...`);
+      const buildsThisSheet = await runWithLimitChecks(tasks, CONCURRENCY_LIMIT, startTime, maxDurationMs, remainingBuilds);
+      totalBuildsCompleted += buildsThisSheet;
       
-      const successful = results.filter(r => r.success).length;
-      console.log(`\n[Runner] Sheet "${sheetName}" complete! Successfully built ${successful}/${tasks.length} websites.`);
+      console.log(`\n[Runner] Sheet "${sheetName}" complete! Built ${buildsThisSheet} websites in this sheet.`);
     }
     
     console.log('\n========================================');
-    console.log('ALL TARGET SHEETS FULLY PROCESSED! 🎉');
+    console.log(`ALL PROCESSABLE SHEETS FULLY PROCESSED! Built ${totalBuildsCompleted} websites total. 🎉`);
     console.log('========================================');
     
   } catch (err) {
