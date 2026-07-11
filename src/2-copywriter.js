@@ -114,18 +114,32 @@ Produce a JSON object with exactly these keys:
     text = json.choices[0].message.content;
   } catch (err) {
     console.warn(`[Step 2] Groq copywriting failed: ${err.message}. Falling back to Gemini...`);
-    try {
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: prompt,
-        config: {
-          responseMimeType: 'application/json'
+    let retries = 5;
+    let success = false;
+    while (retries > 0 && !success) {
+      try {
+        const response = await ai.models.generateContent({
+          model: 'gemini-2.5-flash',
+          contents: prompt,
+          config: {
+            responseMimeType: 'application/json'
+          }
+        });
+        text = response.text;
+        success = true;
+      } catch (geminiErr) {
+        if (geminiErr.status === 429 || geminiErr.message.includes('429') || geminiErr.message.includes('quota') || geminiErr.message.includes('exhausted')) {
+          console.log(`[Step 2] Gemini copywriting rate limited, sleeping 20s (retries left: ${retries - 1})...`);
+          await new Promise(r => setTimeout(r, 20000));
+          retries--;
+        } else {
+          console.error(`[Step 2] Gemini copywriting failed with non-rate-limit error:`, geminiErr.message);
+          throw geminiErr;
         }
-      });
-      text = response.text;
-    } catch (geminiErr) {
-      console.error(`[Step 2] Gemini copywriting fallback failed too:`, geminiErr.message);
-      throw geminiErr;
+      }
+    }
+    if (!success) {
+      throw new Error('Gemini copywriting failed permanently due to persistent rate limiting.');
     }
   }
 

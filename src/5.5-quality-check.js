@@ -30,7 +30,7 @@ Respond strictly in JSON:
 }
 `;
 
-  let retries = 3;
+  let retries = 6;
   while (retries > 0) {
     try {
       const response = await ai.models.generateContent({
@@ -47,9 +47,9 @@ Respond strictly in JSON:
       const text = response.text.replace(/```json|```/g, '').trim();
       return JSON.parse(text);
     } catch (e) {
-      if (e.status === 429) {
-        console.log(`[QA] Rate limit on Vision check, sleeping 15s...`);
-        await sleep(15000);
+      if (e.status === 429 || e.message?.includes('429') || e.message?.includes('quota') || e.message?.includes('exhausted')) {
+        console.log(`[QA] Rate limit on Vision check, sleeping 20s (retries left: ${retries - 1})...`);
+        await sleep(20000);
         retries--;
       } else {
         console.warn(`[QA] Vision check failed with non-429 error:`, e.message);
