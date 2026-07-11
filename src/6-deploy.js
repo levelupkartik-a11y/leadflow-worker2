@@ -102,8 +102,12 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
       } catch (e) {}
 
       if (!repoExists) {
-        console.log(`[GitHub] Creating central repository "${owner}/${pitchesRepoName}"...`);
-        execSync(`"${ghPath}" repo create "${pitchesRepoName}" --private`, { env: envWithGit, stdio: 'pipe' });
+        try {
+          console.log(`[GitHub] Creating central repository "${owner}/${pitchesRepoName}"...`);
+          execSync(`"${ghPath}" repo create "${pitchesRepoName}" --private`, { env: envWithGit, stdio: 'pipe' });
+        } catch (createErr) {
+          console.log('[GitHub] Central repository creation warning (it may already exist):', createErr.message);
+        }
       }
     }
 

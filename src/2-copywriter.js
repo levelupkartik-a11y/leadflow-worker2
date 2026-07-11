@@ -94,23 +94,41 @@ Produce a JSON object with exactly these keys:
 }
 `;
 
-  const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      model: 'llama-3.1-8b-instant',
-      messages: [{ role: 'user', content: prompt }],
-      response_format: { type: 'json_object' }
-    })
-  });
+  let text = '';
+  try {
+    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'llama-3.1-8b-instant',
+        messages: [{ role: 'user', content: prompt }],
+        response_format: { type: 'json_object' }
+      })
+    });
 
-  const json = await res.json();
-  if (!res.ok) throw new Error(`Groq error: ${JSON.stringify(json)}`);
-  
-  const text = json.choices[0].message.content;
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.error?.message || JSON.stringify(json));
+    text = json.choices[0].message.content;
+  } catch (err) {
+    console.warn(`[Step 2] Groq copywriting failed: ${err.message}. Falling back to Gemini...`);
+    try {
+      const response = await ai.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: prompt,
+        config: {
+          responseMimeType: 'application/json'
+        }
+      });
+      text = response.text;
+    } catch (geminiErr) {
+      console.error(`[Step 2] Gemini copywriting fallback failed too:`, geminiErr.message);
+      throw geminiErr;
+    }
+  }
+
   const copy = JSON.parse(text);
 
   // Programmatic fallback for testimonials if they are missing or empty
