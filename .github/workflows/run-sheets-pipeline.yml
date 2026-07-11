@@ -30,6 +30,6 @@ jobs:
           COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
           MAX_RUN_TIME_MINUTES: 240 # 4 hours per run, ensuring a total of 8 hours of daily execution
-          MAX_BUILDS_PER_DAY: 100   # Limits maximum number of websites compiled and deployed per day to 100
+          MAX_BUILDS_PER_DAY: 5     # Limits maximum number of websites compiled and deployed per run
         run: |
           node run-sheets.js
