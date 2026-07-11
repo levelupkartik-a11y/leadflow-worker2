@@ -87,39 +87,17 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
     } catch (e) {}
   }
 
-  const pitchesRepoName = 'leadflow-pitches';
+  const pitchesRepoName = 'leadflow-worker2';
   const pitchesProjectName = 'leadflow-pitches';
   const tempCloneDir = path.join(path.dirname(buildDir), `.clone-pitches-${Date.now()}`);
 
   try {
     const envWithGit = { ...process.env, GITHUB_TOKEN: token };
-    let repoExists = false;
-    
-    if (token && owner) {
-      try {
-        execSync(`"${ghPath}" repo view "${owner}/${pitchesRepoName}"`, { env: envWithGit, stdio: 'ignore' });
-        repoExists = true;
-      } catch (e) {}
 
-      if (!repoExists) {
-        try {
-          console.log(`[GitHub] Creating central repository "${owner}/${pitchesRepoName}"...`);
-          execSync(`"${ghPath}" repo create "${pitchesRepoName}" --private`, { env: envWithGit, stdio: 'pipe' });
-        } catch (createErr) {
-          console.log('[GitHub] Central repository creation warning (it may already exist):', createErr.message);
-        }
-      }
-    }
-
-    // 3. Clone the repo (or initialize it locally if no token/owner)
-    console.log('[GitHub] Cloning central pitches repository...');
-    if (token && owner) {
-      const cloneUrl = `https://oauth2:${token}@github.com/${owner}/${pitchesRepoName}.git`;
-      execSync(`git clone "${cloneUrl}" "${tempCloneDir}"`, { stdio: 'pipe' });
-    } else {
-      fs.mkdirSync(tempCloneDir, { recursive: true });
-      execSync('git init', { cwd: tempCloneDir, stdio: 'ignore' });
-    }
+    // 3. Clone the repo (self-cloning leadflow-worker2)
+    console.log('[GitHub] Cloning central worker repository to store pitches...');
+    const cloneUrl = `https://oauth2:${token}@github.com/${owner}/${pitchesRepoName}.git`;
+    execSync(`git clone "${cloneUrl}" "${tempCloneDir}"`, { stdio: 'pipe' });
 
     // Ensure we have a main branch in the clone
     try {
@@ -136,8 +114,14 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
       execSync('git config user.email "worker@leadflow.agency"', { cwd: tempCloneDir, stdio: 'ignore' });
     } catch (e) {}
 
-    // 4. Copy build folder contents into a subdirectory in the cloned repo
-    const destDir = path.join(tempCloneDir, projectName);
+    // Ensure pitches folder exists inside the cloned repo
+    const pitchesDir = path.join(tempCloneDir, 'pitches');
+    if (!fs.existsSync(pitchesDir)) {
+      fs.mkdirSync(pitchesDir, { recursive: true });
+    }
+
+    // 4. Copy build folder contents into a subdirectory in pitches/
+    const destDir = path.join(pitchesDir, projectName);
     if (fs.existsSync(destDir)) {
       fs.rmSync(destDir, { recursive: true, force: true });
     }
@@ -149,9 +133,9 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
       filter: (src) => !src.includes('functions')
     });
 
-    // Also copy functions folder to root of clone so serverless chat is deployed
+    // Also copy functions folder to pitches/functions so serverless chat is deployed at root level
     const functionsSrc = path.join(buildDir, 'functions');
-    const functionsDest = path.join(tempCloneDir, 'functions');
+    const functionsDest = path.join(pitchesDir, 'functions');
     if (fs.existsSync(functionsSrc)) {
       if (fs.existsSync(functionsDest)) {
         fs.rmSync(functionsDest, { recursive: true, force: true });
@@ -160,21 +144,19 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
     }
 
     // 5. Commit and push back to GitHub
-    console.log('[GitHub] Committing and pushing new pitch subdirectory...');
+    console.log('[GitHub] Committing and pushing new pitch to pitches/ directory...');
     execSync('git add .', { cwd: tempCloneDir, stdio: 'ignore' });
     try {
       execSync(`git commit -m "Add pitch: ${projectName}"`, { cwd: tempCloneDir, stdio: 'ignore' });
-      if (token && owner) {
-        execSync('git push -u origin main --force', { cwd: tempCloneDir, env: envWithGit, stdio: 'pipe' });
-      }
+      execSync('git push origin main', { cwd: tempCloneDir, env: envWithGit, stdio: 'pipe' });
     } catch (commitErr) {
       console.log('[GitHub] No changes to commit or push.');
     }
 
-    // 6. Deploy the entire folder to Cloudflare Pages (single project "leadflow-pitches")
-    console.log('[Cloudflare] Deploying entire pitches repository to Cloudflare Pages...');
+    // 6. Deploy the pitches folder to Cloudflare Pages (single project "leadflow-pitches")
+    console.log('[Cloudflare] Deploying pitches folder to Cloudflare Pages...');
     const createCmd = `npx wrangler pages project create "${pitchesProjectName}" --production-branch main`;
-    const deployCmd = `npx wrangler pages deploy . --project-name "${pitchesProjectName}" --branch main --commit-dirty=true`;
+    const deployCmd = `npx wrangler pages deploy pitches --project-name "${pitchesProjectName}" --branch main --commit-dirty=true`;
 
     try {
       execSync(createCmd, { env: { ...process.env, CI: 'true' }, encoding: 'utf8', stdio: 'pipe' });
