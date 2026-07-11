@@ -5,7 +5,7 @@ async function composioExecute(actionSlug, args = {}) {
   const url = `https://backend.composio.dev/api/v3.1/tools/execute/${actionSlug}`;
   
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 45000); // 45s timeout
+  const timeoutId = setTimeout(() => controller.abort(), 45000); // 45s timeout covers fetch + body read
 
   try {
     const res = await fetch(url, {
@@ -15,9 +15,10 @@ async function composioExecute(actionSlug, args = {}) {
       signal: controller.signal,
     });
     
-    clearTimeout(timeoutId);
-    
+    // NOTE: Do NOT clear the timeout here - keep it active to cover res.json() body streaming too
     const json = await res.json();
+    clearTimeout(timeoutId); // Only clear AFTER full body is read
+    
     if (!res.ok) throw new Error(`HTTP ${res.status} on ${actionSlug}: ${JSON.stringify(json)}`);
     return json;
   } catch (err) {
