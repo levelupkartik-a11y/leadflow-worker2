@@ -62,13 +62,35 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
   const projectName = await getDeterministicProjectName(businessName, rowId, sheetName);
   console.log(`[Step 6] Target project name: ${projectName}`);
 
-  const ghPath = 'C:\\Program Files\\GitHub CLI\\gh.exe';
+  let ghPath = 'gh';
+  if (process.platform === 'win32') {
+    try {
+      execSync('where gh', { stdio: 'ignore' });
+    } catch (e) {
+      ghPath = 'C:\\Program Files\\GitHub CLI\\gh.exe';
+    }
+  }
 
   try {
     // 1. Get authenticated GitHub owner and token
-    console.log('[GitHub] Fetching credentials via GitHub CLI...');
-    const owner = execSync(`"${ghPath}" api user --jq .login`, { encoding: 'utf8' }).trim();
-    const token = execSync(`"${ghPath}" auth token`, { encoding: 'utf8' }).trim();
+    console.log('[GitHub] Fetching credentials...');
+    let token = process.env.GITHUB_TOKEN || '';
+    if (!token) {
+      try {
+        token = execSync(`"${ghPath}" auth token`, { encoding: 'utf8' }).trim();
+      } catch (e) {
+        throw new Error('GitHub token not found. Please log in via GitHub CLI or set GITHUB_TOKEN.');
+      }
+    }
+
+    const envWithGit = { ...process.env, GITHUB_TOKEN: token };
+
+    let owner;
+    try {
+      owner = execSync(`"${ghPath}" api user --jq .login`, { env: envWithGit, encoding: 'utf8' }).trim();
+    } catch (e) {
+      throw new Error(`Failed to fetch GitHub user login: ${e.message}`);
+    }
     
     // 2. Initialize local Git repository inside build folder
     console.log('[GitHub] Initializing Git repository...');
@@ -85,7 +107,7 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
     // 3. Create or verify remote GitHub repository
     let repoExists = false;
     try {
-      execSync(`"${ghPath}" repo view "${owner}/${projectName}"`, { stdio: 'ignore' });
+      execSync(`"${ghPath}" repo view "${owner}/${projectName}"`, { env: envWithGit, stdio: 'ignore' });
       repoExists = true;
       console.log(`[GitHub] Repository "${owner}/${projectName}" already exists.`);
     } catch (e) {
@@ -94,7 +116,7 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
 
     if (!repoExists) {
       console.log(`[GitHub] Creating private repository "${owner}/${projectName}"...`);
-      execSync(`"${ghPath}" repo create "${projectName}" --private`, { stdio: 'pipe' });
+      execSync(`"${ghPath}" repo create "${projectName}" --private`, { env: envWithGit, stdio: 'pipe' });
     }
 
     // 4. Force push to main branch
@@ -110,7 +132,7 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
     } catch (branchErr) {
       // Branch might already exist
     }
-    execSync('git push -u origin main --force', { cwd: buildDir, stdio: 'pipe' });
+    execSync('git push -u origin main --force', { cwd: buildDir, env: envWithGit, stdio: 'pipe' });
     console.log(`[GitHub] Successfully pushed to https://github.com/${owner}/${projectName}`);
 
     // 5. Cloudflare Pages Project Creation & Deploy
