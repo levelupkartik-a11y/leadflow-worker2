@@ -75,65 +75,76 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
     // 1. Get authenticated GitHub owner and token
     console.log('[GitHub] Fetching credentials...');
     let token = process.env.GITHUB_TOKEN || '';
+    let owner = process.env.GITHUB_REPOSITORY_OWNER || '';
+
     if (!token) {
       try {
         token = execSync(`"${ghPath}" auth token`, { encoding: 'utf8' }).trim();
       } catch (e) {
-        throw new Error('GitHub token not found. Please log in via GitHub CLI or set GITHUB_TOKEN.');
+        console.warn('[GitHub] GITHUB_TOKEN not found in environment and CLI query failed.');
       }
     }
 
     const envWithGit = { ...process.env, GITHUB_TOKEN: token };
 
-    let owner;
-    try {
-      owner = execSync(`"${ghPath}" api user --jq .login`, { env: envWithGit, encoding: 'utf8' }).trim();
-    } catch (e) {
-      throw new Error(`Failed to fetch GitHub user login: ${e.message}`);
-    }
-    
-    // 2. Initialize local Git repository inside build folder
-    console.log('[GitHub] Initializing Git repository...');
-    try {
-      execSync('git init', { cwd: buildDir, stdio: 'ignore' });
-      execSync('git config user.name "LeadFlow Worker"', { cwd: buildDir, stdio: 'ignore' });
-      execSync('git config user.email "worker@leadflow.agency"', { cwd: buildDir, stdio: 'ignore' });
-      execSync('git add .', { cwd: buildDir, stdio: 'ignore' });
-      execSync('git commit -m "LeadFlow Build Deploy"', { cwd: buildDir, stdio: 'ignore' });
-    } catch (gitErr) {
-      console.warn('[GitHub] Non-fatal Git init/commit warning:', gitErr.message);
+    if (token && !owner) {
+      try {
+        owner = execSync(`"${ghPath}" api user --jq .login`, { env: envWithGit, encoding: 'utf8' }).trim();
+      } catch (e) {
+        console.warn('[GitHub] Failed to resolve owner via CLI api user:', e.message);
+      }
     }
 
-    // 3. Create or verify remote GitHub repository
-    let repoExists = false;
-    try {
-      execSync(`"${ghPath}" repo view "${owner}/${projectName}"`, { env: envWithGit, stdio: 'ignore' });
-      repoExists = true;
-      console.log(`[GitHub] Repository "${owner}/${projectName}" already exists.`);
-    } catch (e) {
-      // Repository doesn't exist
-    }
+    if (token && owner) {
+      try {
+        // 2. Initialize local Git repository inside build folder
+        console.log('[GitHub] Initializing Git repository...');
+        try {
+          execSync('git init', { cwd: buildDir, stdio: 'ignore' });
+          execSync('git config user.name "LeadFlow Worker"', { cwd: buildDir, stdio: 'ignore' });
+          execSync('git config user.email "worker@leadflow.agency"', { cwd: buildDir, stdio: 'ignore' });
+          execSync('git add .', { cwd: buildDir, stdio: 'ignore' });
+          execSync('git commit -m "LeadFlow Build Deploy"', { cwd: buildDir, stdio: 'ignore' });
+        } catch (gitErr) {
+          console.warn('[GitHub] Non-fatal Git init/commit warning:', gitErr.message);
+        }
 
-    if (!repoExists) {
-      console.log(`[GitHub] Creating private repository "${owner}/${projectName}"...`);
-      execSync(`"${ghPath}" repo create "${projectName}" --private`, { env: envWithGit, stdio: 'pipe' });
-    }
+        // 3. Create or verify remote GitHub repository
+        let repoExists = false;
+        try {
+          execSync(`"${ghPath}" repo view "${owner}/${projectName}"`, { env: envWithGit, stdio: 'ignore' });
+          repoExists = true;
+          console.log(`[GitHub] Repository "${owner}/${projectName}" already exists.`);
+        } catch (e) {
+          // Repository doesn't exist
+        }
 
-    // 4. Force push to main branch
-    console.log('[GitHub] Pushing build artifacts to GitHub main branch...');
-    const remoteUrl = `https://oauth2:${token}@github.com/${owner}/${projectName}.git`;
-    try {
-      execSync(`git remote add origin "${remoteUrl}"`, { cwd: buildDir, stdio: 'ignore' });
-    } catch (remoteErr) {
-      // Remote might already exist if re-running
+        if (!repoExists) {
+          console.log(`[GitHub] Creating private repository "${owner}/${projectName}"...`);
+          execSync(`"${ghPath}" repo create "${projectName}" --private`, { env: envWithGit, stdio: 'pipe' });
+        }
+
+        // 4. Force push to main branch
+        console.log('[GitHub] Pushing build artifacts to GitHub main branch...');
+        const remoteUrl = `https://oauth2:${token}@github.com/${owner}/${projectName}.git`;
+        try {
+          execSync(`git remote add origin "${remoteUrl}"`, { cwd: buildDir, stdio: 'ignore' });
+        } catch (remoteErr) {
+          // Remote might already exist if re-running
+        }
+        try {
+          execSync('git checkout -b main', { cwd: buildDir, stdio: 'ignore' });
+        } catch (branchErr) {
+          // Branch might already exist
+        }
+        execSync('git push -u origin main --force', { cwd: buildDir, env: envWithGit, stdio: 'pipe' });
+        console.log(`[GitHub] Successfully pushed to https://github.com/${owner}/${projectName}`);
+      } catch (ghErr) {
+        console.error('[GitHub] GitHub repository creation or push failed. Skipping Git backup and proceeding directly to Cloudflare Pages deployment. Error:', ghErr.message);
+      }
+    } else {
+      console.log('[GitHub] Skipping GitHub repository creation (missing auth token or owner). Deploying directly to Cloudflare.');
     }
-    try {
-      execSync('git checkout -b main', { cwd: buildDir, stdio: 'ignore' });
-    } catch (branchErr) {
-      // Branch might already exist
-    }
-    execSync('git push -u origin main --force', { cwd: buildDir, env: envWithGit, stdio: 'pipe' });
-    console.log(`[GitHub] Successfully pushed to https://github.com/${owner}/${projectName}`);
 
     // 5. Cloudflare Pages Project Creation & Deploy
     console.log('[Cloudflare] Deploying to Cloudflare Pages...');
