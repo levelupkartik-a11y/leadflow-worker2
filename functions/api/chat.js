@@ -74,8 +74,8 @@ export async function onRequestPost(context) {
       });
     }
 
-    // 4. Construct System Prompt using compiled business facts
-    const bizFacts = __BIZ_FACTS__;
+    // 4. Construct System Prompt using compiled or payload-provided business facts
+    const bizFacts = payload.facts || __BIZ_FACTS__;
     
     const systemPrompt = {
       role: 'system',

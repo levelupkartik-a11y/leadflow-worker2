@@ -908,6 +908,15 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
       console.log('[Layout Adapter] Injecting AI Host Chatbot widget into page...');
       
       const faqsJson = JSON.stringify(copyData.faqs || []);
+      const factsJson = JSON.stringify({
+        name: researchData.title,
+        category: researchData.category,
+        description: researchData.description,
+        address: researchData.address,
+        phone: researchData.phone,
+        hours: researchData.hours,
+        services: copyData.services || []
+      });
       const bizName = researchData.title || 'us';
 
       const chatbotHtml = `
@@ -1157,6 +1166,7 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
           const suggestions = document.getElementById('host-suggestions');
 
           const faqs = ${faqsJson};
+          const facts = ${factsJson};
           const conversation = [];
           let customQueryCount = 0;
 
@@ -1251,7 +1261,10 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
               const res = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ messages: conversation.slice(-8) }) // Max 8 context length
+                body: JSON.stringify({ 
+                  messages: conversation.slice(-8),
+                  facts: facts
+                })
               });
               
               const data = await res.json();

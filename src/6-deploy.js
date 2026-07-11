@@ -57,10 +57,10 @@ async function getDeterministicProjectName(businessName, rowId, sheetName) {
 }
 
 async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
-  console.log('[Step 6] Running Deployment Pipeline...');
+  console.log('[Step 6] Running Deployment Pipeline (Consolidated Subdirectory Mode)...');
 
   const projectName = await getDeterministicProjectName(businessName, rowId, sheetName);
-  console.log(`[Step 6] Target project name: ${projectName}`);
+  console.log(`[Step 6] Target project name (subdirectory): ${projectName}`);
 
   let ghPath = 'gh';
   if (process.platform === 'win32') {
@@ -71,137 +71,151 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
     }
   }
 
+  // 1. Fetch credentials
+  let token = process.env.GITHUB_TOKEN || '';
+  let owner = process.env.GITHUB_REPOSITORY_OWNER || '';
+
+  if (!token) {
+    try {
+      token = execSync(`"${ghPath}" auth token`, { encoding: 'utf8' }).trim();
+    } catch (e) {}
+  }
+  if (!owner && token) {
+    try {
+      const envWithGit = { ...process.env, GITHUB_TOKEN: token };
+      owner = execSync(`"${ghPath}" api user --jq .login`, { env: envWithGit, encoding: 'utf8' }).trim();
+    } catch (e) {}
+  }
+
+  const pitchesRepoName = 'leadflow-pitches';
+  const pitchesProjectName = 'leadflow-pitches';
+  const tempCloneDir = path.join(path.dirname(buildDir), `.clone-pitches-${Date.now()}`);
+
   try {
-    // 1. Get authenticated GitHub owner and token
-    console.log('[GitHub] Fetching credentials...');
-    let token = process.env.GITHUB_TOKEN || '';
-    let owner = process.env.GITHUB_REPOSITORY_OWNER || '';
-
-    if (!token) {
-      try {
-        token = execSync(`"${ghPath}" auth token`, { encoding: 'utf8' }).trim();
-      } catch (e) {
-        console.warn('[GitHub] GITHUB_TOKEN not found in environment and CLI query failed.');
-      }
-    }
-
     const envWithGit = { ...process.env, GITHUB_TOKEN: token };
-
-    if (token && !owner) {
-      try {
-        owner = execSync(`"${ghPath}" api user --jq .login`, { env: envWithGit, encoding: 'utf8' }).trim();
-      } catch (e) {
-        console.warn('[GitHub] Failed to resolve owner via CLI api user:', e.message);
-      }
-    }
-
+    let repoExists = false;
+    
     if (token && owner) {
       try {
-        // 2. Initialize local Git repository inside build folder
-        console.log('[GitHub] Initializing Git repository...');
-        try {
-          execSync('git init', { cwd: buildDir, stdio: 'ignore' });
-          execSync('git config user.name "LeadFlow Worker"', { cwd: buildDir, stdio: 'ignore' });
-          execSync('git config user.email "worker@leadflow.agency"', { cwd: buildDir, stdio: 'ignore' });
-          execSync('git add .', { cwd: buildDir, stdio: 'ignore' });
-          execSync('git commit -m "LeadFlow Build Deploy"', { cwd: buildDir, stdio: 'ignore' });
-        } catch (gitErr) {
-          console.warn('[GitHub] Non-fatal Git init/commit warning:', gitErr.message);
-        }
+        execSync(`"${ghPath}" repo view "${owner}/${pitchesRepoName}"`, { env: envWithGit, stdio: 'ignore' });
+        repoExists = true;
+      } catch (e) {}
 
-        // 3. Create or verify remote GitHub repository
-        let repoExists = false;
-        try {
-          execSync(`"${ghPath}" repo view "${owner}/${projectName}"`, { env: envWithGit, stdio: 'ignore' });
-          repoExists = true;
-          console.log(`[GitHub] Repository "${owner}/${projectName}" already exists.`);
-        } catch (e) {
-          // Repository doesn't exist
-        }
-
-        if (!repoExists) {
-          console.log(`[GitHub] Creating private repository "${owner}/${projectName}"...`);
-          execSync(`"${ghPath}" repo create "${projectName}" --private`, { env: envWithGit, stdio: 'pipe' });
-        }
-
-        // 4. Force push to main branch
-        console.log('[GitHub] Pushing build artifacts to GitHub main branch...');
-        const remoteUrl = `https://oauth2:${token}@github.com/${owner}/${projectName}.git`;
-        try {
-          execSync(`git remote add origin "${remoteUrl}"`, { cwd: buildDir, stdio: 'ignore' });
-        } catch (remoteErr) {
-          // Remote might already exist if re-running
-        }
-        try {
-          execSync('git checkout -b main', { cwd: buildDir, stdio: 'ignore' });
-        } catch (branchErr) {
-          // Branch might already exist
-        }
-        execSync('git push -u origin main --force', { cwd: buildDir, env: envWithGit, stdio: 'pipe' });
-        console.log(`[GitHub] Successfully pushed to https://github.com/${owner}/${projectName}`);
-      } catch (ghErr) {
-        console.error('[GitHub] GitHub repository creation or push failed. Skipping Git backup and proceeding directly to Cloudflare Pages deployment. Error:', ghErr.message);
+      if (!repoExists) {
+        console.log(`[GitHub] Creating central repository "${owner}/${pitchesRepoName}"...`);
+        execSync(`"${ghPath}" repo create "${pitchesRepoName}" --private`, { env: envWithGit, stdio: 'pipe' });
       }
-    } else {
-      console.log('[GitHub] Skipping GitHub repository creation (missing auth token or owner). Deploying directly to Cloudflare.');
     }
 
-    // 5. Cloudflare Pages Project Creation & Deploy
-    console.log('[Cloudflare] Deploying to Cloudflare Pages...');
-    const createCmd = `npx wrangler pages project create "${projectName}" --production-branch main`;
-    const deployCmd = `npx wrangler pages deploy . --project-name "${projectName}" --branch main --commit-dirty=true`;
+    // 3. Clone the repo (or initialize it locally if no token/owner)
+    console.log('[GitHub] Cloning central pitches repository...');
+    if (token && owner) {
+      const cloneUrl = `https://oauth2:${token}@github.com/${owner}/${pitchesRepoName}.git`;
+      execSync(`git clone "${cloneUrl}" "${tempCloneDir}"`, { stdio: 'pipe' });
+    } else {
+      fs.mkdirSync(tempCloneDir, { recursive: true });
+      execSync('git init', { cwd: tempCloneDir, stdio: 'ignore' });
+    }
+
+    // Ensure we have a main branch in the clone
+    try {
+      execSync('git checkout main', { cwd: tempCloneDir, stdio: 'ignore' });
+    } catch (e) {
+      try {
+        execSync('git checkout -b main', { cwd: tempCloneDir, stdio: 'ignore' });
+      } catch (e) {}
+    }
+
+    // Configure Git
+    try {
+      execSync('git config user.name "LeadFlow Worker"', { cwd: tempCloneDir, stdio: 'ignore' });
+      execSync('git config user.email "worker@leadflow.agency"', { cwd: tempCloneDir, stdio: 'ignore' });
+    } catch (e) {}
+
+    // 4. Copy build folder contents into a subdirectory in the cloned repo
+    const destDir = path.join(tempCloneDir, projectName);
+    if (fs.existsSync(destDir)) {
+      fs.rmSync(destDir, { recursive: true, force: true });
+    }
+    fs.mkdirSync(destDir, { recursive: true });
+    
+    // Copy all files except functions folder into the subdirectory
+    fs.cpSync(buildDir, destDir, { 
+      recursive: true,
+      filter: (src) => !src.includes('functions')
+    });
+
+    // Also copy functions folder to root of clone so serverless chat is deployed
+    const functionsSrc = path.join(buildDir, 'functions');
+    const functionsDest = path.join(tempCloneDir, 'functions');
+    if (fs.existsSync(functionsSrc)) {
+      if (fs.existsSync(functionsDest)) {
+        fs.rmSync(functionsDest, { recursive: true, force: true });
+      }
+      fs.cpSync(functionsSrc, functionsDest, { recursive: true });
+    }
+
+    // 5. Commit and push back to GitHub
+    console.log('[GitHub] Committing and pushing new pitch subdirectory...');
+    execSync('git add .', { cwd: tempCloneDir, stdio: 'ignore' });
+    try {
+      execSync(`git commit -m "Add pitch: ${projectName}"`, { cwd: tempCloneDir, stdio: 'ignore' });
+      if (token && owner) {
+        execSync('git push -u origin main --force', { cwd: tempCloneDir, env: envWithGit, stdio: 'pipe' });
+      }
+    } catch (commitErr) {
+      console.log('[GitHub] No changes to commit or push.');
+    }
+
+    // 6. Deploy the entire folder to Cloudflare Pages (single project "leadflow-pitches")
+    console.log('[Cloudflare] Deploying entire pitches repository to Cloudflare Pages...');
+    const createCmd = `npx wrangler pages project create "${pitchesProjectName}" --production-branch main`;
+    const deployCmd = `npx wrangler pages deploy . --project-name "${pitchesProjectName}" --branch main --commit-dirty=true`;
 
     try {
       execSync(createCmd, { env: { ...process.env, CI: 'true' }, encoding: 'utf8', stdio: 'pipe' });
-      console.log(`[Cloudflare] Created new Pages project "${projectName}".`);
+      console.log(`[Cloudflare] Created central Pages project "${pitchesProjectName}".`);
     } catch (e) {
       if (e.message.includes('already exists') || e.stderr?.includes('already exists') || e.stdout?.includes('already exists')) {
-        console.log(`[Cloudflare] Pages project "${projectName}" already exists. Deploying update to it.`);
+        console.log(`[Cloudflare] Central Pages project "${pitchesProjectName}" already exists.`);
       } else {
-        console.warn('[Cloudflare] Project creation returned error/warning:', e.message);
+        console.warn('[Cloudflare] Project creation returned warning:', e.message);
       }
     }
 
     // Upload GROQ_API_KEY secret securely
     if (process.env.GROQ_API_KEY) {
-      console.log(`[Cloudflare] Uploading GROQ_API_KEY secret to Pages project "${projectName}"...`);
+      console.log(`[Cloudflare] Uploading GROQ_API_KEY secret to Pages project "${pitchesProjectName}"...`);
       try {
-        const secretCmd = `echo ${process.env.GROQ_API_KEY} | npx wrangler pages secret put GROQ_API_KEY --project-name "${projectName}"`;
+        const secretCmd = `echo ${process.env.GROQ_API_KEY} | npx wrangler pages secret put GROQ_API_KEY --project-name "${pitchesProjectName}"`;
         execSync(secretCmd, { env: { ...process.env, CI: 'true' }, encoding: 'utf8', stdio: 'pipe' });
-        console.log(`[Cloudflare] Secret GROQ_API_KEY uploaded successfully.`);
       } catch (secretErr) {
         console.warn(`[Cloudflare] Non-fatal secret upload warning:`, secretErr.message);
       }
     }
 
     const output = execSync(deployCmd, { 
-      cwd: buildDir,
+      cwd: tempCloneDir,
       env: { ...process.env, CI: 'true' }, 
       encoding: 'utf8',
       stdio: 'pipe'
     });
     console.log(output);
 
-    // 6. Extract the correct main project URL from Wrangler output dynamically
-    const match = output.match(/https:\/\/[a-zA-Z0-9.-]+\.pages\.dev/);
-    let url = match ? match[0] : `https://${projectName}.pages.dev`;
-    if (match) {
-      const parsedUrl = new URL(match[0]);
-      const hostnameParts = parsedUrl.hostname.split('.');
-      if (hostnameParts.length > 3) {
-        // Strip the unique hash prefix (e.g., "9e5d5fcc.punjabi-dhaba-c8u.pages.dev" -> "punjabi-dhaba-c8u.pages.dev")
-        hostnameParts.shift();
-      }
-      url = `https://${hostnameParts.join('.')}`;
-    }
+    // Clean up clone dir
+    try {
+      fs.rmSync(tempCloneDir, { recursive: true, force: true });
+    } catch (e) {}
 
-    console.log(`[Step 6] Deployed successfully to: ${url}`);
-    return url;
+    const liveUrl = `https://${pitchesProjectName}.pages.dev/${projectName}`;
+    console.log(`[Step 6] Deployed successfully to: ${liveUrl}`);
+    return liveUrl;
 
   } catch (err) {
     console.error('[Step 6] Deployment Pipeline FAILED.');
-    if (err.stdout) console.error(err.stdout);
-    if (err.stderr) console.error(err.stderr);
+    try {
+      fs.rmSync(tempCloneDir, { recursive: true, force: true });
+    } catch (e) {}
     throw err;
   }
 }
