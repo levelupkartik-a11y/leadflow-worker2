@@ -5,7 +5,7 @@ const execPromise = util.promisify(exec);
 const { composioExecute } = require('./src/utils');
 
 const SPREADSHEET_ID = '1fWDfzFew_vKfKErtoBzahlyDbG_NMvcZDpXPSDaMJ9k';
-const CONCURRENCY_LIMIT = 2; // Safe limit to prevent Groq/Gemini/Cloudflare API exhaustion
+const CONCURRENCY_LIMIT = 1; // Set to 1 to prevent concurrent threads from congesting the Gemini API (causing 429 failures)
 
 // Run a list of commands with limits checks, allowing active tasks to finish before stopping
 async function runWithLimitChecks(tasks, limit, startTime, maxDurationMs, maxBuilds) {
