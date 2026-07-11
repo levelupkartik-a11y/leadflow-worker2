@@ -69,12 +69,12 @@ async function reportBackToSheet(liveUrl, sheetName, rowId, reviewsCount, isShee
     await composioExecute('GOOGLESHEETS_BATCH_UPDATE', {
       spreadsheet_id: SPREADSHEET_ID, sheet_name: sheetName,
       first_cell_location: 'N1', value_input_option: 'RAW',
-      values: [['created websites']],
+      values: [['made websites']],
     });
 
     const isFailure = liveUrl.startsWith('NEEDS REVIEW');
 
-    // Write generated URL to N ("created websites") — never to I ("Website")
+    // Write generated URL to N ("made websites") — never to I ("Website")
     await composioExecute('GOOGLESHEETS_BATCH_UPDATE', {
       spreadsheet_id: SPREADSHEET_ID, sheet_name: sheetName,
       first_cell_location: `N${rowId}`, value_input_option: 'RAW',

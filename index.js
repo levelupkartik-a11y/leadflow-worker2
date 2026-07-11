@@ -35,13 +35,13 @@ async function main() {
     try {
       const check = await composioExecute('GOOGLESHEETS_VALUES_GET', {
         spreadsheet_id: '1fWDfzFew_vKfKErtoBzahlyDbG_NMvcZDpXPSDaMJ9k',
-        range: `${sheetName}!I${rowId}:I${rowId}`,
+        range: `${sheetName}!C${rowId}:C${rowId}`,
         value_render_option: 'FORMATTED_VALUE',
       });
       const existingWebsite = check?.data?.values?.[0]?.[0]?.trim();
       if (existingWebsite) {
         console.log(`[Pre-check] Row ${rowId} already has a website: ${existingWebsite}`);
-        console.log(`[Pre-check] Skipping site generation for this row. "created websites" column left blank.`);
+        console.log(`[Pre-check] Skipping site generation for this row. "made websites" column left blank.`);
         process.exit(0);
       } else {
         console.log(`[Pre-check] Row ${rowId} has no existing website — proceeding with build.`);
