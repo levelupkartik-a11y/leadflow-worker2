@@ -125,11 +125,13 @@ async function main() {
           return; // Skip empty rows
         }
         
-        // Skip if it already has a raw scraped website in column I
-        const scrapedWebsite = row[8]?.trim();
-        if (scrapedWebsite) {
-          console.log(`[Skip] Row ${rowId}: "${name}" already has website in column I (Scraped: ${scrapedWebsite})`);
-          return;
+        // Skip if it already has a raw scraped website in column I (only applicable for Sheet 2+)
+        if (!isSheet1) {
+          const scrapedWebsite = row[8]?.trim();
+          if (scrapedWebsite) {
+            console.log(`[Skip] Row ${rowId}: "${name}" already has website in column I (Scraped: ${scrapedWebsite})`);
+            return;
+          }
         }
         
         // Skip if it already has a generated website
