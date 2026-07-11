@@ -223,7 +223,9 @@ async function adaptLayout(templateId, copyData, buildDir, researchData) {
           const categoryVal = Array.isArray(researchData.category)
             ? researchData.category.join(' ')
             : (researchData.category || 'Fine Dining');
-          const cuisineRest = categoryVal.split('&')[0].trim();
+          
+          // Use copyData.cuisine_or_business_type if available (cleanly rephrased by LLM)
+          const cuisineRest = copyData.cuisine_or_business_type || categoryVal.split('&')[0].trim();
           
           const whyTitle1 = isFood ? 'Fresh Ingredients' : 'Quality Service';
           const whyDesc1 = isFood ? 'Sourced locally and prepared fresh daily for the finest taste.' : 'Professional standards and attention to details.';
@@ -279,11 +281,20 @@ async function adaptLayout(templateId, copyData, buildDir, researchData) {
             if (copyData.about_section) {
               footerBrandCol.find('p').first().text(String(copyData.about_section).substring(0, 150) + '...');
             }
-            footerBrandCol.find('p').last().text(`© ${new Date().getFullYear()} ${displayName}. All Rights Reserved.`);
           }
+
+          // Replace duplicate copyrights (e.g. Culinary Craft leaks)
+          $('p:contains("Culinary Craft"), span:contains("Culinary Craft"), div:contains("Culinary Craft")').each((_, el) => {
+            if ($(el).children().length === 0 || $(el).find('p').length === 0) {
+              const text = $(el).text();
+              $(el).text(text.replace(/Culinary Craft/g, displayName));
+            }
+          });
           break;
 
         case 'healthcare-dental':
+          const city = researchData.address ? researchData.address.split(',').slice(-2, -1)[0]?.trim() || 'Chandigarh' : 'Chandigarh';
+
           // --- Business name: .logo span (a.nav-logo does NOT exist in this template) ---
           if (displayName) {
             $('.logo span').text(displayName);
@@ -300,6 +311,26 @@ async function adaptLayout(templateId, copyData, buildDir, researchData) {
               (cleanHours ? `<span>🕒 ${cleanHours}</span>` : '')
             );
           }
+
+          // Replace Seattle city leaks in metadata, reviews bar, and copy blocks
+          $('meta[name="description"]').attr('content', (_, content) => content ? content.replace(/Seattle/g, city) : '');
+          $('div:contains("verified patient reviews")').each((_, el) => {
+            $(el).text($(el).text().replace(/Seattle/g, city));
+          });
+          $('p:contains("Seattle"), span:contains("Seattle"), h2:contains("Seattle")').each((_, el) => {
+            if ($(el).closest('#booking').length === 0) {
+              $(el).text($(el).text().replace(/Seattle/g, city));
+            }
+          });
+
+          // Replace Chloe booking form persona reference with generic team wording
+          $('p:contains("Chloe")').each((_, el) => {
+            $(el).text($(el).text().replace(/Chloe, our patient concierge,/g, 'our team').replace(/Chloe/g, 'our team'));
+          });
+
+          // Remove the contradictory Office Hours column in footer and HIPAA compliance link
+          $('footer .footer-col:contains("Office Hours")').remove();
+          $('footer a:contains("HIPAA")').remove();
 
           // --- Hero headline & tagline ---
           if (copyData.headline) {
@@ -456,8 +487,8 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
           // --- Booking Section: Right Column Contact details ---
           const bookingRightCol = $('#booking').find('.reveal-up.delay-200');
           if (bookingRightCol.length) {
-            const city = researchData.address ? researchData.address.split(',').slice(-2, -1)[0]?.trim() || '' : '';
-            bookingRightCol.find('h2.display-lg').text(city ? `Located in ${city}` : 'Contact & Location');
+            const cityBooking = researchData.address ? researchData.address.split(',').slice(-2, -1)[0]?.trim() || '' : '';
+            bookingRightCol.find('h2.display-lg').text(cityBooking ? `Located in ${cityBooking}` : 'Contact & Location');
             
             const addrCard = bookingRightCol.find('.card').eq(0);
             if (addrCard.length) {
@@ -709,6 +740,8 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
 
 
         case 'realestate':
+          const cityReal = researchData.address ? researchData.address.split(',').slice(-2, -1)[0]?.trim() || 'Chandigarh' : 'Chandigarh';
+
           // --- Brand / Name replacement ---
           if ($('#header-logo').length) {
             $('#header-logo').replaceWith(`<span class="font-serif text-lg md:text-xl text-white font-semibold tracking-wider">${displayName}</span>`);
@@ -727,14 +760,40 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
           if (copyData.about_section) {
             $('section').first().find('p.text-white\\/80').first().text(copyData.about_section);
           }
+
+          // --- Philosophy Section (Bio Section) ---
+          const philSectionReal = $('span:contains("Our Philosophy")').closest('section');
+          if (philSectionReal.length) {
+            if (copyData.about_section) {
+              philSectionReal.find('p').first().text(copyData.about_section);
+            }
+            const p2 = philSectionReal.find('p').eq(1);
+            if (p2.length) {
+              p2.text(p2.text()
+                .replace(/Signature Realty NJ/g, displayName)
+                .replace(/Signature Realty/g, displayName)
+                .replace(/New Jersey/g, cityReal)
+              );
+            }
+          }
+
+          // Replace Why Select Signature Realty
+          $('h2:contains("Signature Realty")').text(`Why Select ${displayName}`);
           
           // --- Properties Bento Cards Address Correction (Remove NJ leak) ---
-          const propCards = $('.md\\:col-span-8, .md\\:col-span-4');
-          propCards.each((i, el) => {
+          const propCardsReal = $('.md\\:col-span-8, .md\\:col-span-4');
+          propCardsReal.each((i, el) => {
             const addr = $(el).find('p.text-sm');
             if (addr.length && researchData.address) {
-              const city = researchData.address.split(',').slice(-2, -1)[0]?.trim() || 'Chandigarh';
-              addr.text(`Featured property listing in ${city}`);
+              addr.text(`Featured property listing in ${cityReal}`);
+            }
+            // Replace image alt tags to prevent leaks
+            const img = $(el).find('img');
+            if (img.length) {
+              const originalAlt = img.attr('alt') || '';
+              if (originalAlt.includes('Edison') || originalAlt.includes('Florham Park') || originalAlt.includes('NJ')) {
+                img.attr('alt', `Luxury property listing in ${cityReal}`);
+              }
             }
           });
 
@@ -774,7 +833,6 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
 
           // --- Location & Hours Map Section ---
           if (researchData.address) {
-            const cityReal = researchData.address.split(',').slice(-2, -1)[0]?.trim() || 'Chandigarh';
             $('#location-address-text').text(researchData.address);
             $('#locality-serving-text').text(`Serving ${cityReal} and neighboring areas`);
 
@@ -817,6 +875,19 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
                </div>
              `);
           }
+
+          // Replace duplicate copyrights (e.g. Signature Realty leaks in drawer and main footer)
+          $('p:contains("SIGNATURE REALTY"), span:contains("SIGNATURE REALTY"), div:contains("SIGNATURE REALTY")').each((_, el) => {
+            if ($(el).children().length === 0 || $(el).find('p').length === 0) {
+              const text = $(el).text();
+              $(el).text(
+                text.replace(/SIGNATURE REALTY NJ/g, displayName)
+                    .replace(/SIGNATURE REALTY/g, displayName)
+                    .replace(/Signature Realty/g, displayName)
+                    .replace(/New Jersey/g, cityReal)
+              );
+            }
+          });
           break;
       }
 
@@ -1251,7 +1322,16 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
         }
       }
 
-      const finalHtml = $.html();
+      let finalHtml = $.html();
+      if (templateId === 'realestate') {
+        const cityReal = researchData.address ? researchData.address.split(',').slice(-2, -1)[0]?.trim() || 'Chandigarh' : 'Chandigarh';
+        finalHtml = finalHtml
+          .replace(/Edison, NJ/g, cityReal)
+          .replace(/Florham Park, NJ/g, cityReal)
+          .replace(/Edison NJ/g, cityReal)
+          .replace(/Florham Park/g, cityReal)
+          .replace(/New Jersey/g, cityReal);
+      }
       fs.writeFileSync(filePath, finalHtml, 'utf8');
       console.log(`Successfully adapted ${file} using dynamic Cheerio config`);
     } catch (err) {

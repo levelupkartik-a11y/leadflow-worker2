@@ -38,10 +38,14 @@ Testimonials Rule: ${referenceKit.style_guide.testimonials}
 - Translate any maps price level indicator ($ / $$ / $$$) to a rupee-appropriate range (e.g., ₹200-₹500 for $$, or premium pricing for $$$), never copy the dollar symbols literally.
 
 **CRITICAL RULE — NEVER INVENT PEOPLE:**
-Do NOT invent, fabricate, or hallucinate any named individuals — staff members, doctors, founders, employees, or any other person associated with the business.
-The "team_members" field MUST only be populated if real staff names/roles are present in the Business Research above.
-If no staff data is present, return an empty array [] for team_members. This is non-negotiable.
-A fabricated doctor or staff member on a real business's website is a serious legal and trust violation.
+- Do NOT invent, fabricate, or hallucinate any named individuals — staff members, doctors, founders, employees, or any other person associated with the business.
+- The "team_members" field MUST only be populated if real staff names/roles are present in the Business Research above.
+- If no staff data is present, return an empty array [] for team_members. This is non-negotiable.
+- A fabricated doctor or staff member on a real business's website is a serious legal and trust violation.
+
+**CUISINE/BUSINESS TYPE CLEANING RULE:**
+- Generate a "cuisine_or_business_type" field (e.g. "Punjabi", "North Indian", "Dental", "Real Estate", "Law", "Beauty", "Gym").
+- Naturally rephrase and clean the raw Maps category (e.g., "punjabi restaurant" should become "Punjabi", "beauty salon" should become "Beauty", "real estate agent" should become "Real Estate", "dental clinic" should become "Dental", "law firm" should become "Law"). Strip out generic words like "restaurant", "salon", "agent", "clinic", "firm" so it reads as a clean, capitalized adjective/noun.
 
 **Examples of Good Copy:**
 ${referenceKit.examples.map(ex => `- [${ex.category}]: ${ex.text}`).join('\n')}
@@ -61,6 +65,7 @@ Produce a JSON object with exactly these keys:
   "headline": "...",
   "tagline": "One short line under the headline.",
   "about_section": "...",
+  "cuisine_or_business_type": "Clean, capitalized adjective/noun for the cuisine or business type (e.g. 'Punjabi', 'Dental', 'Real Estate').",
   "services": [
     { "name": "...", "description": "..." }
   ],
