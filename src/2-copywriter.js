@@ -4,6 +4,17 @@ const path = require('path');
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
+// Wraps any promise with a hard timeout to prevent indefinite hangs
+function withTimeout(promise, ms, label) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error(`Timeout after ${ms}ms: ${label}`)), ms);
+    promise.then(
+      (v) => { clearTimeout(timer); resolve(v); },
+      (e) => { clearTimeout(timer); reject(e); }
+    );
+  });
+}
+
 async function generateCopy(researchData) {
   console.log(`[Step 2] Generating copy for ${researchData.title}...`);
 
@@ -32,13 +43,13 @@ Body Copy: ${referenceKit.style_guide.body_copy}
 Testimonials Rule: ${referenceKit.style_guide.testimonials}
 
 **CURRENCY RULE:**
-- All pricing, rates, fees, or cost-related content MUST be written in Indian Rupees (₹), NEVER dollars ($).
+- All pricing, rates, fees, or cost-related content MUST be written in Indian Rupees (?), NEVER dollars ($).
 - Do not use the word "dollars" or "USD".
-- If you mention pricing in the copy, use realistic Indian pricing (e.g., "starts at ₹499" instead of "$49").
-- Translate any maps price level indicator ($ / $$ / $$$) to a rupee-appropriate range (e.g., ₹200-₹500 for $$, or premium pricing for $$$), never copy the dollar symbols literally.
+- If you mention pricing in the copy, use realistic Indian pricing (e.g., "starts at ?499" instead of "$49").
+- Translate any maps price level indicator ($ / $$ / $$$) to a rupee-appropriate range (e.g., ?200-?500 for $$, or premium pricing for $$$), never copy the dollar symbols literally.
 
-**CRITICAL RULE — NEVER INVENT PEOPLE:**
-- Do NOT invent, fabricate, or hallucinate any named individuals — staff members, doctors, founders, employees, or any other person associated with the business.
+**CRITICAL RULE - NEVER INVENT PEOPLE:**
+- Do NOT invent, fabricate, or hallucinate any named individuals - staff members, doctors, founders, employees, or any other person associated with the business.
 - The "team_members" field MUST only be populated if real staff names/roles are present in the Business Research above.
 - If no staff data is present, return an empty array [] for team_members. This is non-negotiable.
 - A fabricated doctor or staff member on a real business's website is a serious legal and trust violation.
@@ -96,21 +107,26 @@ Produce a JSON object with exactly these keys:
 
   let text = '';
   try {
-    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'llama-3.1-8b-instant',
-        messages: [{ role: 'user', content: prompt }],
-        response_format: { type: 'json_object' }
-      })
-    });
-
-    const json = await res.json();
-    if (!res.ok) throw new Error(json.error?.message || JSON.stringify(json));
+    const controller = new AbortController();
+    const groqRes = await withTimeout(
+      fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: 'llama-3.1-8b-instant',
+          messages: [{ role: 'user', content: prompt }],
+          response_format: { type: 'json_object' }
+        }),
+        signal: controller.signal,
+      }),
+      60000, // 60s timeout for Groq fetch
+      'Groq fetch'
+    );
+    const json = await withTimeout(groqRes.json(), 30000, 'Groq body read');
+    if (!groqRes.ok) throw new Error(json.error?.message || JSON.stringify(json));
     text = json.choices[0].message.content;
   } catch (err) {
     console.warn(`[Step 2] Groq copywriting failed: ${err.message}. Falling back to Gemini...`);
@@ -118,13 +134,17 @@ Produce a JSON object with exactly these keys:
     let success = false;
     while (retries > 0 && !success) {
       try {
-        const response = await ai.models.generateContent({
-          model: 'gemini-2.5-flash',
-          contents: prompt,
-          config: {
-            responseMimeType: 'application/json'
-          }
-        });
+        const response = await withTimeout(
+          ai.models.generateContent({
+            model: 'gemini-2.5-flash',
+            contents: prompt,
+            config: {
+              responseMimeType: 'application/json'
+            }
+          }),
+          120000, // 2-min timeout for Gemini
+          'Gemini generateContent'
+        );
         text = response.text;
         success = true;
       } catch (geminiErr) {
