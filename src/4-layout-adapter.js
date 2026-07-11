@@ -315,7 +315,9 @@ async function adaptLayout(templateId, copyData, buildDir, researchData) {
           // Replace Seattle city leaks in metadata, reviews bar, and copy blocks
           $('meta[name="description"]').attr('content', (_, content) => content ? content.replace(/Seattle/g, city) : '');
           $('div:contains("verified patient reviews")').each((_, el) => {
-            $(el).text($(el).text().replace(/Seattle/g, city));
+            if ($(el).children().length === 0) {
+              $(el).text($(el).text().replace(/Seattle/g, city));
+            }
           });
           $('p:contains("Seattle"), span:contains("Seattle"), h2:contains("Seattle")').each((_, el) => {
             if ($(el).closest('#booking').length === 0) {
