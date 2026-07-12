@@ -76,16 +76,40 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Brand Shop - Best Mens Wear Store in Chandigarh | Clothing Shop | Readymade Garment | Women Clothing Store",
-  "category": "Clothing store",
+  "name": "Kuldeep Emporium|Best bridal lehngas & ethnic wear store for designers suits, kurtis,dresses, kaftans, peplums,winter wear",
+  "category": "Women's clothing store",
   "description": "",
-  "address": "SCO 18, 19, Sector 23-C, 23C, Sector 23, Chandigarh, 160023, India",
-  "phone": "+91 99887 81095",
-  "hours": "friday: 10:30 AM–10 PM, monday: 10:30 AM–10 PM, saturday: 10:30 AM–10 PM, sunday: 10:30 AM–10 PM, thursday: 10:30 AM–10 PM, tuesday: 10:30 AM–10 PM, wednesday: 10:30 AM–10 PM",
+  "address": "SCO-85, 35C, Sector 35, Chandigarh, 160022, India",
+  "phone": "+91 99922 41356",
+  "hours": "friday: 9 AM–9 PM, monday: 9 AM–9 PM, saturday: 9 AM–9 PM, sunday: 9 AM–9 PM, thursday: 9 AM–9 PM, tuesday: 9 AM–9 PM, wednesday: 9 AM–9 PM",
   "services": [
     {
-      "name": "Men's Wear Store",
-      "description": "Quality men's garments for every occasion"
+      "name": "Bridal Lehngas",
+      "description": "Designer lehngas for the perfect wedding look."
+    },
+    {
+      "name": "Designer Suits",
+      "description": "Beautiful suits for all occasions."
+    },
+    {
+      "name": "Kurtis",
+      "description": "Vibrant and stylish kurtis for women."
+    },
+    {
+      "name": "Dresses",
+      "description": "Sleek and modern dresses for women."
+    },
+    {
+      "name": "Kaftans",
+      "description": "Comfortable and stylish kaftans for women."
+    },
+    {
+      "name": "Peplums",
+      "description": "Floral and feminine peplums for women."
+    },
+    {
+      "name": "Winter Wear",
+      "description": "Cozy and warm winter wear for women."
     }
   ]
 };
