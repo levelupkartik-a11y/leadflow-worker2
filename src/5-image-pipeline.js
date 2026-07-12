@@ -212,21 +212,26 @@ Output strictly as JSON:
 
       let decision;
       try {
-        const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            model: 'llama-3.1-8b-instant',
-            messages: [{ role: 'user', content: prompt }],
-            response_format: { type: 'json_object' }
-          })
-        });
-
-        const json = await res.json();
-        if (!res.ok) throw new Error(`Groq error: ${JSON.stringify(json)}`);
+        const { withTimeout } = require('./utils');
+        const json = await withTimeout((async () => {
+          const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              model: 'llama-3.1-8b-instant',
+              messages: [{ role: 'user', content: prompt }],
+              response_format: { type: 'json_object' }
+            })
+          });
+          if (!res.ok) {
+            const errorText = await res.text();
+            throw new Error(`HTTP ${res.status}: ${errorText}`);
+          }
+          return await res.json();
+        })(), 60000, 'Groq image prompt selection');
         
         decision = JSON.parse(json.choices[0].message.content);
       } catch (err) {
@@ -249,9 +254,14 @@ Output strictly as JSON:
         try {
           if (process.env.REPLICATE_API_TOKEN) {
             console.log(`Enhancing photo with Real-ESRGAN...`);
-            const output = await replicate.run(
-              "nightmareai/real-esrgan:42fed1c4974146d4d2414e2be2c5277c7fcf05fcc3a73abf41610695738c1d7b",
-              { input: { image: originalUrl, scale: 2 } }
+            const { withTimeout } = require('./utils');
+            const output = await withTimeout(
+              replicate.run(
+                "nightmareai/real-esrgan:42fed1c4974146d4d2414e2be2c5277c7fcf05fcc3a73abf41610695738c1d7b",
+                { input: { image: originalUrl, scale: 2 } }
+              ),
+              90000,
+              'Replicate Real-ESRGAN'
             );
             finalUrl = output;
           } else {

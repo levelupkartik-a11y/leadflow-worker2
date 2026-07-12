@@ -421,20 +421,33 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
   ]
 }
 `;
-              const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-                method: 'POST',
-                headers: {
-                  'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  model: 'llama-3.1-8b-instant',
-                  messages: [{ role: 'user', content: faqPrompt }],
-                  response_format: { type: 'json_object' }
-                })
-              });
-              const groqJson = await groqRes.json();
-              if (groqRes.ok) {
+              const { withTimeout } = require('./utils');
+              let groqJson;
+              try {
+                groqJson = await withTimeout((async () => {
+                  const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                      'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                      model: 'llama-3.1-8b-instant',
+                      messages: [{ role: 'user', content: faqPrompt }],
+                      response_format: { type: 'json_object' }
+                    })
+                  });
+                  if (!groqRes.ok) {
+                    const errorText = await groqRes.text();
+                    throw new Error(`HTTP ${groqRes.status}: ${errorText}`);
+                  }
+                  return await groqRes.json();
+                })(), 60000, 'Groq FAQ generation');
+              } catch (groqErr) {
+                console.warn(`[Step 4] Groq FAQ generation failed or timed out: ${groqErr.message}`);
+                throw groqErr;
+              }
+              if (groqJson) {
                 const parsed = JSON.parse(groqJson.choices[0].message.content);
                 const list = parsed.faqs || [];
                 const phone = researchData.phone || '';

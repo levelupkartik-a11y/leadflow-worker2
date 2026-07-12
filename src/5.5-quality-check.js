@@ -33,16 +33,21 @@ Respond strictly in JSON:
   let retries = 6;
   while (retries > 0) {
     try {
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: [{
-          role: 'user',
-          parts: [
-            { text: prompt },
-            { inlineData: { data: base64Image, mimeType: 'image/jpeg' } }
-          ]
-        }]
-      });
+      const { withTimeout } = require('./utils');
+      const response = await withTimeout(
+        ai.models.generateContent({
+          model: 'gemini-2.5-flash',
+          contents: [{
+            role: 'user',
+            parts: [
+              { text: prompt },
+              { inlineData: { data: base64Image, mimeType: 'image/jpeg' } }
+            ]
+          }]
+        }),
+        60000,
+        'Gemini vision quality check'
+      );
 
       const text = response.text.replace(/```json|```/g, '').trim();
       return JSON.parse(text);

@@ -39,13 +39,18 @@ Output format: {"selected_template": "New folder (5)"}
 
   try {
     if (process.env.GEMINI_API_KEY) {
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: prompt,
-        config: {
-          responseMimeType: 'application/json'
-        }
-      });
+      const { withTimeout } = require('./utils');
+      const response = await withTimeout(
+        ai.models.generateContent({
+          model: 'gemini-2.5-flash',
+          contents: prompt,
+          config: {
+            responseMimeType: 'application/json'
+          }
+        }),
+        60000,
+        'Gemini template classification'
+      );
 
       const result = JSON.parse(response.text.trim());
       const selected = result.selected_template;

@@ -30,4 +30,14 @@ async function composioExecute(actionSlug, args = {}) {
   }
 }
 
-module.exports = { composioExecute };
+function withTimeout(promise, ms, label) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error(`Timeout after ${ms}ms: ${label}`)), ms);
+    promise.then(
+      (v) => { clearTimeout(timer); resolve(v); },
+      (e) => { clearTimeout(timer); reject(e); }
+    );
+  });
+}
+
+module.exports = { composioExecute, withTimeout };
