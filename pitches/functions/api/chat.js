@@ -76,26 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Soul Care",
-  "category": [
-    "Beauty salon"
-  ],
+  "name": "Panaché Salon",
+  "category": "Beauty salon",
   "description": "",
-  "address": "Sco No: 96-97, Shopping Plaza, 17C, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 99885 15737",
-  "hours": "sunday: 10 AM–9 PM, monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM",
+  "address": "Sco-16-17, Madhya Marg, near Thomas cook, 9D, Sector 9, Chandigarh, 160009, India",
+  "phone": "+91 89200 20505",
+  "hours": "friday: 10:30 AM–8:30 PM, monday: 10:30 AM–8:30 PM, saturday: 10:30 AM–8:30 PM, sunday: 10:30 AM–8:30 PM, thursday: 10:30 AM–8:30 PM, tuesday: 10:30 AM–8:30 PM, wednesday: 10:30 AM–8:30 PM",
   "services": [
     {
-      "name": "Haircuts",
-      "description": "Expert haircuts by skilled stylists, starting at ?499."
+      "name": "Haircut",
+      "description": "Expert haircuts and color in a relaxing environment"
     },
     {
-      "name": "Coloring",
-      "description": "Dye your hair with our premium colors, starting at ?999."
+      "name": "Skin Care",
+      "description": "Comprehensive skin care solutions for all skin types"
     },
     {
-      "name": "Styling",
-      "description": "Get expert styling advice and services, starting at ?999."
+      "name": "Nail Care",
+      "description": "Professional nail treatments for healthy and beautiful nails"
     }
   ]
 };
