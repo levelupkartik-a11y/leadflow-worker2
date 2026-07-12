@@ -76,18 +76,28 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "SUDHA PHARMACY CHANDIGARH",
+  "name": "Chandigarh Medical Hall",
   "category": [
+    "Drug store",
+    "Cosmetics store",
     "Pharmacy"
   ],
   "description": "",
-  "address": "Shop no.777, 6c, Thakur Dwara Rd, near hdfc bank, Sector 13, Chandigarh, 160101, India",
-  "phone": "+91 98729 04296",
-  "hours": "monday: 8 AM–11 PM, tuesday: 8 AM–11 PM, wednesday: 8 AM–11 PM, thursday: 8 AM–11 PM, friday: 8 AM–11 PM, saturday: 8 AM–11 PM, sunday: 8 AM–11 PM",
+  "address": "S C F No 27, b, 8B, Sector 8, Chandigarh, 160009, India",
+  "phone": "+91 99881 81817",
+  "hours": "monday: 9:45 AM–9 PM, tuesday: 9:45 AM–9 PM, wednesday: 9:45 AM–9 PM, thursday: 9:45 AM–9 PM, friday: 9:45 AM–9 PM, saturday: 9:45 AM–9 PM, sunday: 9:45 AM–9 PM",
   "services": [
     {
-      "name": "Medicinal Products",
-      "description": "We offer a wide range of medicinal products to cater to your healthcare needs"
+      "name": "Pharmacy Services",
+      "description": "We offer a wide selection of prescription and non-prescription drugs, as well as skincare and cosmetics"
+    },
+    {
+      "name": "Health and Wellness Products",
+      "description": "Discover our selection of health-focused products, including vitamins, supplements, and more"
+    },
+    {
+      "name": "Cosmetics and Beauty Products",
+      "description": "Explore our range of cosmetics and beauty products for skincare, haircare, and more"
     }
   ]
 };
