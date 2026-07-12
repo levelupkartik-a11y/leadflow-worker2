@@ -76,35 +76,15 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Chandigarh Furniture Mall",
+  "name": "Panesar Furniture Works",
   "category": [
-    "Furniture store",
-    "Furniture accessories",
-    "Furniture maker",
-    "Furniture repair shop",
-    "Furniture wholesaler",
-    "Garden furniture shop",
-    "Office furniture store",
-    "Rustic furniture store"
+    "Furniture store"
   ],
   "description": "",
-  "address": "Plot no 598, near bestech mall, Parkview Residence Colony, Industrial Area Mohali Phase 9, Sahibzada Ajit Singh Nagar, Punjab 160062, India",
-  "phone": "+91 98092 69292",
-  "hours": "sunday: Closed, monday: 9 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM, thursday: 9 AM–8 PM, friday: 9 AM–9 PM, saturday: 9 AM–9 PM",
-  "services": [
-    {
-      "name": "Furniture Store",
-      "description": "Visit us today and explore our vast collection of furniture products."
-    },
-    {
-      "name": "Furniture Makers",
-      "description": "Get custom-made furniture for your home or office from our expert craftsmen."
-    },
-    {
-      "name": "Furniture Repair Shop",
-      "description": "We repair and refurbish your old furniture to give it a new life."
-    }
-  ]
+  "address": "Adjoin B.R Jain School Sector 55, Chsndigarh, Palsora, Chandigarh, 160055, India",
+  "phone": "+91 99155 78420",
+  "hours": "sunday: 9 AM–8 PM, monday: 9 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM, thursday: 9 AM–8 PM, friday: 9 AM–8 PM, saturday: 9 AM–8 PM",
+  "services": []
 };
     
     const systemPrompt = {
