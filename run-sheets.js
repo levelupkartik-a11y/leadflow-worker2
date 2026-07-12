@@ -100,10 +100,10 @@ async function main() {
       console.log(`========================================`);
       
       // 2. Fetch rows (cols A to N) to inspect which rows need websites built.
-      console.log(`[Runner] Fetching row values from "${sheetName}" (Range A2:N150)...`);
+      console.log(`[Runner] Fetching row values from "${sheetName}" (Range A2:N1000)...`);
       const valRes = await composioExecute('GOOGLESHEETS_VALUES_GET', {
         spreadsheet_id: SPREADSHEET_ID,
-        range: `'${sheetName}'!A2:N150`,
+        range: `'${sheetName}'!A2:N1000`,
         value_render_option: 'FORMATTED_VALUE'
       });
       
