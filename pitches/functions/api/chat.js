@@ -76,16 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "BeDi taylors & Co",
-  "category": "Tailor",
+  "name": "Fine Tailors",
+  "category": "Men's tailor",
   "description": "",
-  "address": "Sco 57-58-59, Shopping Plaza, 17C, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 98155 00965",
-  "hours": "friday: 11 AM–8 PM, monday: 11 AM–8 PM, saturday: 11 AM–8:30 PM, sunday: 4:30–8 PM, thursday: 11 AM–8 PM, tuesday: 11 AM–8 PM, wednesday: 11 AM–8 PM",
+  "address": "Booth No.85, Janta Market, Sector 27-D, Chandigarh, 160019, India",
+  "phone": "+91 79731 59812",
+  "hours": "friday: 10 AM–10 PM, monday: 10 AM–10 PM, saturday: 10 AM–10 PM, sunday: 10 AM–10 PM, thursday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM",
   "services": [
     {
-      "name": "Custom-made Clothing",
-      "description": "We offer bespoke clothing solutions for men and women, using high-quality fabrics and traditional craftsmanship."
+      "name": "Alteration Services",
+      "description": "Get your clothes altered to perfection at Fine Tailors."
+    },
+    {
+      "name": "Custom Suit Making",
+      "description": "Get a custom-made suit that fits you perfectly."
     }
   ]
 };
