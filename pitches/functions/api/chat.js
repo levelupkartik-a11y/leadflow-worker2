@@ -76,18 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Standard Medicos",
-  "category": [
-    "Pharmacy"
-  ],
+  "name": "Chandigarh Medical Hall",
+  "category": "Pharmacy",
   "description": "",
-  "address": "Booth No.12, 13, Sector 38C, Sector 38, Chandigarh, 160014, India",
-  "phone": "+91 172 269 2269",
-  "hours": "monday: 9 AM–9:30 PM, tuesday: 9 AM–9:30 PM, wednesday: 9 AM–9:30 PM, thursday: 9 AM–9:30 PM, friday: 9 AM–9:30 PM, saturday: 9 AM–9:30 PM, sunday: 9 AM–9:30 PM",
+  "address": "S C F No 27, b, 8B, Sector 8, Chandigarh, 160009, India",
+  "phone": "+91 99881 81817",
+  "hours": "friday: 9:45 AM–9 PM, monday: 9:45 AM–9 PM, saturday: 9:45 AM–9 PM, sunday: 9:45 AM–9 PM, thursday: 9:45 AM–9 PM, tuesday: 9:45 AM–9 PM, wednesday: 9:45 AM–9 PM",
   "services": [
     {
-      "name": "",
-      "description": "We offer a range of healthcare services to cater to your needs."
+      "name": "Medicines",
+      "description": "We offer a variety of medicines to treat different health conditions."
     }
   ]
 };
