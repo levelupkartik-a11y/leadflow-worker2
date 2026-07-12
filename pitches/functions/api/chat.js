@@ -76,18 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Planet Fashion",
+  "name": "Navdeep Textiles",
   "category": [
-    "Clothing store"
+    "Clothing store",
+    "Boutique",
+    "Designer clothing store"
   ],
   "description": "",
-  "address": "SCO 101, 102, near Sindhi Sweets, Shopping Plaza, 17C, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 172 467 8222",
-  "hours": "sunday: 10 AM–10 PM, monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM",
+  "address": "SCO 76, near MUSICAL FOUNTAIN, 17D, Sector 17, Chandigarh, 160017, India",
+  "phone": "+91 97805 58866",
+  "hours": "sunday: 11 AM–9 PM, monday: 11 AM–9 PM, tuesday: 11 AM–9 PM, wednesday: 11 AM–9 PM, thursday: 11 AM–9 PM, friday: 11 AM–9 PM, saturday: 11 AM–9 PM",
   "services": [
     {
-      "name": "Browse our clothing collection",
-      "description": "We are open from Sunday to Saturday, 10 AM–10 PM."
+      "name": "Designer Clothing",
+      "description": "We offer a wide range of designer clothing for men and women."
     }
   ]
 };
