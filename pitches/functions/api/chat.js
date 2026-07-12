@@ -76,16 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "BeDi taylors & Co",
-  "category": "Tailor",
+  "name": "King's Tailors",
+  "category": "Men's tailor",
   "description": "",
-  "address": "Sco 57-58-59, Shopping Plaza, 17C, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 98155 00965",
-  "hours": "friday: 11 AM–8 PM, monday: 11 AM–8 PM, saturday: 11 AM–8:30 PM, sunday: 4:30–8 PM, thursday: 11 AM–8 PM, tuesday: 11 AM–8 PM, wednesday: 11 AM–8 PM",
+  "address": "31D, Sector 31, Chandigarh, 160030, India",
+  "phone": "+91 88472 07903",
+  "hours": "friday: 11 AM–9 PM, monday: 11 AM–9 PM, saturday: 11 AM–9 PM, sunday: Closed, thursday: 11 AM–9 PM, tuesday: 11 AM–9 PM, wednesday: 11 AM–9 PM",
   "services": [
     {
-      "name": "Tailoring Services",
-      "description": "We offer expert tailoring services for all kinds of clothing needs. Our services are available for men, women, and kids."
+      "name": "Alterations and Repair",
+      "description": "We offer alterations and repair services for existing garments"
+    },
+    {
+      "name": "Custom Suit Tailoring",
+      "description": "Design and create a custom suit tailored to your specifications"
     }
   ]
 };
