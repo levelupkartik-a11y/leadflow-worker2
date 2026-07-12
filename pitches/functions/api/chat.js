@@ -76,22 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Iqbal Sons Tailors",
-  "category": [
-    "Men's tailor"
-  ],
+  "name": "Shiva furniture & furnishings",
+  "category": "Furniture store",
   "description": "",
-  "address": "S C O 47-48, Classic Market (Basement, 17C, Chandigarh, 160017, India",
-  "phone": "",
-  "hours": "sunday: Closed, monday: 11 AM–9 PM, tuesday: 11 AM–9 PM, wednesday: 11 AM–9 PM, thursday: 11 AM–9 PM, friday: 11 AM–9 PM, saturday: 11 AM–9 PM",
+  "address": "near mullapur, Marble Market, chowk, Dhanas, Chandigarh, Punjab 140901, India",
+  "phone": "+91 99889 91110",
+  "hours": "friday: 10 AM–8 PM, monday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: 10 AM–8 PM, thursday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM",
   "services": [
     {
-      "name": "Alterations",
-      "description": "We provide expert alterations for your existing clothes."
-    },
-    {
-      "name": "Custom Tailoring",
-      "description": "Get custom-made clothes tailored to your fit and style."
+      "name": "Furniture Sales",
+      "description": "Buy a wide range of furniture and furnishings"
     }
   ]
 };
