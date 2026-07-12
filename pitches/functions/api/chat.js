@@ -76,29 +76,22 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Pal Furniture",
+  "name": "Iqbal Sons Tailors",
   "category": [
-    "Furniture store",
-    "Door shop",
-    "Interior designer",
-    "Kitchen furniture store"
+    "Men's tailor"
   ],
   "description": "",
-  "address": "Booth Number 1546, Sector 38 West, Pocket B, Chandigarh, 160014, India",
-  "phone": "+91 94175 11851",
-  "hours": "sunday: 9 AM–5 PM, monday: 9 AM–7 PM, tuesday: 9 AM–7 PM, wednesday: 9 AM–7 PM, thursday: 9 AM–7 PM, friday: 9 AM–7 PM, saturday: 9 AM–7 PM",
+  "address": "S C O 47-48, Classic Market (Basement, 17C, Chandigarh, 160017, India",
+  "phone": "",
+  "hours": "sunday: Closed, monday: 11 AM–9 PM, tuesday: 11 AM–9 PM, wednesday: 11 AM–9 PM, thursday: 11 AM–9 PM, friday: 11 AM–9 PM, saturday: 11 AM–9 PM",
   "services": [
     {
-      "name": "Furniture and Door Shop",
-      "description": "Browse through our wide collection of furniture and doors to find the perfect fit for your home or office."
+      "name": "Alterations",
+      "description": "We provide expert alterations for your existing clothes."
     },
     {
-      "name": "Interior Design",
-      "description": "Get expert advice from our interior designers to transform your space into a stylish and functional area."
-    },
-    {
-      "name": "Kitchen Furniture Store",
-      "description": "Explore our variety of kitchen furniture and solutions to upgrade your cooking experience."
+      "name": "Custom Tailoring",
+      "description": "Get custom-made clothes tailored to your fit and style."
     }
   ]
 };
