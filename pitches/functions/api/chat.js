@@ -76,24 +76,29 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Wao Fitness-Best Gym In Chandigarh",
-  "category": "Gym",
+  "name": "Avalon Unisex Salon - Beauty Salon | Makeup Salon | Hair salon",
+  "category": [
+    "Beauty salon",
+    "Facial spa",
+    "Nail salon",
+    "Waxing hair removal service"
+  ],
   "description": "",
-  "address": "SCO 34,35,36, 37, Madhya Marg, 9D, Chandigarh 160009, India",
-  "phone": "+91 62831 17815",
-  "hours": "friday: 5:30 AM–10:30 PM, monday: 5:30 AM–10:30 PM, saturday: 5:30 AM–10:30 PM, sunday: 7 AM–1 PM, thursday: 5:30 AM–10:30 PM, tuesday: 5:30 AM–10:30 PM, wednesday: 5:30 AM–10:30 PM",
+  "address": "First Floor, SCO- 29, Sector 21C, Sector 21, Chandigarh, 160022, India",
+  "phone": "+91 79861 90972",
+  "hours": "sunday: 10 AM–9 PM, monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM",
   "services": [
     {
-      "name": "State-of-the-art equipment",
-      "description": "Get fit with our latest machinery and expert trainers"
+      "name": "Face Spa",
+      "description": "Expert beauty services in a relaxing environment. Book your appointment today."
     },
     {
-      "name": "Variety of classes",
-      "description": "Take part in our fitness classes to stay fit and active"
+      "name": "Nail Salon",
+      "description": "Professional nail care services for men and women."
     },
     {
-      "name": "Expert trainers",
-      "description": "Get trained by experienced fitness experts"
+      "name": "Waxing Hair Removal Service",
+      "description": "Expert waxing services for smooth and silky skin."
     }
   ]
 };
