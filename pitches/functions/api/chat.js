@@ -76,20 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "King's Tailors",
-  "category": "Men's tailor",
+  "name": "K.m Tailors & drapers",
+  "category": [
+    "Men's tailor"
+  ],
   "description": "",
-  "address": "31D, Sector 31, Chandigarh, 160030, India",
-  "phone": "+91 88472 07903",
-  "hours": "friday: 11 AM–9 PM, monday: 11 AM–9 PM, saturday: 11 AM–9 PM, sunday: Closed, thursday: 11 AM–9 PM, tuesday: 11 AM–9 PM, wednesday: 11 AM–9 PM",
+  "address": "SCO No. 55.56 1st Floor, near CMC Hospital, 17C, Chandigarh, 160017, India",
+  "phone": "",
+  "hours": "sunday: 12–8 PM, monday: 11 AM–8:30 PM, tuesday: 11 AM–8:30 PM, wednesday: 11 AM–8:30 PM, thursday: 11 AM–8:30 PM, friday: 11 AM–8:30 PM, saturday: 11 AM–8:30 PM",
   "services": [
     {
-      "name": "Alterations and Repair",
-      "description": "We offer alterations and repair services for existing garments"
-    },
-    {
-      "name": "Custom Suit Tailoring",
-      "description": "Design and create a custom suit tailored to your specifications"
+      "name": "Custom Tailoring",
+      "description": "Our expert tailors will work with you to create a custom-fit suit or garment that meets your needs and style preferences."
     }
   ]
 };
