@@ -76,13 +76,37 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Apollo Clinic",
-  "category": "Medical clinic",
+  "name": "Dr Geetika Garg",
+  "category": [
+    "General practitioner",
+    "Diabetes center",
+    "Diabetologist",
+    "Doctor",
+    "Emergency care physician",
+    "Endocrinologist",
+    "Health consultant",
+    "Internal medicine ward",
+    "Medical Center",
+    "Rheumatologist"
+  ],
   "description": "",
-  "address": "SCO 10, 11, Madhya Marg, Sector 8C, Sector 8, Chandigarh, 160009, India",
-  "phone": "+91 172 418 4411",
-  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
-  "services": []
+  "address": "SCO 10, beside Ramgarhia Bhawan, Sector 27D, Sector 27, Chandigarh, 160019, India",
+  "phone": "+91 172 464 4848",
+  "hours": "monday: 10 AM–7 PM, tuesday: 10 AM–7 PM, wednesday: 10 AM–7 PM, thursday: 10 AM–7 PM, friday: 10 AM–7 PM, saturday: 10 AM–7 PM, sunday: Closed",
+  "services": [
+    {
+      "name": "General Medicine Consultation",
+      "description": "Receive medical advice and treatment for general health issues."
+    },
+    {
+      "name": "Diabetes Care",
+      "description": "Consult a diabetologist for diabetes management and treatment."
+    },
+    {
+      "name": "Emergency Care",
+      "description": "Get immediate medical attention in case of emergencies."
+    }
+  ]
 };
     
     const systemPrompt = {
