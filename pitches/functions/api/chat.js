@@ -76,20 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "DrPradeep Sharma. GENERAL SURGEON And PHYSICIAN .Former Head Surgery at GMSH Chandigarh",
-  "category": "Doctor",
+  "name": "Famicare Clinic",
+  "category": "Occupational medical physician",
   "description": "",
-  "address": "House no. 1333, Sector 37 B, near St Peter School, Chandigarh, 160036, India",
-  "phone": "+91 98760 27129",
-  "hours": "friday: 9 AM–1:30 PM, 5–8 PM, monday: 9 AM–1:30 PM, 5–8 PM, saturday: 9 AM–1:30 PM, 5–8 PM, sunday: 9 AM–1:30 PM, 5–8 PM, thursday: 9 AM–1:30 PM, 5–8 PM, tuesday: 9 AM–1:30 PM, 5–8 PM, wednesday: 9 AM–1:30 PM, 5–8 PM",
+  "address": "3, Sector 15-A, Sector 15, Chandigarh, 160015, India",
+  "phone": "+91 172 277 0002",
+  "hours": "friday: 9:30 AM–12:30 PM, 5–7 PM, monday: 9:30 AM–12:30 PM, 5–7 PM, saturday: 9:30 AM–12:30 PM, 5–7 PM, sunday: Closed, thursday: 9:30 AM–12:30 PM, 5–7 PM, tuesday: 9:30 AM–12:30 PM, 5–7 PM, wednesday: 9:30 AM–12:30 PM, 5–7 PM",
   "services": [
     {
-      "name": "General Surgery Consultations",
-      "description": "Expert medical advice and care for a wide range of surgical needs."
-    },
-    {
-      "name": "Physician Consultations",
-      "description": "Personalized medical care for various health concerns."
+      "name": "Occupational Medical Physician Services",
+      "description": "We provide specialized medical care for workplace injuries and conditions"
     }
   ]
 };
