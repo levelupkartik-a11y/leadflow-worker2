@@ -76,22 +76,15 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Navdeep Textiles",
+  "name": "Brands Bargain",
   "category": [
-    "Clothing store",
-    "Boutique",
-    "Designer clothing store"
+    "Clothing store"
   ],
   "description": "",
-  "address": "SCO 76, near MUSICAL FOUNTAIN, 17D, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 97805 58866",
-  "hours": "sunday: 11 AM–9 PM, monday: 11 AM–9 PM, tuesday: 11 AM–9 PM, wednesday: 11 AM–9 PM, thursday: 11 AM–9 PM, friday: 11 AM–9 PM, saturday: 11 AM–9 PM",
-  "services": [
-    {
-      "name": "Designer Clothing Store",
-      "description": "We offer a wide range of designer clothing for men and women"
-    }
-  ]
+  "address": "SCF 25, 9D, Sector 9, Chandigarh, 160009, India",
+  "phone": "+91 172 506 2222",
+  "hours": "sunday: 10:30 AM–9 PM, monday: 10:30 AM–9 PM, tuesday: 10:30 AM–9 PM, wednesday: 10:30 AM–9 PM, thursday: 10:30 AM–9 PM, friday: 10:30 AM–9 PM, saturday: 10:30 AM–9 PM",
+  "services": []
 };
     
     const systemPrompt = {
