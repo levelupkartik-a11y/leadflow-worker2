@@ -76,36 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Kuldeep Emporium|Best bridal lehngas & ethnic wear store for designers suits, kurtis,dresses, kaftans, peplums,winter wear",
-  "category": "Women's clothing store",
+  "name": "Brand Shop - Best Mens Wear Store in Chandigarh | Clothing Shop | Readymade Garment | Women Clothing Store",
+  "category": "Clothing store",
   "description": "",
-  "address": "SCO-85, 35C, Sector 35, Chandigarh, 160022, India",
-  "phone": "+91 99922 41356",
-  "hours": "friday: 9 AM–9 PM, monday: 9 AM–9 PM, saturday: 9 AM–9 PM, sunday: 9 AM–9 PM, thursday: 9 AM–9 PM, tuesday: 9 AM–9 PM, wednesday: 9 AM–9 PM",
+  "address": "SCO 18, 19, Sector 23-C, 23C, Sector 23, Chandigarh, 160023, India",
+  "phone": "+91 99887 81095",
+  "hours": "friday: 10:30 AM–10 PM, monday: 10:30 AM–10 PM, saturday: 10:30 AM–10 PM, sunday: 10:30 AM–10 PM, thursday: 10:30 AM–10 PM, tuesday: 10:30 AM–10 PM, wednesday: 10:30 AM–10 PM",
   "services": [
     {
-      "name": "Designer Suits",
-      "description": "Browse our extensive collection of designer suits for women."
-    },
-    {
-      "name": "Kurtis",
-      "description": "Discover the perfect kurtis for any occasion."
-    },
-    {
-      "name": "Dresses",
-      "description": "Explore our stunning designer dresses for women."
-    },
-    {
-      "name": "Kaftans",
-      "description": "Find the perfect kaftans for a stylish and comfortable look."
-    },
-    {
-      "name": "Peplums",
-      "description": "Shop our exquisite collection of peplums for women."
-    },
-    {
-      "name": "Winter Wear",
-      "description": "Stay warm and stylish with our latest winter wear collection."
+      "name": "Men's Wear Store",
+      "description": "Quality men's garments for every occasion"
     }
   ]
 };
