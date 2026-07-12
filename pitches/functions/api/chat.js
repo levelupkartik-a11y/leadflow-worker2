@@ -76,29 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Rajnish Clinic - Family physician and General physician in Chandigarh",
-  "category": [
-    "Medical clinic",
-    "Doctor",
-    "Laboratory",
-    "Physician referral service"
-  ],
+  "name": "Chhabra Clinic",
+  "category": "Medical clinic",
   "description": "",
-  "address": "SCO 79, Sector 40 Market Rd, Sector 40C, Sector 40B, Chandigarh, 160036, India",
-  "phone": "+91 98785 22885",
-  "hours": "sunday: 11 AM–2 PM, monday: 10 AM–2 PM, 5–8 PM, tuesday: 10 AM–2 PM, 5–8 PM, wednesday: 10 AM–2 PM, 5–8 PM, thursday: 10 AM–2 PM, 5–8 PM, friday: 10 AM–2 PM, 5–8 PM, saturday: 10 AM–2:30 PM, 5–8:30 PM",
+  "address": "PQ7Q+8P5, Block B, CSIO Colony, 30C, Sector 30, Chandigarh, 160030, India",
+  "phone": "+91 172 265 1777",
+  "hours": "friday: 8:30 AM–8:30 PM, monday: 8:30 AM–8:30 PM, saturday: 8:30 AM–8:30 PM, sunday: Closed, thursday: 8:30 AM–8:30 PM, tuesday: 8:30 AM–8:30 PM, wednesday: 8:30 AM–8:30 PM",
   "services": [
     {
-      "name": "Family Physician Services",
-      "description": "Compassionate care for the whole family, including medical check-ups and consultations"
-    },
-    {
-      "name": "General Physician Services",
-      "description": "Professional medical care for various health issues and concerns"
-    },
-    {
-      "name": "Laboratory Services",
-      "description": "Comprehensive lab testing for accurate diagnosis and medical management"
+      "name": "Routine Check-Ups",
+      "description": "We offer routine check-ups for your entire family, including health consultations and medical check-ups."
     }
   ]
 };
