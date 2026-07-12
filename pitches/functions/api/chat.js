@@ -76,20 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Chandigarh Electronics",
-  "category": "Electronics store",
-  "description": "Wide range of electronic goods as well as car audio equipment.",
-  "address": "Booths, 166, Sector 35D, Sector 35, Chandigarh, 160022, India",
-  "phone": "+91 83600 80966",
-  "hours": "friday: 11 AM–9 PM, monday: 11 AM–9 PM, saturday: 11 AM–9 PM, sunday: 12–6 PM, thursday: 11 AM–9 PM, tuesday: 11 AM–9 PM, wednesday: 11 AM–9 PM",
+  "name": "Sunder Emporium",
+  "category": [
+    "Women's clothing store"
+  ],
+  "description": "",
+  "address": "Inner Market, S.C.O. 94, near Congress Bhawan, 35C, Sector 35, Chandigarh, 160022, India",
+  "phone": "+91 70877 83535",
+  "hours": "sunday: 10 AM–8:30 PM, monday: 10 AM–8:30 PM, tuesday: 10 AM–8:30 PM, wednesday: 10 AM–8:30 PM, thursday: 10 AM–8:30 PM, friday: 10 AM–8:30 PM, saturday: 10 AM–8:30 PM",
   "services": [
     {
-      "name": "Electronic Goods",
-      "description": "We offer a wide range of electronic goods, including home appliances and gadgets."
-    },
-    {
-      "name": "Car Audio Equipment",
-      "description": "Upgrade your car's audio system with our variety of car audio equipment."
+      "name": "Clothing for Women",
+      "description": "We offer a curated selection of women's clothing at competitive prices."
     }
   ]
 };
