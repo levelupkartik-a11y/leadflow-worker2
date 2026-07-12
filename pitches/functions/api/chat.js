@@ -76,20 +76,26 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "King's Tailors",
-  "category": "Men's tailor",
+  "name": "Iqbal Sons Tailors",
+  "category": [
+    "Men's tailor"
+  ],
   "description": "",
-  "address": "31D, Sector 31, Chandigarh, 160030, India",
-  "phone": "+91 88472 07903",
-  "hours": "friday: 11 AM–9 PM, monday: 11 AM–9 PM, saturday: 11 AM–9 PM, sunday: Closed, thursday: 11 AM–9 PM, tuesday: 11 AM–9 PM, wednesday: 11 AM–9 PM",
+  "address": "S C O 47-48, Classic Market (Basement, 17C, Chandigarh, 160017, India",
+  "phone": "",
+  "hours": "sunday: Closed, monday: 11 AM–9 PM, tuesday: 11 AM–9 PM, wednesday: 11 AM–9 PM, thursday: 11 AM–9 PM, friday: 11 AM–9 PM, saturday: 11 AM–9 PM",
   "services": [
     {
-      "name": "Alteration Service",
-      "description": "Get your clothes altered to perfection at an affordable price of ?499 onwards."
+      "name": "Tailor-made men's suits",
+      "description": "Made to measure for the perfect fit."
     },
     {
-      "name": "Tailored Suits",
-      "description": "Custom-made suits from premium fabrics at a price of ?12,000 upwards."
+      "name": "Alterations",
+      "description": "From minor adjustments to major makeovers."
+    },
+    {
+      "name": "Men's clothing customisation",
+      "description": "Let us help you create your dream wardrobe."
     }
   ]
 };
