@@ -76,42 +76,15 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Kuldeep Emporium|Best bridal lehngas & ethnic wear store for designers suits, kurtis,dresses, kaftans, peplums,winter wear",
-  "category": "Women's clothing store",
+  "name": "Brands Bargain",
+  "category": [
+    "Clothing store"
+  ],
   "description": "",
-  "address": "SCO-85, 35C, Sector 35, Chandigarh, 160022, India",
-  "phone": "+91 99922 41356",
-  "hours": "friday: 9 AM–9 PM, monday: 9 AM–9 PM, saturday: 9 AM–9 PM, sunday: 9 AM–9 PM, thursday: 9 AM–9 PM, tuesday: 9 AM–9 PM, wednesday: 9 AM–9 PM",
-  "services": [
-    {
-      "name": "Bridal Lehngas",
-      "description": "Designer lehngas for the perfect wedding look."
-    },
-    {
-      "name": "Designer Suits",
-      "description": "Beautiful suits for all occasions."
-    },
-    {
-      "name": "Kurtis",
-      "description": "Vibrant and stylish kurtis for women."
-    },
-    {
-      "name": "Dresses",
-      "description": "Sleek and modern dresses for women."
-    },
-    {
-      "name": "Kaftans",
-      "description": "Comfortable and stylish kaftans for women."
-    },
-    {
-      "name": "Peplums",
-      "description": "Floral and feminine peplums for women."
-    },
-    {
-      "name": "Winter Wear",
-      "description": "Cozy and warm winter wear for women."
-    }
-  ]
+  "address": "SCF 25, 9D, Sector 9, Chandigarh, 160009, India",
+  "phone": "+91 172 506 2222",
+  "hours": "sunday: 10:30 AM–9 PM, monday: 10:30 AM–9 PM, tuesday: 10:30 AM–9 PM, wednesday: 10:30 AM–9 PM, thursday: 10:30 AM–9 PM, friday: 10:30 AM–9 PM, saturday: 10:30 AM–9 PM",
+  "services": []
 };
     
     const systemPrompt = {
