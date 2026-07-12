@@ -76,16 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Nizam Tailors",
-  "category": "Men's tailor",
+  "name": "BeDi taylors & Co",
+  "category": "Tailor",
   "description": "",
-  "address": "S.C.O 17, First Floor , Sector 17-E, Chandigarh 160017, India",
-  "phone": "+91 172 270 7786",
-  "hours": "friday: 10 AM–1 PM, 3:30–8:30 PM, monday: 10 AM–8:30 PM, saturday: 10 AM–8:30 PM, sunday: Closed, thursday: 10 AM–8:30 PM, tuesday: 10 AM–8:30 PM, wednesday: 10 AM–8:30 PM",
+  "address": "Sco 57-58-59, Shopping Plaza, 17C, Sector 17, Chandigarh, 160017, India",
+  "phone": "+91 98155 00965",
+  "hours": "friday: 11 AM–8 PM, monday: 11 AM–8 PM, saturday: 11 AM–8:30 PM, sunday: 4:30–8 PM, thursday: 11 AM–8 PM, tuesday: 11 AM–8 PM, wednesday: 11 AM–8 PM",
   "services": [
     {
-      "name": "Tailoring Services",
-      "description": "We offer a wide range of tailor services, including custom-made suits, shirts, and pants."
+      "name": "Custom-made Clothing",
+      "description": "We offer bespoke clothing solutions for men and women, using high-quality fabrics and traditional craftsmanship."
     }
   ]
 };
