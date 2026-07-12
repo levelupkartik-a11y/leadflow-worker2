@@ -76,13 +76,26 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "PAB REMEDIES CHEMIST",
+  "name": "Singla Medical Store",
   "category": "Pharmacy",
   "description": "",
-  "address": "BOTH NO 426, Sector 44D, Sector 44, Chandigarh, 160043, India",
-  "phone": "+91 99882 87080",
-  "hours": "friday: 7 AM–2 AM, monday: 7 AM–2 AM, saturday: 7 AM–2 AM, sunday: 7 AM–2 AM, thursday: 7 AM–2 AM, tuesday: 7 AM–2 AM, wednesday: 7 AM–2 AM",
-  "services": []
+  "address": "Sco No 43, Sector 47 A, Sector 47 D, Sector 47, Chandigarh, 160047, India",
+  "phone": "+91 97805 40643",
+  "hours": "friday: 8:30 AM–10 PM, monday: 8:30 AM–10 PM, saturday: 8:30 AM–10 PM, sunday: 10 AM–10 PM, thursday: 8:30 AM–10 PM, tuesday: 8:30 AM–10 PM, wednesday: 8:30 AM–10 PM",
+  "services": [
+    {
+      "name": "Prescriptions",
+      "description": "We fill and dispense prescriptions from your doctor."
+    },
+    {
+      "name": "Over-the-Counter Medications",
+      "description": "We offer a wide range of over-the-counter medications for common ailments."
+    },
+    {
+      "name": "Health Consultations",
+      "description": "Our staff can provide general health consultations and recommendations."
+    }
+  ]
 };
     
     const systemPrompt = {
