@@ -76,18 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sunder Emporium",
+  "name": "Sector 22-B Electronics Market",
   "category": [
-    "Women's clothing store"
+    "Electronics store"
   ],
   "description": "",
-  "address": "Inner Market, S.C.O. 94, near Congress Bhawan, 35C, Sector 35, Chandigarh, 160022, India",
-  "phone": "+91 70877 83535",
-  "hours": "sunday: 10 AM–8:30 PM, monday: 10 AM–8:30 PM, tuesday: 10 AM–8:30 PM, wednesday: 10 AM–8:30 PM, thursday: 10 AM–8:30 PM, friday: 10 AM–8:30 PM, saturday: 10 AM–8:30 PM",
+  "address": "1159, Himalaya Marg, Sector 22B, Sector 22, Chandigarh, 160022, India",
+  "phone": "",
+  "hours": "sunday: 11:30 AM–7:30 PM, monday: 10:30 AM–8:30 PM, tuesday: 10:30 AM–8:30 PM, wednesday: 10:30 AM–8:30 PM, thursday: 10:30 AM–8:30 PM, friday: 10:30 AM–8:30 PM, saturday: 10:30 AM–8:30 PM",
   "services": [
     {
-      "name": "Clothing for Women",
-      "description": "We offer a curated selection of women's clothing at competitive prices."
+      "name": "Electronics Store",
+      "description": "We offer a wide range of electronics products at competitive prices."
     }
   ]
 };
