@@ -76,18 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Me Lords The Ladies Tailors",
+  "name": "K.C Tailors & Drapers",
   "category": [
-    "Tailor"
+    "Tailor",
+    "Clothing store",
+    "Fabric store"
   ],
   "description": "",
-  "address": "SCO 1138-39, Sector 22B, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 98881 29855",
-  "hours": "monday: 9:30 AM–8:30 PM, tuesday: 9:30 AM–8:30 PM, wednesday: 9:30 AM–8:30 PM, thursday: 9:30 AM–8:30 PM, friday: 9:30 AM–8:30 PM, saturday: 9:30 AM–8:30 PM, sunday: 9:30 AM–8:30 PM",
+  "address": "Shop No. 824, Opp. Parade Ground, bSector 22A, Chandigarh, 160022, India",
+  "phone": "+91 172 270 3458",
+  "hours": "monday: 10:30 AM–9 PM, tuesday: 10:30 AM–9 PM, wednesday: 10:30 AM–9 PM, thursday: 10:30 AM–9 PM, friday: 10:30 AM–9 PM, saturday: 10:30 AM–9 PM, sunday: 10:30 AM–9 PM",
   "services": [
     {
-      "name": "Tailoring Services",
-      "description": "Our tailors offer a wide range of tailoring services to help you get perfectly tailored clothes."
+      "name": "Alterations",
+      "description": "We offer bespoke alterations for all types of garments."
+    },
+    {
+      "name": "Fabric Sales",
+      "description": "We stock a range of high-quality fabrics for various purposes."
     }
   ]
 };
