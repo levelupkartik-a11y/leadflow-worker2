@@ -76,18 +76,21 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Delight Emporiums",
+  "name": "TAÎLORED",
   "category": [
-    "Formal wear store",
-    "Men's tailor",
-    "Tuxedo shop",
-    "Wedding store"
+    "Custom tailor",
+    "Designer clothing store"
   ],
   "description": "",
-  "address": "SCO-10,1st Floor, D, Block D, Sector 30, Chandigarh, 160030, India",
-  "phone": "+91 99880 81086",
-  "hours": "monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM, sunday: 10 AM–6 PM",
-  "services": []
+  "address": "SCO 73, 74, 75 Level 0, next to Hot Millions, Chandigarh, 160017, India",
+  "phone": "+91 99888 88469",
+  "hours": "monday: 11 AM–8:30 PM, tuesday: 11 AM–8:30 PM, wednesday: 11 AM–8:30 PM, thursday: 11 AM–8:30 PM, friday: 11 AM–8:30 PM, saturday: 11 AM–8:30 PM, sunday: 11 AM–8:30 PM",
+  "services": [
+    {
+      "name": "Custom Tailoring",
+      "description": "We offer custom tailoring services for all your clothing needs."
+    }
+  ]
 };
     
     const systemPrompt = {
