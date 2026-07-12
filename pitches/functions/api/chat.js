@@ -95,44 +95,24 @@ export async function onRequestPost(context) {
   "hours": "sunday: 11 AM–5 PM, monday: 10 AM–8:30 PM, tuesday: 10 AM–8:30 PM, wednesday: 10 AM–8:30 PM, thursday: 10 AM–8:30 PM, friday: 10 AM–8:30 PM, saturday: 10 AM–8:30 PM",
   "services": [
     {
-      "name": "Cell phone accessories",
-      "description": "We have a vast collection of phone cases, covers, screen guards, and chargers from top brands."
+      "name": "Cell Phone Accessories",
+      "description": "Find a wide variety of cell phone cases, screen protectors, and other accessories."
     },
     {
-      "name": "Electronics accessories",
-      "description": "Wholesaler for electronics accessories, we cater to businesses and individuals alike."
+      "name": "Electronics",
+      "description": "Buy the latest electronics including mobile phones, laptops, and tablets."
     },
     {
-      "name": "Electronics store",
-      "description": "Browse through our extensive electronics selection, from laptops to home appliances."
+      "name": "Photography Equipment",
+      "description": "Get the best photography equipment including cameras, lenses, and accessories."
     },
     {
-      "name": "Pen store",
-      "description": "A variety of pens, pencils, and stationery items for your daily needs."
+      "name": "Photo Booth",
+      "description": "Have fun at our photo booth with friends and family."
     },
     {
-      "name": "Photo booth",
-      "description": "Capture unforgettable memories in our state-of-the-art photo booths."
-    },
-    {
-      "name": "Photo lab",
-      "description": "Get your photos developed and printed at our in-house lab."
-    },
-    {
-      "name": "Photographer",
-      "description": "Professional photographer services for events and portraits."
-    },
-    {
-      "name": "Photography studio",
-      "description": "Book our photography studio for events, portraits, and commercial shoots."
-    },
-    {
-      "name": "Prepaid SIM card store",
-      "description": "Purchase prepaid SIM cards for local and international connectivity."
-    },
-    {
-      "name": "Stationery wholesaler",
-      "description": "Wholesale stationery and school supplies for businesses and schools."
+      "name": "Prepaid SIM Card",
+      "description": "Get the best prepaid SIM card plans and offers."
     }
   ]
 };
