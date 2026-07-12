@@ -76,24 +76,23 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Ujay Bansal Super Market",
+  "name": "Gift Supermarket & Dry Fruits",
   "category": [
     "Supermarket",
-    "Asian grocery store",
-    "Eastern European grocery store",
-    "Grocery delivery service",
-    "Grocery store",
-    "Indian grocery store",
-    "Wholesale grocer"
+    "Gift shop"
   ],
   "description": "",
-  "address": "SCF 39, INNER MARKET, Sector 7-C, Sector 7, Chandigarh, 160019, India",
-  "phone": "+91 99154 19777",
-  "hours": "monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM, sunday: 10 AM–9 PM",
+  "address": "Sector 18-C, Sector 18, Chandigarh, 160018, India",
+  "phone": "+91 172 464 0001",
+  "hours": "monday: 9 AM–9 PM, tuesday: 9 AM–9 PM, wednesday: 9 AM–9 PM, thursday: 9 AM–9 PM, friday: 9 AM–9 PM, saturday: 9 AM–9 PM, sunday: 9 AM–9 PM",
   "services": [
     {
-      "name": "Grocery Shopping",
-      "description": "Browse our wide selection of international groceries and fresh produce."
+      "name": "Gift Shopping",
+      "description": "Browse our vast collection of gift items for all occasions"
+    },
+    {
+      "name": "Dry Fruits and Nuts",
+      "description": "Discover our exotic range of dry fruits and nuts"
     }
   ]
 };
