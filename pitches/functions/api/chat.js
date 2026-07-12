@@ -76,40 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Seven Sky Salon",
+  "name": "SG Salon",
   "category": [
-    "Beauty salon",
-    "Beautician",
-    "Beauty product supplier",
-    "Make-up artist",
-    "Nail salon",
-    "Hairdresser",
-    "Waxing hair removal service"
+    "Beauty salon"
   ],
   "description": "",
-  "address": "SCO 3, First Floor, above YES BANK, Sector 20D, Chandigarh, 160020, India",
-  "phone": "+91 86999 65797",
-  "hours": "sunday: 10 AM–9 PM, monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM",
+  "address": "Jan Marg, near Bharat Sanchar Nigam Limited, 17D, Sector 17, Chandigarh, 160017, India",
+  "phone": "+91 99141 61004",
+  "hours": "sunday: 9 AM–8 PM, monday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM, thursday: 10 AM–8 PM, friday: 10 AM–8 PM, saturday: 10 AM–8 PM",
   "services": [
     {
-      "name": "Haircuts",
-      "description": "Relaxing haircuts and styling in a professional environment. Book your appointment today."
-    },
-    {
-      "name": "Makeup Services",
-      "description": "Expert makeup and beauty treatments for all occasions."
-    },
-    {
-      "name": "Nail Salon",
-      "description": "Wide range of nail art and beauty treatments available."
-    },
-    {
-      "name": "Waxing Services",
-      "description": "Hair removal services using high-quality waxes."
-    },
-    {
-      "name": "Coloring Services",
-      "description": "Expert hair coloring and color correction services."
+      "name": "Haircuts and Color",
+      "description": "Expert haircuts and color in a relaxing environment"
     }
   ]
 };
