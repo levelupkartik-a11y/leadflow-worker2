@@ -76,18 +76,33 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Zaidi Tailors",
+  "name": "Original Harman Tailors",
   "category": [
-    "Men's tailor"
+    "Uniform store",
+    "Designer clothing store",
+    "Men's tailor",
+    "Police supply store"
   ],
   "description": "",
-  "address": "Shop No 103, Sector 45-C Next to Masjid, Chandigarh 160047, India",
-  "phone": "+91 92179 71288",
-  "hours": "monday: 9 AM–10 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 9 AM–10 PM",
+  "address": "SCO 4-5, First Floor A, Sector 17B Above SBI Treasury Branch, Chandigarh 160017, India",
+  "phone": "+91 98722 03100",
+  "hours": "monday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM, thursday: 10 AM–8 PM, friday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: Closed",
   "services": [
     {
-      "name": "Alteration services",
-      "description": "We provide expert alteration services for all your wardrobe needs."
+      "name": "Uniform Store",
+      "description": "We offer a wide selection of uniforms for various professions, including police and other law enforcement agencies."
+    },
+    {
+      "name": "Designer Clothing Store",
+      "description": "Our store features a range of luxury clothing items from top designers."
+    },
+    {
+      "name": "Men's Tailor",
+      "description": "Our expert tailors will create custom-made suits and clothing to fit your personal style."
+    },
+    {
+      "name": "Police Supply Store",
+      "description": "We provide essential equipment and gear for police officers and other law enforcement professionals."
     }
   ]
 };
