@@ -76,18 +76,30 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Chandigarh noor salon at home",
+  "name": "The Bella Cut - Unisex Salon",
   "category": [
-    "Beautician"
+    "Barber shop",
+    "Beauty salon",
+    "Facial spa",
+    "Health and beauty shop",
+    "Hairdresser"
   ],
   "description": "",
-  "address": "Sector 17A, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 88473 58539",
-  "hours": "sunday: 9 AM–9 PM, monday: 9 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM, thursday: 9 AM–8 PM, friday: 9 AM–8 PM, saturday: 9 AM–8 PM",
+  "address": "1st Floor, SCO 9, Sector 21C, Sector 21, Chandigarh, 160022, India",
+  "phone": "+91 172 468 2088",
+  "hours": "sunday: 10 AM–10 PM, monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM",
   "services": [
     {
-      "name": "Professional Beauty Services",
-      "description": "Expert haircuts and color in a relaxing environment. Book your appointment today."
+      "name": "Haircuts",
+      "description": "Expert barbers and skilled hairstylists serving individuals of all ages."
+    },
+    {
+      "name": "Color Services",
+      "description": "Experienced stylists offering a wide range of color options."
+    },
+    {
+      "name": "Facial Spa",
+      "description": "Relaxing facials to rejuvenate your skin."
     }
   ]
 };
