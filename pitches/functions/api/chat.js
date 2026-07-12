@@ -76,20 +76,40 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Panaché Salon",
-  "category": "Beauty salon",
+  "name": "Seven Sky Salon",
+  "category": [
+    "Beauty salon",
+    "Beautician",
+    "Beauty product supplier",
+    "Make-up artist",
+    "Nail salon",
+    "Hairdresser",
+    "Waxing hair removal service"
+  ],
   "description": "",
-  "address": "Sco-16-17, Madhya Marg, near Thomas cook, 9D, Sector 9, Chandigarh, 160009, India",
-  "phone": "+91 89200 20505",
-  "hours": "friday: 10:30 AM–8:30 PM, monday: 10:30 AM–8:30 PM, saturday: 10:30 AM–8:30 PM, sunday: 10:30 AM–8:30 PM, thursday: 10:30 AM–8:30 PM, tuesday: 10:30 AM–8:30 PM, wednesday: 10:30 AM–8:30 PM",
+  "address": "SCO 3, First Floor, above YES BANK, Sector 20D, Chandigarh, 160020, India",
+  "phone": "+91 86999 65797",
+  "hours": "sunday: 10 AM–9 PM, monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM",
   "services": [
     {
-      "name": "Haircut",
-      "description": "Expertly crafted haircuts tailored to your style and preferences"
+      "name": "Haircuts",
+      "description": "Relaxing haircuts and styling in a professional environment. Book your appointment today."
     },
     {
-      "name": "Hair Coloring",
-      "description": "High-quality hair coloring services to enhance your look"
+      "name": "Makeup Services",
+      "description": "Expert makeup and beauty treatments for all occasions."
+    },
+    {
+      "name": "Nail Salon",
+      "description": "Wide range of nail art and beauty treatments available."
+    },
+    {
+      "name": "Waxing Services",
+      "description": "Hair removal services using high-quality waxes."
+    },
+    {
+      "name": "Coloring Services",
+      "description": "Expert hair coloring and color correction services."
     }
   ]
 };
