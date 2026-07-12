@@ -76,20 +76,13 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "CHEMIST A S Enterprises",
-  "category": [
-    "Pharmacy"
-  ],
+  "name": "Medicare Chemists",
+  "category": "Pharmacy",
   "description": "",
-  "address": "Shop, Sector 22D, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 99888 86783",
-  "hours": "monday: 10 AM–9:30 PM, tuesday: 10 AM–9:30 PM, wednesday: 10 AM–9:30 PM, thursday: 10 AM–9:30 PM, friday: 10 AM–9:30 PM, saturday: 10 AM–9:30 PM, sunday: Closed",
-  "services": [
-    {
-      "name": "Pharmacy Services",
-      "description": "We offer a wide range of pharmacy services to cater to your healthcare needs."
-    }
-  ]
+  "address": "A, Booth Number 820, A Market, 820-A, Sector 22A, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 98727 46859",
+  "hours": "friday: 9:30 AM–9:30 PM, monday: 9:30 AM–9:30 PM, saturday: 9:30 AM–9:30 PM, sunday: 10 AM–8 PM, thursday: 9:30 AM–9:30 PM, tuesday: 9:30 AM–9:30 PM, wednesday: 9:30 AM–9:30 PM",
+  "services": []
 };
     
     const systemPrompt = {
