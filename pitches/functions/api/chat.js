@@ -76,15 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "The vintage galerie",
+  "name": "Me Lords The Ladies Tailors",
   "category": [
-    "Furniture store"
+    "Tailor"
   ],
   "description": "",
-  "address": "SCO-181, Market, Sector 8C, Sector 8, Chandigarh, 160009, India",
-  "phone": "+91 97803 52718",
-  "hours": "monday: 10:30 AM–8 PM, tuesday: 10:30 AM–8 PM, wednesday: 10:30 AM–8 PM, thursday: 10:30 AM–8 PM, friday: 10:30 AM–8 PM, saturday: 10:30 AM–8 PM, sunday: 10:30 AM–8 PM",
-  "services": []
+  "address": "SCO 1138-39, Sector 22B, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 98881 29855",
+  "hours": "monday: 9:30 AM–8:30 PM, tuesday: 9:30 AM–8:30 PM, wednesday: 9:30 AM–8:30 PM, thursday: 9:30 AM–8:30 PM, friday: 9:30 AM–8:30 PM, saturday: 9:30 AM–8:30 PM, sunday: 9:30 AM–8:30 PM",
+  "services": [
+    {
+      "name": "Tailoring Services",
+      "description": "Our tailors offer a wide range of tailoring services to help you get perfectly tailored clothes."
+    }
+  ]
 };
     
     const systemPrompt = {
