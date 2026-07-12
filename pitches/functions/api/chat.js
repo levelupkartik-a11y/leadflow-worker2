@@ -76,26 +76,22 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "The Bella Cut - Unisex Salon",
+  "name": "SG Salon",
   "category": [
-    "Barber shop",
-    "Beauty salon",
-    "Facial spa",
-    "Health and beauty shop",
-    "Hairdresser"
+    "Beauty salon"
   ],
   "description": "",
-  "address": "1st Floor, SCO 9, Sector 21C, Sector 21, Chandigarh, 160022, India",
-  "phone": "+91 172 468 2088",
-  "hours": "sunday: 10 AM–10 PM, monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM",
+  "address": "Jan Marg, near Bharat Sanchar Nigam Limited, 17D, Sector 17, Chandigarh, 160017, India",
+  "phone": "+91 99141 61004",
+  "hours": "sunday: 9 AM–8 PM, monday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM, thursday: 10 AM–8 PM, friday: 10 AM–8 PM, saturday: 10 AM–8 PM",
   "services": [
     {
       "name": "Haircuts",
-      "description": "Expert haircuts by experienced barbers"
+      "description": "Expert haircuts in a relaxing environment"
     },
     {
-      "name": "Facial Spa",
-      "description": "Relaxing facial treatments in a soothing environment"
+      "name": "Color Services",
+      "description": "High-quality color services by experienced stylists"
     }
   ]
 };
