@@ -76,16 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "In & Out Super Market",
-  "category": "Grocery store",
-  "description": "Convenient shop stocking groceries and snacks for everyday use and home.",
-  "address": "Sector 4 Petrol Pump, Chandigarh 160001, India",
-  "phone": "+91 99147 70022",
-  "hours": "friday: 7 AM–12 AM, monday: 7 AM–12 AM, saturday: 7 AM–12 AM, sunday: 7 AM–12 AM, thursday: 7 AM–12 AM, tuesday: 7 AM–12 AM, wednesday: 7 AM–12 AM",
+  "name": "Ujay Bansal Super Market",
+  "category": [
+    "Supermarket",
+    "Asian grocery store",
+    "Eastern European grocery store",
+    "Grocery delivery service",
+    "Grocery store",
+    "Indian grocery store",
+    "Wholesale grocer"
+  ],
+  "description": "",
+  "address": "SCF 39, INNER MARKET, Sector 7-C, Sector 7, Chandigarh, 160019, India",
+  "phone": "+91 99154 19777",
+  "hours": "monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM, sunday: 10 AM–9 PM",
   "services": [
     {
       "name": "Grocery Shopping",
-      "description": "Conveniently shop for groceries and snacks."
+      "description": "Browse our wide selection of international groceries and fresh produce."
     }
   ]
 };
