@@ -76,30 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "The Bella Cut - Unisex Salon",
-  "category": [
-    "Barber shop",
-    "Beauty salon",
-    "Facial spa",
-    "Health and beauty shop",
-    "Hairdresser"
-  ],
+  "name": "GEM Clinic | Best Doctors in Chandigarh",
+  "category": "Medical clinic",
   "description": "",
-  "address": "1st Floor, SCO 9, Sector 21C, Sector 21, Chandigarh, 160022, India",
-  "phone": "+91 172 468 2088",
-  "hours": "sunday: 10 AM–10 PM, monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM",
+  "address": "229, Sector 15-A, Sector 15, Chandigarh, 160015, India",
+  "phone": "+91 98780 70229",
+  "hours": "friday: 10 AM–8 PM, monday: 10 AM–8 PM, saturday: 10 AM–7 PM, sunday: Closed, thursday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM",
   "services": [
     {
-      "name": "Haircuts",
-      "description": "Expert haircuts for men and women, book your appointment today"
-    },
-    {
-      "name": "Facials",
-      "description": "Relax and rejuvenate with our range of facials"
-    },
-    {
-      "name": "Spa Services",
-      "description": "Enjoy a range of spa services, including massages and body treatments"
+      "name": "General Healthcare",
+      "description": "We provide a wide range of healthcare services to meet your needs."
     }
   ]
 };
