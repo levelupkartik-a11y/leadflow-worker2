@@ -76,43 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Chhabra Electronics & Electricals",
-  "category": [
-    "Cell phone accessory store",
-    "Electronics accessories wholesaler",
-    "Electronics store",
-    "Pen store",
-    "Photo booth",
-    "Photo lab",
-    "Photographer",
-    "Photography studio",
-    "Prepaid SIM card store",
-    "Stationery wholesaler"
-  ],
-  "description": "",
-  "address": "Booth No. 39, Sector 29-C, 29C, Sector 29, Chandigarh, 160030, India",
-  "phone": "+91 99886 98859",
-  "hours": "sunday: 11 AM–5 PM, monday: 10 AM–8:30 PM, tuesday: 10 AM–8:30 PM, wednesday: 10 AM–8:30 PM, thursday: 10 AM–8:30 PM, friday: 10 AM–8:30 PM, saturday: 10 AM–8:30 PM",
+  "name": "Chandigarh Electronics",
+  "category": "Electronics store",
+  "description": "Wide range of electronic goods as well as car audio equipment.",
+  "address": "Booths, 166, Sector 35D, Sector 35, Chandigarh, 160022, India",
+  "phone": "+91 83600 80966",
+  "hours": "friday: 11 AM–9 PM, monday: 11 AM–9 PM, saturday: 11 AM–9 PM, sunday: 12–6 PM, thursday: 11 AM–9 PM, tuesday: 11 AM–9 PM, wednesday: 11 AM–9 PM",
   "services": [
     {
-      "name": "Cell Phone Accessories",
-      "description": "Find a wide variety of cell phone cases, screen protectors, and other accessories."
+      "name": "Electronic Goods",
+      "description": "We have a wide variety of electronic goods in stock."
     },
     {
-      "name": "Electronics",
-      "description": "Buy the latest electronics including mobile phones, laptops, and tablets."
-    },
-    {
-      "name": "Photography Equipment",
-      "description": "Get the best photography equipment including cameras, lenses, and accessories."
-    },
-    {
-      "name": "Photo Booth",
-      "description": "Have fun at our photo booth with friends and family."
-    },
-    {
-      "name": "Prepaid SIM Card",
-      "description": "Get the best prepaid SIM card plans and offers."
+      "name": "Car Audio Equipment",
+      "description": "Our car audio equipment ranges from speakers to amplifiers."
     }
   ]
 };
