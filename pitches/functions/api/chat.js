@@ -76,25 +76,15 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Meena Electronics",
+  "name": "The vintage galerie",
   "category": [
-    "Electronics store",
-    "Cell phone store"
+    "Furniture store"
   ],
   "description": "",
-  "address": "Shop No, 592, Hallo Majra Main Market Rd, near Govt High School, Hallo Majra, Chandigarh, 160002, India",
-  "phone": "+91 98725 95671",
-  "hours": "monday: 9 AM–10 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 9 AM–9 PM",
-  "services": [
-    {
-      "name": "Mobile Phones",
-      "description": "Explore our extensive collection of mobile phones from top brands."
-    },
-    {
-      "name": "Laptops and Desktops",
-      "description": "Find your perfect laptop or desktop at affordable prices."
-    }
-  ]
+  "address": "SCO-181, Market, Sector 8C, Sector 8, Chandigarh, 160009, India",
+  "phone": "+91 97803 52718",
+  "hours": "monday: 10:30 AM–8 PM, tuesday: 10:30 AM–8 PM, wednesday: 10:30 AM–8 PM, thursday: 10:30 AM–8 PM, friday: 10:30 AM–8 PM, saturday: 10:30 AM–8 PM, sunday: 10:30 AM–8 PM",
+  "services": []
 };
     
     const systemPrompt = {
