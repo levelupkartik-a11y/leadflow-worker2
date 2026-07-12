@@ -76,20 +76,13 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Amrit Pharmacy store",
-  "category": [
-    "Pharmacy"
-  ],
+  "name": "PAB REMEDIES CHEMIST",
+  "category": "Pharmacy",
   "description": "",
-  "address": "Nehru Hsopital, 1 And 2, Madhya Marg, Sector 12, Chandigarh, 160012, India",
-  "phone": "+91 88180 08981",
-  "hours": "monday: 9 AM–7:30 PM, tuesday: 9 AM–7:30 PM, wednesday: 9 AM–7:30 PM, thursday: 9 AM–7:30 PM, friday: 9 AM–7:30 PM, saturday: 9 AM–7:30 PM, sunday: 9 AM–7:30 PM",
-  "services": [
-    {
-      "name": "Pharmacy Services",
-      "description": "Amrit Pharmacy store provides various pharmacy services such as prescription medication and advice."
-    }
-  ]
+  "address": "BOTH NO 426, Sector 44D, Sector 44, Chandigarh, 160043, India",
+  "phone": "+91 99882 87080",
+  "hours": "friday: 7 AM–2 AM, monday: 7 AM–2 AM, saturday: 7 AM–2 AM, sunday: 7 AM–2 AM, thursday: 7 AM–2 AM, tuesday: 7 AM–2 AM, wednesday: 7 AM–2 AM",
+  "services": []
 };
     
     const systemPrompt = {
