@@ -9,6 +9,8 @@ jobs:
   batch-build-and-deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 250
+    permissions:
+      contents: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
