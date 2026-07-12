@@ -76,24 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Singla Medical Store",
-  "category": "Pharmacy",
+  "name": "CHEMIST A S Enterprises",
+  "category": [
+    "Pharmacy"
+  ],
   "description": "",
-  "address": "Sco No 43, Sector 47 A, Sector 47 D, Sector 47, Chandigarh, 160047, India",
-  "phone": "+91 97805 40643",
-  "hours": "friday: 8:30 AM–10 PM, monday: 8:30 AM–10 PM, saturday: 8:30 AM–10 PM, sunday: 10 AM–10 PM, thursday: 8:30 AM–10 PM, tuesday: 8:30 AM–10 PM, wednesday: 8:30 AM–10 PM",
+  "address": "Shop, Sector 22D, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 99888 86783",
+  "hours": "monday: 10 AM–9:30 PM, tuesday: 10 AM–9:30 PM, wednesday: 10 AM–9:30 PM, thursday: 10 AM–9:30 PM, friday: 10 AM–9:30 PM, saturday: 10 AM–9:30 PM, sunday: Closed",
   "services": [
     {
-      "name": "Prescriptions",
-      "description": "We fill and dispense prescriptions from your doctor."
-    },
-    {
-      "name": "Over-the-Counter Medications",
-      "description": "We offer a wide range of over-the-counter medications for common ailments."
-    },
-    {
-      "name": "Health Consultations",
-      "description": "Our staff can provide general health consultations and recommendations."
+      "name": "Pharmacy Services",
+      "description": "We offer a wide range of pharmacy services to cater to your healthcare needs."
     }
   ]
 };
