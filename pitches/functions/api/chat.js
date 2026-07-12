@@ -76,18 +76,33 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "The vintage galerie",
+  "name": "Chandigarh Furniture Mall",
   "category": [
-    "Furniture store"
+    "Furniture store",
+    "Furniture accessories",
+    "Furniture maker",
+    "Furniture repair shop",
+    "Furniture wholesaler",
+    "Garden furniture shop",
+    "Office furniture store",
+    "Rustic furniture store"
   ],
   "description": "",
-  "address": "SCO-181, Market, Sector 8C, Sector 8, Chandigarh, 160009, India",
-  "phone": "+91 97803 52718",
-  "hours": "sunday: 10:30 AM–8 PM, monday: 10:30 AM–8 PM, tuesday: 10:30 AM–8 PM, wednesday: 10:30 AM–8 PM, thursday: 10:30 AM–8 PM, friday: 10:30 AM–8 PM, saturday: 10:30 AM–8 PM",
+  "address": "Plot no 598, near bestech mall, Parkview Residence Colony, Industrial Area Mohali Phase 9, Sahibzada Ajit Singh Nagar, Punjab 160062, India",
+  "phone": "+91 98092 69292",
+  "hours": "sunday: Closed, monday: 9 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM, thursday: 9 AM–8 PM, friday: 9 AM–9 PM, saturday: 9 AM–9 PM",
   "services": [
     {
-      "name": "Furniture Collection",
-      "description": "Browse our collection of vintage and unique furniture pieces."
+      "name": "Furniture Sales",
+      "description": "Select from our vast collection of furniture pieces for living room, bedroom, dining room, and office."
+    },
+    {
+      "name": "Furniture Repair",
+      "description": "Get your furniture repaired and restored to its original condition by our skilled craftsmen."
+    },
+    {
+      "name": "Furniture Making",
+      "description": "Get custom furniture pieces made to your specifications by our experienced team."
     }
   ]
 };
