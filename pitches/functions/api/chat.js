@@ -76,29 +76,30 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Avalon Unisex Salon - Beauty Salon | Makeup Salon | Hair salon",
+  "name": "The Bella Cut - Unisex Salon",
   "category": [
+    "Barber shop",
     "Beauty salon",
     "Facial spa",
-    "Nail salon",
-    "Waxing hair removal service"
+    "Health and beauty shop",
+    "Hairdresser"
   ],
   "description": "",
-  "address": "First Floor, SCO- 29, Sector 21C, Sector 21, Chandigarh, 160022, India",
-  "phone": "+91 79861 90972",
-  "hours": "sunday: 10 AM–9 PM, monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM",
+  "address": "1st Floor, SCO 9, Sector 21C, Sector 21, Chandigarh, 160022, India",
+  "phone": "+91 172 468 2088",
+  "hours": "sunday: 10 AM–10 PM, monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM",
   "services": [
     {
-      "name": "Face Spa",
-      "description": "Expert beauty services in a relaxing environment. Book your appointment today."
+      "name": "Haircuts",
+      "description": "Expert haircuts for men and women, book your appointment today"
     },
     {
-      "name": "Nail Salon",
-      "description": "Professional nail care services for men and women."
+      "name": "Facials",
+      "description": "Relax and rejuvenate with our range of facials"
     },
     {
-      "name": "Waxing Hair Removal Service",
-      "description": "Expert waxing services for smooth and silky skin."
+      "name": "Spa Services",
+      "description": "Enjoy a range of spa services, including massages and body treatments"
     }
   ]
 };
