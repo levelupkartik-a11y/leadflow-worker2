@@ -76,15 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "PRATAP BROTHERS CHEMIST",
+  "name": "Amrit Pharmacy store",
   "category": [
     "Pharmacy"
   ],
   "description": "",
-  "address": "BOOTH 297, near CBI BANK, Market 35 D, Sector 35D, Sector 35, Chandigarh, 160022, India",
-  "phone": "+91 78887 67740",
-  "hours": "monday: 9 AM–10 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 9 AM–10 PM",
-  "services": []
+  "address": "Nehru Hsopital, 1 And 2, Madhya Marg, Sector 12, Chandigarh, 160012, India",
+  "phone": "+91 88180 08981",
+  "hours": "monday: 9 AM–7:30 PM, tuesday: 9 AM–7:30 PM, wednesday: 9 AM–7:30 PM, thursday: 9 AM–7:30 PM, friday: 9 AM–7:30 PM, saturday: 9 AM–7:30 PM, sunday: 9 AM–7:30 PM",
+  "services": [
+    {
+      "name": "Pharmacy Services",
+      "description": "Amrit Pharmacy store provides various pharmacy services such as prescription medication and advice."
+    }
+  ]
 };
     
     const systemPrompt = {
