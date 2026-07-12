@@ -76,36 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Seven Sky Salon",
-  "category": [
-    "Beauty salon",
-    "Beautician",
-    "Beauty product supplier",
-    "Make-up artist",
-    "Nail salon",
-    "Hairdresser",
-    "Waxing hair removal service"
-  ],
+  "name": "Wao Fitness-Best Gym In Chandigarh",
+  "category": "Gym",
   "description": "",
-  "address": "SCO 3, First Floor, above YES BANK, Sector 20D, Chandigarh, 160020, India",
-  "phone": "+91 86999 65797",
-  "hours": "sunday: 10 AM–9 PM, monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM",
+  "address": "SCO 34,35,36, 37, Madhya Marg, 9D, Chandigarh 160009, India",
+  "phone": "+91 62831 17815",
+  "hours": "friday: 5:30 AM–10:30 PM, monday: 5:30 AM–10:30 PM, saturday: 5:30 AM–10:30 PM, sunday: 7 AM–1 PM, thursday: 5:30 AM–10:30 PM, tuesday: 5:30 AM–10:30 PM, wednesday: 5:30 AM–10:30 PM",
   "services": [
     {
-      "name": "Haircuts",
-      "description": "Expert haircuts by experienced hairdressers"
+      "name": "State-of-the-art equipment",
+      "description": "Get fit with our latest machinery and expert trainers"
     },
     {
-      "name": "Waxing Services",
-      "description": "Smooth waxing for a silky finish"
+      "name": "Variety of classes",
+      "description": "Take part in our fitness classes to stay fit and active"
     },
     {
-      "name": "Makeup Applications",
-      "description": "Natural and stunning makeup for any occasion"
-    },
-    {
-      "name": "Nail Care",
-      "description": "Gel, acrylic, and nail art services"
+      "name": "Expert trainers",
+      "description": "Get trained by experienced fitness experts"
     }
   ]
 };
