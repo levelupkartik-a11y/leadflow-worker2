@@ -76,19 +76,23 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Meharsons Electronics Pvt Ltd",
+  "name": "Meena Electronics",
   "category": [
-    "Air conditioning store",
-    "Electronics wholesaler"
+    "Electronics store",
+    "Cell phone store"
   ],
   "description": "",
-  "address": "SCO - 1096, near IndusInd Bank, Sector 22B, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 98884 36699",
-  "hours": "monday: 9 AM–9:30 PM, tuesday: 9 AM–9:30 PM, wednesday: 9 AM–9:30 PM, thursday: 9 AM–9:30 PM, friday: 9 AM–9:30 PM, saturday: 9 AM–9:30 PM, sunday: 9 AM–9:30 PM",
+  "address": "Shop No, 592, Hallo Majra Main Market Rd, near Govt High School, Hallo Majra, Chandigarh, 160002, India",
+  "phone": "+91 98725 95671",
+  "hours": "monday: 9 AM–10 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 9 AM–9 PM",
   "services": [
     {
-      "name": "Air Conditioner Sales and Service",
-      "description": "We offer a wide range of air conditioners for sale and provide service and repair for existing units."
+      "name": "Mobile Phones",
+      "description": "Explore our extensive collection of mobile phones from top brands."
+    },
+    {
+      "name": "Laptops and Desktops",
+      "description": "Find your perfect laptop or desktop at affordable prices."
     }
   ]
 };
