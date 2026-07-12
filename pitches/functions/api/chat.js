@@ -76,22 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "SG Salon",
-  "category": [
-    "Beauty salon"
-  ],
+  "name": "Panaché Salon",
+  "category": "Beauty salon",
   "description": "",
-  "address": "Jan Marg, near Bharat Sanchar Nigam Limited, 17D, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 99141 61004",
-  "hours": "sunday: 9 AM–8 PM, monday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM, thursday: 10 AM–8 PM, friday: 10 AM–8 PM, saturday: 10 AM–8 PM",
+  "address": "Sco-16-17, Madhya Marg, near Thomas cook, 9D, Sector 9, Chandigarh, 160009, India",
+  "phone": "+91 89200 20505",
+  "hours": "friday: 10:30 AM–8:30 PM, monday: 10:30 AM–8:30 PM, saturday: 10:30 AM–8:30 PM, sunday: 10:30 AM–8:30 PM, thursday: 10:30 AM–8:30 PM, tuesday: 10:30 AM–8:30 PM, wednesday: 10:30 AM–8:30 PM",
   "services": [
     {
-      "name": "Haircuts",
-      "description": "Expert haircuts in a relaxing environment"
+      "name": "Haircut",
+      "description": "Expertly crafted haircuts tailored to your style and preferences"
     },
     {
-      "name": "Color Services",
-      "description": "High-quality color services by experienced stylists"
+      "name": "Hair Coloring",
+      "description": "High-quality hair coloring services to enhance your look"
     }
   ]
 };
