@@ -76,20 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Chandigarh Electronics",
-  "category": "Electronics store",
-  "description": "Wide range of electronic goods as well as car audio equipment.",
-  "address": "Booths, 166, Sector 35D, Sector 35, Chandigarh, 160022, India",
-  "phone": "+91 83600 80966",
-  "hours": "friday: 11 AM–9 PM, monday: 11 AM–9 PM, saturday: 11 AM–9 PM, sunday: 12–6 PM, thursday: 11 AM–9 PM, tuesday: 11 AM–9 PM, wednesday: 11 AM–9 PM",
+  "name": "Sector 22-B Electronics Market",
+  "category": [
+    "Electronics store"
+  ],
+  "description": "",
+  "address": "1159, Himalaya Marg, Sector 22B, Sector 22, Chandigarh, 160022, India",
+  "phone": "",
+  "hours": "sunday: 11:30 AM–7:30 PM, monday: 10:30 AM–8:30 PM, tuesday: 10:30 AM–8:30 PM, wednesday: 10:30 AM–8:30 PM, thursday: 10:30 AM–8:30 PM, friday: 10:30 AM–8:30 PM, saturday: 10:30 AM–8:30 PM",
   "services": [
     {
-      "name": "Electronic Goods",
-      "description": "We have a wide variety of electronic goods in stock."
-    },
-    {
-      "name": "Car Audio Equipment",
-      "description": "Our car audio equipment ranges from speakers to amplifiers."
+      "name": "Electronics Store",
+      "description": "Wide variety of electronics products at competitive prices."
     }
   ]
 };
