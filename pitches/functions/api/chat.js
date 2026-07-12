@@ -76,19 +76,22 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Nizam Stylo Tailors",
+  "name": "K.m Tailors & drapers",
   "category": [
-    "Men's tailor",
-    "Men's clothing store"
+    "Men's tailor"
   ],
   "description": "",
-  "address": "First Floor, Sco-22, Shopping Plaza, 17E, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 172 270 2786",
-  "hours": "sunday: Closed, monday: 10:30 AM–8:30 PM, tuesday: 10:30 AM–8:30 PM, wednesday: 10:30 AM–8:30 PM, thursday: 10:30 AM–8:30 PM, friday: 10:30 AM–8:30 PM, saturday: 10:30 AM–8:30 PM",
+  "address": "SCO No. 55.56 1st Floor, near CMC Hospital, 17C, Chandigarh, 160017, India",
+  "phone": "",
+  "hours": "sunday: 12–8 PM, monday: 11 AM–8:30 PM, tuesday: 11 AM–8:30 PM, wednesday: 11 AM–8:30 PM, thursday: 11 AM–8:30 PM, friday: 11 AM–8:30 PM, saturday: 11 AM–8:30 PM",
   "services": [
     {
-      "name": "Tailoring Services",
-      "description": "Get expert tailoring services for all your clothing needs."
+      "name": "Suits",
+      "description": "We offer a wide range of suits, custom-made to fit your style and preference."
+    },
+    {
+      "name": "Alterations",
+      "description": "Our expert tailors can alter any garment to fit you perfectly."
     }
   ]
 };
