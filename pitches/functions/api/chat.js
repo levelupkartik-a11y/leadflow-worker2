@@ -76,16 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Tritam luxury Spa and Beauty",
-  "category": "Spa",
-  "description": "",
-  "address": "SCO 1096-97 First Floor 22 B Near to Croma Central In Market Landmark Hotel Picadaily Line Central In Market, Chandigarh, 160022, India",
-  "phone": "+91 98785 29429",
-  "hours": "friday: 8 AM–11:45 PM, monday: 8 AM–11:45 PM, saturday: 8 AM–12:30 AM, sunday: 8 AM–12:30 AM, thursday: 8 AM–11:45 PM, tuesday: 8 AM–11:45 PM, wednesday: 8 AM–11:45 PM",
+  "name": "Discount Super Market",
+  "category": "Grocery store",
+  "description": "General store, supermarket, grocery store, gift shop and shop selling discount goods and grocery items.",
+  "address": "S.C.F. 12, Sukhna Path, 20C, Chandigarh, 160020, India",
+  "phone": "+91 98143 76376",
+  "hours": "friday: 10 AM–9 PM, monday: 10 AM–9 PM, saturday: 10 AM–9 PM, sunday: 4–9 PM, thursday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM",
   "services": [
     {
-      "name": "Spa and Beauty Services",
-      "description": "Book a treatment or experience and relax at our spa"
+      "name": "Grocery shopping",
+      "description": "Browse our store for the freshest produce, meat, dairy, and packaged goods at affordable prices."
+    },
+    {
+      "name": "Discount goods shopping",
+      "description": "Discover our curated selection of discounted household items, electronics, and gifts for all occasions."
+    },
+    {
+      "name": "Gift shopping",
+      "description": "Find unique and thoughtful gifts for your loved ones at prices you'll love."
     }
   ]
 };
