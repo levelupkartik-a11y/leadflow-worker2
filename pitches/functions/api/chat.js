@@ -76,18 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Dr Vikas Sandhir(MD Medicine)",
-  "category": [
-    "Doctor"
-  ],
+  "name": "Sachdeva Clinic",
+  "category": "Doctor",
   "description": "",
-  "address": "House No, 1644, 34D, Sector 34, Chandigarh, 160022, India",
-  "phone": "+91 98556 86875",
-  "hours": "monday: 9:30 AM–1:30 PM, 4:30–6:30 PM, tuesday: 9:30 AM–1:30 PM, 4:30–6:30 PM, wednesday: 9:30 AM–1:30 PM, 4:30–6:30 PM, thursday: 9:30 AM–1:30 PM, 4:30–6:30 PM, friday: 9:30 AM–1:30 PM, 4:30–6:30 PM, saturday: 9:30 AM–1:30 PM, sunday: Closed",
+  "address": "House No-2030 Sector 15-C, Udyan Path, Chandigarh, 160015, India",
+  "phone": "+91 98550 33242",
+  "hours": "friday: 9 AM–7:30 PM, monday: 9 AM–7:30 PM, saturday: 9 AM–7:30 PM, sunday: Closed, thursday: 9 AM–7:30 PM, tuesday: 9 AM–7:30 PM, wednesday: 9 AM–7:30 PM",
   "services": [
     {
-      "name": "Medical Consultations",
-      "description": "Consult the doctor for any health concerns or medical issues"
+      "name": "Medical services",
+      "description": "Compassionate care for you and your family."
     }
   ]
 };
