@@ -76,15 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Brands Bargain",
-  "category": [
-    "Clothing store"
-  ],
+  "name": "Brand Shop - Best Mens Wear Store in Chandigarh | Clothing Shop | Readymade Garment | Women Clothing Store",
+  "category": "Clothing store",
   "description": "",
-  "address": "SCF 25, 9D, Sector 9, Chandigarh, 160009, India",
-  "phone": "+91 172 506 2222",
-  "hours": "sunday: 10:30 AM–9 PM, monday: 10:30 AM–9 PM, tuesday: 10:30 AM–9 PM, wednesday: 10:30 AM–9 PM, thursday: 10:30 AM–9 PM, friday: 10:30 AM–9 PM, saturday: 10:30 AM–9 PM",
-  "services": []
+  "address": "SCO 18, 19, Sector 23-C, 23C, Sector 23, Chandigarh, 160023, India",
+  "phone": "+91 99887 81095",
+  "hours": "friday: 10:30 AM–10 PM, monday: 10:30 AM–10 PM, saturday: 10:30 AM–10 PM, sunday: 10:30 AM–10 PM, thursday: 10:30 AM–10 PM, tuesday: 10:30 AM–10 PM, wednesday: 10:30 AM–10 PM",
+  "services": [
+    {
+      "name": "Clothing for Men",
+      "description": "Wide range of clothing for men including casual wear, formal wear and traditional wear"
+    }
+  ]
 };
     
     const systemPrompt = {
