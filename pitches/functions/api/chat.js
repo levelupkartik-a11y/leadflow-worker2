@@ -76,20 +76,19 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Fine Tailors",
-  "category": "Men's tailor",
+  "name": "Nizam Stylo Tailors",
+  "category": [
+    "Men's tailor",
+    "Men's clothing store"
+  ],
   "description": "",
-  "address": "Booth No.85, Janta Market, Sector 27-D, Chandigarh, 160019, India",
-  "phone": "+91 79731 59812",
-  "hours": "friday: 10 AM–10 PM, monday: 10 AM–10 PM, saturday: 10 AM–10 PM, sunday: 10 AM–10 PM, thursday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM",
+  "address": "First Floor, Sco-22, Shopping Plaza, 17E, Sector 17, Chandigarh, 160017, India",
+  "phone": "+91 172 270 2786",
+  "hours": "sunday: Closed, monday: 10:30 AM–8:30 PM, tuesday: 10:30 AM–8:30 PM, wednesday: 10:30 AM–8:30 PM, thursday: 10:30 AM–8:30 PM, friday: 10:30 AM–8:30 PM, saturday: 10:30 AM–8:30 PM",
   "services": [
     {
-      "name": "Alteration Services",
-      "description": "Get your clothes altered to perfection at Fine Tailors."
-    },
-    {
-      "name": "Custom Suit Making",
-      "description": "Get a custom-made suit that fits you perfectly."
+      "name": "Tailoring Services",
+      "description": "Get expert tailoring services for all your clothing needs."
     }
   ]
 };
