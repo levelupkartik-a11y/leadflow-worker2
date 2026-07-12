@@ -76,24 +76,33 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Urban Furniture House",
+  "name": "Garg & Co. Furniture Store",
   "category": [
     "Furniture store",
+    "Antique furniture store",
     "Furniture maker",
-    "Furniture manufacturer"
+    "Interior designer"
   ],
   "description": "",
-  "address": "Shop No. 224, Sector 34C, Sector 34, Chandigarh, 160022, India",
-  "phone": "+91 72772 73573",
-  "hours": "sunday: 9 AM–8:30 PM, monday: Closed, tuesday: 9 AM–8:30 PM, wednesday: 9 AM–8:30 PM, thursday: 9 AM–8:30 PM, friday: 9 AM–8:30 PM, saturday: 9 AM–8:30 PM",
+  "address": "13, Madhya Marg, Sector 7-C, Sector 7, Chandigarh, 160019, India",
+  "phone": "+91 98140 10929",
+  "hours": "sunday: Closed, monday: 10:30 AM–8 PM, tuesday: 10:30 AM–8 PM, wednesday: 10:30 AM–8 PM, thursday: 10:30 AM–8 PM, friday: 10:30 AM–8 PM, saturday: 10:30 AM–8 PM",
   "services": [
     {
-      "name": "Furniture Makers",
-      "description": "Handcrafted furniture pieces made with care and precision."
+      "name": "Furniture Store",
+      "description": "We offer a wide range of furniture for your home, from antique to modern pieces."
     },
     {
-      "name": "Furniture Manufacture",
-      "description": "Customizable furniture pieces at affordable prices."
+      "name": "Antique Furniture Store",
+      "description": "Our antique furniture collection features unique and rare pieces for the discerning buyer."
+    },
+    {
+      "name": "Furniture Maker",
+      "description": "We create customized furniture to meet your specific needs and tastes."
+    },
+    {
+      "name": "Interior Designer",
+      "description": "Our experienced designers will help you create the perfect home interior."
     }
   ]
 };
