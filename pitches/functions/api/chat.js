@@ -76,24 +76,26 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Panaché Salon",
-  "category": "Beauty salon",
+  "name": "The Bella Cut - Unisex Salon",
+  "category": [
+    "Barber shop",
+    "Beauty salon",
+    "Facial spa",
+    "Health and beauty shop",
+    "Hairdresser"
+  ],
   "description": "",
-  "address": "Sco-16-17, Madhya Marg, near Thomas cook, 9D, Sector 9, Chandigarh, 160009, India",
-  "phone": "+91 89200 20505",
-  "hours": "friday: 10:30 AM–8:30 PM, monday: 10:30 AM–8:30 PM, saturday: 10:30 AM–8:30 PM, sunday: 10:30 AM–8:30 PM, thursday: 10:30 AM–8:30 PM, tuesday: 10:30 AM–8:30 PM, wednesday: 10:30 AM–8:30 PM",
+  "address": "1st Floor, SCO 9, Sector 21C, Sector 21, Chandigarh, 160022, India",
+  "phone": "+91 172 468 2088",
+  "hours": "sunday: 10 AM–10 PM, monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM",
   "services": [
     {
-      "name": "Haircut",
-      "description": "Expert haircuts and color in a relaxing environment"
+      "name": "Haircuts",
+      "description": "Expert haircuts by experienced barbers"
     },
     {
-      "name": "Skin Care",
-      "description": "Comprehensive skin care solutions for all skin types"
-    },
-    {
-      "name": "Nail Care",
-      "description": "Professional nail treatments for healthy and beautiful nails"
+      "name": "Facial Spa",
+      "description": "Relaxing facial treatments in a soothing environment"
     }
   ]
 };
