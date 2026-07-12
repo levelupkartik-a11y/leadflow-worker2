@@ -76,16 +76,29 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "GEM Clinic | Best Doctors in Chandigarh",
-  "category": "Medical clinic",
+  "name": "Rajnish Clinic - Family physician and General physician in Chandigarh",
+  "category": [
+    "Medical clinic",
+    "Doctor",
+    "Laboratory",
+    "Physician referral service"
+  ],
   "description": "",
-  "address": "229, Sector 15-A, Sector 15, Chandigarh, 160015, India",
-  "phone": "+91 98780 70229",
-  "hours": "friday: 10 AM–8 PM, monday: 10 AM–8 PM, saturday: 10 AM–7 PM, sunday: Closed, thursday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM",
+  "address": "SCO 79, Sector 40 Market Rd, Sector 40C, Sector 40B, Chandigarh, 160036, India",
+  "phone": "+91 98785 22885",
+  "hours": "sunday: 11 AM–2 PM, monday: 10 AM–2 PM, 5–8 PM, tuesday: 10 AM–2 PM, 5–8 PM, wednesday: 10 AM–2 PM, 5–8 PM, thursday: 10 AM–2 PM, 5–8 PM, friday: 10 AM–2 PM, 5–8 PM, saturday: 10 AM–2:30 PM, 5–8:30 PM",
   "services": [
     {
-      "name": "General Healthcare",
-      "description": "We provide a wide range of healthcare services to meet your needs."
+      "name": "Family Physician Services",
+      "description": "Compassionate care for the whole family, including medical check-ups and consultations"
+    },
+    {
+      "name": "General Physician Services",
+      "description": "Professional medical care for various health issues and concerns"
+    },
+    {
+      "name": "Laboratory Services",
+      "description": "Comprehensive lab testing for accurate diagnosis and medical management"
     }
   ]
 };
