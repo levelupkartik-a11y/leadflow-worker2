@@ -76,18 +76,13 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Chhabra Clinic",
+  "name": "Apollo Clinic",
   "category": "Medical clinic",
   "description": "",
-  "address": "PQ7Q+8P5, Block B, CSIO Colony, 30C, Sector 30, Chandigarh, 160030, India",
-  "phone": "+91 172 265 1777",
-  "hours": "friday: 8:30 AM–8:30 PM, monday: 8:30 AM–8:30 PM, saturday: 8:30 AM–8:30 PM, sunday: Closed, thursday: 8:30 AM–8:30 PM, tuesday: 8:30 AM–8:30 PM, wednesday: 8:30 AM–8:30 PM",
-  "services": [
-    {
-      "name": "Routine Check-Ups",
-      "description": "We offer routine check-ups for your entire family, including health consultations and medical check-ups."
-    }
-  ]
+  "address": "SCO 10, 11, Madhya Marg, Sector 8C, Sector 8, Chandigarh, 160009, India",
+  "phone": "+91 172 418 4411",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "services": []
 };
     
     const systemPrompt = {
