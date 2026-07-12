@@ -76,24 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "K.C Tailors & Drapers",
+  "name": "AJAZ TAILORS ( Raymond)",
   "category": [
-    "Tailor",
-    "Clothing store",
-    "Fabric store"
+    "Men's tailor"
   ],
   "description": "",
-  "address": "Shop No. 824, Opp. Parade Ground, bSector 22A, Chandigarh, 160022, India",
-  "phone": "+91 172 270 3458",
-  "hours": "monday: 10:30 AM–9 PM, tuesday: 10:30 AM–9 PM, wednesday: 10:30 AM–9 PM, thursday: 10:30 AM–9 PM, friday: 10:30 AM–9 PM, saturday: 10:30 AM–9 PM, sunday: 10:30 AM–9 PM",
+  "address": "SCO - 363, Sector 32D, Sector 32, Chandigarh, 160030, India",
+  "phone": "+91 172 503 0786",
+  "hours": "monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM, sunday: Closed",
   "services": [
     {
-      "name": "Alterations",
-      "description": "We offer bespoke alterations for all types of garments."
-    },
-    {
-      "name": "Fabric Sales",
-      "description": "We stock a range of high-quality fabrics for various purposes."
+      "name": "Custom-made suits",
+      "description": "High-quality, tailored suits made to your specifications."
     }
   ]
 };
