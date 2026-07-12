@@ -164,6 +164,14 @@ async function main() {
   } catch (err) {
     console.error('Pipeline failed:', err);
     cleanup();
+    if (rowId) {
+      try {
+        console.log('[Error Handler] Attempting to report failure back to Google Sheet...');
+        await reportBackToSheet(`NEEDS REVIEW: Pipeline failed - ${err.message}`, sheetName, rowId, 0, isSheet1);
+      } catch (sheetErr) {
+        console.error('[Error Handler] Failed to report error back to sheet:', sheetErr.message);
+      }
+    }
     process.exit(1);
   }
 }
