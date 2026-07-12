@@ -76,18 +76,33 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Durenzo",
+  "name": "Pal Furniture",
   "category": [
-    "Furniture store"
+    "Furniture store",
+    "Door shop",
+    "Interior designer",
+    "Kitchen furniture store"
   ],
   "description": "",
-  "address": "SCO 29, Madhya Marg, Sector 7-C, Sector 7, Chandigarh, 160019, India",
-  "phone": "+91 172 462 0152",
-  "hours": "sunday: Closed, monday: 10:30 AM–8 PM, tuesday: 10:30 AM–8 PM, wednesday: 10:30 AM–8 PM, thursday: 10:30 AM–8 PM, friday: 10:30 AM–8 PM, saturday: 10:30 AM–8 PM",
+  "address": "Booth Number 1546, Sector 38 West, Pocket B, Chandigarh, 160014, India",
+  "phone": "+91 94175 11851",
+  "hours": "sunday: 9 AM–5 PM, monday: 9 AM–7 PM, tuesday: 9 AM–7 PM, wednesday: 9 AM–7 PM, thursday: 9 AM–7 PM, friday: 9 AM–7 PM, saturday: 9 AM–7 PM",
   "services": [
     {
-      "name": "Furniture Shopping",
-      "description": "Browse our collection of furniture for your home and office needs"
+      "name": "Furniture Store",
+      "description": "Browse through our extensive collection of furniture and find the perfect pieces for your home or office"
+    },
+    {
+      "name": "Door Shop",
+      "description": "Get expert advice on choosing the right doors for your home or commercial space"
+    },
+    {
+      "name": "Interior Designer",
+      "description": "Let our experienced designers create a customized space that meets your unique needs and style"
+    },
+    {
+      "name": "Kitchen Furniture Store",
+      "description": "Discover the perfect kitchen furniture and accessories to enhance your cooking experience"
     }
   ]
 };
