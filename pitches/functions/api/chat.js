@@ -76,29 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "✅ 𝗦𝘂𝗯𝗵𝗮𝘀𝗵 𝗔𝗴𝗴𝗮𝗿𝘄𝗮𝗹 𝗔𝗱𝘃𝗼𝗰𝗮𝘁𝗲",
-  "category": [
-    "Attorney",
-    "Civil law attorney",
-    "Criminal justice attorney",
-    "Real estate attorney"
-  ],
+  "name": "Tritam luxury Spa and Beauty",
+  "category": "Spa",
   "description": "",
-  "address": "2038, Sector 21C, Sector 21, C, Chandigarh, 160022, India",
-  "phone": "+91 97790 52048",
-  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
+  "address": "SCO 1096-97 First Floor 22 B Near to Croma Central In Market Landmark Hotel Picadaily Line Central In Market, Chandigarh, 160022, India",
+  "phone": "+91 98785 29429",
+  "hours": "friday: 8 AM–11:45 PM, monday: 8 AM–11:45 PM, saturday: 8 AM–12:30 AM, sunday: 8 AM–12:30 AM, thursday: 8 AM–11:45 PM, tuesday: 8 AM–11:45 PM, wednesday: 8 AM–11:45 PM",
   "services": [
     {
-      "name": "Civil Law",
-      "description": "We advise and represent clients in civil cases"
-    },
-    {
-      "name": "Criminal Justice",
-      "description": "Our lawyers handle criminal cases with expertise"
-    },
-    {
-      "name": "Real Estate Law",
-      "description": "We assist clients with real estate transactions and disputes"
+      "name": "Spa and Beauty Services",
+      "description": "Book a treatment or experience and relax at our spa"
     }
   ]
 };
