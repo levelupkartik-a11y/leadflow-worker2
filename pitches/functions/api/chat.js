@@ -76,16 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Chandigarh Pharmacy [CP]",
+  "name": "BHARAT MEDICAL STORES",
   "category": "Pharmacy",
   "description": "",
-  "address": "SCO 78, near to Airtel Office, 15D, Sector 15, Chandigarh, 160015, India",
-  "phone": "+91 99155 56067",
-  "hours": "friday: 9:30 AM–9:30 PM, monday: 9:30 AM–9:30 PM, saturday: 9:30 AM–9:30 PM, sunday: 9:30 AM–9:30 PM, thursday: 9:30 AM–9:30 PM, tuesday: 9:30 AM–9:30 PM, wednesday: 9:30 AM–9:30 PM",
+  "address": "SCF No. 32, Sector 16 D, Sector 16, Chandigarh, 160015, India",
+  "phone": "+91 98150 00725",
+  "hours": "friday: 8 AM–10 PM, monday: 8 AM–10 PM, saturday: 8 AM–10 PM, sunday: 8 AM–9:30 PM, thursday: 8 AM–10 PM, tuesday: 8 AM–10 PM, wednesday: 8 AM–10 PM",
   "services": [
     {
-      "name": "",
-      "description": ""
+      "name": "Pharmacy Services",
+      "description": "We provide a wide range of pharmacy services to cater to your needs"
     }
   ]
 };
