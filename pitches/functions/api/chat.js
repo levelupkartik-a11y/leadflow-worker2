@@ -76,18 +76,33 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "SG Salon",
+  "name": "Avalon Unisex Salon - Beauty Salon | Makeup Salon | Hair salon",
   "category": [
-    "Beauty salon"
+    "Beauty salon",
+    "Facial spa",
+    "Nail salon",
+    "Waxing hair removal service"
   ],
   "description": "",
-  "address": "Jan Marg, near Bharat Sanchar Nigam Limited, 17D, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 99141 61004",
-  "hours": "sunday: 9 AM–8 PM, monday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM, thursday: 10 AM–8 PM, friday: 10 AM–8 PM, saturday: 10 AM–8 PM",
+  "address": "First Floor, SCO- 29, Sector 21C, Sector 21, Chandigarh, 160022, India",
+  "phone": "+91 79861 90972",
+  "hours": "sunday: 10 AM–9 PM, monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM",
   "services": [
     {
-      "name": "Haircuts and Color",
-      "description": "Expert haircuts and color in a relaxing environment"
+      "name": "Hair Salon",
+      "description": "Expert haircuts and color in a relaxing environment."
+    },
+    {
+      "name": "Nail Salon",
+      "description": "Manicures and pedicures designed to pamper your nails."
+    },
+    {
+      "name": "Facial Spa",
+      "description": "Customized facials for a glowing complexion."
+    },
+    {
+      "name": "Waxing Hair Removal",
+      "description": "Smooth and silky skin with professional waxing services."
     }
   ]
 };
