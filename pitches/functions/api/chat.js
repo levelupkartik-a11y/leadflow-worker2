@@ -76,29 +76,23 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "NEW 6-10 SUPER MARKET",
+  "name": "New Sham Provision Store",
   "category": [
-    "Supermarket",
-    "Cosmetics store",
-    "Fruit and vegetable store",
-    "Grocery store"
+    "American grocery store",
+    "Dry fruit store"
   ],
   "description": "",
-  "address": "Shop No 380, near UCO Bank, Sector 44D, Sector 44, Chandigarh, 160043, India",
-  "phone": "+91 97817 33429",
-  "hours": "monday: 11 AM–9:30 PM, tuesday: 11 AM–9:30 PM, wednesday: 11 AM–9:30 PM, thursday: 11 AM–9:30 PM, friday: 11 AM–9:30 PM, saturday: 11 AM–9:30 PM, sunday: 11 AM–9:30 PM",
+  "address": "S.C.F. 11-12, 17G, Sector 22-C, Chandigarh, 160022, India",
+  "phone": "+91 172 270 3275",
+  "hours": "monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM, sunday: 10 AM–10 PM",
   "services": [
     {
-      "name": "Fruit and Vegetable Store",
-      "description": "Get fresh fruits and vegetables at our store."
+      "name": "Dry Fruits",
+      "description": "We offer a wide selection of high-quality dry fruits."
     },
     {
-      "name": "Cosmetics Store",
-      "description": "Explore our wide range of cosmetics and beauty products."
-    },
-    {
-      "name": "Supermarket",
-      "description": "Find everything you need under one roof."
+      "name": "American Grocery Store",
+      "description": "Our store is stocked with a variety of American products."
     }
   ]
 };
