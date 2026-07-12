@@ -76,28 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Chandigarh Medical Hall",
-  "category": [
-    "Drug store",
-    "Cosmetics store",
-    "Pharmacy"
-  ],
+  "name": "Chandigarh Pharmacy [CP]",
+  "category": "Pharmacy",
   "description": "",
-  "address": "S C F No 27, b, 8B, Sector 8, Chandigarh, 160009, India",
-  "phone": "+91 99881 81817",
-  "hours": "monday: 9:45 AM–9 PM, tuesday: 9:45 AM–9 PM, wednesday: 9:45 AM–9 PM, thursday: 9:45 AM–9 PM, friday: 9:45 AM–9 PM, saturday: 9:45 AM–9 PM, sunday: 9:45 AM–9 PM",
+  "address": "SCO 78, near to Airtel Office, 15D, Sector 15, Chandigarh, 160015, India",
+  "phone": "+91 99155 56067",
+  "hours": "friday: 9:30 AM–9:30 PM, monday: 9:30 AM–9:30 PM, saturday: 9:30 AM–9:30 PM, sunday: 9:30 AM–9:30 PM, thursday: 9:30 AM–9:30 PM, tuesday: 9:30 AM–9:30 PM, wednesday: 9:30 AM–9:30 PM",
   "services": [
     {
-      "name": "Pharmacy Services",
-      "description": "We offer a wide selection of prescription and non-prescription drugs, as well as skincare and cosmetics"
-    },
-    {
-      "name": "Health and Wellness Products",
-      "description": "Discover our selection of health-focused products, including vitamins, supplements, and more"
-    },
-    {
-      "name": "Cosmetics and Beauty Products",
-      "description": "Explore our range of cosmetics and beauty products for skincare, haircare, and more"
+      "name": "",
+      "description": ""
     }
   ]
 };
