@@ -76,15 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "MedPlus Pharmacy",
+  "name": "SUDHA PHARMACY CHANDIGARH",
   "category": [
     "Pharmacy"
   ],
   "description": "",
-  "address": "PP7Q+JQ7, Kajheri, Kajheri Village, Sector 52, Chandigarh, 160036, India",
-  "phone": "",
-  "hours": "monday: 9 AM–10 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 11 AM–10 PM",
-  "services": []
+  "address": "Shop no.777, 6c, Thakur Dwara Rd, near hdfc bank, Sector 13, Chandigarh, 160101, India",
+  "phone": "+91 98729 04296",
+  "hours": "monday: 8 AM–11 PM, tuesday: 8 AM–11 PM, wednesday: 8 AM–11 PM, thursday: 8 AM–11 PM, friday: 8 AM–11 PM, saturday: 8 AM–11 PM, sunday: 8 AM–11 PM",
+  "services": [
+    {
+      "name": "Medicinal Products",
+      "description": "We offer a wide range of medicinal products to cater to your healthcare needs"
+    }
+  ]
 };
     
     const systemPrompt = {
