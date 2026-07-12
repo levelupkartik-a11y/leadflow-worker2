@@ -76,16 +76,25 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Chandigarh Medical Hall",
-  "category": "Pharmacy",
+  "name": "Electronic Enterprises - Best Electronics & Home Appliances, Chandigarh",
+  "category": [
+    "Electronics wholesaler",
+    "Air conditioning store",
+    "Electronics accessories wholesaler",
+    "Electronics company"
+  ],
   "description": "",
-  "address": "S C F No 27, b, 8B, Sector 8, Chandigarh, 160009, India",
-  "phone": "+91 99881 81817",
-  "hours": "friday: 9:45 AM–9 PM, monday: 9:45 AM–9 PM, saturday: 9:45 AM–9 PM, sunday: 9:45 AM–9 PM, thursday: 9:45 AM–9 PM, tuesday: 9:45 AM–9 PM, wednesday: 9:45 AM–9 PM",
+  "address": "S.C.O. 2465-66, Sector 22C, Chandigarh, 160022, India",
+  "phone": "+91 172 270 6816",
+  "hours": "monday: 9:30 AM–9 PM, tuesday: 9:30 AM–9 PM, wednesday: 9:30 AM–9 PM, thursday: 9:30 AM–9 PM, friday: 9:30 AM–9 PM, saturday: 9:30 AM–9 PM, sunday: 10 AM–7 PM",
   "services": [
     {
-      "name": "Medicines",
-      "description": "We offer a variety of medicines to treat different health conditions."
+      "name": "Electronics Wholesaler",
+      "description": "We offer a wide range of electronics products and accessories at affordable prices."
+    },
+    {
+      "name": "Air Conditioning Store",
+      "description": "Our air conditioning store provides quality AC products and services for comfortable living."
     }
   ]
 };
