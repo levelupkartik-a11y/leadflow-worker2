@@ -76,30 +76,26 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "The Bella Cut - Unisex Salon",
+  "name": "Soul Care",
   "category": [
-    "Barber shop",
-    "Beauty salon",
-    "Facial spa",
-    "Health and beauty shop",
-    "Hairdresser"
+    "Beauty salon"
   ],
   "description": "",
-  "address": "1st Floor, SCO 9, Sector 21C, Sector 21, Chandigarh, 160022, India",
-  "phone": "+91 172 468 2088",
-  "hours": "sunday: 10 AM–10 PM, monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM",
+  "address": "Sco No: 96-97, Shopping Plaza, 17C, Sector 17, Chandigarh, 160017, India",
+  "phone": "+91 99885 15737",
+  "hours": "sunday: 10 AM–9 PM, monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM",
   "services": [
     {
       "name": "Haircuts",
-      "description": "Expert barbers and skilled hairstylists serving individuals of all ages."
+      "description": "Expert haircuts by skilled stylists, starting at ?499."
     },
     {
-      "name": "Color Services",
-      "description": "Experienced stylists offering a wide range of color options."
+      "name": "Coloring",
+      "description": "Dye your hair with our premium colors, starting at ?999."
     },
     {
-      "name": "Facial Spa",
-      "description": "Relaxing facials to rejuvenate your skin."
+      "name": "Styling",
+      "description": "Get expert styling advice and services, starting at ?999."
     }
   ]
 };
