@@ -76,18 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Soul Care",
+  "name": "Chandigarh noor salon at home",
   "category": [
-    "Beauty salon"
+    "Beautician"
   ],
   "description": "",
-  "address": "Sco No: 96-97, Shopping Plaza, 17C, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 99885 15737",
-  "hours": "sunday: 10 AM–9 PM, monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM",
+  "address": "Sector 17A, Sector 17, Chandigarh, 160017, India",
+  "phone": "+91 88473 58539",
+  "hours": "sunday: 9 AM–9 PM, monday: 9 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM, thursday: 9 AM–8 PM, friday: 9 AM–8 PM, saturday: 9 AM–8 PM",
   "services": [
     {
-      "name": "Expert Haircuts",
-      "description": "Get professional haircuts and advice from experienced stylists."
+      "name": "Professional Beauty Services",
+      "description": "Expert haircuts and color in a relaxing environment. Book your appointment today."
     }
   ]
 };
