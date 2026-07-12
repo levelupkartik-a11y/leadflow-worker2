@@ -76,33 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Pal Furniture",
-  "category": [
-    "Furniture store",
-    "Door shop",
-    "Interior designer",
-    "Kitchen furniture store"
-  ],
+  "name": "Shiva furniture & furnishings",
+  "category": "Furniture store",
   "description": "",
-  "address": "Booth Number 1546, Sector 38 West, Pocket B, Chandigarh, 160014, India",
-  "phone": "+91 94175 11851",
-  "hours": "sunday: 9 AM–5 PM, monday: 9 AM–7 PM, tuesday: 9 AM–7 PM, wednesday: 9 AM–7 PM, thursday: 9 AM–7 PM, friday: 9 AM–7 PM, saturday: 9 AM–7 PM",
+  "address": "near mullapur, Marble Market, chowk, Dhanas, Chandigarh, Punjab 140901, India",
+  "phone": "+91 99889 91110",
+  "hours": "friday: 10 AM–8 PM, monday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: 10 AM–8 PM, thursday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM",
   "services": [
     {
-      "name": "Furniture Store",
-      "description": "Browse through our extensive collection of furniture and find the perfect pieces for your home or office"
-    },
-    {
-      "name": "Door Shop",
-      "description": "Get expert advice on choosing the right doors for your home or commercial space"
-    },
-    {
-      "name": "Interior Designer",
-      "description": "Let our experienced designers create a customized space that meets your unique needs and style"
-    },
-    {
-      "name": "Kitchen Furniture Store",
-      "description": "Discover the perfect kitchen furniture and accessories to enhance your cooking experience"
+      "name": "Furniture Shopping",
+      "description": "Visit us today to explore our vast collection of furniture and furnishings."
     }
   ]
 };
