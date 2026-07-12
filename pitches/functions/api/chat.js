@@ -76,18 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "AJAZ TAILORS ( Raymond)",
+  "name": "Zaidi Tailors",
   "category": [
     "Men's tailor"
   ],
   "description": "",
-  "address": "SCO - 363, Sector 32D, Sector 32, Chandigarh, 160030, India",
-  "phone": "+91 172 503 0786",
-  "hours": "monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM, sunday: Closed",
+  "address": "Shop No 103, Sector 45-C Next to Masjid, Chandigarh 160047, India",
+  "phone": "+91 92179 71288",
+  "hours": "monday: 9 AM–10 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 9 AM–10 PM",
   "services": [
     {
-      "name": "Custom-made suits",
-      "description": "High-quality, tailored suits made to your specifications."
+      "name": "Alteration services",
+      "description": "We provide expert alteration services for all your wardrobe needs."
     }
   ]
 };
