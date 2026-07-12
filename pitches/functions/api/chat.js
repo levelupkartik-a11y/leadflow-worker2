@@ -76,18 +76,36 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sunder Emporium",
-  "category": [
-    "Women's clothing store"
-  ],
+  "name": "Kuldeep Emporium|Best bridal lehngas & ethnic wear store for designers suits, kurtis,dresses, kaftans, peplums,winter wear",
+  "category": "Women's clothing store",
   "description": "",
-  "address": "Inner Market, S.C.O. 94, near Congress Bhawan, 35C, Sector 35, Chandigarh, 160022, India",
-  "phone": "+91 70877 83535",
-  "hours": "sunday: 10 AM–8:30 PM, monday: 10 AM–8:30 PM, tuesday: 10 AM–8:30 PM, wednesday: 10 AM–8:30 PM, thursday: 10 AM–8:30 PM, friday: 10 AM–8:30 PM, saturday: 10 AM–8:30 PM",
+  "address": "SCO-85, 35C, Sector 35, Chandigarh, 160022, India",
+  "phone": "+91 99922 41356",
+  "hours": "friday: 9 AM–9 PM, monday: 9 AM–9 PM, saturday: 9 AM–9 PM, sunday: 9 AM–9 PM, thursday: 9 AM–9 PM, tuesday: 9 AM–9 PM, wednesday: 9 AM–9 PM",
   "services": [
     {
-      "name": "Women's Clothing Store",
-      "description": "We offer a wide range of women's clothing items in various sizes and styles."
+      "name": "Designer Suits",
+      "description": "Browse our extensive collection of designer suits for women."
+    },
+    {
+      "name": "Kurtis",
+      "description": "Discover the perfect kurtis for any occasion."
+    },
+    {
+      "name": "Dresses",
+      "description": "Explore our stunning designer dresses for women."
+    },
+    {
+      "name": "Kaftans",
+      "description": "Find the perfect kaftans for a stylish and comfortable look."
+    },
+    {
+      "name": "Peplums",
+      "description": "Shop our exquisite collection of peplums for women."
+    },
+    {
+      "name": "Winter Wear",
+      "description": "Stay warm and stylish with our latest winter wear collection."
     }
   ]
 };
