@@ -76,22 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Stylo Unisex Salon | Beauty Salon | Chandigarh",
+  "name": "Soul Care",
   "category": [
-    "Hair salon"
+    "Beauty salon"
   ],
   "description": "",
-  "address": "CMC Parking, SCO 94-95, Shopping Plaza, 17C, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 172 271 3558",
-  "hours": "sunday: 10 AM–8:30 PM, monday: 10 AM–8:30 PM, tuesday: 10 AM–8:30 PM, wednesday: 10 AM–8:30 PM, thursday: 10 AM–8:30 PM, friday: 10 AM–8:30 PM, saturday: 10 AM–8:30 PM",
+  "address": "Sco No: 96-97, Shopping Plaza, 17C, Sector 17, Chandigarh, 160017, India",
+  "phone": "+91 99885 15737",
+  "hours": "sunday: 10 AM–9 PM, monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM",
   "services": [
     {
-      "name": "Haircuts",
-      "description": "Expert haircuts in a relaxing environment."
-    },
-    {
-      "name": "Hair Color",
-      "description": "Color your hair with our expert stylists."
+      "name": "Expert Haircuts",
+      "description": "Get professional haircuts and advice from experienced stylists."
     }
   ]
 };
