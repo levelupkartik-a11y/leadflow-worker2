@@ -76,25 +76,17 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Gift Supermarket & Dry Fruits",
+  "name": "New Annapurna Store",
   "category": [
-    "Supermarket",
-    "Gift shop"
+    "Grocery store",
+    "Store",
+    "Supermarket"
   ],
   "description": "",
-  "address": "Sector 18-C, Sector 18, Chandigarh, 160018, India",
-  "phone": "+91 172 464 0001",
-  "hours": "monday: 9 AM–9 PM, tuesday: 9 AM–9 PM, wednesday: 9 AM–9 PM, thursday: 9 AM–9 PM, friday: 9 AM–9 PM, saturday: 9 AM–9 PM, sunday: 9 AM–9 PM",
-  "services": [
-    {
-      "name": "Gift Shopping",
-      "description": "Browse our vast collection of gift items for all occasions"
-    },
-    {
-      "name": "Dry Fruits and Nuts",
-      "description": "Discover our exotic range of dry fruits and nuts"
-    }
-  ]
+  "address": "S.C.O, 73, Vidya Path, near State Bank Of Patiala, Sector 38C, Sector 38, Chandigarh, 160014, India",
+  "phone": "+91 172 268 6704",
+  "hours": "monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM, sunday: 10 AM–10 PM",
+  "services": []
 };
     
     const systemPrompt = {
