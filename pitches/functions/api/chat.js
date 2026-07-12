@@ -76,18 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Durenzo",
+  "name": "The vintage galerie",
   "category": [
     "Furniture store"
   ],
   "description": "",
-  "address": "SCO 29, Madhya Marg, Sector 7-C, Sector 7, Chandigarh, 160019, India",
-  "phone": "+91 172 462 0152",
-  "hours": "sunday: Closed, monday: 10:30 AM–8 PM, tuesday: 10:30 AM–8 PM, wednesday: 10:30 AM–8 PM, thursday: 10:30 AM–8 PM, friday: 10:30 AM–8 PM, saturday: 10:30 AM–8 PM",
+  "address": "SCO-181, Market, Sector 8C, Sector 8, Chandigarh, 160009, India",
+  "phone": "+91 97803 52718",
+  "hours": "sunday: 10:30 AM–8 PM, monday: 10:30 AM–8 PM, tuesday: 10:30 AM–8 PM, wednesday: 10:30 AM–8 PM, thursday: 10:30 AM–8 PM, friday: 10:30 AM–8 PM, saturday: 10:30 AM–8 PM",
   "services": [
     {
-      "name": "Furniture Shopping",
-      "description": "Browse our extensive collection of furniture pieces, from home decor to outdoor furniture"
+      "name": "Furniture Collection",
+      "description": "Browse our collection of vintage and unique furniture pieces."
     }
   ]
 };
