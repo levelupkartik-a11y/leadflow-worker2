@@ -76,16 +76,22 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Shiva furniture & furnishings",
-  "category": "Furniture store",
+  "name": "Namdhari Unique Style",
+  "category": [
+    "Tailor"
+  ],
   "description": "",
-  "address": "near mullapur, Marble Market, chowk, Dhanas, Chandigarh, Punjab 140901, India",
-  "phone": "+91 99889 91110",
-  "hours": "friday: 10 AM–8 PM, monday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: 10 AM–8 PM, thursday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM",
+  "address": "Shop No. 20, Shopping Plaza, 17D, Sector 17, Chandigarh, 160017, India",
+  "phone": "+91 73073 20001",
+  "hours": "sunday: 10 AM–8:30 PM, monday: 10 AM–8:30 PM, tuesday: 10 AM–8:30 PM, wednesday: 10 AM–8:30 PM, thursday: 10 AM–8:30 PM, friday: 10 AM–8:30 PM, saturday: 10 AM–8:30 PM",
   "services": [
     {
-      "name": "Furniture Shopping",
-      "description": "Visit us today to explore our vast collection of furniture and furnishings."
+      "name": "Garment Repair",
+      "description": "We provide professional garment repair services for men and women."
+    },
+    {
+      "name": "Custom Stitching",
+      "description": "Our expert tailors offer custom stitching services for all types of clothing."
     }
   ]
 };
