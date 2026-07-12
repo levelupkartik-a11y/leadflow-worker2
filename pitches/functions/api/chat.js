@@ -76,35 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Original Harman Tailors",
+  "name": "Delight Emporiums",
   "category": [
-    "Uniform store",
-    "Designer clothing store",
+    "Formal wear store",
     "Men's tailor",
-    "Police supply store"
+    "Tuxedo shop",
+    "Wedding store"
   ],
   "description": "",
-  "address": "SCO 4-5, First Floor A, Sector 17B Above SBI Treasury Branch, Chandigarh 160017, India",
-  "phone": "+91 98722 03100",
-  "hours": "monday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM, thursday: 10 AM–8 PM, friday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: Closed",
-  "services": [
-    {
-      "name": "Uniform Store",
-      "description": "We offer a wide selection of uniforms for various professions, including police and other law enforcement agencies."
-    },
-    {
-      "name": "Designer Clothing Store",
-      "description": "Our store features a range of luxury clothing items from top designers."
-    },
-    {
-      "name": "Men's Tailor",
-      "description": "Our expert tailors will create custom-made suits and clothing to fit your personal style."
-    },
-    {
-      "name": "Police Supply Store",
-      "description": "We provide essential equipment and gear for police officers and other law enforcement professionals."
-    }
-  ]
+  "address": "SCO-10,1st Floor, D, Block D, Sector 30, Chandigarh, 160030, India",
+  "phone": "+91 99880 81086",
+  "hours": "monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM, thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM, sunday: 10 AM–6 PM",
+  "services": []
 };
     
     const systemPrompt = {
