@@ -76,18 +76,15 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "BHARAT MEDICAL STORES",
-  "category": "Pharmacy",
+  "name": "PRATAP BROTHERS CHEMIST",
+  "category": [
+    "Pharmacy"
+  ],
   "description": "",
-  "address": "SCF No. 32, Sector 16 D, Sector 16, Chandigarh, 160015, India",
-  "phone": "+91 98150 00725",
-  "hours": "friday: 8 AM–10 PM, monday: 8 AM–10 PM, saturday: 8 AM–10 PM, sunday: 8 AM–9:30 PM, thursday: 8 AM–10 PM, tuesday: 8 AM–10 PM, wednesday: 8 AM–10 PM",
-  "services": [
-    {
-      "name": "Pharmacy Services",
-      "description": "We provide a wide range of pharmacy services to cater to your needs"
-    }
-  ]
+  "address": "BOOTH 297, near CBI BANK, Market 35 D, Sector 35D, Sector 35, Chandigarh, 160022, India",
+  "phone": "+91 78887 67740",
+  "hours": "monday: 9 AM–10 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 9 AM–10 PM",
+  "services": []
 };
     
     const systemPrompt = {
