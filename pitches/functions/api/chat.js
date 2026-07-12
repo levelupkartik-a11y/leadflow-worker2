@@ -76,16 +76,29 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sachdeva Clinic",
-  "category": "Doctor",
+  "name": "✅ 𝗦𝘂𝗯𝗵𝗮𝘀𝗵 𝗔𝗴𝗴𝗮𝗿𝘄𝗮𝗹 𝗔𝗱𝘃𝗼𝗰𝗮𝘁𝗲",
+  "category": [
+    "Attorney",
+    "Civil law attorney",
+    "Criminal justice attorney",
+    "Real estate attorney"
+  ],
   "description": "",
-  "address": "House No-2030 Sector 15-C, Udyan Path, Chandigarh, 160015, India",
-  "phone": "+91 98550 33242",
-  "hours": "friday: 9 AM–7:30 PM, monday: 9 AM–7:30 PM, saturday: 9 AM–7:30 PM, sunday: Closed, thursday: 9 AM–7:30 PM, tuesday: 9 AM–7:30 PM, wednesday: 9 AM–7:30 PM",
+  "address": "2038, Sector 21C, Sector 21, C, Chandigarh, 160022, India",
+  "phone": "+91 97790 52048",
+  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
   "services": [
     {
-      "name": "Medical services",
-      "description": "Compassionate care for you and your family."
+      "name": "Civil Law",
+      "description": "We advise and represent clients in civil cases"
+    },
+    {
+      "name": "Criminal Justice",
+      "description": "Our lawyers handle criminal cases with expertise"
+    },
+    {
+      "name": "Real Estate Law",
+      "description": "We assist clients with real estate transactions and disputes"
     }
   ]
 };
