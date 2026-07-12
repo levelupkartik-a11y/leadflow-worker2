@@ -76,16 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Brand Shop - Best Mens Wear Store in Chandigarh | Clothing Shop | Readymade Garment | Women Clothing Store",
-  "category": "Clothing store",
+  "name": "Navdeep Textiles",
+  "category": [
+    "Clothing store",
+    "Boutique",
+    "Designer clothing store"
+  ],
   "description": "",
-  "address": "SCO 18, 19, Sector 23-C, 23C, Sector 23, Chandigarh, 160023, India",
-  "phone": "+91 99887 81095",
-  "hours": "friday: 10:30 AM–10 PM, monday: 10:30 AM–10 PM, saturday: 10:30 AM–10 PM, sunday: 10:30 AM–10 PM, thursday: 10:30 AM–10 PM, tuesday: 10:30 AM–10 PM, wednesday: 10:30 AM–10 PM",
+  "address": "SCO 76, near MUSICAL FOUNTAIN, 17D, Sector 17, Chandigarh, 160017, India",
+  "phone": "+91 97805 58866",
+  "hours": "sunday: 11 AM–9 PM, monday: 11 AM–9 PM, tuesday: 11 AM–9 PM, wednesday: 11 AM–9 PM, thursday: 11 AM–9 PM, friday: 11 AM–9 PM, saturday: 11 AM–9 PM",
   "services": [
     {
-      "name": "Clothing for Men",
-      "description": "Wide range of clothing for men including casual wear, formal wear and traditional wear"
+      "name": "Designer Clothing Store",
+      "description": "We offer a wide range of designer clothing for men and women"
     }
   ]
 };
