@@ -76,23 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "New Sham Provision Store",
-  "category": [
-    "American grocery store",
-    "Dry fruit store"
-  ],
+  "name": "Bansal Traders",
+  "category": "Supermarket",
   "description": "",
-  "address": "S.C.F. 11-12, 17G, Sector 22-C, Chandigarh, 160022, India",
-  "phone": "+91 172 270 3275",
-  "hours": "monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM, sunday: 10 AM–10 PM",
+  "address": "Ground Floor, grain market, SCF 91, near Satsang Bhawan, Subzi Mandi, Sector 26, Chandigarh, 160019, India",
+  "phone": "+91 77173 50391",
+  "hours": "friday: 10 AM–9 PM, monday: 10 AM–9 PM, saturday: 10 AM–9 PM, sunday: 10 AM–9 PM, thursday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM",
   "services": [
     {
-      "name": "Dry Fruits",
-      "description": "We offer a wide selection of high-quality dry fruits."
-    },
-    {
-      "name": "American Grocery Store",
-      "description": "Our store is stocked with a variety of American products."
+      "name": "Grocery Shopping",
+      "description": "Find a variety of fresh produce, dairy products, and packaged goods"
     }
   ]
 };
