@@ -76,28 +76,33 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Urban Furniture House",
+  "name": "Chandigarh Furniture Mall",
   "category": [
     "Furniture store",
+    "Furniture accessories",
     "Furniture maker",
-    "Furniture manufacturer"
+    "Furniture repair shop",
+    "Furniture wholesaler",
+    "Garden furniture shop",
+    "Office furniture store",
+    "Rustic furniture store"
   ],
   "description": "",
-  "address": "Shop No. 224, Sector 34C, Sector 34, Chandigarh, 160022, India",
-  "phone": "+91 72772 73573",
-  "hours": "sunday: 9 AM–8:30 PM, monday: Closed, tuesday: 9 AM–8:30 PM, wednesday: 9 AM–8:30 PM, thursday: 9 AM–8:30 PM, friday: 9 AM–8:30 PM, saturday: 9 AM–8:30 PM",
+  "address": "Plot no 598, near bestech mall, Parkview Residence Colony, Industrial Area Mohali Phase 9, Sahibzada Ajit Singh Nagar, Punjab 160062, India",
+  "phone": "+91 98092 69292",
+  "hours": "sunday: Closed, monday: 9 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM, thursday: 9 AM–8 PM, friday: 9 AM–9 PM, saturday: 9 AM–9 PM",
   "services": [
     {
       "name": "Furniture Store",
-      "description": "Visit us to explore our vast collection of furniture"
+      "description": "Visit us today and explore our vast collection of furniture products."
     },
     {
-      "name": "Furniture Maker",
-      "description": "We create custom furniture pieces tailored to your needs"
+      "name": "Furniture Makers",
+      "description": "Get custom-made furniture for your home or office from our expert craftsmen."
     },
     {
-      "name": "Furniture Manufacturer",
-      "description": "Our in-house manufacturing unit ensures high-quality furniture at competitive prices"
+      "name": "Furniture Repair Shop",
+      "description": "We repair and refurbish your old furniture to give it a new life."
     }
   ]
 };
