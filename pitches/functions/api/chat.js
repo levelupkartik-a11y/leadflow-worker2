@@ -76,35 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Dr Geetika Garg",
+  "name": "Dr. Harjeet Kaur - General Doctor / General Physician",
   "category": [
-    "General practitioner",
-    "Diabetes center",
-    "Diabetologist",
     "Doctor",
-    "Emergency care physician",
-    "Endocrinologist",
-    "Health consultant",
-    "Internal medicine ward",
     "Medical Center",
-    "Rheumatologist"
+    "Medical clinic"
   ],
   "description": "",
-  "address": "SCO 10, beside Ramgarhia Bhawan, Sector 27D, Sector 27, Chandigarh, 160019, India",
-  "phone": "+91 172 464 4848",
-  "hours": "monday: 10 AM–7 PM, tuesday: 10 AM–7 PM, wednesday: 10 AM–7 PM, thursday: 10 AM–7 PM, friday: 10 AM–7 PM, saturday: 10 AM–7 PM, sunday: Closed",
+  "address": "472, Sector 38A, Sector 38, Chandigarh, 160014, India",
+  "phone": "+91 98885 86496",
+  "hours": "monday: 9 AM–1 PM, 5:30–7:30 PM, tuesday: 9 AM–1 PM, 5:30–7:30 PM, wednesday: 9 AM–1 PM, 5:30–7:30 PM, thursday: 9 AM–1 PM, 5:30–7:30 PM, friday: 9 AM–1 PM, 5:30–7:30 PM, saturday: 9 AM–1 PM, sunday: Closed",
   "services": [
     {
-      "name": "General Medicine Consultation",
-      "description": "Receive medical advice and treatment for general health issues."
-    },
-    {
-      "name": "Diabetes Care",
-      "description": "Consult a diabetologist for diabetes management and treatment."
-    },
-    {
-      "name": "Emergency Care",
-      "description": "Get immediate medical attention in case of emergencies."
+      "name": "General Doctor/Physician",
+      "description": "Comprehensive medical care for the whole family."
     }
   ]
 };
