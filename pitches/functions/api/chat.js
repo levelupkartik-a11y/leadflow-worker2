@@ -76,20 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Dr. Harjeet Kaur - General Doctor / General Physician",
-  "category": [
-    "Doctor",
-    "Medical Center",
-    "Medical clinic"
-  ],
+  "name": "DrPradeep Sharma. GENERAL SURGEON And PHYSICIAN .Former Head Surgery at GMSH Chandigarh",
+  "category": "Doctor",
   "description": "",
-  "address": "472, Sector 38A, Sector 38, Chandigarh, 160014, India",
-  "phone": "+91 98885 86496",
-  "hours": "monday: 9 AM–1 PM, 5:30–7:30 PM, tuesday: 9 AM–1 PM, 5:30–7:30 PM, wednesday: 9 AM–1 PM, 5:30–7:30 PM, thursday: 9 AM–1 PM, 5:30–7:30 PM, friday: 9 AM–1 PM, 5:30–7:30 PM, saturday: 9 AM–1 PM, sunday: Closed",
+  "address": "House no. 1333, Sector 37 B, near St Peter School, Chandigarh, 160036, India",
+  "phone": "+91 98760 27129",
+  "hours": "friday: 9 AM–1:30 PM, 5–8 PM, monday: 9 AM–1:30 PM, 5–8 PM, saturday: 9 AM–1:30 PM, 5–8 PM, sunday: 9 AM–1:30 PM, 5–8 PM, thursday: 9 AM–1:30 PM, 5–8 PM, tuesday: 9 AM–1:30 PM, 5–8 PM, wednesday: 9 AM–1:30 PM, 5–8 PM",
   "services": [
     {
-      "name": "General Doctor/Physician",
-      "description": "Comprehensive medical care for the whole family."
+      "name": "General Surgery Consultations",
+      "description": "Expert medical advice and care for a wide range of surgical needs."
+    },
+    {
+      "name": "Physician Consultations",
+      "description": "Personalized medical care for various health concerns."
     }
   ]
 };
