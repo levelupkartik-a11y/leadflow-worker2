@@ -76,18 +76,25 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Planet Fashion",
+  "name": "Garg & Co. Furniture Store",
   "category": [
-    "Clothing store"
+    "Furniture store",
+    "Antique furniture store",
+    "Furniture maker",
+    "Interior designer"
   ],
   "description": "",
-  "address": "SCO 101, 102, near Sindhi Sweets, Shopping Plaza, 17C, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 172 467 8222",
-  "hours": "sunday: 10 AM–10 PM, monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM",
+  "address": "13, Madhya Marg, Sector 7-C, Sector 7, Chandigarh, 160019, India",
+  "phone": "+91 98140 10929",
+  "hours": "sunday: Closed, monday: 10:30 AM–8 PM, tuesday: 10:30 AM–8 PM, wednesday: 10:30 AM–8 PM, thursday: 10:30 AM–8 PM, friday: 10:30 AM–8 PM, saturday: 10:30 AM–8 PM",
   "services": [
     {
-      "name": "",
-      "description": ""
+      "name": "Furniture Making",
+      "description": "Our expert furniture makers craft beautiful and durable pieces to enhance any space."
+    },
+    {
+      "name": "Interior Designing",
+      "description": "Our skilled interior designers provide bespoke solutions for a stunning and functional home or office."
     }
   ]
 };
