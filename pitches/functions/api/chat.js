@@ -76,35 +76,15 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Garg & Co. Furniture Store",
+  "name": "Panesar Furniture Works",
   "category": [
-    "Furniture store",
-    "Antique furniture store",
-    "Furniture maker",
-    "Interior designer"
+    "Furniture store"
   ],
   "description": "",
-  "address": "13, Madhya Marg, Sector 7-C, Sector 7, Chandigarh, 160019, India",
-  "phone": "+91 98140 10929",
-  "hours": "sunday: Closed, monday: 10:30 AM–8 PM, tuesday: 10:30 AM–8 PM, wednesday: 10:30 AM–8 PM, thursday: 10:30 AM–8 PM, friday: 10:30 AM–8 PM, saturday: 10:30 AM–8 PM",
-  "services": [
-    {
-      "name": "Furniture Store",
-      "description": "We offer a wide range of furniture for your home, from antique to modern pieces."
-    },
-    {
-      "name": "Antique Furniture Store",
-      "description": "Our antique furniture collection features unique and rare pieces for the discerning buyer."
-    },
-    {
-      "name": "Furniture Maker",
-      "description": "We create customized furniture to meet your specific needs and tastes."
-    },
-    {
-      "name": "Interior Designer",
-      "description": "Our experienced designers will help you create the perfect home interior."
-    }
-  ]
+  "address": "Adjoin B.R Jain School Sector 55, Chsndigarh, Palsora, Chandigarh, 160055, India",
+  "phone": "+91 99155 78420",
+  "hours": "sunday: 9 AM–8 PM, monday: 9 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM, thursday: 9 AM–8 PM, friday: 9 AM–8 PM, saturday: 9 AM–8 PM",
+  "services": []
 };
     
     const systemPrompt = {
