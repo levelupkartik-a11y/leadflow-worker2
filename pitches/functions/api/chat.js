@@ -76,22 +76,29 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Namdhari Unique Style",
+  "name": "Pal Furniture",
   "category": [
-    "Tailor"
+    "Furniture store",
+    "Door shop",
+    "Interior designer",
+    "Kitchen furniture store"
   ],
   "description": "",
-  "address": "Shop No. 20, Shopping Plaza, 17D, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 73073 20001",
-  "hours": "sunday: 10 AM–8:30 PM, monday: 10 AM–8:30 PM, tuesday: 10 AM–8:30 PM, wednesday: 10 AM–8:30 PM, thursday: 10 AM–8:30 PM, friday: 10 AM–8:30 PM, saturday: 10 AM–8:30 PM",
+  "address": "Booth Number 1546, Sector 38 West, Pocket B, Chandigarh, 160014, India",
+  "phone": "+91 94175 11851",
+  "hours": "sunday: 9 AM–5 PM, monday: 9 AM–7 PM, tuesday: 9 AM–7 PM, wednesday: 9 AM–7 PM, thursday: 9 AM–7 PM, friday: 9 AM–7 PM, saturday: 9 AM–7 PM",
   "services": [
     {
-      "name": "Garment Repair",
-      "description": "We provide professional garment repair services for men and women."
+      "name": "Furniture and Door Shop",
+      "description": "Browse through our wide collection of furniture and doors to find the perfect fit for your home or office."
     },
     {
-      "name": "Custom Stitching",
-      "description": "Our expert tailors offer custom stitching services for all types of clothing."
+      "name": "Interior Design",
+      "description": "Get expert advice from our interior designers to transform your space into a stylish and functional area."
+    },
+    {
+      "name": "Kitchen Furniture Store",
+      "description": "Explore our variety of kitchen furniture and solutions to upgrade your cooking experience."
     }
   ]
 };
