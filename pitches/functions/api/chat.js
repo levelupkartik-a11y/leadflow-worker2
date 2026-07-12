@@ -76,25 +76,19 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Electronic Enterprises - Best Electronics & Home Appliances, Chandigarh",
+  "name": "Meharsons Electronics Pvt Ltd",
   "category": [
-    "Electronics wholesaler",
     "Air conditioning store",
-    "Electronics accessories wholesaler",
-    "Electronics company"
+    "Electronics wholesaler"
   ],
   "description": "",
-  "address": "S.C.O. 2465-66, Sector 22C, Chandigarh, 160022, India",
-  "phone": "+91 172 270 6816",
-  "hours": "monday: 9:30 AM–9 PM, tuesday: 9:30 AM–9 PM, wednesday: 9:30 AM–9 PM, thursday: 9:30 AM–9 PM, friday: 9:30 AM–9 PM, saturday: 9:30 AM–9 PM, sunday: 10 AM–7 PM",
+  "address": "SCO - 1096, near IndusInd Bank, Sector 22B, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 98884 36699",
+  "hours": "monday: 9 AM–9:30 PM, tuesday: 9 AM–9:30 PM, wednesday: 9 AM–9:30 PM, thursday: 9 AM–9:30 PM, friday: 9 AM–9:30 PM, saturday: 9 AM–9:30 PM, sunday: 9 AM–9:30 PM",
   "services": [
     {
-      "name": "Electronics Wholesaler",
-      "description": "We offer a wide range of electronics products and accessories at affordable prices."
-    },
-    {
-      "name": "Air Conditioning Store",
-      "description": "Our air conditioning store provides quality AC products and services for comfortable living."
+      "name": "Air Conditioner Sales and Service",
+      "description": "We offer a wide range of air conditioners for sale and provide service and repair for existing units."
     }
   ]
 };
