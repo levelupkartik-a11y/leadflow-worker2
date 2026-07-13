@@ -76,20 +76,19 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Taj Chandigarh",
-  "category": "Hotel",
-  "description": "Polished hotel with dining & a pool. Upscale lodging offering 2 eateries, a cafe & a bar, plus a rooftop pool & free breakfast.",
-  "address": "No. 9, near Zakir Hussain Rose Garden, Sector 17A, 17A, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 172 661 3000",
-  "hours": "",
+  "name": "CAFE JC",
+  "category": [
+    "Cafe",
+    "Breakfast restaurant"
+  ],
+  "description": "",
+  "address": "Shop No. 2 & 3, Azaadi Rte, 10D, Sector 10, Chandigarh, 160011, India",
+  "phone": "+91 172 463 0666",
+  "hours": "monday: 8:30 AM–11:30 PM, tuesday: 8:30 AM–11:30 PM, wednesday: 8:30 AM–11:30 PM, thursday: 8:30 AM–11:30 PM, friday: 8:30 AM–11:30 PM, saturday: 8:30 AM–11:30 PM, sunday: 8:30 AM–11:30 PM",
   "services": [
     {
       "name": "Breakfast",
-      "description": "Start your day with our free breakfast."
-    },
-    {
-      "name": "Pool",
-      "description": "Relax and enjoy the rooftop pool."
+      "description": "Enjoy a wide variety of delicious breakfast options, from omelets to pancakes and more!"
     }
   ]
 };
