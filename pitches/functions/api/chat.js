@@ -76,29 +76,19 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Regal Aquarium & Fish Wholesale Pet World",
+  "name": "New Sham Provision Store",
   "category": [
-    "Pet store",
-    "Aquarium",
-    "Aquarium shop",
-    "Bird shop",
-    "Cat breeder",
-    "Dog breeder",
-    "Marine supply store",
-    "Tropical fish store"
+    "American grocery store",
+    "Dry fruit store"
   ],
   "description": "",
-  "address": "SCO 72, near Japanese Garden, Sector 31-C, Sector 31, Chandigarh, 160030, India",
-  "phone": "+91 98889 99418",
+  "address": "S.C.F. 11-12, 17G, Sector 22-C, Chandigarh, 160022, India",
+  "phone": "+91 172 270 3275",
   "hours": "monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM, sunday: 10 AM–10 PM",
   "services": [
     {
-      "name": "Pet Supplies",
-      "description": "We offer a wide range of pet supplies, including aquarium and marine life, birds, cats, dogs, and more."
-    },
-    {
-      "name": "Aquarium and Marine Supply",
-      "description": "Our store carries a variety of aquarium and marine life supplies to help you create a beautiful and thriving underwater environment."
+      "name": "Dry Fruits and American Grocery Products",
+      "description": "Find a variety of dry fruits and American grocery products at our store."
     }
   ]
 };
