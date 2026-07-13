@@ -76,18 +76,25 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Cafe Indian Roots",
+  "name": "French Press Cafe",
   "category": [
-    "Cafe"
+    "French restaurant",
+    "Cafe",
+    "Coffee shop",
+    "Italian restaurant"
   ],
   "description": "",
-  "address": "side Reliance Smart Bazar, Nexus, Elante Mall, Phase 1, Industrial Area Phase I, Chandigarh, 160002, India",
-  "phone": "+91 79737 51842",
-  "hours": "monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM, sunday: 10 AM–10 PM",
+  "address": "SCO-17, Sector 16 D, Sector 16, Chandigarh, 160015, India",
+  "phone": "+91 172 507 3183",
+  "hours": "monday: 11 AM–11 PM, tuesday: 11 AM–11 PM, wednesday: 11 AM–11 PM, thursday: 11 AM–11 PM, friday: 11 AM–11 PM, saturday: 11 AM–11 PM, sunday: 11 AM–11 PM",
   "services": [
     {
-      "name": "Cafe Experience",
-      "description": "Delicious meals in a cozy environment. Perfect for any occasion."
+      "name": "French and Italian Cuisine",
+      "description": "Enjoy a variety of French and Italian dishes in a cozy atmosphere"
+    },
+    {
+      "name": "Coffee",
+      "description": "Indulge in a rich coffee experience in our cafe"
     }
   ]
 };
