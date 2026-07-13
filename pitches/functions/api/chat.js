@@ -76,16 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "CENTRAL BANK OF INDIA - NEW PUBLIC SCHOOL ,SECTOR 18 B, CHANDIGARH Branch",
-  "category": "Bank",
+  "name": "CANARA BANK - CHANDIGARH SECTOR 32-D",
+  "category": [
+    "Bank"
+  ],
   "description": "",
-  "address": "Sarovar Path, Sector 18-C, Sector 18, Chandigarh, 160018, India",
-  "phone": "+91 172 277 3416",
-  "hours": "Temporarily closed",
+  "address": "S.O, Sector 32D, CHANDIGARH 32, Chandigarh, 160030, India",
+  "phone": "+91 1800 1030",
+  "hours": "monday: 10 AM–4 PM, tuesday: 10 AM–4 PM, wednesday: 10 AM–4 PM, thursday: 10 AM–4 PM, friday: 10 AM–4 PM, saturday: 10 AM–4 PM, sunday: Closed",
   "services": [
     {
-      "name": "Banking",
-      "description": "We offer expert banking services for the community."
+      "name": "Banking Services",
+      "description": "Our bank offers a variety of services including customer support, transactions, and more."
     }
   ]
 };
