@@ -76,18 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sarfraz Plumber",
-  "category": [
-    "Plumber"
-  ],
+  "name": "Badri Plumber & Contractor",
+  "category": "Plumber",
   "description": "",
-  "address": "No 1788, near YOUNG DWELLERS COMPLEX, Sector-49A, Chandigarh, 160047, India",
-  "phone": "+91 83600 86283",
-  "hours": "monday: 8 AM–9 PM, tuesday: 8 AM–9 PM, wednesday: 8 AM–9 PM, thursday: 8 AM–9 PM, friday: 8 AM–9 PM, saturday: 8 AM–9 PM, sunday: 8 AM–9 PM",
+  "address": "House No.843, near Old PNB Bank, Burail, Burail Village, Sector 45, Chandigarh, 160047, India",
+  "phone": "+91 98762 38791",
+  "hours": "friday: 8 AM–8 PM, monday: 8 AM–8 PM, saturday: 8 AM–8 PM, sunday: 8 AM–8 PM, thursday: 8:30 AM–8 PM, tuesday: 8 AM–8 PM, wednesday: 8 AM–8 PM",
   "services": [
     {
-      "name": "General plumbing solutions",
-      "description": "Fix leaks, unclog drains, and install new plumbing fixtures"
+      "name": "Plumbing Repairs",
+      "description": "Experienced plumbers for all your household and business plumbing needs."
+    },
+    {
+      "name": "Plumbing Installs",
+      "description": "New plumbing installations for your home or business."
     }
   ]
 };
