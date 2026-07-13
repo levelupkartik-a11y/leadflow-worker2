@@ -76,20 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "SS, Electrician",
+  "name": "HelpIndoor Electrician in Chandigarh",
   "category": "Electrician",
   "description": "",
-  "address": "160025, Maloya, Chandigarh, 160025, India",
-  "phone": "+91 81469 94501",
+  "address": "Chandigarh Housing Board Flats, Phase 9, Chandigarh, 160047, India",
+  "phone": "+91 99887 75550",
   "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Electrician Services",
-      "description": "Expert electrical solutions for residential and commercial properties."
-    },
-    {
-      "name": "Emergency Repairs",
-      "description": "Our team is available 24/7 for emergency electrical repairs."
+      "name": "Indoor Electrician Services",
+      "description": "We offer a range of indoor electrician services to cater to your needs, including installation, repair, and maintenance."
     }
   ]
 };
