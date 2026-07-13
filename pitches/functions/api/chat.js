@@ -76,18 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Anwar Plumber",
-  "category": [
-    "Plumber"
-  ],
+  "name": "HelpIndoor Electrician in Chandigarh",
+  "category": "Electrical repair shop",
   "description": "",
-  "address": "2534/1, near Velly of animals park, Sector 49C, Sector 49, Chandigarh, 160047, India",
-  "phone": "",
-  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
+  "address": "Chandigarh Housing Board Flats, Phase 9, Chandigarh, 160047, India",
+  "phone": "+91 99887 75550",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Plumbing Services",
-      "description": "We offer a range of plumbing services including leak detection, pipe repair, and water heater installation."
+      "name": "Electrical Repair Services",
+      "description": "We offer expert help for electrical repairs in Chandigarh, 24/7, at Chandigarh Housing Board Flats, Phase 9."
     }
   ]
 };
