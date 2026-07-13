@@ -76,23 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Down Town Cafe & Bakery",
+  "name": "Cafe Indian Roots",
   "category": [
-    "Cafe",
-    "Coffee shop"
+    "Cafe"
   ],
   "description": "",
-  "address": "SCO-45, Sector 21C, Sector 21, Chandigarh, 160022, India",
-  "phone": "+91 172 517 7777",
-  "hours": "monday: 11 AM–11 PM, tuesday: 11 AM–11 PM, wednesday: 11 AM–11 PM, thursday: 11 AM–11 PM, friday: 11 AM–11 PM, saturday: 11 AM–11 PM, sunday: 11 AM–11 PM",
+  "address": "side Reliance Smart Bazar, Nexus, Elante Mall, Phase 1, Industrial Area Phase I, Chandigarh, 160002, India",
+  "phone": "+91 79737 51842",
+  "hours": "monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM, sunday: 10 AM–10 PM",
   "services": [
     {
-      "name": "Coffee",
-      "description": "Freshly brewed coffee, made to order."
-    },
-    {
-      "name": "Bakery Items",
-      "description": "Freshly baked pastries, cakes, and bread."
+      "name": "Cafe Experience",
+      "description": "Delicious meals in a cozy environment. Perfect for any occasion."
     }
   ]
 };
