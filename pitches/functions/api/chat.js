@@ -76,18 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Aryan Electrician",
-  "category": [
-    "Electrician"
-  ],
+  "name": "SS, Electrician",
+  "category": "Electrician",
   "description": "",
-  "address": "1668, near Dev Samaj College, Burail, Burail Village, Sector 45-B, Chandigarh, 160047, India",
-  "phone": "+91 80828 26448",
-  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
+  "address": "160025, Maloya, Chandigarh, 160025, India",
+  "phone": "+91 81469 94501",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
       "name": "Electrician Services",
-      "description": "We offer various electrician services including fixing electrical issues, installing new electrical appliances, and more."
+      "description": "Expert electrical solutions for residential and commercial properties."
+    },
+    {
+      "name": "Emergency Repairs",
+      "description": "Our team is available 24/7 for emergency electrical repairs."
     }
   ]
 };
