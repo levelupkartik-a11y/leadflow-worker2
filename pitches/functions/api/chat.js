@@ -76,16 +76,29 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Revas Kennel - Puppies Sale in Chandigarh, Mohali, Panchkula - Top Dog Kennel in Chandigarh",
-  "category": "Dog day care center",
+  "name": "Regal Aquarium & Fish Wholesale Pet World",
+  "category": [
+    "Pet store",
+    "Aquarium",
+    "Aquarium shop",
+    "Bird shop",
+    "Cat breeder",
+    "Dog breeder",
+    "Marine supply store",
+    "Tropical fish store"
+  ],
   "description": "",
-  "address": "H.No: #5, Khudda Lahora, Chandigarh, Khudda Lahora, Chandigarh 160103, India",
-  "phone": "+91 90237 79933",
-  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "address": "SCO 72, near Japanese Garden, Sector 31-C, Sector 31, Chandigarh, 160030, India",
+  "phone": "+91 98889 99418",
+  "hours": "monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM, sunday: 10 AM–10 PM",
   "services": [
     {
-      "name": "Dog Day Care",
-      "description": "Expert care for your furry friends, 24/7"
+      "name": "Pet Supplies",
+      "description": "We offer a wide range of pet supplies, including aquarium and marine life, birds, cats, dogs, and more."
+    },
+    {
+      "name": "Aquarium and Marine Supply",
+      "description": "Our store carries a variety of aquarium and marine life supplies to help you create a beautiful and thriving underwater environment."
     }
   ]
 };
