@@ -76,18 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "MD MOMIN plumber",
+  "name": "Sarfraz Plumber",
   "category": [
     "Plumber"
   ],
   "description": "",
-  "address": "Small Flats, 1078 /A, Dhanas, Chandigarh, 160025, India",
-  "phone": "+91 98783 90480",
-  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
+  "address": "No 1788, near YOUNG DWELLERS COMPLEX, Sector-49A, Chandigarh, 160047, India",
+  "phone": "+91 83600 86283",
+  "hours": "monday: 8 AM–9 PM, tuesday: 8 AM–9 PM, wednesday: 8 AM–9 PM, thursday: 8 AM–9 PM, friday: 8 AM–9 PM, saturday: 8 AM–9 PM, sunday: 8 AM–9 PM",
   "services": [
     {
-      "name": "Plumber",
-      "description": ""
+      "name": "General plumbing solutions",
+      "description": "Fix leaks, unclog drains, and install new plumbing fixtures"
     }
   ]
 };
