@@ -76,18 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "All In One Key Maker - Manimajra, Chandigarh, Panchkula, Mohali, Himachal",
+  "name": "THE KEY ZONE",
   "category": [
     "Key duplication service"
   ],
   "description": "",
-  "address": "Shop No: 259, 13, Old Ropar Rd, New Darshani Bagh, Sector 13, Chandigarh, 160101, India",
-  "phone": "+91 81466 17501",
-  "hours": "monday: 9 AM–2:30 PM, tuesday: 9 AM–8:30 PM, wednesday: 9 AM–8:30 PM, thursday: 9 AM–8:30 PM, friday: 9 AM–8:30 PM, saturday: 9 AM–8:30 PM, sunday: 9 AM–8:30 PM",
+  "address": "Booths, Bijwara Market, 140, Sector 22D, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 83600 05048",
+  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
   "services": [
     {
       "name": "Key Duplication",
-      "description": "We offer key duplication services using our advanced machines for high-quality keys."
+      "description": "We duplicate keys 24/7 in Chandigarh"
     }
   ]
 };
