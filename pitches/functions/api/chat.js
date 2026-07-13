@@ -76,18 +76,32 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sai Electricals- Best Electrician in Chandigarh - Best Electrician in Mohali and Kharar",
-  "category": [
-    "Electrical engineer"
-  ],
+  "name": "𝗔 𝗧𝗼 𝗭 𝗸𝗲𝘆𝘀 - Best Key Maker | Duplicate Key Maker | Flip Key | Car Key Maker in Chandigarh",
+  "category": "Key duplication service",
   "description": "",
-  "address": "3157, Sector 51A, Sector 52, Chandigarh, 160036, India",
-  "phone": "",
-  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: 9 AM–9 PM",
+  "address": "Booth No. 146, Bhagat Singh Market, near by Government Model High School, Sector 22D, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 83603 76236",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Electrical Service",
-      "description": "Our electricians are available 24/7 for all your electrical needs."
+      "name": "Key Duplication",
+      "description": "Duplicate keys quickly and efficiently."
+    },
+    {
+      "name": "Car Key Maker",
+      "description": "Make car keys at our location."
+    },
+    {
+      "name": "Flip Key",
+      "description": "Create flip keys with our services."
+    },
+    {
+      "name": "Duplicate Key Maker",
+      "description": "Duplicate keys in no time."
+    },
+    {
+      "name": "Best Key Maker",
+      "description": "Get the best key duplication services."
     }
   ]
 };
