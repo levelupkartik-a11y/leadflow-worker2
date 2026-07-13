@@ -76,16 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "A One Keys",
+  "name": "𝗔 𝗧𝗼 𝗭 𝗸𝗲𝘆𝘀 - Best Key Maker | Duplicate Key Maker | Flip Key | Car Key Maker in Chandigarh",
   "category": "Key duplication service",
   "description": "",
-  "address": "Khuda Ali, Sher Road, adjoining Kashmiri Halal Dhaba, Banihal wale, Ab Satar, Nayagaon, Chandigarh 160103, India",
-  "phone": "+91 70096 33636",
-  "hours": "friday: 7 AM–9 PM, monday: 7 AM–9 PM, saturday: 7 AM–9 PM, sunday: 7 AM–9 PM, thursday: 7 AM–9 PM, tuesday: 7 AM–9 PM, wednesday: 7 AM–9 PM",
+  "address": "Booth No. 146, Bhagat Singh Market, near by Government Model High School, Sector 22D, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 83603 76236",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
       "name": "Key Duplication",
-      "description": "A One Keys provides fast and reliable key duplication services for all types of keys."
+      "description": "We provide reliable key duplication services in Chandigarh."
+    },
+    {
+      "name": "Car Key Making",
+      "description": "Duplicate car keys for a hassle-free experience."
+    },
+    {
+      "name": "Duplicate Key",
+      "description": "High-quality duplicate key services in Chandigarh."
     }
   ]
 };
