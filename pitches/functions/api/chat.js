@@ -76,13 +76,28 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "LIC Advisor in Chandigarh | Mohali Yogesh Sharma - MDRT and COT ( USA )",
-  "category": "Insurance agency",
+  "name": "Anil Kumar Rajput (Star Health Insurance Advisor)",
+  "category": [
+    "Health insurance agency"
+  ],
   "description": "",
-  "address": "Sco 7, SCF 6, Sector 7B, Sector 7, Chandigarh, 160019, India",
-  "phone": "+91 88720 03121",
-  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
-  "services": []
+  "address": "3049, Tribune Colony, Sector-29D, Sector 29, Chandigarh, 160030, India",
+  "phone": "+91 79737 18618",
+  "hours": "monday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM, thursday: 10 AM–8 PM, friday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: 10 AM–8 PM",
+  "services": [
+    {
+      "name": "Health Insurance Consultation",
+      "description": "Expert guidance to help you find the right health insurance policy."
+    },
+    {
+      "name": "Policy Comparison",
+      "description": "Get a comparative analysis of various health insurance policies to make informed decisions."
+    },
+    {
+      "name": "Policy Purchase Assistance",
+      "description": "Help with the purchase of the chosen health insurance policy."
+    }
+  ]
 };
     
     const systemPrompt = {
