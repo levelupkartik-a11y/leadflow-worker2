@@ -76,24 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Electrical Works || Electrician in Chandigarh || HOME SERVICES",
-  "category": "Electrical repair shop",
+  "name": "Electric kashyap",
+  "category": [
+    "Electrician"
+  ],
   "description": "",
-  "address": "3000, 23C, Sector 23, Chandigarh, 160023, India",
-  "phone": "+91 79730 60764",
-  "hours": "friday: 8 AM–8 PM, monday: 8 AM–8 PM, saturday: 8 AM–8 PM, sunday: 9 AM–8 PM, thursday: 8 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 8 AM–8 PM",
+  "address": "c near Sector, 32C, Sector 32, Chandigarh, 160030, India",
+  "phone": "+91 98554 87374",
+  "hours": "monday: 10 AM–6 PM, tuesday: 10 AM–6 PM, wednesday: 10 AM–6 PM, thursday: 10 AM–6 PM, friday: 10 AM–6 PM, saturday: 10 AM–6 PM, sunday: 10 AM–6 PM",
   "services": [
     {
-      "name": "Electrical Repair and Maintenance",
-      "description": "We diagnose and fix electrical issues in your home"
-    },
-    {
-      "name": "Installation Services",
-      "description": "Trust us for efficient installation of electrical fixtures and accessories"
-    },
-    {
-      "name": "Electrical Safety Checks",
-      "description": "Schedule our expert team for regular safety checks and audits"
+      "name": "General Electric Services",
+      "description": "We provide various electric services, including installation, maintenance, and repair of electrical systems"
     }
   ]
 };
