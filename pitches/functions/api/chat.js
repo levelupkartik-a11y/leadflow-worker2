@@ -76,16 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sonu locksmith",
-  "category": "Key duplication service",
+  "name": "All In One Key Maker - Manimajra, Chandigarh, Panchkula, Mohali, Himachal",
+  "category": [
+    "Key duplication service"
+  ],
   "description": "",
-  "address": "Block C, Sector 27, Chandigarh, 160019, India",
-  "phone": "+91 97809 88372",
-  "hours": "",
+  "address": "Shop No: 259, 13, Old Ropar Rd, New Darshani Bagh, Sector 13, Chandigarh, 160101, India",
+  "phone": "+91 81466 17501",
+  "hours": "monday: 9 AM–2:30 PM, tuesday: 9 AM–8:30 PM, wednesday: 9 AM–8:30 PM, thursday: 9 AM–8:30 PM, friday: 9 AM–8:30 PM, saturday: 9 AM–8:30 PM, sunday: 9 AM–8:30 PM",
   "services": [
     {
-      "name": "Key Duplication Service",
-      "description": "Get duplicate keys made quickly and efficiently"
+      "name": "Key Duplication",
+      "description": "We use high-quality materials and precise duplication techniques to ensure accurate and durable keys."
     }
   ]
 };
