@@ -76,19 +76,22 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "New Sham Provision Store",
+  "name": "MedPlus Pharmacy",
   "category": [
-    "American grocery store",
-    "Dry fruit store"
+    "Pharmacy"
   ],
   "description": "",
-  "address": "S.C.F. 11-12, 17G, Sector 22-C, Chandigarh, 160022, India",
-  "phone": "+91 172 270 3275",
-  "hours": "monday: 10 AM–10 PM, tuesday: 10 AM–10 PM, wednesday: 10 AM–10 PM, thursday: 10 AM–10 PM, friday: 10 AM–10 PM, saturday: 10 AM–10 PM, sunday: 10 AM–10 PM",
+  "address": "PP7Q+JQ7, Kajheri, Kajheri Village, Sector 52, Chandigarh, 160036, India",
+  "phone": "",
+  "hours": "monday: 9 AM–10 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 11 AM–10 PM",
   "services": [
     {
-      "name": "Dry Fruits and American Grocery Products",
-      "description": "Find a variety of dry fruits and American grocery products at our store."
+      "name": "Prescription Medications",
+      "description": "Dispensing prescription medications."
+    },
+    {
+      "name": "Health Advice",
+      "description": "Expert health advice from our staff."
     }
   ]
 };

@@ -1,408 +1,440 @@
 <!DOCTYPE html><html lang="en"><head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>MedPlus Pharmacy | Expert healthcare advice, reliable prescriptions</title>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Tailwind Configuration -->
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "surface-variant": "#e4e2dd",
-                        "on-tertiary-container": "#7098a0",
-                        "inverse-primary": "#f5b9a1",
-                        "surface-bright": "#fbf9f4",
-                        "error": "#ba1a1a",
-                        "outline": "#84746e",
-                        "tertiary-container": "#002f36",
-                        "primary-fixed-dim": "#f5b9a1",
-                        "surface-container-lowest": "#ffffff",
-                        "on-surface": "#1b1c19",
-                        "outline-variant": "#d6c3bc",
-                        "surface-container": "#f0eee9",
-                        "deep-espresso": "#432010",
-                        "on-background": "#1b1c19",
-                        "tertiary": "#00191d",
-                        "surface-container-high": "#eae8e3",
-                        "charcoal-ink": "#1A1A1A",
-                        "surface-tint": "#815340",
-                        "inverse-on-surface": "#f2f1ec",
-                        "on-primary": "#ffffff",
-                        "on-tertiary": "#ffffff",
-                        "on-primary-fixed-variant": "#663c2a",
-                        "on-secondary-container": "#663e00",
-                        "error-container": "#ffdad6",
-                        "on-primary-fixed": "#321205",
-                        "primary-fixed": "#ffdbcd",
-                        "secondary": "#865300",
-                        "on-error": "#ffffff",
-                        "on-tertiary-fixed": "#001f24",
-                        "tertiary-fixed-dim": "#a5cdd6",
-                        "surface-container-low": "#f5f3ee",
-                        "primary-container": "#432010",
-                        "on-error-container": "#93000a",
-                        "secondary-fixed-dim": "#ffb961",
-                        "inverse-surface": "#30312e",
-                        "tertiary-fixed": "#c1eaf2",
-                        "surface-dim": "#dbdad5",
-                        "surface-container-highest": "#e4e2dd",
-                        "on-tertiary-fixed-variant": "#254c54",
-                        "paper-white": "#FFFFFF",
-                        "on-secondary-fixed-variant": "#653e00",
-                        "secondary-fixed": "#ffddb8",
-                        "background": "#fbf9f4",
-                        "on-secondary": "#ffffff",
-                        "on-surface-variant": "#51443f",
-                        "apricot-glaze": "#F59C00",
-                        "on-secondary-fixed": "#2b1700",
-                        "surface": "#fbf9f4",
-                        "secondary-container": "#fca20f",
-                        "primary": "#2a0c02",
-                        "on-primary-container": "#b9846e"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "margin-mobile": "20px",
-                        "container-max": "1280px",
-                        "unit": "8px",
-                        "gutter": "24px",
-                        "margin-desktop": "64px"
-                    },
-                    "fontFamily": {
-                        "display-lg": ["Playfair Display", "serif"],
-                        "label-lg": ["Hanken Grotesk", "sans-serif"],
-                        "body-lg": ["Hanken Grotesk", "sans-serif"],
-                        "headline-lg": ["Playfair Display", "serif"],
-                        "headline-md": ["Playfair Display", "serif"],
-                        "display-lg-mobile": ["Playfair Display", "serif"],
-                        "body-md": ["Hanken Grotesk", "sans-serif"],
-                        "label-sm": ["Hanken Grotesk", "sans-serif"]
-                    },
-                    "fontSize": {
-                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
-                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
-                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
-                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
-                        "display-lg-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
-                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
-                    }
-                }
-            }
-        }
-    </script>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet">
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-<style>
-        .material-symbols-outlined {
-            font-family: 'Material Symbols Outlined' !important;
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            font-weight: normal;
-            font-style: normal;
-            font-size: 24px;
-            line-height: 1;
-            letter-spacing: normal;
-            text-transform: none;
-            display: inline-block;
-            white-space: nowrap;
-            word-wrap: normal;
-            direction: ltr;
-            -webkit-font-feature-settings: 'liga';
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedPlus Pharmacy | Expert guidance and care for your health needs</title>
+  <meta name="description" content="MedPlus Pharmacy offers a wide range of healthcare services.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-        /* Custom scroll-reveal styles inspired by haberbueni.ch */
-        .reveal {
-            opacity: 0;
-            transform: translateY(32px);
-            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
-        }
-        
-        .reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Custom delay classes */
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
-        .delay-500 { transition-delay: 500ms; }
-
-        /* Elegant menu hover line animation */
-        .nav-link {
-            position: relative;
-            padding-bottom: 2px;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: currentColor;
-            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .nav-link.active::after {
-            width: 100%;
-        }
-    </style>
-<meta name="description" content="We are a pharmacy offering a wide range of healthcare services and medications in Sector 52, Chandigarh."></head>
-<body class="bg-background text-on-background font-body-md text-body-md antialiased selection:bg-apricot-glaze selection:text-paper-white flex flex-col min-h-screen">
-<!-- TopNavBar Shared Component -->
-<header id="main-header" class="bg-surface/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant/10 transition-all duration-300 py-2">
-<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 max-w-container-max mx-auto w-full">
-<!-- Brand -->
-<a class="font-display-lg text-headline-md text-deep-espresso dark:text-inverse-primary tracking-tight transition-transform duration-300 hover:scale-105" href="#">MedPlus Pharmacy</a>
-<!-- Navigation Links (Desktop) -->
-<nav class="hidden md:flex items-center gap-8 font-label-lg text-label-lg">
-<a class="nav-link active text-secondary dark:text-secondary-fixed-dim hover:text-apricot-glaze dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Home</a>
-<a class="nav-link text-on-surface-variant dark:text-surface-variant hover:text-apricot-glaze dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Services</a>
-<a class="nav-link text-on-surface-variant dark:text-surface-variant hover:text-apricot-glaze dark:hover:text-secondary-fixed transition-colors duration-300" href="#">About</a>
-<a class="nav-link text-on-surface-variant dark:text-surface-variant hover:text-apricot-glaze dark:hover:text-secondary-fixed transition-colors duration-300" href="#">Contact</a>
-</nav>
-<!-- Actions -->
-<div class="flex items-center gap-6">
-<!-- Search Bar Placeholder (on_right logic) -->
-<button class="text-on-surface hover:text-apricot-glaze transition-colors duration-300 scale-95 active:scale-90 transition-transform">
-<span class="material-symbols-outlined" data-icon="search">search</span>
-</button>
-<!-- Trailing Primary Action -->
-<a class="hidden md:inline-flex items-center justify-center bg-deep-espresso text-paper-white font-label-lg text-label-lg px-6 py-2.5 rounded-full hover:bg-apricot-glaze transition-colors duration-300 scale-95 hover:scale-100 active:scale-95 transition-all" href="#">
-                    Sign In
-                </a>
-<!-- Mobile Menu Toggle -->
-<button id="mobile-menu-btn" class="md:hidden text-on-surface hover:text-apricot-glaze transition-colors duration-300">
-<span class="material-symbols-outlined text-[28px]" data-icon="menu">menu</span>
-</button>
-</div>
-</div>
-</header>
-
-<!-- Mobile Drawer Menu (Off-Canvas overlay) -->
-<div id="mobile-menu-drawer" class="fixed inset-0 z-50 translate-x-full transition-transform duration-500 ease-in-out pointer-events-none">
-    <!-- Overlay backdrop -->
-    <div id="mobile-menu-overlay" class="absolute inset-0 bg-deep-espresso/30 backdrop-blur-sm opacity-0 transition-opacity duration-500 ease-in-out pointer-events-auto cursor-pointer"></div>
-    <!-- Drawer content -->
-    <div class="absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-surface-bright p-8 shadow-2xl flex flex-col justify-between pointer-events-auto">
-        <div>
-            <!-- Close Button -->
-            <div class="flex justify-between items-center mb-12">
-                <span class="font-display-lg text-headline-md text-deep-espresso tracking-tight">MedPlus Pharmacy</span>
-                <button id="mobile-menu-close" class="text-on-surface hover:text-apricot-glaze transition-colors">
-                    <span class="material-symbols-outlined text-[28px]" data-icon="close">close</span>
-                </button>
-            </div>
-            <!-- Links -->
-            <nav class="flex flex-col gap-8 font-display-lg text-headline-lg">MedPlus Pharmacy</nav>
-        </div>
-        <!-- Footer in mobile menu -->
-        <div class="opacity-0 translate-y-4 transition-all duration-500 mobile-nav-footer" style="transition-delay: 500ms;">
-            <a class="w-full inline-flex items-center justify-center bg-deep-espresso text-paper-white font-label-lg text-label-lg px-6 py-3.5 rounded-full hover:bg-apricot-glaze transition-colors duration-300 mb-6" href="#">
-                Sign In
-            </a>
-            <p class="font-body-md text-label-sm text-on-surface-variant opacity-60">© 2026 MedPlus Pharmacy</p>
-        </div>
+  <!-- ==========================================================================
+       TOP ANNOUNCEMENT BAR
+       ========================================================================== -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-info">
+        <span>✦ Welcoming New Patients for 2026</span>
+        <a href="#faq" class="top-bar-link">View Insurance &amp; Financing</a>
+      </div>
+      <div class="top-bar-contact"><span>📍 PP7Q+JQ7, Kajheri, Kajheri Village, Sector 52, Chandigarh, 160036, India</span><span>🕒 monday: 9 AM–10 PM...</span></div>
     </div>
-</div>
-<!-- Main Content Canvas -->
-<main class="flex-grow pt-20">
-<!-- Hero Section: Asymmetric Minimalist Layout -->
-<section class="relative w-full overflow-hidden bg-surface-bright py-20 md:py-32 px-margin-mobile md:px-margin-desktop min-h-[85vh] flex items-center">
-<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter items-center w-full">
-<!-- Typography Content -->
-<div class="md:col-span-5 flex flex-col items-start z-10 space-y-8">
+  </div>
 
-<h1 class="reveal delay-100 font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-deep-espresso leading-tight">MedPlus Pharmacy for all your healthcare needs</h1>
-<p class="reveal delay-200 font-body-lg text-body-lg text-on-surface-variant max-w-md">We are a pharmacy offering a wide range of healthcare services and medications in Sector 52, Chandigarh.</p>
-<div class="reveal delay-300 pt-4">
-<a class="inline-flex items-center justify-center bg-deep-espresso text-paper-white font-label-lg text-label-lg px-8 py-4 rounded-full hover:bg-apricot-glaze transition-all duration-300 shadow-md hover:scale-[1.02] active:scale-[0.98] group" href="#">Services</a>
-</div>
-</div>
-<!-- Imagery Container -->
-<div class="reveal delay-400 md:col-span-7 mt-12 md:mt-0 relative aspect-[4/3] md:aspect-square w-full rounded-2xl overflow-hidden shadow-sm group">
-<img class="absolute inset-0 w-full h-full object-cover rounded-2xl transition-transform duration-1000 ease-out group-hover:scale-[1.03]" data-alt="A breathtaking, high-end food photography shot of a rustic Mediterranean feast laid out on a light oak wooden table. The composition is bright, airy, and strictly adheres to a modern organic aesthetic with warm minimalism. Sunlight streams across the scene, highlighting fresh artisanal bread, vibrant roasted vegetables, and a bowl of golden olive oil. The background is softly blurred to emphasize the tactile sophistication of the ingredients, perfectly suited for a light-mode culinary website." src="assets/img-1783892205738-0.jpg">
-</div>
-</div>
+  <!-- ==========================================================================
+       STICKY GLASSMORPHISM HEADER
+       ========================================================================== -->
+  <header class="header">
+    <div class="container nav-wrapper">
+      <a href="#home" class="logo">
+        <div class="logo-icon">M</div>
+        <span>MedPlus Pharmacy</span>
+      </a>
 
-<!-- Floating Scroll Down Indicator (Haberbueni-inspired) -->
-<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-10 transition-opacity duration-300 hover:opacity-80" onclick="document.getElementById('seasonal').scrollIntoView({ behavior: 'smooth' })">
-    <span class="font-label-sm text-[10px] text-on-surface-variant/50 uppercase tracking-[0.2em] font-semibold">Scroll</span>
-    <div class="w-[20px] h-[34px] rounded-full border border-on-surface-variant/30 flex justify-center p-1">
-        <div class="w-[2px] h-[6px] bg-apricot-glaze rounded-full animate-bounce"></div>
+      <nav class="nav-menu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#booking" class="nav-link">Book Now</a>
+      </nav>
+
+      <div class="flex-center" style="gap: 16px;">
+        <a href="#booking" class="btn btn-primary">Book Appointment</a>
+        <div class="menu-toggle" aria-label="Toggle Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </div>
-</div>
-</section>
+  </header>
 
-<!-- Seasonal Favorites: Bento Grid Section -->
+  <!-- ==========================================================================
+       HERO SECTION WITH DYNAMIC TYPED ROOT CYCLING ANIMATION
+       ========================================================================== -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content reveal-up">
+        <div class="hero-tagline">
+          <span class="pulse-dot"></span>
+          <span>REDEFINING THE DENTAL EXPERIENCE</span>
+        </div>
 
-<!-- Minimalist Divider/Philosophy Section -->
-<section class="py-24 bg-surface px-margin-mobile md:px-margin-desktop border-t border-outline-variant/10">
-<div class="max-w-3xl mx-auto text-center">
-<span class="reveal material-symbols-outlined text-[48px] text-apricot-glaze mb-6" data-icon="eco">eco</span>
-<h2 class="reveal delay-100 font-headline-lg text-headline-lg text-deep-espresso mb-8">Our Philosophy</h2>
-<p class="reveal delay-200 font-body-lg text-body-lg text-on-surface-variant leading-relaxed">We are a pharmacy offering a wide range of healthcare services and medications in Sector 52, Chandigarh.</p>
-</div>
-</section>
+        <!-- Typed Root Cycling Animation Inspired by Seattle Dental Co -->
+        <div class="hero-title-wrap">
+          <h1 class="display-xl">Experienced Healthcare Professionals</h1>
+        </div>
 
-<!-- Testimonials Section -->
-<section class="py-24 bg-surface-container-low px-margin-mobile md:px-margin-desktop border-t border-outline-variant/10">
-<div class="max-w-container-max mx-auto">
-<div class="text-center mb-16">
-<h2 class="reveal font-headline-lg text-headline-lg text-deep-espresso mb-4">Client Testimonials</h2>
-<p class="reveal delay-100 font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Read genuine feedback from our clients.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Testimonial Card -->
-<div class="reveal delay-200 bg-surface-container-lowest p-8 rounded-2xl shadow-sm border border-outline-variant/20 flex flex-col h-full">
-<div class="flex items-center gap-1 mb-6 text-apricot-glaze">
-<span class="material-symbols-outlined" data-icon="star">star</span>
-<span class="material-symbols-outlined" data-icon="star">star</span>
-<span class="material-symbols-outlined" data-icon="star">star</span>
-<span class="material-symbols-outlined" data-icon="star">star</span>
-<span class="material-symbols-outlined" data-icon="star">star</span>
-</div>
-<p class="font-body-lg text-body-lg text-on-surface leading-relaxed flex-grow mb-8 italic">"Outstanding service and great quality. They went above and beyond to make sure we were satisfied."</p>
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-deep-espresso font-label-lg font-bold">K</div>
-<div>
-    <h4 class="font-label-lg text-label-lg text-deep-espresso">Karan J.</h4>
-    <span class="font-label-sm text-label-sm text-on-surface-variant">Verified Client</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer Shared Component -->
-<footer class="bg-surface-container w-full py-12 border-t border-surface-container-high/40">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-<!-- Brand & Copyright Column -->
-<div class="reveal flex flex-col gap-4 md:col-span-2">
-<span class="font-display-lg text-headline-md text-deep-espresso dark:text-inverse-primary">MedPlus Pharmacy</span>
-<p class="font-body-md text-body-md text-on-surface dark:text-on-surface-variant max-w-sm mt-2">We are a pharmacy offering a wide range of healthcare services and medications in Sector 52, Chandigarh....</p>
-<p class="font-body-md text-body-md text-on-surface dark:text-on-surface-variant mt-6 opacity-80">
-                    © 2026 MedPlus Pharmacy. Sourced with passion.
-                </p>
-</div>
-<!-- Links Column -->
-<div class="reveal delay-100 flex flex-col gap-4">
-              <h4 class="font-label-lg text-label-lg mb-6 text-on-surface font-bold uppercase tracking-wider">Contact Us</h4>
-              <ul class="space-y-4 font-body-md text-body-md text-on-surface-variant" style="list-style: none; padding: 0;">
-                <li>📍 PP7Q+JQ7, Kajheri, Kajheri Village, Sector 52, Chandigarh, 160036, India</li>
-                
-                <li>🕒 monday: 9 AM–10 PM...</li>
-              </ul>
+        <p class="lead" style="margin-bottom: 32px; max-width: 540px;">Expert guidance and care for your health needs</p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px;">
+          <a href="#booking" class="btn btn-primary">Schedule Your Visit</a>
+          <a href="#services" class="btn btn-secondary">Explore Treatments</a>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 16px; border-top: 1px solid var(--border-medium); padding-top: 24px;">
+          <div style="display: flex; -webkit-mask-image: linear-gradient(to right, black, transparent);">
+            <img src="assets/img-qa-1783941744965-0.jpg" alt="Patient" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; object-fit: cover;">
+            <img src="assets/img-1783941684448-1.jpg" alt="Patient" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; margin-left: -12px; object-fit: cover;">
+            <img src="assets/img-1783941695701-2.jpg" alt="Patient" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; margin-left: -12px; object-fit: cover;">
+          </div>
+          <div>
+            <div style="color: #E5B869; font-size: 0.95rem; font-weight: 700;">★★★★★ 4.9 / 5.0</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">From 650+ verified patient reviews in 160036</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal-fade delay-200">
+        <div class="hero-image-frame">
+          <!-- Clean modern clinic interior / wellness photography -->
+          <img src="assets/img-1783941706854-3.jpg" alt="Aura Dental Sanctuary Clinic Interior">
+          
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PHILOSOPHY SECTION (80/20 RULE, EDITORIAL ASYMMETRY)
+       ========================================================================== -->
+  <section id="about" class="section section-bg-surface">
+    <div class="container philosophy-grid">
+      <div class="philosophy-sticky reveal-up">
+        <span class="label-caps accent">Our Philosophy</span>
+        <h2 class="display-lg" style="margin-top: 8px; margin-bottom: 24px;">MedPlus Pharmacy offers a wide range of healthcare services.</h2>
+        <p style="max-width: 400px;">MedPlus Pharmacy offers a wide range of healthcare services.</p>
+        <a href="#booking" class="btn btn-secondary" style="margin-top: 16px;">Schedule A Consultation →</a>
+      </div>
+
+      <div class="philosophy-list">
+        <div class="philosophy-item reveal-up delay-100">
+          <div class="philosophy-number">01 / PRESCRIPTION MEDICATIONS</div>
+          <h3 class="display-md" style="margin-bottom: 12px;">Prescription Medications</h3>
+          <p>Dispensing prescription medications.</p>
+        </div>
+
+        <div class="philosophy-item reveal-up delay-200">
+          <div class="philosophy-number">02 / HEALTH ADVICE</div>
+          <h3 class="display-md" style="margin-bottom: 12px;">Health Advice</h3>
+          <p>Expert health advice from our staff.</p>
+        </div>
+
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FEATURED SERVICES SHOWCASE
+       ========================================================================== -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="flex-between" style="margin-bottom: 48px; flex-wrap: wrap; gap: 24px;">
+        <div class="reveal-up">
+          <span class="label-caps accent">Comprehensive Catalog</span>
+          <h2 class="display-lg" style="margin-top: 8px;">Our Services &amp; Treatments</h2>
+        </div>
+        <div class="reveal-up delay-100">
+          <a href="#booking" class="btn btn-secondary">Request Appointment →</a>
+        </div>
+      </div>
+
+      <div class="grid grid-3">
+        <!-- Service 1 -->
+        <div class="card reveal-up delay-100">
+          <div class="card-image-wrap">
+            <img src="assets/img-1783941718275-4.jpg" alt="Prescription Medications">
+          </div>
+          <span class="label-caps">PRESCRIPTION MEDICATIONS</span>
+          <h3 class="display-sm" style="margin-top: 4px; margin-bottom: 12px;">Prescription Medications</h3>
+          <p>Dispensing prescription medications.</p>
+          <a href="#booking" style="color: var(--primary); font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; margin-top: 12px;">Book Consultation →</a>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="card reveal-up delay-200">
+          <div class="card-image-wrap">
+            <img src="assets/img-1783941729538-5.jpg" alt="Health Advice">
+          </div>
+          <span class="label-caps">HEALTH ADVICE</span>
+          <h3 class="display-sm" style="margin-top: 4px; margin-bottom: 12px;">Health Advice</h3>
+          <p>Expert health advice from our staff.</p>
+          <a href="#booking" style="color: var(--primary); font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; margin-top: 12px;">Book Consultation →</a>
+        </div>
+
+        <!-- Service 3 -->
+        
+
+        <!-- Service 4 -->
+        
+
+        <!-- Service 5 -->
+        
+
+        <!-- Service 6 -->
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       MEET THE DOCTORS / CLINICAL LEADERSHIP
+       ========================================================================== -->
+  
+
+  <!-- ==========================================================================
+       PATIENT REVIEWS / TESTIMONIALS CAROUSEL
+       ========================================================================== -->
+  <section class="section">
+    <div class="container">
+      <div style="text-align: center; max-width: 600px; margin: 0 auto 40px auto;" class="reveal-up">
+        <span class="label-caps accent">Verified Patient Stories</span>
+        <h2 class="display-lg" style="margin-top: 8px;">Words from Our Community</h2>
+      </div>
+
+      <div class="testimonial-wrap reveal-fade delay-100">
+        <div class="testimonial-track">
+          <!-- Slide 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <div class="stars">★★★★★</div>
+              <p class="testimonial-quote">"The staff here are extremely helpful and have a good knowledge of pharmacology."</p>
+              <div class="testimonial-author">Rahul K.</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">Cosmetic Veneers &amp; Sedation Patient</div>
             </div>
-<!-- Company Column -->
-<div class="reveal delay-200 flex flex-col gap-4">
-<h4 class="font-label-lg text-label-lg text-deep-espresso dark:text-on-surface font-bold uppercase tracking-wider mb-2">Company</h4>
-<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline hover:text-apricot-glaze dark:hover:text-secondary-fixed transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">Careers</a>
-<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline hover:text-apricot-glaze dark:hover:text-secondary-fixed transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">Sustainability</a>
-</div>
-</div>
-</footer>
+          </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- 1. Sticky Header Animation ---
-        const header = document.getElementById('main-header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                header.classList.add('bg-surface/95', 'backdrop-blur-md', 'shadow-sm', 'py-0.5');
-                header.classList.remove('bg-surface/90', 'py-2');
-            } else {
-                header.classList.add('bg-surface/90', 'py-2');
-                header.classList.remove('bg-surface/95', 'backdrop-blur-md', 'shadow-sm', 'py-0.5');
-            }
-        });
+          <!-- Slide 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <div class="stars">★★★★★</div>
+              <p class="testimonial-quote">"I have been a customer here for a long time and the quality of service has remained consistently high."</p>
+              <div class="testimonial-author">Priya K.</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">Biomimetic Restoration Patient</div>
+            </div>
+          </div>
 
-        // --- 2. Scroll Reveal Animation System ---
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -40px 0px'
-        });
+          <!-- Slide 3 -->
+          
+        </div>
 
-        revealElements.forEach(el => revealObserver.observe(el));
+        <div class="slider-controls">
+          <button class="slider-btn slider-prev" aria-label="Previous Review">←</button>
+          <button class="slider-btn slider-next" aria-label="Next Review">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // --- 3. Mobile Menu Drawer Animation ---
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenuCloseBtn = document.getElementById('mobile-menu-close');
-        const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-        const mobileNavFooter = document.querySelector('.mobile-nav-footer');
+  <!-- ==========================================================================
+       INTERACTIVE FAQ ACCORDION
+       ========================================================================== -->
+  <section id="faq" class="section section-bg-surface">
+    <div class="container container-narrow">
+      <div style="text-align: center; margin-bottom: 48px;" class="reveal-up">
+        <span class="label-caps accent">Clarity &amp; Transparency</span>
+        <h2 class="display-lg" style="margin-top: 8px;">Frequently Asked Questions</h2>
+      </div>
 
-        function openMenu() {
-            mobileMenuDrawer.classList.remove('translate-x-full');
-            mobileMenuDrawer.classList.add('pointer-events-auto');
-            mobileMenuOverlay.classList.remove('opacity-0');
-            mobileMenuOverlay.classList.add('opacity-100');
-            
-            // Staggered links animation
-            mobileNavLinks.forEach(link => {
-                link.classList.remove('opacity-0', 'translate-x-4');
-                link.classList.add('opacity-100', 'translate-x-0');
-            });
-            
-            mobileNavFooter.classList.remove('opacity-0', 'translate-y-4');
-            mobileNavFooter.classList.add('opacity-100', 'translate-y-0');
-        }
+      <div class="reveal-up delay-100">
+        <div class="accordion-item is-active">
+          <div class="accordion-header">
+            <span>What are the operating hours of MedPlus Pharmacy?</span>
+            <div class="accordion-icon"></div>
+          </div>
+          <div class="accordion-body">
+            <p>Our pharmacy is open from Monday to Sunday, with business hours being 9 AM-10 PM (Monday to Saturday) and 11 AM-10 PM (Sunday).</p>
+          </div>
+        </div>
 
-        function closeMenu() {
-            mobileMenuDrawer.classList.add('translate-x-full');
-            mobileMenuDrawer.classList.remove('pointer-events-auto');
-            mobileMenuOverlay.classList.remove('opacity-100');
-            mobileMenuOverlay.classList.add('opacity-0');
-            
-            // Reset staggered links
-            mobileNavLinks.forEach(link => {
-                link.classList.remove('opacity-100', 'translate-x-0');
-                link.classList.add('opacity-0', 'translate-x-4');
-            });
-            
-            mobileNavFooter.classList.remove('opacity-100', 'translate-y-0');
-            mobileNavFooter.classList.add('opacity-0', 'translate-y-4');
-        }
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Do you offer home delivery of medicines?</span>
+            <div class="accordion-icon"></div>
+          </div>
+          <div class="accordion-body">
+            <p>Yes, we do offer home delivery of medicines. Please contact us via our booking form to arrange a convenient delivery time.</p>
+          </div>
+        </div>
 
-        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMenu);
-        if (mobileMenuCloseBtn) mobileMenuCloseBtn.addEventListener('click', closeMenu);
-        if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMenu);
-    });
-</script>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Can I return or exchange a product if I am not satisfied with it?</span>
+            <div class="accordion-icon"></div>
+          </div>
+          <div class="accordion-body">
+            <p>Yes, our pharmacy has a return and exchange policy in place. Please contact us for more information on our return and exchange process.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span>Are all medications available in stock, or do I need to wait for a special order?</span>
+            <div class="accordion-icon"></div>
+          </div>
+          <div class="accordion-body">
+            <p>We strive to keep a wide range of medications in stock. However, there may be situations where a special order is required for certain medications. Our staff will be happy to check availability and provide more information on wait times if necessary.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       BOOKING & CONTACT SECTION (INTEGRATED FROM CONTACT.HTML)
+       ========================================================================== -->
+  <section id="booking" class="section section-bg-inverse">
+    <div class="container grid-2" style="display: grid; gap: 64px; align-items: start;">
+      
+      <!-- Left Column: Booking Form -->
+      <div class="card reveal-up" style="background: var(--bg-card-light); padding: 40px; border-top: 4px solid var(--primary); color: var(--text-main);">
+        <span class="label-caps accent">Online Reservation</span>
+        <h2 class="display-md" style="margin-top: 8px; margin-bottom: 8px;">Request An Appointment</h2>
+        <p style="font-size: 0.95rem; margin-bottom: 24px;">Fill out the brief form below and our team will contact you within 2 business hours to confirm your suite and timing.</p>
+
+        <form id="bookingForm">
+          <div class="form-group">
+            <label class="form-label" for="fullName">Full Name *</label>
+            <input type="text" id="fullName" class="form-input" placeholder="e.g., Jane Doe" required="">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address *</label>
+              <input type="email" id="email" class="form-input" placeholder="jane@example.com" required="">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number *</label>
+              <input type="tel" id="phone" class="form-input" placeholder="(206) 555-0100" required="">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="serviceType">Primary Service Interest *</label>
+            <select id="serviceType" class="form-select" required=""><option value="">-- Select Service --</option><option value="prescription_medications">Prescription Medications</option><option value="health_advice">Health Advice</option></select>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label class="form-label" for="preferredDay">Preferred Day</label>
+              <select id="preferredDay" class="form-select">
+                <option value="any">First Available</option>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="preferredTime">Preferred Time</label>
+              <select id="preferredTime" class="form-select">
+                <option value="any">Any Time</option>
+                <option value="morning">Morning (7am - 11am)</option>
+                <option value="afternoon">Afternoon (12pm - 4pm)</option>
+                <option value="late">Late Afternoon (4pm - 6pm)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="insuranceInfo">Insurance or Membership Plan</label>
+            <input type="text" id="insuranceInfo" class="form-input" placeholder="e.g., Delta Dental PPO or Aura Membership Plan">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="notes">Special Requests / Anxiety Accommodation</label>
+            <textarea id="notes" class="form-textarea" rows="3" placeholder="Let us know if you have any specific concerns, booking preferences, or requests..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">Request Reservation Suite →</button>
+        </form>
+
+        <div id="formSuccess" style="display: none; background: var(--accent-sage-light); color: var(--primary); padding: 24px; border-radius: var(--radius-sm); margin-top: 24px; text-align: center; font-weight: 500;">
+          <div style="font-size: 1.5rem; margin-bottom: 8px;">✦ Reservation Requested!</div>
+          <p style="margin-bottom: 0; color: var(--primary);">Thank you! Our concierge team has received your request and will contact you shortly to confirm your appointment time.</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Direct Contact & Location -->
+      <div class="reveal-up delay-200" style="color: var(--text-inverse);">
+        <span class="label-caps" style="color: var(--accent-sage-light);">Sanctuary Location</span>
+        <h2 class="display-lg" style="margin-top: 8px; margin-bottom: 24px; color: white;">Located in 160036</h2>
+        
+        <div class="card" style="margin-bottom: 24px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-inverse);">
+          <h3 class="display-sm" style="margin-bottom: 12px; color: white;">📍 Office Address</h3>
+          <p style="margin-bottom: 8px; font-weight: 600; color: var(--accent-sage-light);">MedPlus Pharmacy</p>
+          <p style="margin-bottom: 16px;">PP7Q+JQ7, Kajheri, Kajheri Village, Sector 52, Chandigarh, 160036, India</p>
+          
+          
+        </div>
+
+        <div class="card" style="margin-bottom: 24px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-inverse);"><h3 class="display-sm" style="margin-bottom: 12px; color: white;">📞 Direct Contact</h3></div>
+
+        <div class="card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-inverse);">
+                <h3 class="display-sm" style="margin-bottom: 12px; color: white;">🕒 Hours of Operation</h3>
+                <p style="color: rgba(255,255,255,0.9); font-weight: 500;">monday: 9 AM–10 PM...</p>
+              </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE GOOGLE MAP EMBED -->
+  <section class="section" style="padding-top: 0; background-color: var(--bg-inverse);">
+    <div class="container">
+      <div class="reveal-up" style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-floating); height: 480px; border: 1px solid rgba(255,255,255,0.1);">
+        <iframe title="Aura Dental Location Map" src="https://maps.google.com/maps?q=MedPlus%20Pharmacy%20PP7Q%2BJQ7%2C%20Kajheri%2C%20Kajheri%20Village%2C%20Sector%2052%2C%20Chandigarh%2C%20160036%2C%20India&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER & INTERACTIVE LOCATION MAP
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="color: var(--text-inverse); margin-bottom: 16px;">
+            <div class="logo-icon" style="background: var(--accent-sage-light); color: var(--primary);">M</div>
+            <span>MedPlus Pharmacy</span>
+          </div>
+          <p style="color: rgba(250,249,246,0.7); max-width: 320px; font-size: 0.95rem;">MedPlus Pharmacy offers a wide range of healthcare services....</p>
+          <div style="margin-top: 20px; font-size: 0.9rem; color: var(--accent-sage-light);">📍 PP7Q+JQ7, Kajheri, Kajheri Village, Sector 52, Chandigarh, 160036, India</div>
+        </div>
+
+        <div class="footer-col">
+                <h4 style="color: var(--text-main); margin-bottom: 24px;">Contact Us</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-muted);">
+                  <li style="margin-bottom: 12px;">📍 PP7Q+JQ7, Kajheri, Kajheri Village, Sector 52, Chandigarh, 160036, India</li>
+                  
+                  <li style="margin-bottom: 12px;">🕒 monday: 9 AM–10 PM...</li>
+                </ul>
+              </div>
+
+        <div class="footer-col"><h4>Treatments</h4><ul class="footer-links" style="list-style: none; padding: 0; margin: 0;"><li style="margin-bottom: 12px;"><a href="#services" style="color: var(--text-muted); text-decoration: none;">Prescription Medications</a></li><li style="margin-bottom: 12px;"><a href="#services" style="color: var(--text-muted); text-decoration: none;">Health Advice</a></li></ul></div>
+
+        
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 MedPlus Pharmacy. All Rights Reserved.</div>
+        <div style="display: flex; gap: 24px;">
+          <a href="#">Privacy Policy</a>
+          
+          <a href="#">Accessibility Statement</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript Logic -->
+  <script src="main.js"></script>
+
+
 
       <!-- AI Host Chatbot Style -->
       <style>
@@ -649,8 +681,8 @@
           const sendBtn = document.getElementById('host-send-btn');
           const suggestions = document.getElementById('host-suggestions');
 
-          const faqs = [{"q":"What are your operating hours?","a":"We are open from 9 AM to 10 PM from Monday to Saturday, and 11 AM to 10 PM on Sunday."},{"q":"Where are you located?","a":"You can find us at PP7Q+JQ7, Kajheri, Kajheri Village, Sector 52, Chandigarh, 160036, India."},{"q":"What can I expect in terms of pricing?","a":"Pricing may vary depending on the specific services or medications you need, please call us to confirm prices and availability."},{"q":"How do I book an appointment?","a":"No appointments are required, but for any queries or to confirm services, please call us or visit us in person."},{"q":"What kind of medications do you offer?","a":"We offer a wide range of prescription and over-the-counter medications."},{"q":"Can I get expert healthcare advice?","a":"Yes, our experienced staff is available to provide advice and guidance on various healthcare topics."},{"q":"Do you have any specific hours for certain services?","a":"No, our hours remain the same for all services and operations listed."},{"q":"Can I book online or through a platform?","a":"No, walk-ins and phone calls are preferred for services and medication consultations."},{"q":"How do I get in touch with your pharmacy?","a":"You can call us, visit us in person, or email us (if available) for any inquiries or services."},{"q":"What kind of support do you offer after medication or consultation?","a":"We offer post-medication advice and guidance as per our staff's expertise and training."}];
-          const facts = {"name":"MedPlus Pharmacy","category":["Pharmacy"],"description":"","address":"PP7Q+JQ7, Kajheri, Kajheri Village, Sector 52, Chandigarh, 160036, India","phone":"","hours":"monday: 9 AM–10 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 11 AM–10 PM","services":[]};
+          const faqs = [{"q":"What are your operating hours?","a":"We are open from 9 AM to 10 PM on all weekdays and 11 AM to 10 PM on Sundays."},{"q":"What is your address?","a":"Our address is PP7Q+JQ7, Kajheri, Kajheri Village, Sector 52, Chandigarh, 160036, India."},{"q":"What is the price range of your services?","a":"The prices of our services vary depending on the specific medication or health advice."},{"q":"How do I book an appointment?","a":"Please call us to book an appointment or visit our store at the above address."},{"q":"Do you offer any discounts?","a":"Please call us to inquire about our current promotions and discounts."},{"q":"What services do you offer?","a":"We offer a wide range of healthcare services including prescription medications and health advice."},{"q":"How do I reach you?","a":"You can reach us by phone or by visiting our address above."},{"q":"Do you have a pharmacy in your store?","a":"Yes, we have a well-equipped pharmacy in our store."},{"q":"Can I ask a question about my medication?","a":"Please feel free to ask us any questions about your medication."},{"q":"Do you offer any delivery services?","a":"Please call us to inquire about our delivery services."}];
+          const facts = {"name":"MedPlus Pharmacy","category":["Pharmacy"],"description":"","address":"PP7Q+JQ7, Kajheri, Kajheri Village, Sector 52, Chandigarh, 160036, India","phone":"","hours":"monday: 9 AM–10 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 11 AM–10 PM","services":[{"name":"Prescription Medications","description":"Dispensing prescription medications."},{"name":"Health Advice","description":"Expert health advice from our staff."}]};
           const conversation = [];
           let customQueryCount = 0;
 
