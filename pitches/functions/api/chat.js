@@ -76,30 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "✅𝗦𝗶𝗻𝗴𝗵 𝗞𝗲𝘆𝘀 - Duplicate Key Maker | Flip Key | Sensor Key | Computerized Keys in Mohali",
-  "category": [
-    "Key duplication service"
-  ],
+  "name": "Sonu locksmith",
+  "category": "Key duplication service",
   "description": "",
-  "address": "Shop 166, Phase 5, Sector 59, Sahibzada Ajit Singh Nagar, Punjab 160059, India",
-  "phone": "+91 98882 81520",
-  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
+  "address": "Block C, Sector 27, Chandigarh, 160019, India",
+  "phone": "+91 97809 88372",
+  "hours": "",
   "services": [
     {
-      "name": "Duplicate Key Maker",
-      "description": "We can duplicate keys for any lock type."
-    },
-    {
-      "name": "Flip Key",
-      "description": "Flip keys are made for specific locks."
-    },
-    {
-      "name": "Sensor Key",
-      "description": "Sensor keys are designed for modern locks."
-    },
-    {
-      "name": "Computerized Keys",
-      "description": "We can provide computerized keys for all types of locks."
+      "name": "Key Duplication Service",
+      "description": "Get duplicate keys made quickly and efficiently"
     }
   ]
 };
