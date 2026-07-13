@@ -76,19 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "CAFE JC",
+  "name": "Books N Brew",
   "category": [
     "Cafe",
-    "Breakfast restaurant"
+    "Art cafe",
+    "Coffee shop"
   ],
   "description": "",
-  "address": "Shop No. 2 & 3, Azaadi Rte, 10D, Sector 10, Chandigarh, 160011, India",
-  "phone": "+91 172 463 0666",
-  "hours": "monday: 8:30 AM–11:30 PM, tuesday: 8:30 AM–11:30 PM, wednesday: 8:30 AM–11:30 PM, thursday: 8:30 AM–11:30 PM, friday: 8:30 AM–11:30 PM, saturday: 8:30 AM–11:30 PM, sunday: 8:30 AM–11:30 PM",
+  "address": "SCO 8, 1st Floor, Udyan Path, Sector 16 D, Chandigarh, 160015, India",
+  "phone": "+91 172 527 6161",
+  "hours": "monday: 10 AM–10:30 PM, tuesday: 10 AM–10:30 PM, wednesday: 10 AM–10:30 PM, thursday: 10 AM–10:30 PM, friday: 10 AM–10:30 PM, saturday: 10 AM–10:30 PM, sunday: 10 AM–10:30 PM",
   "services": [
     {
-      "name": "Breakfast",
-      "description": "Enjoy a wide variety of delicious breakfast options, from omelets to pancakes and more!"
+      "name": "Coffee and Snacks",
+      "description": "Freshly brewed coffee, tea, and a variety of snacks"
     }
   ]
 };
