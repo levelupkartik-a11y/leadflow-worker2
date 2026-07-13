@@ -76,16 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Yogendra Drycleaner",
-  "category": "Dry cleaner",
-  "description": "",
-  "address": "Modern Dhobi Ghat, behind gopal sweets, 15D, Sector 15, Chandigarh, 160015, India",
-  "phone": "+91 88088 24387",
-  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "name": "Anil's 22 The Pet Shop",
+  "category": "Pet store",
+  "description": "One-stop stop shop for all your pet needs, including food, accessories and grooming products.",
+  "address": "33, Sector 22C, Sector 22, Chandigarh, 160022, India",
+  "phone": "",
+  "hours": "friday: 10 AM–9 PM, monday: 10 AM–9 PM, saturday: 10 AM–9 PM, sunday: 10 AM–9 PM, thursday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM",
   "services": [
     {
-      "name": "Dry cleaning",
-      "description": "Our services include expert dry cleaning of all types of fabrics."
+      "name": "Pet Food",
+      "description": "We stock a variety of pet food options for all types of pets."
+    },
+    {
+      "name": "Pet Accessories",
+      "description": "From bedding to toys, we have everything your pet needs."
+    },
+    {
+      "name": "Grooming Products",
+      "description": "Our range of grooming products will keep your pet looking and feeling their best."
     }
   ]
 };
