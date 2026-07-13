@@ -76,24 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Rahul Key Maker",
+  "name": "THE KEY ZONE",
   "category": [
-    "Locksmith",
-    "Chauffeur service",
-    "Service establishment"
+    "Key duplication service"
   ],
   "description": "",
-  "address": "",
-  "phone": "+91 85916 22282",
-  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Closed",
+  "address": "Booths, Bijwara Market, 140, Sector 22D, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 83600 05048",
+  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
   "services": [
     {
-      "name": "Locksmith Services",
-      "description": "Get your locks fixed or replaced 24/7 by our expert locksmiths"
-    },
-    {
-      "name": "Chauffeur Services",
-      "description": "Enjoy a safe and convenient ride with our professional chauffeur services"
+      "name": "Key Duplication",
+      "description": "Get your keys duplicated as per your needs."
     }
   ]
 };
