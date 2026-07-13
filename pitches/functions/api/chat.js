@@ -76,18 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Monu Electrician",
-  "category": [
-    "Electrician"
-  ],
+  "name": "Service Window",
+  "category": "Electrician",
   "description": "",
-  "address": "Shop No- 12,A, LIG Housing Board, Sector 52, Chandigarh, 160036, India",
-  "phone": "+91 88473 67155",
-  "hours": "monday: 9 AM–10 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 9 AM–10 PM",
+  "address": "Sector 38C, Sector 38, Chandigarh, 160014, India",
+  "phone": "+91 82685 82684",
+  "hours": "friday: 7:30 AM–9:30 PM, monday: 7 AM–9:30 PM, saturday: 7 AM–9 PM, sunday: 7 AM–9:30 PM, thursday: 7:30 AM–9:30 PM, tuesday: 7 AM–9:30 PM, wednesday: 7:30 AM–9:30 PM",
   "services": [
     {
-      "name": "General Electrician",
-      "description": "Our electricians can handle any electrical task, from installing new fixtures to repairing faulty wiring."
+      "name": "Electrician Services",
+      "description": "We provide expert electrical solutions for residential and commercial customers in Chandigarh."
     }
   ]
 };
