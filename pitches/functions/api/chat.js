@@ -76,41 +76,15 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Pooran Pet Shop",
+  "name": "Arman plumber",
   "category": [
-    "Pet store",
-    "Dog day care center",
-    "Pet groomer",
-    "Pet supply store",
-    "Pet trainer",
-    "Veterinarian"
+    "Plumber"
   ],
   "description": "",
-  "address": "Shop No. 26, Sector 40C, Sector 40B, Chandigarh, 160036, India",
-  "phone": "",
-  "hours": "monday: 9 AM–10 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 9 AM–5 PM",
-  "services": [
-    {
-      "name": "Pet Grooming",
-      "description": "Expert grooming services for your pets"
-    },
-    {
-      "name": "Dog Day Care Center",
-      "description": "Safe and comfortable day care for your dogs"
-    },
-    {
-      "name": "Pet Supplies",
-      "description": "Wide range of pet food, toys, and accessories"
-    },
-    {
-      "name": "Pet Trainer",
-      "description": "Professional training for your pets"
-    },
-    {
-      "name": "Veterinarian",
-      "description": "Expert veterinary care for your pets"
-    }
-  ]
+  "address": "House no 2621, Block A, Sector 49, Chandigarh, 160047, India",
+  "phone": "+91 62831 02989",
+  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
+  "services": []
 };
     
     const systemPrompt = {
