@@ -76,25 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "French Press Cafe",
+  "name": "Ambré Cafe",
   "category": [
-    "French restaurant",
     "Cafe",
     "Coffee shop",
-    "Italian restaurant"
+    "Restaurant"
   ],
   "description": "",
-  "address": "SCO-17, Sector 16 D, Sector 16, Chandigarh, 160015, India",
-  "phone": "+91 172 507 3183",
+  "address": "Ground Floor, SCO 215, Sector 36-D, Sector 36, Chandigarh, 160036, India",
+  "phone": "+91 62396 64429",
   "hours": "monday: 11 AM–11 PM, tuesday: 11 AM–11 PM, wednesday: 11 AM–11 PM, thursday: 11 AM–11 PM, friday: 11 AM–11 PM, saturday: 11 AM–11 PM, sunday: 11 AM–11 PM",
   "services": [
     {
-      "name": "French and Italian Cuisine",
-      "description": "Enjoy a variety of French and Italian dishes in a cozy atmosphere"
-    },
-    {
-      "name": "Coffee",
-      "description": "Indulge in a rich coffee experience in our cafe"
+      "name": "Variety of Coffees and Teas",
+      "description": "Choose from our selection of expertly brewed coffees and teas to quench your thirst."
     }
   ]
 };
