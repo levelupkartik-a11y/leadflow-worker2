@@ -76,22 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "KIYAN ELECTRICIAN ELECTRICALS",
-  "category": [
-    "Electrical installation service"
-  ],
+  "name": "HelpIndoor Electrician in Chandigarh",
+  "category": "Electrician",
   "description": "",
-  "address": "577, 25D, Slum, Sector 25, Chandigarh, 160014, India",
-  "phone": "+91 79864 99485",
-  "hours": "monday: 9 AM–9 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 9 AM–10 PM",
+  "address": "Chandigarh Housing Board Flats, Phase 9, Chandigarh, 160047, India",
+  "phone": "+91 99887 75550",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Electrical Installation",
-      "description": "We provide expert electrical installation services, available 7 days a week."
-    },
-    {
-      "name": "Electrical Repair",
-      "description": "Our skilled electricians are available to repair any electrical issue, big or small."
+      "name": "Residential Electrician Services",
+      "description": "Expert assistance for electrical issues at your home or office in Chandigarh"
     }
   ]
 };
