@@ -76,18 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "SHUBH KEY MAKER",
+  "name": "All In One Key Maker - Manimajra, Chandigarh, Panchkula, Mohali, Himachal",
   "category": [
     "Key duplication service"
   ],
   "description": "",
-  "address": "shop no.105, Bay, near Sony medical, Sector 7-C, Sector 7, Chandigarh, 160019, India",
-  "phone": "",
-  "hours": "monday: 9 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM, thursday: 9 AM–8 PM, friday: 9 AM–8 PM, saturday: 9 AM–8 PM, sunday: 9 AM–8 PM",
+  "address": "Shop No: 259, 13, Old Ropar Rd, New Darshani Bagh, Sector 13, Chandigarh, 160101, India",
+  "phone": "+91 81466 17501",
+  "hours": "monday: 9 AM–2:30 PM, tuesday: 9 AM–8:30 PM, wednesday: 9 AM–8:30 PM, thursday: 9 AM–8:30 PM, friday: 9 AM–8:30 PM, saturday: 9 AM–8:30 PM, sunday: 9 AM–8:30 PM",
   "services": [
     {
-      "name": "Key Duplication Service",
-      "description": "We provide expert key duplication services using high-quality materials and state-of-the-art equipment."
+      "name": "Key Duplication",
+      "description": "We offer key duplication services using our advanced machines for high-quality keys."
     }
   ]
 };
