@@ -76,16 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "HelpIndoor Electrician in Chandigarh",
-  "category": "Electrician",
+  "name": "Monu Electrician",
+  "category": [
+    "Electrician"
+  ],
   "description": "",
-  "address": "Chandigarh Housing Board Flats, Phase 9, Chandigarh, 160047, India",
-  "phone": "+91 99887 75550",
-  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "address": "Shop No- 12,A, LIG Housing Board, Sector 52, Chandigarh, 160036, India",
+  "phone": "+91 88473 67155",
+  "hours": "monday: 9 AM–10 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 9 AM–10 PM",
   "services": [
     {
-      "name": "Residential Electrician Services",
-      "description": "Expert assistance for electrical issues at your home or office in Chandigarh"
+      "name": "General Electrician",
+      "description": "Our electricians can handle any electrical task, from installing new fixtures to repairing faulty wiring."
     }
   ]
 };
