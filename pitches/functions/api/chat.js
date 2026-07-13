@@ -76,16 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sharma Electricals Repair",
-  "category": "Electrical repair shop",
+  "name": "Sai Electricals- Best Electrician in Chandigarh - Best Electrician in Mohali and Kharar",
+  "category": [
+    "Electrical engineer"
+  ],
   "description": "",
-  "address": "Shop no.81, near gurudawara, Village Atawa, Sector 42, Chandigarh, 160036, India",
-  "phone": "+91 79867 09464",
-  "hours": "friday: 7 AM–9 PM, monday: 7 AM–9 PM, saturday: 7–9 AM, sunday: Open 24 hours, thursday: 7 AM–9 PM, tuesday: 7 AM–9 PM, wednesday: 7 AM–9 PM",
+  "address": "3157, Sector 51A, Sector 52, Chandigarh, 160036, India",
+  "phone": "",
+  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: 9 AM–9 PM",
   "services": [
     {
-      "name": "Electrical Repair",
-      "description": "We provide expert electrical repair services for residential and commercial properties."
+      "name": "Electrical Service",
+      "description": "Our electricians are available 24/7 for all your electrical needs."
     }
   ]
 };
