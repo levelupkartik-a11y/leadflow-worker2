@@ -76,18 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Reya's Elite Pet Arcade",
-  "category": [
-    "Pet store"
-  ],
+  "name": "Revas Kennel - Puppies Sale in Chandigarh, Mohali, Panchkula - Top Dog Kennel in Chandigarh",
+  "category": "Dog day care center",
   "description": "",
-  "address": "City Center, Quiet Office-7, opposite Khukhrain Bhawan, Sector 35A, Sector 35, Chandigarh, 160022, India",
-  "phone": "+91 94780 89295",
-  "hours": "monday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM, thursday: 10 AM–8 PM, friday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: 10 AM–8 PM",
+  "address": "H.No: #5, Khudda Lahora, Chandigarh, Khudda Lahora, Chandigarh 160103, India",
+  "phone": "+91 90237 79933",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "",
-      "description": ""
+      "name": "Dog Day Care",
+      "description": "Expert care for your furry friends, 24/7"
     }
   ]
 };
