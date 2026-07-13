@@ -76,19 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "TAÎLORED",
-  "category": [
-    "Custom tailor",
-    "Designer clothing store"
-  ],
+  "name": "King's Tailors",
+  "category": "Men's tailor",
   "description": "",
-  "address": "SCO 73, 74, 75 Level 0, next to Hot Millions, Chandigarh, 160017, India",
-  "phone": "+91 99888 88469",
-  "hours": "monday: 11 AM–8:30 PM, tuesday: 11 AM–8:30 PM, wednesday: 11 AM–8:30 PM, thursday: 11 AM–8:30 PM, friday: 11 AM–8:30 PM, saturday: 11 AM–8:30 PM, sunday: 11 AM–8:30 PM",
+  "address": "31D, Sector 31, Chandigarh, 160030, India",
+  "phone": "+91 88472 07903",
+  "hours": "friday: 11 AM–9 PM, monday: 11 AM–9 PM, saturday: 11 AM–9 PM, sunday: Closed, thursday: 11 AM–9 PM, tuesday: 11 AM–9 PM, wednesday: 11 AM–9 PM",
   "services": [
     {
+      "name": "Alterations and Repairs",
+      "description": "We offer expert alterations and repairs for your clothing items. From simple hemming to complex alterations, our tailors will ensure your garments fit perfectly."
+    },
+    {
       "name": "Custom Tailoring",
-      "description": "We offer custom tailoring services for all your clothing needs."
+      "description": "Get custom-made clothing with our expert tailors. We will work with you to create the perfect garment according to your measurements and preferences."
+    },
+    {
+      "name": "Dress Shirts and Ties",
+      "description": "We offer high-quality dress shirts and ties at affordable prices. Our tailors will ensure a perfect fit and attention to detail."
     }
   ]
 };
