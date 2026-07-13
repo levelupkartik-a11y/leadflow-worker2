@@ -76,28 +76,15 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Anil Kumar Rajput (Star Health Insurance Advisor)",
+  "name": "Valentine Fitness Hi-Tech Gym",
   "category": [
-    "Health insurance agency"
+    "Gym"
   ],
   "description": "",
-  "address": "3049, Tribune Colony, Sector-29D, Sector 29, Chandigarh, 160030, India",
-  "phone": "+91 79737 18618",
-  "hours": "monday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM, thursday: 10 AM–8 PM, friday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: 10 AM–8 PM",
-  "services": [
-    {
-      "name": "Health Insurance Consultation",
-      "description": "Expert guidance to help you find the right health insurance policy."
-    },
-    {
-      "name": "Policy Comparison",
-      "description": "Get a comparative analysis of various health insurance policies to make informed decisions."
-    },
-    {
-      "name": "Policy Purchase Assistance",
-      "description": "Help with the purchase of the chosen health insurance policy."
-    }
-  ]
+  "address": "SCO 38-39, (opp.Hotel park plaza), Sector 17A, Sector 17, Chandigarh, 160017, India",
+  "phone": "+91 98783 90567",
+  "hours": "monday: 5:45–10 AM, 4–9:30 PM, tuesday: 5:45–10 AM, 4–9:30 PM, wednesday: 5:45–10 AM, 4–9:30 PM, thursday: 5:45–10 AM, 4–9:30 PM, friday: 5:45–10 AM, 4–9:30 PM, saturday: 5:45–10 AM, 4–9:30 PM, sunday: Closed",
+  "services": []
 };
     
     const systemPrompt = {
