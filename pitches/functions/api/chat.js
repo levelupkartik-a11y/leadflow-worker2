@@ -76,18 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "CANARA BANK - CHANDIGARH SECTOR 32-D",
-  "category": [
-    "Bank"
-  ],
+  "name": "MOTOR INSURANCE || HEALTH INSURANCE || IN Chandigarh & Mohali Punjab",
+  "category": "Health insurance agency",
   "description": "",
-  "address": "S.O, Sector 32D, CHANDIGARH 32, Chandigarh, 160030, India",
-  "phone": "+91 1800 1030",
-  "hours": "monday: 10 AM–4 PM, tuesday: 10 AM–4 PM, wednesday: 10 AM–4 PM, thursday: 10 AM–4 PM, friday: 10 AM–4 PM, saturday: 10 AM–4 PM, sunday: Closed",
+  "address": "Citco LPG & Petrol Station, Sector 38 West, Sector 38, Chandigarh, 160014, India",
+  "phone": "+91 86998 62881",
+  "hours": "friday: 8 AM–10 PM, monday: 8 AM–10 PM, saturday: 8 AM–10 PM, sunday: 8 AM–10 PM, thursday: 8 AM–10 PM, tuesday: 8 AM–10 PM, wednesday: 8 AM–10 PM",
   "services": [
     {
-      "name": "Banking Services",
-      "description": "Our bank offers a variety of services including customer support, transactions, and more."
+      "name": "Health Insurance Agency",
+      "description": "We provide expert health insurance solutions to individuals and families in Chandigarh & Mohali Punjab"
     }
   ]
 };
