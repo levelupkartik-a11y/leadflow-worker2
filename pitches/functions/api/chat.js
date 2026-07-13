@@ -76,18 +76,13 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "MOTOR INSURANCE || HEALTH INSURANCE || IN Chandigarh & Mohali Punjab",
-  "category": "Health insurance agency",
+  "name": "Insurance Point",
+  "category": "Insurance agency",
   "description": "",
-  "address": "Citco LPG & Petrol Station, Sector 38 West, Sector 38, Chandigarh, 160014, India",
-  "phone": "+91 86998 62881",
-  "hours": "friday: 8 AM–10 PM, monday: 8 AM–10 PM, saturday: 8 AM–10 PM, sunday: 8 AM–10 PM, thursday: 8 AM–10 PM, tuesday: 8 AM–10 PM, wednesday: 8 AM–10 PM",
-  "services": [
-    {
-      "name": "Health Insurance Agency",
-      "description": "We provide expert health insurance solutions to individuals and families in Chandigarh & Mohali Punjab"
-    }
-  ]
+  "address": "Plot No. 903 IND Area Ph 2, Chandigarh, 160002, India",
+  "phone": "+91 99888 82627",
+  "hours": "friday: 9:30 AM–7:30 PM, monday: 9:30 AM–7:30 PM, saturday: 9:30 AM–7:30 PM, sunday: Closed, thursday: 9:30 AM–7:30 PM, tuesday: 9:30 AM–7:30 PM, wednesday: 9:30 AM–7:30 PM",
+  "services": []
 };
     
     const systemPrompt = {
