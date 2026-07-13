@@ -76,16 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Fitness & Sports",
-  "category": "Gym",
+  "name": "SUBZERO FITNESS",
+  "category": [
+    "Gym"
+  ],
   "description": "",
-  "address": "Sco No. 62/63, Sector 17A, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 97800 80012",
-  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "address": "SCO 9-10, 11-12-13, Madhya Marg, 9D, Sector 9, Chandigarh, 160009, India",
+  "phone": "+91 172 468 1900",
+  "hours": "monday: 2–10 PM, tuesday: 6 AM–10 PM, wednesday: 6 AM–10 PM, thursday: 6 AM–10 PM, friday: 6 AM–10 PM, saturday: 6 AM–10 PM, sunday: 6 AM–2 PM",
   "services": [
     {
-      "name": "",
-      "description": ""
+      "name": "General Fitness",
+      "description": "Use our equipment and workout space to achieve your fitness goals."
     }
   ]
 };
