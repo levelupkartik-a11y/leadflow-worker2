@@ -76,32 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "𝗔 𝗧𝗼 𝗭 𝗸𝗲𝘆𝘀 - Best Key Maker | Duplicate Key Maker | Flip Key | Car Key Maker in Chandigarh",
-  "category": "Key duplication service",
+  "name": "✅𝗦𝗶𝗻𝗴𝗵 𝗞𝗲𝘆𝘀 - Duplicate Key Maker | Flip Key | Sensor Key | Computerized Keys in Mohali",
+  "category": [
+    "Key duplication service"
+  ],
   "description": "",
-  "address": "Booth No. 146, Bhagat Singh Market, near by Government Model High School, Sector 22D, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 83603 76236",
-  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "address": "Shop 166, Phase 5, Sector 59, Sahibzada Ajit Singh Nagar, Punjab 160059, India",
+  "phone": "+91 98882 81520",
+  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
   "services": [
     {
       "name": "Key Duplication",
-      "description": "Duplicate keys quickly and efficiently."
-    },
-    {
-      "name": "Car Key Maker",
-      "description": "Make car keys at our location."
-    },
-    {
-      "name": "Flip Key",
-      "description": "Create flip keys with our services."
-    },
-    {
-      "name": "Duplicate Key Maker",
-      "description": "Duplicate keys in no time."
-    },
-    {
-      "name": "Best Key Maker",
-      "description": "Get the best key duplication services."
+      "description": "We offer key duplication services for various types of keys"
     }
   ]
 };
