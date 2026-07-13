@@ -76,54 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "PrimeCare Dry Cleaners & Laundry",
-  "category": [
-    "Laundry",
-    "Car wash",
-    "Carpet cleaning service",
-    "Delivery service",
-    "Dry cleaner",
-    "House cleaning service",
-    "Laundry service",
-    "Upholstery cleaning service",
-    "Window cleaning service"
-  ],
+  "name": "Capital Dry Cleaners",
+  "category": "Dry cleaner",
   "description": "",
-  "address": "Modern Housing Complex, Sector 13, Chandigarh, 160101, India",
-  "phone": "",
-  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
+  "address": "Booth no.33, opposite Community Centre, Sector 20D, Sector 20, Chandigarh, 160020, India",
+  "phone": "+91 99888 66302",
+  "hours": "friday: 9 AM–8:30 PM, monday: 9 AM–8:30 PM, saturday: 9 AM–8:30 PM, sunday: Closed, thursday: 9 AM–8:30 PM, tuesday: 9 AM–8:30 PM, wednesday: 9 AM–8:30 PM",
   "services": [
     {
-      "name": "Laundry Service",
-      "description": "Get your clothes washed and ironed with our efficient laundry services"
-    },
-    {
-      "name": "Car Wash",
-      "description": "Clean your car with our expert car wash services"
-    },
-    {
-      "name": "Carpet Cleaning",
-      "description": "Get your carpets cleaned with our thorough carpet cleaning services"
-    },
-    {
       "name": "Dry Cleaning",
-      "description": "Get your clothes dry cleaned with our specialized dry cleaning services"
-    },
-    {
-      "name": "House Cleaning",
-      "description": "Get your house cleaned with our efficient house cleaning services"
-    },
-    {
-      "name": "Upholstery Cleaning",
-      "description": "Get your upholstery cleaned with our expert upholstery cleaning services"
-    },
-    {
-      "name": "Window Cleaning",
-      "description": "Get your windows cleaned with our thorough window cleaning services"
-    },
-    {
-      "name": "Delivery Service",
-      "description": "Get your service items delivered right at your doorstep"
+      "description": "Our dry cleaning services include cleaning of suits, shirts, dresses, and other garments."
     }
   ]
 };
