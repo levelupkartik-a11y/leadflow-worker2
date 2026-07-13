@@ -76,12 +76,12 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Insurance Point",
+  "name": "LIC Advisor in Chandigarh | Mohali Yogesh Sharma - MDRT and COT ( USA )",
   "category": "Insurance agency",
   "description": "",
-  "address": "Plot No. 903 IND Area Ph 2, Chandigarh, 160002, India",
-  "phone": "+91 99888 82627",
-  "hours": "friday: 9:30 AM–7:30 PM, monday: 9:30 AM–7:30 PM, saturday: 9:30 AM–7:30 PM, sunday: Closed, thursday: 9:30 AM–7:30 PM, tuesday: 9:30 AM–7:30 PM, wednesday: 9:30 AM–7:30 PM",
+  "address": "Sco 7, SCF 6, Sector 7B, Sector 7, Chandigarh, 160019, India",
+  "phone": "+91 88720 03121",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": []
 };
     
