@@ -76,16 +76,23 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Experts Dry Cleaner",
-  "category": "Dry cleaner",
+  "name": "The Old Capital Dry Cleaners",
+  "category": [
+    "Laundry service",
+    "Dry cleaner"
+  ],
   "description": "",
-  "address": "Workshop address, 2345, where we, located, Sector 52, Chandigarh, 160062, India",
-  "phone": "+91 62391 83788",
-  "hours": "friday: 9 AM–8 PM, monday: 9 AM–8 PM, saturday: 9 AM–8 PM, sunday: 9 AM–7 PM, thursday: 9 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM",
+  "address": "S.C.O-3017, 18, Sector 22D, Chandigarh, 160022, India",
+  "phone": "+91 99158 02414",
+  "hours": "monday: 10 AM–8:30 PM, tuesday: 10 AM–8:30 PM, wednesday: 10 AM–8:30 PM, thursday: 10 AM–8:30 PM, friday: 10 AM–8:30 PM, saturday: 10 AM–8:30 PM, sunday: Closed",
   "services": [
     {
       "name": "Dry Cleaning",
-      "description": "We use eco-friendly cleaning methods to keep your garments looking new"
+      "description": "We provide expert dry cleaning services for all your clothes, fabrics, and textiles."
+    },
+    {
+      "name": "Laundry Services",
+      "description": "Get your clothes washed and pressed at our professional laundry store in Chandigarh."
     }
   ]
 };
