@@ -76,18 +76,30 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "BHIM LOCK AND KEYS",
+  "name": "✅𝗦𝗶𝗻𝗴𝗵 𝗞𝗲𝘆𝘀 - Duplicate Key Maker | Flip Key | Sensor Key | Computerized Keys in Mohali",
   "category": [
     "Key duplication service"
   ],
   "description": "",
-  "address": "SCO 3002, Sector 22D, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 98155 43888",
-  "hours": "monday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM, thursday: 10 AM–8 PM, friday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: Closed",
+  "address": "Shop 166, Phase 5, Sector 59, Sahibzada Ajit Singh Nagar, Punjab 160059, India",
+  "phone": "+91 98882 81520",
+  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
   "services": [
     {
-      "name": "Key Duplication",
-      "description": "We offer high-quality key duplication services for all types of keys."
+      "name": "Duplicate Key Maker",
+      "description": "We can duplicate keys for any lock type."
+    },
+    {
+      "name": "Flip Key",
+      "description": "Flip keys are made for specific locks."
+    },
+    {
+      "name": "Sensor Key",
+      "description": "Sensor keys are designed for modern locks."
+    },
+    {
+      "name": "Computerized Keys",
+      "description": "We can provide computerized keys for all types of locks."
     }
   ]
 };
