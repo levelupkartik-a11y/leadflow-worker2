@@ -76,20 +76,15 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Anas plumber",
+  "name": "𝗣𝗹𝘂𝗺𝗯𝗲𝗿 𝗦𝗲𝗿𝘃𝗶𝗰𝗲 Parmod",
   "category": [
     "Plumber"
   ],
   "description": "",
-  "address": "2586/3, Progressive Society, Sector 50, Chandigarh, 160047, India",
-  "phone": "",
-  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
-  "services": [
-    {
-      "name": "Plumbing Services",
-      "description": "Expert plumbing solutions for all your needs, available 24 hours a day, 7 days a week."
-    }
-  ]
+  "address": "52, Kajheri, Kajheri 52, Sector 52, Chandigarh, 160036, India",
+  "phone": "+91 99884 47149",
+  "hours": "monday: 6 AM–9 PM, tuesday: 6 AM–9 PM, wednesday: 6 AM–9 PM, thursday: 6 AM–9 PM, friday: 6 AM–9 PM, saturday: 6 AM–9 PM, sunday: 6 AM–9 PM",
+  "services": []
 };
     
     const systemPrompt = {
