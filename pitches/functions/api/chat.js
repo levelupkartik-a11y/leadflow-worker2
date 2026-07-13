@@ -76,26 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Golu Plumber",
+  "name": "Mohd israful plumber",
   "category": [
     "Plumber"
   ],
   "description": "",
-  "address": "House no 2621, Sector 49C, Sector 49, Chandigarh, 160047, India",
-  "phone": "+91 70610 89847",
+  "address": "Sector 49C, Sector 49, Chandigarh, 160047, India",
+  "phone": "+91 95921 96319",
   "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
   "services": [
     {
-      "name": "Emergency Plumbing Services",
-      "description": "We provide 24-hour emergency plumbing services for all your urgent plumbing needs."
-    },
-    {
-      "name": "Leak Detection",
-      "description": "Our team uses advanced technology to detect leaks and provide prompt solutions."
-    },
-    {
-      "name": "Pipe Installation",
-      "description": "We offer expert pipe installation services for residential and commercial properties."
+      "name": "Plumber Services",
+      "description": "Expert plumbing solutions"
     }
   ]
 };
