@@ -76,22 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Ajay Singh Key Maker",
+  "name": "Narayan house painting in Chandigarh",
   "category": [
-    "Locksmith"
+    "Painter"
   ],
   "description": "",
-  "address": "Bay Shop No. 95, Sector 27-D, Sector 27D, Sector 27 D, Sector 27, Chandigarh, 160019, India",
-  "phone": "+91 88727 35789",
-  "hours": "",
+  "address": "1841, Burail, Burail Village, Sector 45-B, Chandigarh, 160047, India",
+  "phone": "+91 91157 03851",
+  "hours": "monday: 7 AM–9 PM, tuesday: 7 AM–9 PM, wednesday: 7 AM–9 PM, thursday: 7 AM–9 PM, friday: 7 AM–9 PM, saturday: 7 AM–9 PM, sunday: 7 AM–9 PM",
   "services": [
     {
-      "name": "Key Making",
-      "description": "We create new keys for your home, car, or business."
-    },
-    {
-      "name": "Duplicate Keys",
-      "description": "Get spare keys made quickly and efficiently."
+      "name": "House Painting",
+      "description": "Our team of experts offers interior and exterior house painting services"
     }
   ]
 };
