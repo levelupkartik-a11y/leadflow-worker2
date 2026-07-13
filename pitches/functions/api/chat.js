@@ -76,18 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Central Clinical Lab",
+  "name": "iGLOW Aesthetic by Dr Sheetal Sharma Jaiswal",
   "category": [
-    "Diagnostic center"
+    "Dermatologist"
   ],
   "description": "",
-  "address": "SCO 60-62, Cabin No. 5-6, 1st Floor, Sector 17-C, Chandigarh, 160017, India",
-  "phone": "+91 172 270 0297",
-  "hours": "tuesday: 8:30 AM–7:30 PM, wednesday: 8:30 AM–7:30 PM, thursday: 8:30 AM–7:30 PM, friday: 8:30 AM–7:30 PM, saturday: 8:30 AM–7:30 PM, sunday: 8:30 AM–1 PM, monday: 8:30 AM–7:30 PM",
+  "address": "CMC HOSPITAL SCO 52, 54, 17C, Chandigarh, 160017, India",
+  "phone": "",
+  "hours": "tuesday: 9 AM–5:30 PM, wednesday: 9 AM–5:30 PM, thursday: 9 AM–5:30 PM, friday: 9 AM–5:30 PM, saturday: 9 AM–3 PM, sunday: Closed, monday: 9 AM–5:30 PM",
   "services": [
     {
-      "name": "Diagnostics and Testing Services",
-      "description": "Offering a range of diagnostics and testing services to our patients"
+      "name": "Dermatological Services",
+      "description": "Our dermatologist provides expert care and treatment for various skin conditions."
     }
   ]
 };
