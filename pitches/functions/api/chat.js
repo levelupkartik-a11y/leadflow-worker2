@@ -76,19 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "SheenaPackers and Moⱱers Chandigarh",
-  "category": [
-    "Pet store",
-    "Dog breeder"
-  ],
+  "name": "Animal kingdom the Pet Store, best pet store",
+  "category": "Pet store",
   "description": "",
-  "address": "3103, Sarovar Path, Sector 20D, Sector 20, Chandigarh, 160020, India",
-  "phone": "+91 98153 71968",
-  "hours": "monday: 8 AM–9:30 PM, tuesday: 8 AM–9:30 PM, wednesday: 8 AM–9:30 PM, thursday: 8 AM–9:30 PM, friday: 8 AM–9:30 PM, saturday: 8 AM–9:30 PM, sunday: 8 AM–9:30 PM",
+  "address": "2212/1, near Sector 13, opposite neelkanth pharmacy, Pipliwala Town, Adarsh Nagar, Sector 13, Chandigarh, 160101, India",
+  "phone": "+91 70091 15303",
+  "hours": "friday: 8 AM–11 PM, monday: 8 AM–11 PM, saturday: 8 AM–11 PM, sunday: 8 AM–11 PM, thursday: 8 AM–11 PM, tuesday: 8 AM–11 PM, wednesday: 8 AM–11 PM",
   "services": [
     {
-      "name": "Dog Breeding",
-      "description": "Breed a variety of dog species"
+      "name": "Pet Shopping",
+      "description": "Visit us for a wide variety of pet food, toys, and accessories."
     }
   ]
 };
