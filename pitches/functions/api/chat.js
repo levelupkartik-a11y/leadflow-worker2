@@ -76,22 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "MedPlus Pharmacy",
+  "name": "Modern Pet Shop ( a unit of Modern Store)",
   "category": [
-    "Pharmacy"
+    "Pet store"
   ],
   "description": "",
-  "address": "PP7Q+JQ7, Kajheri, Kajheri Village, Sector 52, Chandigarh, 160036, India",
-  "phone": "",
-  "hours": "monday: 9 AM–10 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 11 AM–10 PM",
+  "address": "SCF No. 19, Sector 7C, Opposite e-Sampark Centre, Chandigarh, 160019, India",
+  "phone": "+91 97797 01337",
+  "hours": "monday: 10 AM–8:30 PM, tuesday: 10 AM–8:30 PM, wednesday: 10 AM–8:30 PM, thursday: 10 AM–8:30 PM, friday: 10 AM–8:30 PM, saturday: 10 AM–8:30 PM, sunday: 6–8 PM",
   "services": [
     {
-      "name": "Prescription Medications",
-      "description": "Dispensing prescription medications."
-    },
-    {
-      "name": "Health Advice",
-      "description": "Expert health advice from our staff."
+      "name": "Pet Supplies",
+      "description": "Find a wide range of pet supplies, from food to accessories, at our store."
     }
   ]
 };
