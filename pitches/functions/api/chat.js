@@ -76,20 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Anytime Fitness",
-  "category": "Gym",
+  "name": "Puran Rishi Ayurveda Clinic",
+  "category": [
+    "Medical group"
+  ],
   "description": "",
-  "address": "Sco No 98 to 100, 3rd Floor, 17D, Chandigarh, 160017, India",
-  "phone": "+91 98514 00048",
-  "hours": "friday: 5 AM–12 AM, monday: 5 AM–12 AM, saturday: 5 AM–12 AM, sunday: 5 AM–12 AM, thursday: 5 AM–12 AM, tuesday: 5 AM–12 AM, wednesday: 5 AM–12 AM",
+  "address": "PQQM+W3P, Sector 17A, Sector 17, Chandigarh, 160017, India",
+  "phone": "",
+  "hours": "tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, monday: Open 24 hours",
   "services": [
     {
-      "name": "Fitness Membership",
-      "description": "Get access to our state-of-the-art equipment and 24/7 facility."
-    },
-    {
-      "name": "Personal Training",
-      "description": "Our certified trainers will help you achieve your fitness goals."
+      "name": "Ayurvedic Treatments",
+      "description": "Our experienced practitioners offer a range of Ayurvedic treatments, including Panchakarma, massage, and more."
     }
   ]
 };
