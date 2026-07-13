@@ -76,19 +76,23 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Midpoint Cafe",
+  "name": "Down Town Cafe & Bakery",
   "category": [
     "Cafe",
     "Coffee shop"
   ],
   "description": "",
-  "address": "SCO 41, Sector 21C, Sector 21, Chandigarh, 160022, India",
-  "phone": "+91 172 402 3311",
-  "hours": "monday: 11 AM–10 PM, tuesday: 11 AM–10 PM, wednesday: 11 AM–10 PM, thursday: 11 AM–10 PM, friday: 11 AM–10 PM, saturday: 11 AM–10 PM, sunday: 11 AM–10 PM",
+  "address": "SCO-45, Sector 21C, Sector 21, Chandigarh, 160022, India",
+  "phone": "+91 172 517 7777",
+  "hours": "monday: 11 AM–11 PM, tuesday: 11 AM–11 PM, wednesday: 11 AM–11 PM, thursday: 11 AM–11 PM, friday: 11 AM–11 PM, saturday: 11 AM–11 PM, sunday: 11 AM–11 PM",
   "services": [
     {
-      "name": "Coffee and Eats",
-      "description": "Our coffee selection includes a variety of blends, and our menu features a range of delicious eats, all priced between ?200–400."
+      "name": "Coffee",
+      "description": "Freshly brewed coffee, made to order."
+    },
+    {
+      "name": "Bakery Items",
+      "description": "Freshly baked pastries, cakes, and bread."
     }
   ]
 };
