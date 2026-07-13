@@ -76,18 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "SHUBH KEY MAKER",
-  "category": [
-    "Key duplication service"
-  ],
+  "name": "A One Keys",
+  "category": "Key duplication service",
   "description": "",
-  "address": "shop no.105, Bay, near Sony medical, Sector 7-C, Sector 7, Chandigarh, 160019, India",
-  "phone": "",
-  "hours": "monday: 9 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM, thursday: 9 AM–8 PM, friday: 9 AM–8 PM, saturday: 9 AM–8 PM, sunday: 9 AM–8 PM",
+  "address": "Khuda Ali, Sher Road, adjoining Kashmiri Halal Dhaba, Banihal wale, Ab Satar, Nayagaon, Chandigarh 160103, India",
+  "phone": "+91 70096 33636",
+  "hours": "friday: 7 AM–9 PM, monday: 7 AM–9 PM, saturday: 7 AM–9 PM, sunday: 7 AM–9 PM, thursday: 7 AM–9 PM, tuesday: 7 AM–9 PM, wednesday: 7 AM–9 PM",
   "services": [
     {
       "name": "Key Duplication",
-      "description": "Duplicate keys for your home, car, or office locks."
+      "description": "A One Keys provides fast and reliable key duplication services for all types of keys."
     }
   ]
 };
