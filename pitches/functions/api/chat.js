@@ -76,20 +76,19 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Books N Brew",
+  "name": "Midpoint Cafe",
   "category": [
     "Cafe",
-    "Art cafe",
     "Coffee shop"
   ],
   "description": "",
-  "address": "SCO 8, 1st Floor, Udyan Path, Sector 16 D, Chandigarh, 160015, India",
-  "phone": "+91 172 527 6161",
-  "hours": "monday: 10 AM–10:30 PM, tuesday: 10 AM–10:30 PM, wednesday: 10 AM–10:30 PM, thursday: 10 AM–10:30 PM, friday: 10 AM–10:30 PM, saturday: 10 AM–10:30 PM, sunday: 10 AM–10:30 PM",
+  "address": "SCO 41, Sector 21C, Sector 21, Chandigarh, 160022, India",
+  "phone": "+91 172 402 3311",
+  "hours": "monday: 11 AM–10 PM, tuesday: 11 AM–10 PM, wednesday: 11 AM–10 PM, thursday: 11 AM–10 PM, friday: 11 AM–10 PM, saturday: 11 AM–10 PM, sunday: 11 AM–10 PM",
   "services": [
     {
-      "name": "Coffee and Snacks",
-      "description": "Freshly brewed coffee, tea, and a variety of snacks"
+      "name": "Coffee and Eats",
+      "description": "Our coffee selection includes a variety of blends, and our menu features a range of delicious eats, all priced between ?200–400."
     }
   ]
 };
