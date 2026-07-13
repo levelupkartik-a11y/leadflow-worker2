@@ -76,18 +76,50 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Modern Pet Shop ( a unit of Modern Store)",
+  "name": "PetsTree",
   "category": [
-    "Pet store"
+    "Pet store",
+    "Cat boarding service",
+    "Cat breeder",
+    "Dog breeder",
+    "Dog trainer",
+    "Horse breeder",
+    "Horse riding school",
+    "Pet boarding service",
+    "Pet trainer"
   ],
   "description": "",
-  "address": "SCF No. 19, Sector 7C, Opposite e-Sampark Centre, Chandigarh, 160019, India",
-  "phone": "+91 97797 01337",
-  "hours": "monday: 10 AM–8:30 PM, tuesday: 10 AM–8:30 PM, wednesday: 10 AM–8:30 PM, thursday: 10 AM–8:30 PM, friday: 10 AM–8:30 PM, saturday: 10 AM–8:30 PM, sunday: 6–8 PM",
+  "address": "Shop No 306, Ajit Singh, 4 Phase Market Rd, near Chandigarh, Phase 4, Sector 59, Sahibzada Ajit Singh Nagar, Punjab 160059, India",
+  "phone": "+91 81481 50816",
+  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
   "services": [
     {
-      "name": "Pet Supplies",
-      "description": "Find a wide range of pet supplies, from food to accessories, at our store."
+      "name": "Pet Boarding Service",
+      "description": "We provide secure and safe accommodations for your pets."
+    },
+    {
+      "name": "Pet Training Services",
+      "description": "Our certified trainers help your pets learn and behave well."
+    },
+    {
+      "name": "Pet Store",
+      "description": "A wide range of pet products and supplies are available at our store."
+    },
+    {
+      "name": "Cat Breeder",
+      "description": "We breed various cat breeds for adoption."
+    },
+    {
+      "name": "Dog Breeder",
+      "description": "We breed various dog breeds for adoption."
+    },
+    {
+      "name": "Horse Breeder",
+      "description": "We breed various horse breeds for adoption."
+    },
+    {
+      "name": "Horse Riding School",
+      "description": "Our experienced trainers teach horse riding techniques and safety."
     }
   ]
 };
