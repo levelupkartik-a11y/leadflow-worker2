@@ -76,15 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Dr.Vinod Kumar Sethi",
+  "name": "Central Clinical Lab",
   "category": [
-    "Medical clinic"
+    "Diagnostic center"
   ],
   "description": "",
-  "address": "SCO 55-56, 1st Floor, 17G, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 92172 78517",
-  "hours": "tuesday: 9:30 AM–6 PM, wednesday: 9:30 AM–6 PM, thursday: 9:30 AM–6 PM, friday: 9:30 AM–6 PM, saturday: 9:30 AM–6 PM, sunday: Closed, monday: 9:30 AM–6 PM",
-  "services": []
+  "address": "SCO 60-62, Cabin No. 5-6, 1st Floor, Sector 17-C, Chandigarh, 160017, India",
+  "phone": "+91 172 270 0297",
+  "hours": "tuesday: 8:30 AM–7:30 PM, wednesday: 8:30 AM–7:30 PM, thursday: 8:30 AM–7:30 PM, friday: 8:30 AM–7:30 PM, saturday: 8:30 AM–7:30 PM, sunday: 8:30 AM–1 PM, monday: 8:30 AM–7:30 PM",
+  "services": [
+    {
+      "name": "Diagnostics and Testing Services",
+      "description": "Offering a range of diagnostics and testing services to our patients"
+    }
+  ]
 };
     
     const systemPrompt = {
