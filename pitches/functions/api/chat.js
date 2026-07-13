@@ -76,24 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Rahul Key Maker",
+  "name": "BHIM LOCK AND KEYS",
   "category": [
-    "Locksmith",
-    "Chauffeur service",
-    "Service establishment"
+    "Key duplication service"
   ],
   "description": "",
-  "address": "",
-  "phone": "+91 85916 22282",
-  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Closed",
+  "address": "SCO 3002, Sector 22D, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 98155 43888",
+  "hours": "monday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM, thursday: 10 AM–8 PM, friday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: Closed",
   "services": [
     {
-      "name": "Locksmith Service",
-      "description": "We offer expert locksmith services for all your locksmith needs."
-    },
-    {
-      "name": "Chauffeur Service",
-      "description": "Our chauffeur services include pick-up and drop-off services."
+      "name": "Key Duplication",
+      "description": "We offer high-quality key duplication services for all types of keys."
     }
   ]
 };
