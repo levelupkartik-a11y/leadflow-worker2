@@ -76,26 +76,13 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Anil's 22 The Pet Shop",
+  "name": "DOG PETS BY | Pets Sale & Purchase | Pet shop in Chandigarh",
   "category": "Pet store",
-  "description": "One-stop stop shop for all your pet needs, including food, accessories and grooming products.",
-  "address": "33, Sector 22C, Sector 22, Chandigarh, 160022, India",
-  "phone": "",
-  "hours": "friday: 10 AM–9 PM, monday: 10 AM–9 PM, saturday: 10 AM–9 PM, sunday: 10 AM–9 PM, thursday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM",
-  "services": [
-    {
-      "name": "Pet Food",
-      "description": "We stock a variety of pet food options for all types of pets."
-    },
-    {
-      "name": "Pet Accessories",
-      "description": "From bedding to toys, we have everything your pet needs."
-    },
-    {
-      "name": "Grooming Products",
-      "description": "Our range of grooming products will keep your pet looking and feeling their best."
-    }
-  ]
+  "description": "",
+  "address": "near kk residency, Kajheri, Kajheri Village, Sector 52, Chandigarh, 160036, India",
+  "phone": "+91 81465 59743",
+  "hours": "friday: 9 AM–9 PM, monday: 9 AM–9 PM, saturday: 9 AM–9 PM, sunday: 9 AM–9 PM, thursday: 9 AM–9 PM, tuesday: 9 AM–9 PM, wednesday: 9 AM–9 PM",
+  "services": []
 };
     
     const systemPrompt = {
