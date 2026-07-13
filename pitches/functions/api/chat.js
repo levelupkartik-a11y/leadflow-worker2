@@ -76,15 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "PAINTER JOGINDER",
+  "name": "Ajay Singh Key Maker",
   "category": [
-    "Painter"
+    "Locksmith"
   ],
   "description": "",
-  "address": "HOUSE NO, SECTOR-45, 1811, Burail, Chandigarh, 160047, India",
-  "phone": "",
-  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
-  "services": []
+  "address": "Bay Shop No. 95, Sector 27-D, Sector 27D, Sector 27 D, Sector 27, Chandigarh, 160019, India",
+  "phone": "+91 88727 35789",
+  "hours": "",
+  "services": [
+    {
+      "name": "Key Making",
+      "description": "We create new keys for your home, car, or business."
+    },
+    {
+      "name": "Duplicate Keys",
+      "description": "Get spare keys made quickly and efficiently."
+    }
+  ]
 };
     
     const systemPrompt = {
