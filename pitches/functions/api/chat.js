@@ -76,16 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Quick n Clean",
-  "category": "Laundry service",
+  "name": "Experts Dry Cleaner",
+  "category": "Dry cleaner",
   "description": "",
-  "address": "Panjab University, Daddu Majra Colony, Chandigarh, 160014, India",
-  "phone": "+91 85569 06611",
-  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "address": "Workshop address, 2345, where we, located, Sector 52, Chandigarh, 160062, India",
+  "phone": "+91 62391 83788",
+  "hours": "friday: 9 AM–8 PM, monday: 9 AM–8 PM, saturday: 9 AM–8 PM, sunday: 9 AM–7 PM, thursday: 9 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM",
   "services": [
     {
-      "name": "Laundry",
-      "description": "We provide laundry services to keep your clothes clean and fresh."
+      "name": "Dry Cleaning",
+      "description": "We use eco-friendly cleaning methods to keep your garments looking new"
     }
   ]
 };
