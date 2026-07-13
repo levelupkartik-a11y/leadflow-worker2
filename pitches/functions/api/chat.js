@@ -76,20 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Ambré Cafe",
+  "name": "Olive Café & Bar",
   "category": [
-    "Cafe",
-    "Coffee shop",
-    "Restaurant"
+    "Mediterranean restaurant"
   ],
   "description": "",
-  "address": "Ground Floor, SCO 215, Sector 36-D, Sector 36, Chandigarh, 160036, India",
-  "phone": "+91 62396 64429",
-  "hours": "monday: 11 AM–11 PM, tuesday: 11 AM–11 PM, wednesday: 11 AM–11 PM, thursday: 11 AM–11 PM, friday: 11 AM–11 PM, saturday: 11 AM–11 PM, sunday: 11 AM–11 PM",
+  "address": "SCO 3, Ground floor, Back entry, Sector 26, Chandigarh, 160019, India",
+  "phone": "+91 97799 74200",
+  "hours": "monday: 12 PM–12 AM, tuesday: 12 PM–12 AM, wednesday: 12 PM–12 AM, thursday: 12 PM–12 AM, friday: 12 PM–12 AM, saturday: 12 PM–12 AM, sunday: 12 PM–12 AM",
   "services": [
     {
-      "name": "Variety of Coffees and Teas",
-      "description": "Choose from our selection of expertly brewed coffees and teas to quench your thirst."
+      "name": "Mediterranean Cuisine",
+      "description": "Enjoy fresh, locally sourced ingredients and authentic Mediterranean flavors."
     }
   ]
 };
