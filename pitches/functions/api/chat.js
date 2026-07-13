@@ -76,20 +76,15 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "CMC Physio Clinic",
+  "name": "Dr.Vinod Kumar Sethi",
   "category": [
-    "Physical therapy clinic"
+    "Medical clinic"
   ],
   "description": "",
-  "address": "Sco52,53,54, Sector 17A, 17C, Sector 17, Chandigarh, 160017, India",
-  "phone": "",
-  "hours": "tuesday: 10 AM–6 PM, wednesday: 10 AM–6 PM, thursday: 10 AM–6 PM, friday: 10 AM–6 PM, saturday: 10 AM–6 PM, sunday: Closed, monday: 10 AM–6 PM",
-  "services": [
-    {
-      "name": "Physical therapy",
-      "description": "Our experts provide expert care for various physical conditions"
-    }
-  ]
+  "address": "SCO 55-56, 1st Floor, 17G, Sector 17, Chandigarh, 160017, India",
+  "phone": "+91 92172 78517",
+  "hours": "tuesday: 9:30 AM–6 PM, wednesday: 9:30 AM–6 PM, thursday: 9:30 AM–6 PM, friday: 9:30 AM–6 PM, saturday: 9:30 AM–6 PM, sunday: Closed, monday: 9:30 AM–6 PM",
+  "services": []
 };
     
     const systemPrompt = {
