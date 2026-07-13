@@ -76,22 +76,26 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Kasim plumber",
+  "name": "Akram plumber",
   "category": [
     "Plumber"
   ],
   "description": "",
-  "address": "2556, Sector 49C, Sector 49, Chandigarh, 160047, India",
-  "phone": "+91 97800 63149",
+  "address": "BLOCK-22, SHIV SHAKTI ENCLAVE, 2562, Sector 49C, Sector 49, Chandigarh, 160047, India",
+  "phone": "+91 94175 54110",
   "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
   "services": [
     {
-      "name": "Emergency Plumbing",
-      "description": "We respond promptly to emergency plumbing situations, ensuring minimal disruption to your daily life"
+      "name": "Emergency Plumbing Services",
+      "description": "We offer 24/7 emergency plumbing services for your home or business. Contact us to get immediate assistance."
     },
     {
-      "name": "Plumbing Maintenance",
-      "description": "Regular maintenance checks to prevent plumbing issues before they occur"
+      "name": "Plumbing Repairs and Maintenance",
+      "description": "Our expert plumbers provide repair and maintenance services to ensure the longevity of your plumbing system."
+    },
+    {
+      "name": "Leak Detection andFixiture",
+      "description": "Our advanced leak detection tools and expert plumbers can detect even the smallest leaks and fix them promptly."
     }
   ]
 };
