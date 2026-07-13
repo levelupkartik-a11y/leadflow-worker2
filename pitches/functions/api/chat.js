@@ -76,18 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Puran Rishi Ayurveda Clinic",
+  "name": "CMC Physio Clinic",
   "category": [
-    "Medical group"
+    "Physical therapy clinic"
   ],
   "description": "",
-  "address": "PQQM+W3P, Sector 17A, Sector 17, Chandigarh, 160017, India",
+  "address": "Sco52,53,54, Sector 17A, 17C, Sector 17, Chandigarh, 160017, India",
   "phone": "",
-  "hours": "tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, monday: Open 24 hours",
+  "hours": "tuesday: 10 AM–6 PM, wednesday: 10 AM–6 PM, thursday: 10 AM–6 PM, friday: 10 AM–6 PM, saturday: 10 AM–6 PM, sunday: Closed, monday: 10 AM–6 PM",
   "services": [
     {
-      "name": "Ayurvedic Treatments",
-      "description": "Our experienced practitioners offer a range of Ayurvedic treatments, including Panchakarma, massage, and more."
+      "name": "Physical therapy",
+      "description": "Our experts provide expert care for various physical conditions"
     }
   ]
 };
