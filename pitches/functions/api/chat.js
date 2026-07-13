@@ -76,20 +76,13 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Irfan plumber",
-  "category": [
-    "Plumber"
-  ],
+  "name": "Jassi plumber",
+  "category": "Plumber",
   "description": "",
-  "address": "४९ D, Sector 50, Chandigarh, 160047, India",
-  "phone": "+91 82944 95386",
-  "hours": "",
-  "services": [
-    {
-      "name": "Plumbing Services",
-      "description": "Our team of plumbers provides repair, maintenance, and installation services for all types of plumbing systems."
-    }
-  ]
+  "address": "621, Kajheri, kajheri, Sector 52, Chandigarh, 160037, India",
+  "phone": "",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "services": []
 };
     
     const systemPrompt = {
