@@ -76,16 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "HelpIndoor Electrician in Chandigarh",
-  "category": "Electrician",
+  "name": "Electrical Works || Electrician in Chandigarh || HOME SERVICES",
+  "category": "Electrical repair shop",
   "description": "",
-  "address": "Chandigarh Housing Board Flats, Phase 9, Chandigarh, 160047, India",
-  "phone": "+91 99887 75550",
-  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "address": "3000, 23C, Sector 23, Chandigarh, 160023, India",
+  "phone": "+91 79730 60764",
+  "hours": "friday: 8 AM–8 PM, monday: 8 AM–8 PM, saturday: 8 AM–8 PM, sunday: 9 AM–8 PM, thursday: 8 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 8 AM–8 PM",
   "services": [
     {
-      "name": "Indoor Electrician Services",
-      "description": "We offer a range of indoor electrician services to cater to your needs, including installation, repair, and maintenance."
+      "name": "Electrical Repair and Maintenance",
+      "description": "We diagnose and fix electrical issues in your home"
+    },
+    {
+      "name": "Installation Services",
+      "description": "Trust us for efficient installation of electrical fixtures and accessories"
+    },
+    {
+      "name": "Electrical Safety Checks",
+      "description": "Schedule our expert team for regular safety checks and audits"
     }
   ]
 };
