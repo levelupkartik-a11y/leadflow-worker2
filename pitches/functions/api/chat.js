@@ -76,26 +76,26 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Akram plumber",
+  "name": "Ahsan plumber",
   "category": [
     "Plumber"
   ],
   "description": "",
-  "address": "BLOCK-22, SHIV SHAKTI ENCLAVE, 2562, Sector 49C, Sector 49, Chandigarh, 160047, India",
-  "phone": "+91 94175 54110",
+  "address": "House 324, near Government Model High School, Burail, Burail Village, Sector 45, Chandigarh, 160047, India",
+  "phone": "",
   "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
   "services": [
     {
       "name": "Emergency Plumbing Services",
-      "description": "We offer 24/7 emergency plumbing services for your home or business. Contact us to get immediate assistance."
+      "description": "Get help immediately if you have a plumbing emergency."
     },
     {
-      "name": "Plumbing Repairs and Maintenance",
-      "description": "Our expert plumbers provide repair and maintenance services to ensure the longevity of your plumbing system."
+      "name": "Plumbing Repairs",
+      "description": "Our experts will diagnose and fix any plumbing issue."
     },
     {
-      "name": "Leak Detection andFixiture",
-      "description": "Our advanced leak detection tools and expert plumbers can detect even the smallest leaks and fix them promptly."
+      "name": "Plumbing Installation",
+      "description": "We'll install new plumbing fixtures with precision and care."
     }
   ]
 };
