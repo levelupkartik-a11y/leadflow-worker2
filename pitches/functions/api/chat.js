@@ -76,18 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Electric kashyap",
-  "category": [
-    "Electrician"
-  ],
+  "name": "Sharma Electricals Repair",
+  "category": "Electrical repair shop",
   "description": "",
-  "address": "c near Sector, 32C, Sector 32, Chandigarh, 160030, India",
-  "phone": "+91 98554 87374",
-  "hours": "monday: 10 AM–6 PM, tuesday: 10 AM–6 PM, wednesday: 10 AM–6 PM, thursday: 10 AM–6 PM, friday: 10 AM–6 PM, saturday: 10 AM–6 PM, sunday: 10 AM–6 PM",
+  "address": "Shop no.81, near gurudawara, Village Atawa, Sector 42, Chandigarh, 160036, India",
+  "phone": "+91 79867 09464",
+  "hours": "friday: 7 AM–9 PM, monday: 7 AM–9 PM, saturday: 7–9 AM, sunday: Open 24 hours, thursday: 7 AM–9 PM, tuesday: 7 AM–9 PM, wednesday: 7 AM–9 PM",
   "services": [
     {
-      "name": "General Electric Services",
-      "description": "We provide various electric services, including installation, maintenance, and repair of electrical systems"
+      "name": "Electrical Repair",
+      "description": "We provide expert electrical repair services for residential and commercial properties."
     }
   ]
 };
