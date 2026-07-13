@@ -76,23 +76,23 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "The Old Capital Dry Cleaners",
+  "name": "Snow View Dry Cleaners",
   "category": [
-    "Laundry service",
-    "Dry cleaner"
+    "Dry cleaner",
+    "Laundry"
   ],
   "description": "",
-  "address": "S.C.O-3017, 18, Sector 22D, Chandigarh, 160022, India",
-  "phone": "+91 99158 02414",
-  "hours": "monday: 10 AM–8:30 PM, tuesday: 10 AM–8:30 PM, wednesday: 10 AM–8:30 PM, thursday: 10 AM–8:30 PM, friday: 10 AM–8:30 PM, saturday: 10 AM–8:30 PM, sunday: Closed",
+  "address": "SCO 2461, Sector 22C, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 98154 80226",
+  "hours": "monday: 9 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM, thursday: 9 AM–8 PM, friday: 9 AM–8 PM, saturday: 9 AM–8 PM, sunday: Closed",
   "services": [
     {
       "name": "Dry Cleaning",
-      "description": "We provide expert dry cleaning services for all your clothes, fabrics, and textiles."
+      "description": "We use the latest technology to provide high-quality dry cleaning services."
     },
     {
-      "name": "Laundry Services",
-      "description": "Get your clothes washed and pressed at our professional laundry store in Chandigarh."
+      "name": "Laundry Service",
+      "description": "Our laundry service is designed to make your life easier with prompt and efficient service."
     }
   ]
 };
