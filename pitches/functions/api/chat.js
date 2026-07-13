@@ -76,18 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "PAINTER JOGINDER",
-  "category": [
-    "Painter"
-  ],
-  "description": "",
-  "address": "HOUSE NO, SECTOR-45, 1811, Burail, Chandigarh, 160047, India",
-  "phone": "",
-  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
+  "name": "Taj Chandigarh",
+  "category": "Hotel",
+  "description": "Polished hotel with dining & a pool. Upscale lodging offering 2 eateries, a cafe & a bar, plus a rooftop pool & free breakfast.",
+  "address": "No. 9, near Zakir Hussain Rose Garden, Sector 17A, 17A, Sector 17, Chandigarh, 160017, India",
+  "phone": "+91 172 661 3000",
+  "hours": "",
   "services": [
     {
-      "name": "Painting Services",
-      "description": "We offer professional painting services for interior and exterior walls, ceilings, and furniture."
+      "name": "Breakfast",
+      "description": "Start your day with our free breakfast."
+    },
+    {
+      "name": "Pool",
+      "description": "Relax and enjoy the rooftop pool."
     }
   ]
 };
