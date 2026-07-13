@@ -76,18 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Jibachh housh penter Chandigarh in Mohali",
-  "category": [
-    "Painter"
-  ],
+  "name": "A One Keys",
+  "category": "Key duplication service",
   "description": "",
-  "address": "45b, khera mandir, Burail, Burail Village, Sector 45, Chandigarh, 160047, India",
-  "phone": "+91 88378 81676",
-  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
+  "address": "Khuda Ali, Sher Road, adjoining Kashmiri Halal Dhaba, Banihal wale, Ab Satar, Nayagaon, Chandigarh 160103, India",
+  "phone": "+91 70096 33636",
+  "hours": "friday: 7 AM–9 PM, monday: 7 AM–9 PM, saturday: 7 AM–9 PM, sunday: 7 AM–9 PM, thursday: 7 AM–9 PM, tuesday: 7 AM–9 PM, wednesday: 7 AM–9 PM",
   "services": [
     {
-      "name": "Painter Services",
-      "description": "24-hour house painter services"
+      "name": "Key Duplication",
+      "description": "We duplicate keys for all types of locks"
     }
   ]
 };
