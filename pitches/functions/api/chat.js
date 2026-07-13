@@ -76,16 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Balkar Singh & Sons",
+  "name": "Sonu locksmith",
   "category": "Key duplication service",
   "description": "",
-  "address": "Booth No 95, Janta Market, D,, Sector 27, Chandigarh, 160019, India",
-  "phone": "+91 98786 78877",
-  "hours": "friday: 8 AM–9 PM, monday: 8 AM–9 PM, saturday: 8 AM–9 PM, sunday: 8 AM–9 PM, thursday: 8 AM–9 PM, tuesday: 8 AM–9 PM, wednesday: 8 AM–9 PM",
+  "address": "Block C, Sector 27, Chandigarh, 160019, India",
+  "phone": "+91 97809 88372",
+  "hours": "",
   "services": [
     {
       "name": "Key Duplication",
-      "description": "We offer expert key duplication services for all types of keys."
+      "description": "Get duplicate keys for your home, office, or car at affordable prices."
     }
   ]
 };
