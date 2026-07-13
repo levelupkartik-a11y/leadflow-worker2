@@ -76,18 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "iGLOW Aesthetic by Dr Sheetal Sharma Jaiswal",
+  "name": "Jain Eye Centre",
   "category": [
-    "Dermatologist"
+    "Eye care center"
   ],
   "description": "",
-  "address": "CMC HOSPITAL SCO 52, 54, 17C, Chandigarh, 160017, India",
-  "phone": "",
-  "hours": "tuesday: 9 AM–5:30 PM, wednesday: 9 AM–5:30 PM, thursday: 9 AM–5:30 PM, friday: 9 AM–5:30 PM, saturday: 9 AM–3 PM, sunday: Closed, monday: 9 AM–5:30 PM",
+  "address": "SCO 50,51, Sector 17A, Sector 17, Chandigarh, Punjab 160017, India",
+  "phone": "+91 172 256 5629",
+  "hours": "tuesday: 11 AM–2 PM, wednesday: 11 AM–2 PM, thursday: 11 AM–2 PM, friday: 11 AM–2 PM, saturday: 11 AM–2 PM, sunday: Closed, monday: 11 AM–2 PM",
   "services": [
     {
-      "name": "Dermatological Services",
-      "description": "Our dermatologist provides expert care and treatment for various skin conditions."
+      "name": "Eye Examination",
+      "description": "We provide thorough eye examinations to detect any eye problems or diseases"
     }
   ]
 };
