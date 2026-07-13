@@ -76,18 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Jibachh housh penter Chandigarh in Mohali",
+  "name": "PAINTER JOGINDER",
   "category": [
     "Painter"
   ],
   "description": "",
-  "address": "45b, khera mandir, Burail, Burail Village, Sector 45, Chandigarh, 160047, India",
-  "phone": "+91 88378 81676",
+  "address": "HOUSE NO, SECTOR-45, 1811, Burail, Chandigarh, 160047, India",
+  "phone": "",
   "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
   "services": [
     {
-      "name": "Custom Painting Solutions",
-      "description": "Our team uses high-quality paints to deliver vibrant and long-lasting painting services."
+      "name": "Painting Services",
+      "description": "We offer professional painting services for interior and exterior walls, ceilings, and furniture."
     }
   ]
 };
