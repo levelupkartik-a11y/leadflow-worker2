@@ -76,18 +76,19 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Ramal's Pet Mall",
+  "name": "SheenaPackers and Moⱱers Chandigarh",
   "category": [
-    "Pet supply store"
+    "Pet store",
+    "Dog breeder"
   ],
   "description": "",
-  "address": "PQW5+QJV, Sector 24D, S.C.O. 202, Sector 24 Market Rd, Sector 24D, Sector 24, Chandigarh, 160023, India",
-  "phone": "+91 82880 04545",
-  "hours": "monday: 9 AM–8:30 PM, tuesday: 9 AM–8:30 PM, wednesday: 9 AM–8:30 PM, thursday: 9 AM–8:30 PM, friday: 9 AM–8:30 PM, saturday: 9 AM–8:30 PM, sunday: 11 AM–3 PM",
+  "address": "3103, Sarovar Path, Sector 20D, Sector 20, Chandigarh, 160020, India",
+  "phone": "+91 98153 71968",
+  "hours": "monday: 8 AM–9:30 PM, tuesday: 8 AM–9:30 PM, wednesday: 8 AM–9:30 PM, thursday: 8 AM–9:30 PM, friday: 8 AM–9:30 PM, saturday: 8 AM–9:30 PM, sunday: 8 AM–9:30 PM",
   "services": [
     {
-      "name": "",
-      "description": "Direct and factual information about services offered by Ramal's Pet Mall will be based on the research provided."
+      "name": "Dog Breeding",
+      "description": "Breed a variety of dog species"
     }
   ]
 };
