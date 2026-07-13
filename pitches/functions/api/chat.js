@@ -76,15 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Valentine Fitness Hi-Tech Gym",
-  "category": [
-    "Gym"
-  ],
+  "name": "Fitness & Sports",
+  "category": "Gym",
   "description": "",
-  "address": "SCO 38-39, (opp.Hotel park plaza), Sector 17A, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 98783 90567",
-  "hours": "monday: 5:45–10 AM, 4–9:30 PM, tuesday: 5:45–10 AM, 4–9:30 PM, wednesday: 5:45–10 AM, 4–9:30 PM, thursday: 5:45–10 AM, 4–9:30 PM, friday: 5:45–10 AM, 4–9:30 PM, saturday: 5:45–10 AM, 4–9:30 PM, sunday: Closed",
-  "services": []
+  "address": "Sco No. 62/63, Sector 17A, Sector 17, Chandigarh, 160017, India",
+  "phone": "+91 97800 80012",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "services": [
+    {
+      "name": "",
+      "description": ""
+    }
+  ]
 };
     
     const systemPrompt = {
