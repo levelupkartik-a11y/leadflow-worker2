@@ -76,16 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Animal kingdom the Pet Store, best pet store",
-  "category": "Pet store",
+  "name": "Reya's Elite Pet Arcade",
+  "category": [
+    "Pet store"
+  ],
   "description": "",
-  "address": "2212/1, near Sector 13, opposite neelkanth pharmacy, Pipliwala Town, Adarsh Nagar, Sector 13, Chandigarh, 160101, India",
-  "phone": "+91 70091 15303",
-  "hours": "friday: 8 AM–11 PM, monday: 8 AM–11 PM, saturday: 8 AM–11 PM, sunday: 8 AM–11 PM, thursday: 8 AM–11 PM, tuesday: 8 AM–11 PM, wednesday: 8 AM–11 PM",
+  "address": "City Center, Quiet Office-7, opposite Khukhrain Bhawan, Sector 35A, Sector 35, Chandigarh, 160022, India",
+  "phone": "+91 94780 89295",
+  "hours": "monday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM, thursday: 10 AM–8 PM, friday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: 10 AM–8 PM",
   "services": [
     {
-      "name": "Pet Shopping",
-      "description": "Visit us for a wide variety of pet food, toys, and accessories."
+      "name": "",
+      "description": ""
     }
   ]
 };
