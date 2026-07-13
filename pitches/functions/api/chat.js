@@ -76,18 +76,28 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "THE KEY ZONE",
-  "category": [
-    "Key duplication service"
-  ],
+  "name": "𝗔 𝗧𝗼 𝗭 𝗸𝗲𝘆𝘀 - Best Key Maker | Duplicate Key Maker | Flip Key | Car Key Maker in Chandigarh",
+  "category": "Key duplication service",
   "description": "",
-  "address": "Booths, Bijwara Market, 140, Sector 22D, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 83600 05048",
-  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
+  "address": "Booth No. 146, Bhagat Singh Market, near by Government Model High School, Sector 22D, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 83603 76236",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
       "name": "Key Duplication",
-      "description": "We duplicate keys 24/7 in Chandigarh"
+      "description": "Get duplicate keys made quickly and affordably."
+    },
+    {
+      "name": "Car Key Maker",
+      "description": "Create new car keys for various vehicle models."
+    },
+    {
+      "name": "Duplicate Key Maker",
+      "description": "Get duplicate keys made with precision and speed."
+    },
+    {
+      "name": "Flip Key",
+      "description": "Expertly create flip keys with a precise duplicate."
     }
   ]
 };
