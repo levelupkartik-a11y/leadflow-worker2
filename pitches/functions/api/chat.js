@@ -76,16 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sonu locksmith",
-  "category": "Key duplication service",
+  "name": "SHUBH KEY MAKER",
+  "category": [
+    "Key duplication service"
+  ],
   "description": "",
-  "address": "Block C, Sector 27, Chandigarh, 160019, India",
-  "phone": "+91 97809 88372",
-  "hours": "",
+  "address": "shop no.105, Bay, near Sony medical, Sector 7-C, Sector 7, Chandigarh, 160019, India",
+  "phone": "",
+  "hours": "monday: 9 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM, thursday: 9 AM–8 PM, friday: 9 AM–8 PM, saturday: 9 AM–8 PM, sunday: 9 AM–8 PM",
   "services": [
     {
-      "name": "Key Duplication",
-      "description": "Get duplicate keys for your home, office, or car at affordable prices."
+      "name": "Key Duplication Service",
+      "description": "We provide expert key duplication services using high-quality materials and state-of-the-art equipment."
     }
   ]
 };
