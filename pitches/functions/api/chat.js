@@ -76,16 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "DAANGI KEY MAKER LOCK REPAIR",
-  "category": "Key duplication service",
+  "name": "SHUBH KEY MAKER",
+  "category": [
+    "Key duplication service"
+  ],
   "description": "",
-  "address": "H.N, 1267, Phase 10, Sahibzada Ajit Singh Nagar, Punjab 160062, India",
-  "phone": "+91 62838 19546",
-  "hours": "",
+  "address": "shop no.105, Bay, near Sony medical, Sector 7-C, Sector 7, Chandigarh, 160019, India",
+  "phone": "",
+  "hours": "monday: 9 AM–8 PM, tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM, thursday: 9 AM–8 PM, friday: 9 AM–8 PM, saturday: 9 AM–8 PM, sunday: 9 AM–8 PM",
   "services": [
     {
       "name": "Key Duplication",
-      "description": "Duplicate keys to ensure you never get locked out."
+      "description": "Duplicate keys for your home, car, or office locks."
     }
   ]
 };
