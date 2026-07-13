@@ -84,8 +84,12 @@ export async function onRequestPost(context) {
   "hours": "friday: 5 AM–12 AM, monday: 5 AM–12 AM, saturday: 5 AM–12 AM, sunday: 5 AM–12 AM, thursday: 5 AM–12 AM, tuesday: 5 AM–12 AM, wednesday: 5 AM–12 AM",
   "services": [
     {
-      "name": "Gym Membership",
-      "description": "We offer a comprehensive fitness program with a wide range of equipment to suit your needs"
+      "name": "Fitness Membership",
+      "description": "Get access to our state-of-the-art equipment and 24/7 facility."
+    },
+    {
+      "name": "Personal Training",
+      "description": "Our certified trainers will help you achieve your fitness goals."
     }
   ]
 };
