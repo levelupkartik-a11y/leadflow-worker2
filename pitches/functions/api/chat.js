@@ -76,18 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "All In One Key Maker - Manimajra, Chandigarh, Panchkula, Mohali, Himachal",
+  "name": "Rahul Key Maker",
   "category": [
-    "Key duplication service"
+    "Locksmith",
+    "Chauffeur service",
+    "Service establishment"
   ],
   "description": "",
-  "address": "Shop No: 259, 13, Old Ropar Rd, New Darshani Bagh, Sector 13, Chandigarh, 160101, India",
-  "phone": "+91 81466 17501",
-  "hours": "monday: 9 AM–2:30 PM, tuesday: 9 AM–8:30 PM, wednesday: 9 AM–8:30 PM, thursday: 9 AM–8:30 PM, friday: 9 AM–8:30 PM, saturday: 9 AM–8:30 PM, sunday: 9 AM–8:30 PM",
+  "address": "",
+  "phone": "+91 85916 22282",
+  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Closed",
   "services": [
     {
-      "name": "Key Duplication",
-      "description": "We use high-quality materials and precise duplication techniques to ensure accurate and durable keys."
+      "name": "Locksmith Services",
+      "description": "Get your locks fixed or replaced 24/7 by our expert locksmiths"
+    },
+    {
+      "name": "Chauffeur Services",
+      "description": "Enjoy a safe and convenient ride with our professional chauffeur services"
     }
   ]
 };
