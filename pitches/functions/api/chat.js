@@ -76,13 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "DOG PETS BY | Pets Sale & Purchase | Pet shop in Chandigarh",
-  "category": "Pet store",
+  "name": "Ramal's Pet Mall",
+  "category": [
+    "Pet supply store"
+  ],
   "description": "",
-  "address": "near kk residency, Kajheri, Kajheri Village, Sector 52, Chandigarh, 160036, India",
-  "phone": "+91 81465 59743",
-  "hours": "friday: 9 AM–9 PM, monday: 9 AM–9 PM, saturday: 9 AM–9 PM, sunday: 9 AM–9 PM, thursday: 9 AM–9 PM, tuesday: 9 AM–9 PM, wednesday: 9 AM–9 PM",
-  "services": []
+  "address": "PQW5+QJV, Sector 24D, S.C.O. 202, Sector 24 Market Rd, Sector 24D, Sector 24, Chandigarh, 160023, India",
+  "phone": "+91 82880 04545",
+  "hours": "monday: 9 AM–8:30 PM, tuesday: 9 AM–8:30 PM, wednesday: 9 AM–8:30 PM, thursday: 9 AM–8:30 PM, friday: 9 AM–8:30 PM, saturday: 9 AM–8:30 PM, sunday: 11 AM–3 PM",
+  "services": [
+    {
+      "name": "",
+      "description": "Direct and factual information about services offered by Ramal's Pet Mall will be based on the research provided."
+    }
+  ]
 };
     
     const systemPrompt = {
