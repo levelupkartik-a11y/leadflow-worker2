@@ -76,18 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Olive Café & Bar",
-  "category": [
-    "Mediterranean restaurant"
-  ],
+  "name": "CENTRAL BANK OF INDIA - NEW PUBLIC SCHOOL ,SECTOR 18 B, CHANDIGARH Branch",
+  "category": "Bank",
   "description": "",
-  "address": "SCO 3, Ground floor, Back entry, Sector 26, Chandigarh, 160019, India",
-  "phone": "+91 97799 74200",
-  "hours": "monday: 12 PM–12 AM, tuesday: 12 PM–12 AM, wednesday: 12 PM–12 AM, thursday: 12 PM–12 AM, friday: 12 PM–12 AM, saturday: 12 PM–12 AM, sunday: 12 PM–12 AM",
+  "address": "Sarovar Path, Sector 18-C, Sector 18, Chandigarh, 160018, India",
+  "phone": "+91 172 277 3416",
+  "hours": "Temporarily closed",
   "services": [
     {
-      "name": "Mediterranean Cuisine",
-      "description": "Enjoy fresh, locally sourced ingredients and authentic Mediterranean flavors."
+      "name": "Banking",
+      "description": "We offer expert banking services for the community."
     }
   ]
 };
