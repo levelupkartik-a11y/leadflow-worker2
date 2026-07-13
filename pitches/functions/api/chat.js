@@ -76,18 +76,18 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Ram Murat Plumber",
+  "name": "Irfan plumber",
   "category": [
     "Plumber"
   ],
   "description": "",
-  "address": "CHB Flats, near Government School, Sector 49C, Sector 49, Chandigarh, 160047, India",
-  "phone": "+91 98155 07551",
-  "hours": "monday: 7 AM–10 PM, tuesday: 7 AM–10 PM, wednesday: 7 AM–10 PM, thursday: 7 AM–10 PM, friday: 7 AM–10 PM, saturday: 7 AM–10 PM, sunday: 7 AM–10 PM",
+  "address": "४९ D, Sector 50, Chandigarh, 160047, India",
+  "phone": "+91 82944 95386",
+  "hours": "",
   "services": [
     {
       "name": "Plumbing Services",
-      "description": "Our team of experienced plumbers can assist with a wide range of plumbing issues, from leaky faucets to complex pipe repairs."
+      "description": "Our team of plumbers provides repair, maintenance, and installation services for all types of plumbing systems."
     }
   ]
 };
