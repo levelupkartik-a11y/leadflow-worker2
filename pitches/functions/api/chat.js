@@ -76,28 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "𝗔 𝗧𝗼 𝗭 𝗸𝗲𝘆𝘀 - Best Key Maker | Duplicate Key Maker | Flip Key | Car Key Maker in Chandigarh",
+  "name": "DAANGI KEY MAKER LOCK REPAIR",
   "category": "Key duplication service",
   "description": "",
-  "address": "Booth No. 146, Bhagat Singh Market, near by Government Model High School, Sector 22D, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 83603 76236",
-  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "address": "H.N, 1267, Phase 10, Sahibzada Ajit Singh Nagar, Punjab 160062, India",
+  "phone": "+91 62838 19546",
+  "hours": "",
   "services": [
     {
       "name": "Key Duplication",
-      "description": "Get duplicate keys made quickly and affordably."
-    },
-    {
-      "name": "Car Key Maker",
-      "description": "Create new car keys for various vehicle models."
-    },
-    {
-      "name": "Duplicate Key Maker",
-      "description": "Get duplicate keys made with precision and speed."
-    },
-    {
-      "name": "Flip Key",
-      "description": "Expertly create flip keys with a precise duplicate."
+      "description": "Duplicate keys to ensure you never get locked out."
     }
   ]
 };
