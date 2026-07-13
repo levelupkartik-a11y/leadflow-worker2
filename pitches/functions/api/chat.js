@@ -76,24 +76,20 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "King's Tailors",
-  "category": "Men's tailor",
+  "name": "Chandigarh Cleaners: Laundry & Dryclean",
+  "category": "Dry cleaner",
   "description": "",
-  "address": "31D, Sector 31, Chandigarh, 160030, India",
-  "phone": "+91 88472 07903",
-  "hours": "friday: 11 AM–9 PM, monday: 11 AM–9 PM, saturday: 11 AM–9 PM, sunday: Closed, thursday: 11 AM–9 PM, tuesday: 11 AM–9 PM, wednesday: 11 AM–9 PM",
+  "address": "Opposite Government Model High School, Khuda Jassu (Lahora, Chandigarh, 160014, India",
+  "phone": "+91 90908 08002",
+  "hours": "friday: 8 AM–9 PM, monday: 8 AM–9 PM, saturday: 8 AM–9 PM, sunday: 8 AM–9 PM, thursday: 8 AM–9 PM, tuesday: 8 AM–9 PM, wednesday: 8 AM–9 PM",
   "services": [
     {
-      "name": "Alterations and Repairs",
-      "description": "We offer expert alterations and repairs for your clothing items. From simple hemming to complex alterations, our tailors will ensure your garments fit perfectly."
+      "name": "Laundry Services",
+      "description": "Get your clothes washed, dried, and folded."
     },
     {
-      "name": "Custom Tailoring",
-      "description": "Get custom-made clothing with our expert tailors. We will work with you to create the perfect garment according to your measurements and preferences."
-    },
-    {
-      "name": "Dress Shirts and Ties",
-      "description": "We offer high-quality dress shirts and ties at affordable prices. Our tailors will ensure a perfect fit and attention to detail."
+      "name": "Dry Clean Services",
+      "description": "We clean your delicate fabrics with care."
     }
   ]
 };
