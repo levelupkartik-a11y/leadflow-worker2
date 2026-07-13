@@ -76,18 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "FabRehab Drycleaners",
-  "category": [
-    "Dry cleaner"
-  ],
+  "name": "Yogendra Drycleaner",
+  "category": "Dry cleaner",
   "description": "",
-  "address": "SCF 22, 8B, Sector 8, Chandigarh, 160009, India",
-  "phone": "+91 70710 61061",
-  "hours": "monday: 10 AM–8:30 PM, tuesday: 10 AM–8:30 PM, wednesday: 10 AM–8:30 PM, thursday: 10 AM–8:30 PM, friday: 10 AM–8:30 PM, saturday: 10 AM–8:30 PM, sunday: Closed",
+  "address": "Modern Dhobi Ghat, behind gopal sweets, 15D, Sector 15, Chandigarh, 160015, India",
+  "phone": "+91 88088 24387",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Dry Cleaning",
-      "description": ""
+      "name": "Dry cleaning",
+      "description": "Our services include expert dry cleaning of all types of fabrics."
     }
   ]
 };
