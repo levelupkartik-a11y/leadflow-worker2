@@ -76,50 +76,39 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "PetsTree",
+  "name": "Pooran Pet Shop",
   "category": [
     "Pet store",
-    "Cat boarding service",
-    "Cat breeder",
-    "Dog breeder",
-    "Dog trainer",
-    "Horse breeder",
-    "Horse riding school",
-    "Pet boarding service",
-    "Pet trainer"
+    "Dog day care center",
+    "Pet groomer",
+    "Pet supply store",
+    "Pet trainer",
+    "Veterinarian"
   ],
   "description": "",
-  "address": "Shop No 306, Ajit Singh, 4 Phase Market Rd, near Chandigarh, Phase 4, Sector 59, Sahibzada Ajit Singh Nagar, Punjab 160059, India",
-  "phone": "+91 81481 50816",
-  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
+  "address": "Shop No. 26, Sector 40C, Sector 40B, Chandigarh, 160036, India",
+  "phone": "",
+  "hours": "monday: 9 AM–10 PM, tuesday: 9 AM–10 PM, wednesday: 9 AM–10 PM, thursday: 9 AM–10 PM, friday: 9 AM–10 PM, saturday: 9 AM–10 PM, sunday: 9 AM–5 PM",
   "services": [
     {
-      "name": "Pet Boarding Service",
-      "description": "We provide secure and safe accommodations for your pets."
+      "name": "Pet Grooming",
+      "description": "Expert grooming services for your pets"
     },
     {
-      "name": "Pet Training Services",
-      "description": "Our certified trainers help your pets learn and behave well."
+      "name": "Dog Day Care Center",
+      "description": "Safe and comfortable day care for your dogs"
     },
     {
-      "name": "Pet Store",
-      "description": "A wide range of pet products and supplies are available at our store."
+      "name": "Pet Supplies",
+      "description": "Wide range of pet food, toys, and accessories"
     },
     {
-      "name": "Cat Breeder",
-      "description": "We breed various cat breeds for adoption."
+      "name": "Pet Trainer",
+      "description": "Professional training for your pets"
     },
     {
-      "name": "Dog Breeder",
-      "description": "We breed various dog breeds for adoption."
-    },
-    {
-      "name": "Horse Breeder",
-      "description": "We breed various horse breeds for adoption."
-    },
-    {
-      "name": "Horse Riding School",
-      "description": "Our experienced trainers teach horse riding techniques and safety."
+      "name": "Veterinarian",
+      "description": "Expert veterinary care for your pets"
     }
   ]
 };
