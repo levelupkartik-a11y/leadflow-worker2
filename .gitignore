@@ -2,3 +2,6 @@ node_modules/
 .env
 .build/
 .build-*/
+scratch/
+deployed.html
+test.html

@@ -10,6 +10,11 @@ const replicate = new Replicate({ auth: process.env.REPLICATE_API_TOKEN });
 async function processImages(researchData, copyData, buildDir, templateId) {
   console.log('[Step 5] Starting Image Pipeline...');
 
+  if (templateId === 'Landingpagetemplate') {
+    await processReactImages(researchData, copyData, buildDir);
+    return;
+  }
+
   // Helper to sanitize filenames in a directory to prevent URL/path issues
   function sanitizeFolderFilenames(dir) {
     if (!fs.existsSync(dir)) return;
@@ -378,6 +383,173 @@ Output strictly as JSON:
   }
 
   console.log('[Step 5] Image Pipeline complete.');
+}
+
+async function processReactImages(researchData, copyData, buildDir) {
+  const { execSync } = require('child_process');
+  console.log('[Step 5] Starting custom image pipeline for React Landingpagetemplate...');
+
+  const appJsxPath = path.join(buildDir, 'src', 'App.jsx');
+  if (!fs.existsSync(appJsxPath)) {
+    console.error('[Step 5] Error: src/App.jsx not found in build directory!');
+    return;
+  }
+
+  let appContent = fs.readFileSync(appJsxPath, 'utf8');
+
+  // 1. Process product images (up to 4 products)
+  for (let i = 0; i < 4; i++) {
+    const placeholder = `https://images.unsplash.com/photo-placeholder-${i + 1}`;
+    if (appContent.includes(placeholder)) {
+      const productName = copyData.services?.[i]?.name || "Premium Product";
+      console.log(`[Step 5] Generating image for product ${i + 1}: ${productName}`);
+      
+      const rawPrompt = `Professional high-end studio commercial photo of product: ${productName}, styled in the aesthetic of a premium retail brand, soft warm studio lighting, highly detailed, photorealistic, 4k`;
+      const encodedPrompt = encodeURIComponent(rawPrompt);
+      const seed = `${Date.now()}_prod_${i}_${Math.floor(Math.random() * 1000)}`;
+      const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?nologo=true&seed=${seed}`;
+
+      const assetsDir = path.join(buildDir, 'assets');
+      if (!fs.existsSync(assetsDir)) fs.mkdirSync(assetsDir, { recursive: true });
+
+      const localFilename = `assets/img-product-${Date.now()}-${i + 1}.jpg`;
+      const localPath = path.join(buildDir, localFilename);
+
+      // Download
+      let downloaded = false;
+      try {
+        const res = await fetch(imageUrl);
+        if (res.ok) {
+          const buffer = Buffer.from(await res.arrayBuffer());
+          if (buffer.length > 5000) {
+            fs.writeFileSync(localPath, buffer);
+            downloaded = true;
+            console.log(`  Saved ${localFilename}`);
+          }
+        }
+      } catch (err) {
+        console.warn(`  Failed to download product image ${i + 1}: ${err.message}`);
+      }
+
+      if (!downloaded) {
+        // Use curated fallback
+        const fallbacks = [
+          'https://images.unsplash.com/photo-1556229010-aa3f7ff66b24?q=80&w=1200',
+          'https://images.unsplash.com/photo-1612817288484-6f916006741a?q=80&w=1200',
+          'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=1200',
+          'https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1200'
+        ];
+        const fbUrl = fallbacks[i % fallbacks.length];
+        try {
+          const fbRes = await fetch(fbUrl);
+          const buffer = Buffer.from(await fbRes.arrayBuffer());
+          fs.writeFileSync(localPath, buffer);
+          downloaded = true;
+        } catch (e) {
+          console.error(`  Fallback failed too: ${e.message}`);
+        }
+      }
+
+      if (downloaded) {
+        appContent = appContent.replace(placeholder, localFilename);
+      }
+      await new Promise(r => setTimeout(r, 4000));
+    }
+  }
+
+  // 2. Process gallery images (3 images)
+  const category = (Array.isArray(researchData.category) ? researchData.category.join(' ') : String(researchData.category || '')).trim();
+  for (let i = 0; i < 3; i++) {
+    const placeholder = `https://images.unsplash.com/photo-gallery-${i + 1}`;
+    if (appContent.includes(placeholder)) {
+      console.log(`[Step 5] Generating gallery image ${i + 1}`);
+
+      const rawPrompt = `Professional architectural interior editorial photo of a premium ${category} store, modern minimal layout, warm ambient lighting, photorealistic, 4k`;
+      const encodedPrompt = encodeURIComponent(rawPrompt);
+      const seed = `${Date.now()}_gal_${i}_${Math.floor(Math.random() * 1000)}`;
+      const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?nologo=true&seed=${seed}`;
+
+      const assetsDir = path.join(buildDir, 'assets');
+      if (!fs.existsSync(assetsDir)) fs.mkdirSync(assetsDir, { recursive: true });
+
+      const localFilename = `assets/img-gallery-${Date.now()}-${i + 1}.jpg`;
+      const localPath = path.join(buildDir, localFilename);
+
+      let downloaded = false;
+      try {
+        const res = await fetch(imageUrl);
+        if (res.ok) {
+          const buffer = Buffer.from(await res.arrayBuffer());
+          if (buffer.length > 5000) {
+            fs.writeFileSync(localPath, buffer);
+            downloaded = true;
+            console.log(`  Saved ${localFilename}`);
+          }
+        }
+      } catch (err) {
+        console.warn(`  Failed to download gallery image ${i + 1}: ${err.message}`);
+      }
+
+      if (!downloaded) {
+        const fallbacks = [
+          'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200',
+          'https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1200',
+          'https://images.unsplash.com/photo-1556229010-aa3f7ff66b24?q=80&w=1200'
+        ];
+        const fbUrl = fallbacks[i % fallbacks.length];
+        try {
+          const fbRes = await fetch(fbUrl);
+          const buffer = Buffer.from(await fbRes.arrayBuffer());
+          fs.writeFileSync(localPath, buffer);
+          downloaded = true;
+        } catch (e) {
+          console.error(`  Fallback failed too: ${e.message}`);
+        }
+      }
+
+      if (downloaded) {
+        appContent = appContent.replace(placeholder, localFilename);
+      }
+      await new Promise(r => setTimeout(r, 4000));
+    }
+  }
+
+  // Save modified App.jsx
+  fs.writeFileSync(appJsxPath, appContent, 'utf8');
+
+  // 3. Compile the React app using Vite
+  console.log('[Step 5] Compiling React template (npm run build)...');
+  try {
+    execSync('npm run build', { cwd: buildDir, stdio: 'inherit' });
+    console.log('[Step 5] React compilation successful!');
+  } catch (err) {
+    console.error('[Step 5] React compilation failed!', err.message);
+    throw err;
+  }
+
+  // 4. Move compiled dist files to root of buildDir
+  const distDir = path.join(buildDir, 'dist');
+  if (fs.existsSync(distDir)) {
+    console.log('[Step 5] Moving compiled files to root directory and cleaning up source files...');
+    fs.cpSync(distDir, buildDir, { recursive: true });
+    
+    // Cleanup build items to leave only the built static website
+    const cleanupItems = [
+      'src', 'node_modules', 'dist', 'package.json', 'package-lock.json', 
+      'vite.config.js', 'tailwind.config.js', '.oxlintrc.json', '.gitignore', 'postcss.config.js', 'README.md'
+    ];
+    cleanupItems.forEach(item => {
+      const itemPath = path.join(buildDir, item);
+      if (fs.existsSync(itemPath)) {
+        try {
+          fs.rmSync(itemPath, { recursive: true, force: true });
+        } catch (e) {
+          console.warn(`[Cleanup Warning] Could not remove ${item}:`, e.message);
+        }
+      }
+    });
+    console.log('[Step 5] Cleanup complete. Static directory is ready for deployment!');
+  }
 }
 
 module.exports = { processImages };

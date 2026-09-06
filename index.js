@@ -8,6 +8,7 @@ const { adaptLayout } = require('./src/4-layout-adapter');
 const { processImages } = require('./src/5-image-pipeline');
 const { deployToCloudflare } = require('./src/6-deploy');
 const { reportBackToSheet } = require('./src/7-report');
+const { sendWhatsAppPitch } = require('./src/8-whatsapp');
 
 /**
  * Deep-scan every string in the copy object and replace any LLM placeholder
@@ -147,6 +148,22 @@ async function main() {
       
       // Step 7: Report
       if (rowId) await reportBackToSheet(liveUrl, sheetName, rowId, reviewsCount, isSheet1);
+
+      // Step 8: WhatsApp Outreach
+      if (process.env.DISABLE_WHATSAPP !== 'true') {
+        const phone = researchData.phone || '';
+        await sendWhatsAppPitch(
+          phone,
+          researchData.title,
+          liveUrl,
+          researchData.rating || '',
+          researchData.category || '',
+          rowId,
+          sheetName
+        );
+      } else {
+        console.log('[Step 8] WhatsApp outreach skipped (DISABLE_WHATSAPP=true)');
+      }
     } else {
       console.log(`[Step 6] Skipping deployment due to failed Quality Check.`);
       
@@ -155,8 +172,8 @@ async function main() {
       if (rowId) await reportBackToSheet(failureMessage, sheetName, rowId, reviewsCount, isSheet1);
     }
 
-    // Step 8: Cleanup
-    console.log('[Step 8] Cleaning up...');
+    // Step 9: Cleanup
+    console.log('[Step 9] Cleaning up...');
     cleanup();
     process.off('exit', cleanup);
 

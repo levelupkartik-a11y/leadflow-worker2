@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #0e0f12;
+    background-image: linear-gradient(238deg, #000000 66%, #0638a0);
+    background-attachment: fixed;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    @apply antialiased overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+/* Lenis Smooth Scroll Recommended Styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Premium Reference Blue Buttons */
+.button-blue {
+  background-color: #1f58d0;
+  color: #ffffff;
+  border-radius: 15px;
+  padding: 18px 48px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(31, 88, 208, 0.3);
+}
+
+.button-blue:hover {
+  background-color: #112b5d;
+  box-shadow: 0 6px 20px rgba(17, 43, 93, 0.4);
+  transform: translateY(-1px);
+}
+
+.button-blue:active {
+  transform: scale(0.98);
+}
+
+/* Tip Card Styles (Highest Leverage Skills) */
+.tip-card {
+  background-color: #0e0f12;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.tip-card:hover {
+  border-color: rgba(31, 88, 208, 0.4);
+  background-color: #121318;
+}
+
+/* Resource and Team Cards */
+.resource-card {
+  background-color: #0e0f12;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.resource-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0f12;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(31, 88, 208, 0.4);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(31, 88, 208, 0.6);
+}
+
+/* Custom grid testimonial cell borders */
+.testimonial-cell-1 {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+.testimonial-cell-2 {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.testimonial-cell-3 {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+.testimonial-cell-4 {
+  border: none;
+}
+
+@media (max-width: 767px) {
+  .testimonial-cell-1,
+  .testimonial-cell-2,
+  .testimonial-cell-3 {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-right: none !important;
+  }
+}
+
+/* Ticker Marquee Keyframes & Animations */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 38s linear infinite;
+}
+
+.animate-marquee:hover,
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+

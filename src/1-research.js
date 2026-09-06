@@ -76,6 +76,7 @@ async function researchBusiness(mapsUrl, rowId, sheetName) {
     })(),
     address: place.address || '',
     phone: place.phone || '',
+    rating: place.rating || place.stars || place.review_rating || '',
     priceLevel: place.price || place.price_level || '',
     attributes: (() => {
       if (typeof place.attributes === 'object' && place.attributes !== null) {

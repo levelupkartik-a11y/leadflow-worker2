@@ -4,9 +4,10 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 const TEMPLATES = [
   { id: 'healthcare-dental', description: 'Clinics, doctors, dentists, healthcare' },
-  { id: 'beauty and salon', description: 'Salons, spas, barbershops, beauty' },
+  { id: 'beauty and salon', description: 'Salons, spas, barbershops, beauty, cosmetics' },
   { id: 'realestate', description: 'Real estate, property management, builders' },
   { id: 'New folder (4)', description: 'Restaurants, cafes, bakeries, food services' },
+  { id: 'Landingpagetemplate', description: 'Gyms, fitness centers, e-commerce boutiques, specific product/membership sellers' },
   { id: 'New folder (5)', description: 'Generalist fallback template for anything else' }
 ];
 
@@ -30,7 +31,8 @@ Description: ${description}
 2. "beauty and salon": Use for hair salons, nail salons, beauty salons, spas, barbershops, personal styling, cosmetics.
 3. "realestate": Use for real estate agents, property management, builders, brokers.
 4. "New folder (4)": Use for restaurants, cafes, bakeries, bars, dhabas, food delivery, catering, and other food/beverage services.
-5. "New folder (5)": Generalist fallback template for anything else that does not fit any of the 4 specific categories above (e.g. retail shops, plumbing, electrical, construction, automotive, cleaning, logistics, manufacturing, AND professional services like lawyers, law firms, consultants, financial/tax advisors, notaries).
+5. "Landingpagetemplate": Use for gyms, fitness centers, health clubs, yoga/pilates studios, clothing boutiques, online shops, gadget stores, and other transactional e-commerce setups selling specific products or memberships.
+6. "New folder (5)": Generalist fallback template for basic retail or local services (e.g. grocery stores, supermarkets, plumbing, electrical, locksmiths, car mechanics, construction, and professional firms like lawyers, advisors).
 
 Return ONLY a JSON object with a single key "selected_template" containing the selected template ID.
 Do not output any markdown formatting, explanation, or extra keys.
@@ -73,6 +75,18 @@ Output format: {"selected_template": "New folder (5)"}
     selected = 'healthcare-dental';
   } else if (type.includes('real estate') || type.includes('property') || type.includes('builder') || type.includes('reaty') || title.includes('real estate') || title.includes('properties') || title.includes('realty')) {
     selected = 'realestate';
+  } else if (
+    type.includes('gym') || type.includes('fitness') || type.includes('crossfit') || type.includes('yoga') || type.includes('pilates') || type.includes('workout') ||
+    type.includes('boutique') || type.includes('clothing') || type.includes('apparel') || type.includes('e-commerce') ||
+    title.includes('gym') || title.includes('fitness') || title.includes('boutique') || title.includes('apparel')
+  ) {
+    // Check if it is beauty/cosmetic related (which takes priority for "beauty and salon")
+    const isBeauty = type.includes('beauty') || type.includes('salon') || type.includes('cosmetic') || type.includes('spa') || title.includes('beauty') || title.includes('salon') || title.includes('cosmetic') || title.includes('spa');
+    if (isBeauty) {
+      selected = 'beauty and salon';
+    } else {
+      selected = 'Landingpagetemplate';
+    }
   }
 
   console.log(`[Step 3] Selected template (local fallback) based on type '${type}' and title '${title}': ${selected}`);

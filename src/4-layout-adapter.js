@@ -83,6 +83,84 @@ function extractDisplayName(rawName) {
 
 async function adaptLayout(templateId, copyData, buildDir, researchData) {
   console.log(`[Step 4] Adapting layout for template: ${templateId}`);
+
+  if (templateId === 'Landingpagetemplate') {
+    const appJsxPath = path.join(buildDir, 'src', 'App.jsx');
+    if (fs.existsSync(appJsxPath)) {
+      console.log('[Step 4] Found React template, rewriting App.jsx SITE_DATA...');
+      let appContent = fs.readFileSync(appJsxPath, 'utf8');
+      
+      const displayName = extractDisplayName(researchData.title || researchData.name);
+      
+      // Map copyData services to products
+      const products = (copyData.services || []).slice(0, 4).map((s, i) => ({
+        id: i + 1,
+        name: s.name,
+        price: s.price || "₹999",
+        oldPrice: s.oldPrice || "",
+        rating: 4.8,
+        image: `https://images.unsplash.com/photo-placeholder-${i + 1}`
+      }));
+
+      // Map reviews
+      const reviews = (researchData.reviews && Array.isArray(researchData.reviews))
+        ? researchData.reviews.slice(0, 3).map(r => ({
+            author: r.author || "Client",
+            rating: parseInt(r.rating || "5", 10),
+            date: r.date || "1 week ago",
+            comment: r.text || r.comment || "Great service!"
+          }))
+        : [];
+
+      // Map FAQs
+      const faqs = (copyData.faqs || []).map(f => ({
+        q: f.q || f.question,
+        a: f.a || f.answer
+      }));
+
+      const newSiteData = {
+        businessName: displayName || researchData.title || researchData.name,
+        tagline: copyData.tagline || copyData.headline || "",
+        phone: researchData.phone || "",
+        email: researchData.email || "",
+        address: researchData.address || "",
+        rating: parseFloat(researchData.rating || "4.8"),
+        reviewsCount: parseInt(researchData.reviewsCount || reviews.length || "120", 10),
+        aboutText: copyData.about_section || "",
+        features: (copyData.features || []).slice(0, 3).map(f => ({
+          title: f.title || "Premium Quality",
+          desc: f.desc || f.description || "Top tier service and attention to detail."
+        })),
+        products,
+        faqs,
+        reviews,
+        gallery: [
+          "https://images.unsplash.com/photo-gallery-1",
+          "https://images.unsplash.com/photo-gallery-2",
+          "https://images.unsplash.com/photo-gallery-3"
+        ]
+      };
+
+      if (newSiteData.features.length === 0) {
+        newSiteData.features = [
+          { title: "Premium Quality", desc: "Highest grade materials and premium service." },
+          { title: "Expert Care", desc: "Trained professionals dedicated to your satisfaction." },
+          { title: "Trusted Local", desc: "Proudly serving the community with top-tier reliability." }
+        ];
+      }
+
+      const siteDataJson = JSON.stringify(newSiteData, null, 2);
+      const siteDataRegex = /const\s+SITE_DATA\s*=\s*\{[\s\S]*?\};/;
+      if (siteDataRegex.test(appContent)) {
+        appContent = appContent.replace(siteDataRegex, `const SITE_DATA = ${siteDataJson};`);
+        fs.writeFileSync(appJsxPath, appContent, 'utf8');
+        console.log('[Step 4] React template App.jsx SITE_DATA updated successfully!');
+      } else {
+        console.error('[Step 4] Error: Could not find const SITE_DATA in App.jsx');
+      }
+    }
+    return;
+  }
   
   // Find all HTML files in the buildDir (which is a copy of the selected template)
   const files = fs.readdirSync(buildDir);
