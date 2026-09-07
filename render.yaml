@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: leadflow-whatsapp-gateway
+    env: node
+    rootDir: whatsapp-server
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: API_KEY
+        value: leadflow_secret_key_2026

@@ -121,7 +121,43 @@ async function sendWhatsAppPitch(phone, businessName, targetUrl, rating = '', ca
     dispatchResult = { success: true, simulated: true, provider: 'dry-run' };
   }
 
-  // Provider A: Meta WhatsApp Cloud API (Graph API)
+  // Provider A: Free Cloud-Hosted WhatsApp Gateway (Sends from your real phone number via Baileys)
+  else if (process.env.WHATSAPP_API_URL) {
+    try {
+      console.log('[Step 8] Sending via Free Cloud WhatsApp Gateway...');
+      const targetUrl = process.env.WHATSAPP_API_URL.endsWith('/send')
+        ? process.env.WHATSAPP_API_URL
+        : `${process.env.WHATSAPP_API_URL.replace(/\/$/, '')}/send`;
+
+      const headers = { 'Content-Type': 'application/json' };
+      if (process.env.WHATSAPP_TOKEN) {
+        headers['x-api-key'] = process.env.WHATSAPP_TOKEN;
+      }
+
+      const res = await withTimeout(
+        fetch(targetUrl, {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({
+            token: process.env.WHATSAPP_TOKEN,
+            to: phoneInfo.digitsOnly,
+            message: messageText,
+            body: messageText
+          })
+        }),
+        30000,
+        'Free Cloud WhatsApp Gateway'
+      );
+      const json = await res.json();
+      if (!res.ok || json.success === false) throw new Error(json.error || JSON.stringify(json));
+      dispatchResult = { success: true, provider: 'cloud-gateway', messageId: json.messageId };
+    } catch (err) {
+      console.error('[Step 8] Free Cloud WhatsApp Gateway failed:', err.message);
+      dispatchResult = { success: false, error: err.message };
+    }
+  }
+
+  // Provider B: Meta WhatsApp Cloud API (Graph API)
   else if (process.env.WHATSAPP_ACCESS_TOKEN && process.env.WHATSAPP_PHONE_NUMBER_ID) {
     try {
       console.log('[Step 8] Sending via Meta WhatsApp Cloud API...');
@@ -178,32 +214,6 @@ async function sendWhatsAppPitch(phone, businessName, targetUrl, rating = '', ca
       dispatchResult = { success: true, provider: 'meta-cloud-api', messageId: json.messages?.[0]?.id };
     } catch (err) {
       console.error('[Step 8] Meta WhatsApp Cloud API failed:', err.message);
-      dispatchResult = { success: false, error: err.message };
-    }
-  }
-
-  // Provider B: UltraMsg / Custom Gateway
-  else if (process.env.WHATSAPP_API_URL && process.env.WHATSAPP_TOKEN) {
-    try {
-      console.log('[Step 8] Sending via WhatsApp Gateway API...');
-      const res = await withTimeout(
-        fetch(process.env.WHATSAPP_API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            token: process.env.WHATSAPP_TOKEN,
-            to: phoneInfo.digitsOnly,
-            body: messageText
-          })
-        }),
-        30000,
-        'WhatsApp Gateway API'
-      );
-      const json = await res.json();
-      if (!res.ok) throw new Error(JSON.stringify(json));
-      dispatchResult = { success: true, provider: 'custom-gateway' };
-    } catch (err) {
-      console.error('[Step 8] Custom WhatsApp Gateway failed:', err.message);
       dispatchResult = { success: false, error: err.message };
     }
   }
