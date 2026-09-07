@@ -37,6 +37,19 @@ async function startWhatsApp() {
       fs.mkdirSync(AUTH_DIR, { recursive: true });
     }
 
+    // Restore credentials from SESSION_DATA environment variable if available
+    const credsPath = path.join(AUTH_DIR, 'creds.json');
+    if (!fs.existsSync(credsPath) && process.env.SESSION_DATA) {
+      try {
+        console.log('[WhatsApp Gateway] Restoring credentials from SESSION_DATA environment variable...');
+        const decoded = Buffer.from(process.env.SESSION_DATA.trim(), 'base64').toString('utf8');
+        fs.writeFileSync(credsPath, decoded, 'utf8');
+        console.log('[WhatsApp Gateway] Credentials successfully restored from environment!');
+      } catch (e) {
+        console.error('[WhatsApp Gateway] Failed to restore SESSION_DATA:', e.message);
+      }
+    }
+
     if (sock) {
       try {
         sock.ev.removeAllListeners();
@@ -110,6 +123,22 @@ app.get('/status', (req, res) => {
     state: connectionState,
     phone: connectedUser ? `+${connectedUser}` : null
   });
+});
+
+// 2.5 Export Session Data for permanent Render Environment Variables
+app.get('/session', (req, res) => {
+  const credsPath = path.join(AUTH_DIR, 'creds.json');
+  if (fs.existsSync(credsPath)) {
+    const raw = fs.readFileSync(credsPath, 'utf8');
+    const b64 = Buffer.from(raw, 'utf8').toString('base64');
+    res.json({
+      success: true,
+      instructions: 'Add this base64 string as SESSION_DATA in Render Environment Variables so your session persists across any rebuilds.',
+      session_data: b64
+    });
+  } else {
+    res.status(404).json({ success: false, error: 'No active credentials found. Connect via QR code first.' });
+  }
 });
 
 // 3. Web UI for one-click QR scanning

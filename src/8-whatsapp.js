@@ -45,42 +45,40 @@ function normalizePhoneNumber(rawPhone) {
 
 /**
  * Builds high-converting personalized pitch copy for WhatsApp.
- * pitchType: 'website' (for leads without a site) | 'ads' (for leads with an existing site)
+ * Uses Dean Jackson SPEAR framework (Short, Personal, Expecting A Reply)
+ * and Chris Voss No-Oriented CTA for maximum reply rates.
  */
 function buildWhatsAppPitch(businessName, targetUrl, rating = '', category = '', pitchType = 'website', sheetName = '') {
-  const ratingText = (rating && parseFloat(rating) >= 4.0) 
-    ? ` (loved your ${rating}★ rating on Google!)` 
-    : '';
-
   // Clean the business name (strip branch suffixes, city names, pipes)
   const cleanName = businessName 
     ? businessName.split('-')[0].split('|')[0].split(',')[0].trim() 
     : 'there';
 
-  const cleanCategory = category ? category.replace(/[^a-zA-Z0-9\s&]/g, '').trim() : 'business';
-  const locationTag = sheetName && sheetName !== 'Config' ? `in ${sheetName}` : 'locally';
+  const cleanCategory = category ? category.toLowerCase().replace(/[^a-zA-Z0-9\s&]/g, '').trim() : 'services';
+  const areaPhrase = sheetName && sheetName !== 'Config' ? ` in ${sheetName}` : '';
+  const ratingPhrase = (rating && parseFloat(rating) >= 4.0) ? ` Loved the ${rating}★ reviews.` : '';
 
   if (pitchType === 'ads') {
     // ─────────────── PITCH FOR BUSINESSES WITH AN EXISTING WEBSITE ───────────────
-    return `Hi ${cleanName} team, came across your listing on Google Maps and checked out your website (${targetUrl}) — really great setup.
+    return `Hey ${cleanName} team, checked out your site (${targetUrl}) after seeing your Google Maps profile${areaPhrase} — really solid setup.
 
-Since you already have a solid website, we noticed a big opportunity to bring in 20-30+ more direct customer calls and bookings ${locationTag} every month through targeted Instagram and Google ads.
+Quick observation: looks like you're missing out on 20-30+ direct customer inquiries every month from people searching for ${cleanCategory} in your area on Instagram and Google.
 
-Our team at LeadFirst AI works on pure performance with no long-term contracts.
+I put together 2 quick growth ideas to help you capture those leads (strictly performance-based, zero monthly retainer lock-ins).
 
-Let me know if you would like me to share a quick 2-minute plan tailored for ${cleanName}.`;
+Mind if I send over a quick 2-minute breakdown, or is your schedule completely full right now?`;
   }
 
   // ─────────────── PITCH FOR BUSINESSES WITHOUT A WEBSITE ───────────────
-  return `Hi ${cleanName} team, saw your listing on Google Maps and loved the customer reviews.
+  return `Hey ${cleanName} team, came across your place on Google Maps${areaPhrase}.${ratingPhrase}
 
-Noticed you don't have an official website up yet, so our team at LeadFirst AI built a quick initial live demo for you guys to check out:
+Noticed you guys don't have a direct website linked on your Maps profile, so I took a few minutes and put together a fast mobile preview for you to check out:
 
 ${targetUrl}
 
-(Note: this is just a sample preview — the actual custom website we make for you is much grander, with your complete ${cleanCategory} services menu, direct WhatsApp booking button, and location directions).
+Built it with your real photos, reviews, and a 1-tap WhatsApp booking button so people searching for ${cleanCategory} don't bounce to competitors.
 
-Let me know if you would like to take a look or want us to customize anything on it.`;
+Worth a 2-min look, or do you already have someone handling your web stuff?`;
 }
 
 /**
@@ -89,11 +87,19 @@ Let me know if you would like to take a look or want us to customize anything on
 async function sendWhatsAppPitch(phone, businessName, targetUrl, rating = '', category = '', rowId = null, sheetName = null, pitchType = 'website') {
   console.log(`[Step 8] Starting WhatsApp outreach (${pitchType.toUpperCase()} PITCH) for "${businessName}"...`);
 
+  // Test mode safeguard: if TEST_OUTREACH_PHONE is set, divert outgoing message
+  let dispatchPhone = phone;
+  const isTestMode = !!process.env.TEST_OUTREACH_PHONE;
+  if (isTestMode) {
+    console.log(`[Step 8] ⚠️ TEST MODE ACTIVE: Diverting message from "${phone}" to personal test number "${process.env.TEST_OUTREACH_PHONE}"`);
+    dispatchPhone = process.env.TEST_OUTREACH_PHONE;
+  }
+
   // 1. Phone number validation
-  const phoneInfo = normalizePhoneNumber(phone);
+  const phoneInfo = normalizePhoneNumber(dispatchPhone);
   if (!phoneInfo.valid) {
-    console.log(`[Step 8] Skipping WhatsApp: ${phoneInfo.reason} (Raw: "${phone}")`);
-    if (rowId && sheetName) {
+    console.log(`[Step 8] Skipping WhatsApp: ${phoneInfo.reason} (Raw: "${dispatchPhone}")`);
+    if (rowId && sheetName && !isTestMode) {
       await updateWhatsAppSheetStatus(sheetName, rowId, `SKIPPED: ${phoneInfo.reason}`);
     }
     return { success: false, skipped: true, reason: phoneInfo.reason };
@@ -102,7 +108,7 @@ async function sendWhatsAppPitch(phone, businessName, targetUrl, rating = '', ca
   // 2. Validate URL (if website pitch, requires valid live url)
   if (pitchType === 'website' && (!targetUrl || !targetUrl.startsWith('http'))) {
     console.log(`[Step 8] Skipping WhatsApp: Invalid or missing live website URL ("${targetUrl}")`);
-    if (rowId && sheetName) {
+    if (rowId && sheetName && !isTestMode) {
       await updateWhatsAppSheetStatus(sheetName, rowId, 'SKIPPED: No live website URL');
     }
     return { success: false, skipped: true, reason: 'No live website URL' };
