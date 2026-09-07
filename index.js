@@ -10,6 +10,8 @@ const { deployToCloudflare } = require('./src/6-deploy');
 const { reportBackToSheet } = require('./src/7-report');
 const { sendWhatsAppPitch } = require('./src/8-whatsapp');
 
+const { composioExecute, normalizePhoneNumber } = require('./src/utils');
+
 /**
  * Deep-scan every string in the copy object and replace any LLM placeholder
  * tokens (e.g. "[Insert phone number]") with the real research-data value.
@@ -53,34 +55,42 @@ async function main() {
   }
 
   // ─────────────────────────────────────────────────────────────────────────
-  // Sheet 2+ pre-check: skip rows where the business already has a website.
-  //
-  // Sheet 1 ("Sector 17 Chandigarh") is pre-filtered — no website column
-  // exists there, so we always build. For every other sheet the raw
-  // Google-scraped site URL lives in column I ("Website"). If it's
-  // populated we skip site generation for this row entirely.
+  // Pre-check: Skip rows where the business already has a website, or has
+  // no valid mobile phone listed in the sheet (cannot contact = cannot sell).
   // ─────────────────────────────────────────────────────────────────────────
   const SHEET1_NAME = 'Sector 17 Chandigarh';
   const isSheet1 = !sheetName || sheetName === SHEET1_NAME;
 
-  if (!isSheet1 && rowId) {
-    const { composioExecute } = require('./src/utils');
+  if (rowId) {
     try {
       const check = await composioExecute('GOOGLESHEETS_VALUES_GET', {
         spreadsheet_id: '1fWDfzFew_vKfKErtoBzahlyDbG_NMvcZDpXPSDaMJ9k',
-        range: `${sheetName}!C${rowId}:C${rowId}`,
+        range: `${sheetName}!A${rowId}:G${rowId}`,
         value_render_option: 'FORMATTED_VALUE',
       });
-      const existingWebsite = check?.data?.values?.[0]?.[0]?.trim();
-      if (existingWebsite) {
+      const rowVals = check?.data?.values?.[0] || [];
+      const sheetPhone = rowVals[1]?.trim();
+      const existingWebsite = rowVals[2]?.trim();
+
+      // Check phone number from sheet
+      if (sheetPhone) {
+        const phoneCheck = normalizePhoneNumber(sheetPhone);
+        if (!phoneCheck.valid) {
+          console.log(`[Pre-check] Row ${rowId} phone "${sheetPhone}" is invalid: ${phoneCheck.reason}.`);
+          console.log(`[Pre-check] Skipping site generation (cannot contact via WhatsApp).`);
+          await reportBackToSheet(`SKIPPED: ${phoneCheck.reason}`, sheetName, rowId, 0, isSheet1);
+          process.exit(0);
+        }
+      }
+
+      // Check existing website from sheet
+      if (!isSheet1 && existingWebsite && existingWebsite.startsWith('http')) {
         console.log(`[Pre-check] Row ${rowId} already has a website: ${existingWebsite}`);
         console.log(`[Pre-check] Skipping site generation for this row. "made websites" column left blank.`);
         process.exit(0);
-      } else {
-        console.log(`[Pre-check] Row ${rowId} has no existing website — proceeding with build.`);
       }
     } catch (e) {
-      console.warn('[Pre-check] Could not read website column, proceeding with build.', e.message);
+      console.warn('[Pre-check] Could not read row details, proceeding with build.', e.message);
     }
   }
 
@@ -111,6 +121,19 @@ async function main() {
   try {
     // Step 1: Research
     const researchData = await researchBusiness(mapsUrl, rowId, sheetName);
+
+    // ── Mobile Phone Guard ──
+    // If business has no valid mobile phone listed on Google Maps / sheet, abort immediately.
+    const finalPhone = researchData.phone || '';
+    const phoneCheck = normalizePhoneNumber(finalPhone);
+    if (!phoneCheck.valid) {
+      console.log(`[Phone Guard] Business "${researchData.title}" has no valid mobile phone listed (${finalPhone || 'EMPTY'} - ${phoneCheck.reason}).`);
+      console.log(`[Phone Guard] Cannot contact via WhatsApp. Aborting build to save compute.`);
+      if (rowId) {
+        await reportBackToSheet(`SKIPPED: ${phoneCheck.reason}`, sheetName, rowId, 0, isSheet1);
+      }
+      process.exit(0);
+    }
 
     // Step 2: Copywriting
     let copyData = await generateCopy(researchData);

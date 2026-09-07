@@ -1,47 +1,6 @@
-const { composioExecute, withTimeout } = require('./utils');
+const { composioExecute, withTimeout, normalizePhoneNumber } = require('./utils');
 
 const SPREADSHEET_ID = '1fWDfzFew_vKfKErtoBzahlyDbG_NMvcZDpXPSDaMJ9k';
-
-/**
- * Normalizes phone numbers to standard international format (E.164 without leading plus for some APIs, or with +).
- * Returns { valid: boolean, formatted: string, isLandline: boolean, reason?: string }
- */
-function normalizePhoneNumber(rawPhone) {
-  if (!rawPhone || typeof rawPhone !== 'string') {
-    return { valid: false, formatted: '', isLandline: false, reason: 'No phone number provided' };
-  }
-
-  // Remove whitespace, dashes, parens, dots
-  let cleaned = rawPhone.replace(/[\s\-\(\)\.]/g, '').trim();
-
-  // If starts with +, strip + temporarily for numeric checks
-  const hasPlus = cleaned.startsWith('+');
-  let digits = cleaned.replace(/\D/g, '');
-
-  // Detect Indian landline area codes (e.g. 0172 for Chandigarh / Panchkula / Mohali)
-  // Landlines typically start with 01.. or +911.. and are not 10-digit mobile (which start with 6, 7, 8, 9)
-  if (digits.startsWith('91172') || digits.startsWith('0172') || (digits.startsWith('172') && digits.length <= 10)) {
-    return { valid: false, formatted: cleaned, isLandline: true, reason: 'Landline number detected (not a mobile number)' };
-  }
-
-  // If 10 digits starting with 6, 7, 8, 9 -> standard Indian mobile
-  if (digits.length === 10 && /^[6-9]/.test(digits)) {
-    digits = `91${digits}`;
-  } else if (digits.length === 11 && digits.startsWith('0') && /^[6-9]/.test(digits.substring(1))) {
-    digits = `91${digits.substring(1)}`;
-  } else if (digits.length === 12 && digits.startsWith('91') && /^[6-9]/.test(digits.substring(2))) {
-    // Already in 91XXXXXXXXXX format
-  } else if (digits.length < 10) {
-    return { valid: false, formatted: cleaned, isLandline: false, reason: 'Phone number has insufficient digits' };
-  }
-
-  return {
-    valid: true,
-    formatted: `+${digits}`,
-    digitsOnly: digits,
-    isLandline: false
-  };
-}
 
 /**
  * Builds high-converting personalized pitch copy for WhatsApp.
