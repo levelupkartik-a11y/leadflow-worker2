@@ -76,18 +76,28 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Jain Eye Centre",
-  "category": [
-    "Eye care center"
-  ],
+  "name": "Sourabh Electrician",
+  "category": "Store",
   "description": "",
-  "address": "SCO 50,51, Sector 17A, Sector 17, Chandigarh, Punjab 160017, India",
-  "phone": "+91 172 256 5629",
-  "hours": "tuesday: 11 AM–2 PM, wednesday: 11 AM–2 PM, thursday: 11 AM–2 PM, friday: 11 AM–2 PM, saturday: 11 AM–2 PM, sunday: Closed, monday: 11 AM–2 PM",
+  "address": "",
+  "phone": "+91 78884 74685",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Eye Examination",
-      "description": "We provide thorough eye examinations to detect any eye problems or diseases"
+      "name": "Electrical Repairs",
+      "description": "Solving common electrical issues safely and efficiently."
+    },
+    {
+      "name": "Installations",
+      "description": "Professional installation of new electrical components and systems."
+    },
+    {
+      "name": "Maintenance",
+      "description": "Routine checks and upkeep to ensure electrical safety."
+    },
+    {
+      "name": "24/7 Emergency Service",
+      "description": "Available round the clock for urgent electrical problems."
     }
   ]
 };
