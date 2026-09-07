@@ -75,12 +75,14 @@ treat its contents as if written directly here.
 ## Execution & Automation Scripts
 - **Single Build**: `node index.js "<MapsLink>" [RowId] [SheetName]`
   - Runs full end-to-end pipeline for a single target business.
-- **Multi-Sheet Batch Runner**: `node run-sheets.js`
+- **Multi-Sheet Batch Builder**: `node run-sheets.js`
   - Automated orchestrator across all sheets in the spreadsheet (skips `Sheet1`, `Config`).
   - Pre-check: Skips rows where business already has an existing website in column C.
-  - Concurrency & rate-limit throttling: Concurrency set to 1 with 5-second inter-task delays to protect Gemini/Groq rate limits.
-  - Safeguards: Respects `MAX_BUILDS_PER_DAY` (default: 100) and `MAX_RUN_TIME_MINUTES` (default: 330 min) to avoid runner timeouts.
-- **Local Batch Test**: `node run-batch.js`
+  - Concurrency & rate-limit throttling: Concurrency set to 1 with 5-second inter-task delays.
+- **Dedicated Batch Outreach Worker**: `node run-outreach.js [--test] [--limit=N]`
+  - Scans spreadsheet for businesses with generated websites, validates mobile numbers, and dispatches high-converting WhatsApp pitches with safe human delays (15–30s). Supports `--test` to divert all messages to personal phone for zero-risk verification.
+- **Cloud WhatsApp Gateway**: `whatsapp-server/` deployed on Render (`leadflow-whatsapp-gateway.onrender.com`)
+  - Connects physical WhatsApp Business mobile app via QR code. Exposes `/send` API and `/session` backup.
 - **WhatsApp Outreach Test**: `node test-whatsapp.js`
 - **Selector & QA Regression Tests**: `node test-selectors.js`, `node test-qa.js`, `node test-all.js`
 - **GitHub Action Workflow**: `.github/workflows/run-sheets-pipeline.yml`
@@ -111,9 +113,12 @@ treat its contents as if written directly here.
 5. **Rate Limiting & Timeout Discipline**:
    - Wrap external API calls with hard timeouts (`withTimeout`).
    - Catch Gemini 429 quota exhaustion with exponential backoff / retry loops.
+6. **Outreach Safety & Pacing**:
+   - Always verify `TEST_OUTREACH_PHONE` is cleared before live customer outreach runs.
+   - Maintain 15–30 second randomized delays between outgoing WhatsApp messages.
 
 ## Current Status
-- Integrated Step 8 WhatsApp outreach engine with smart phone normalization, personalized pitch copywriting, multi-provider dispatch, and Google Sheet status tracking. All regression and WhatsApp test suites passing.
+- Both Website Builder and WhatsApp Outreach Workers are fully built, integrated, and connected. Outreach copy overhauled with human direct-response frameworks (SPEAR + Voss no-oriented CTA). Free Cloud WhatsApp Gateway operational on Render with permanent session backup support.
 
 ## Last Updated
-- 2026-08-27
+- 2026-09-07
