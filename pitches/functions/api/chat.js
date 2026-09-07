@@ -76,28 +76,28 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "CHILDREN CLINIC DR.JITENDER . CARE4U",
-  "category": [
-    "Pediatrician",
-    "General practitioner",
-    "Surgeon"
-  ],
+  "name": "Cravers",
+  "category": "Bakery",
   "description": "",
-  "address": "Kothi no.1923, opposite Anil chemist, Sector 22B, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 98148 15947",
-  "hours": "",
+  "address": "1630, Sector 22B, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 98037 37999",
+  "hours": "friday: 9 AM–5 PM, monday: 9 AM–5 PM, saturday: 9 AM–5 PM, sunday: 9 AM–5 PM, thursday: 9 AM–5 PM, tuesday: 9 AM–5 PM, wednesday: 9 AM–5 PM",
   "services": [
     {
-      "name": "Pediatrician",
-      "description": "Specialized care for infants, children, and adolescents. We focus on their growth and well-being."
+      "name": "Cakes",
+      "description": "Freshly baked cakes for all occasions."
     },
     {
-      "name": "General practitioner",
-      "description": "Primary healthcare for adults and families. We manage common illnesses and provide preventative care."
+      "name": "Pastries",
+      "description": "Delicious pastries, perfect for a sweet treat."
     },
     {
-      "name": "Surgeon",
-      "description": "Experienced surgical services available. We offer consultations and procedures as needed."
+      "name": "Breads",
+      "description": "Artisan breads, baked fresh every day."
+    },
+    {
+      "name": "Cookies",
+      "description": "Hand-baked cookies in a variety of flavors."
     }
   ]
 };
