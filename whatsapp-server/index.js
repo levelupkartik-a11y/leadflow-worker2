@@ -24,10 +24,23 @@ let currentQR = null;
 let connectionState = 'disconnected'; // 'disconnected' | 'connecting' | 'connected'
 let connectedUser = null;
 
+process.on('uncaughtException', (err) => {
+  console.error('[WhatsApp Gateway] Uncaught exception (recovered):', err.message);
+});
+process.on('unhandledRejection', (reason) => {
+  console.error('[WhatsApp Gateway] Unhandled rejection (recovered):', reason?.message || reason);
+});
+
 async function startWhatsApp() {
   try {
     if (!fs.existsSync(AUTH_DIR)) {
       fs.mkdirSync(AUTH_DIR, { recursive: true });
+    }
+
+    if (sock) {
+      try {
+        sock.ev.removeAllListeners();
+      } catch (e) {}
     }
 
     const { state, saveCreds } = await useMultiFileAuthState(AUTH_DIR);
@@ -60,20 +73,10 @@ async function startWhatsApp() {
 
       if (connection === 'close') {
         const statusCode = lastDisconnect?.error?.output?.statusCode;
-        const shouldReconnect = statusCode !== DisconnectReason.loggedOut;
+        const errMessage = lastDisconnect?.error?.message || 'unknown error';
         connectionState = 'disconnected';
-        connectedUser = null;
-        console.log(`[WhatsApp Gateway] Connection closed (${statusCode}). Reconnecting: ${shouldReconnect}`);
-
-        if (shouldReconnect) {
-          setTimeout(startWhatsApp, 3000);
-        } else {
-          console.log('[WhatsApp Gateway] Device logged out. Clearing credentials to generate fresh QR...');
-          try {
-            fs.rmSync(AUTH_DIR, { recursive: true, force: true });
-          } catch (e) {}
-          setTimeout(startWhatsApp, 2000);
-        }
+        console.log(`[WhatsApp Gateway] Connection closed (${statusCode}: ${errMessage}). Reconnecting in 3s...`);
+        setTimeout(startWhatsApp, 3000);
       } else if (connection === 'open') {
         connectionState = 'connected';
         currentQR = null;
@@ -198,7 +201,14 @@ app.post('/send', async (req, res) => {
   }
 
   if (connectionState !== 'connected' || !sock) {
-    return res.status(503).json({ success: false, error: 'WhatsApp is not connected. Visit / to scan QR code.' });
+    let waited = 0;
+    while (connectionState !== 'connected' && waited < 10000) {
+      await new Promise(r => setTimeout(r, 500));
+      waited += 500;
+    }
+    if (connectionState !== 'connected' || !sock) {
+      return res.status(503).json({ success: false, error: 'WhatsApp is not connected. Visit / to scan QR code.' });
+    }
   }
 
   const { to, message } = req.body;
