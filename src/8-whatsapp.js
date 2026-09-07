@@ -45,8 +45,8 @@ function normalizePhoneNumber(rawPhone) {
 
 /**
  * Builds high-converting personalized pitch copy for WhatsApp.
- * Uses Dean Jackson SPEAR framework (Short, Personal, Expecting A Reply)
- * and Chris Voss No-Oriented CTA for maximum reply rates.
+ * Optimized for Indian local business owners: simple, everyday English,
+ * zero corporate buzzwords or AI jargon, friendly, direct, and conversational.
  */
 function buildWhatsAppPitch(businessName, targetUrl, rating = '', category = '', pitchType = 'website', sheetName = '') {
   // Clean the business name (strip branch suffixes, city names, pipes)
@@ -56,29 +56,29 @@ function buildWhatsAppPitch(businessName, targetUrl, rating = '', category = '',
 
   const cleanCategory = category ? category.toLowerCase().replace(/[^a-zA-Z0-9\s&]/g, '').trim() : 'services';
   const areaPhrase = sheetName && sheetName !== 'Config' ? ` in ${sheetName}` : '';
-  const ratingPhrase = (rating && parseFloat(rating) >= 4.0) ? ` Loved the ${rating}★ reviews.` : '';
+  const ratingPhrase = (rating && parseFloat(rating) >= 4.0) ? ` Really liked your ${rating}★ reviews!` : '';
 
   if (pitchType === 'ads') {
     // ─────────────── PITCH FOR BUSINESSES WITH AN EXISTING WEBSITE ───────────────
-    return `Hey ${cleanName} team, checked out your site (${targetUrl}) after seeing your Google Maps profile${areaPhrase} — really solid setup.
+    return `Hi ${cleanName} team, saw your business on Google Maps${areaPhrase} and checked out your website (${targetUrl}). Looks great!
 
-Quick observation: looks like you're missing out on 20-30+ direct customer inquiries every month from people searching for ${cleanCategory} in your area on Instagram and Google.
+You already have good ratings, but you can easily get 20 to 30 more customer calls and bookings every month through targeted Instagram and Google ads.
 
-I put together 2 quick growth ideas to help you capture those leads (strictly performance-based, zero monthly retainer lock-ins).
+We help local businesses${areaPhrase} get more direct customer inquiries without any fixed long-term contracts.
 
-Mind if I send over a quick 2-minute breakdown, or is your schedule completely full right now?`;
+Should I send you a quick 2-minute plan on how this works for ${cleanName}?`;
   }
 
   // ─────────────── PITCH FOR BUSINESSES WITHOUT A WEBSITE ───────────────
-  return `Hey ${cleanName} team, came across your place on Google Maps${areaPhrase}.${ratingPhrase}
+  return `Hi ${cleanName} team, saw your business on Google Maps${areaPhrase}.${ratingPhrase}
 
-Noticed you guys don't have a direct website linked on your Maps profile, so I took a few minutes and put together a fast mobile preview for you to check out:
+Noticed you don't have an official website listed on your Google profile, so I made a quick demo website for you to see on your phone:
 
 ${targetUrl}
 
-Built it with your real photos, reviews, and a 1-tap WhatsApp booking button so people searching for ${cleanCategory} don't bounce to competitors.
+It has your photos, customer reviews, and a direct WhatsApp button so customers can message you easily to book.
 
-Worth a 2-min look, or do you already have someone handling your web stuff?`;
+Check it out once when you are free. If you like it or want to make any changes, let me know!`;
 }
 
 /**
