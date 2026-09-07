@@ -76,28 +76,19 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sourabh Electrician",
-  "category": "Store",
+  "name": "Avtar Singh Key Maker | Zirakpur Key Maker",
+  "category": [
+    "Key duplication service",
+    "Service establishment"
+  ],
   "description": "",
   "address": "",
-  "phone": "+91 78884 74685",
-  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "phone": "+91 98781 43038",
+  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
   "services": [
     {
-      "name": "Electrical Repairs",
-      "description": "Solving common electrical issues safely and efficiently."
-    },
-    {
-      "name": "Installations",
-      "description": "Professional installation of new electrical components and systems."
-    },
-    {
-      "name": "Maintenance",
-      "description": "Routine checks and upkeep to ensure electrical safety."
-    },
-    {
-      "name": "24/7 Emergency Service",
-      "description": "Available round the clock for urgent electrical problems."
+      "name": "Key Duplication Service",
+      "description": "We offer professional and efficient key duplication for various needs. Get spare keys made quickly and reliably."
     }
   ]
 };
