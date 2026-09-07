@@ -126,6 +126,41 @@ async function sendWhatsAppPitch(phone, businessName, targetUrl, rating = '', ca
     try {
       console.log('[Step 8] Sending via Meta WhatsApp Cloud API...');
       const graphUrl = `https://graph.facebook.com/v20.0/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`;
+      
+      const cleanName = businessName 
+        ? businessName.split('-')[0].split('|')[0].split(',')[0].trim() 
+        : 'there';
+
+      const templateName = (pitchType === 'ads') 
+        ? (process.env.WHATSAPP_ADS_TEMPLATE || 'leadflow_ads_pitch')
+        : (process.env.WHATSAPP_WEBSITE_TEMPLATE || 'leadflow_website_pitch');
+
+      const useTemplate = process.env.WHATSAPP_USE_TEXT !== 'true';
+
+      const requestBody = useTemplate ? {
+        messaging_product: 'whatsapp',
+        to: phoneInfo.digitsOnly,
+        type: 'template',
+        template: {
+          name: templateName,
+          language: { code: process.env.WHATSAPP_TEMPLATE_LANG || 'en_US' },
+          components: [
+            {
+              type: 'body',
+              parameters: [
+                { type: 'text', text: cleanName },
+                { type: 'text', text: targetUrl || 'https://leadfirstai.com' }
+              ]
+            }
+          ]
+        }
+      } : {
+        messaging_product: 'whatsapp',
+        to: phoneInfo.digitsOnly,
+        type: 'text',
+        text: { body: messageText }
+      };
+
       const res = await withTimeout(
         fetch(graphUrl, {
           method: 'POST',
@@ -133,12 +168,7 @@ async function sendWhatsAppPitch(phone, businessName, targetUrl, rating = '', ca
             'Authorization': `Bearer ${process.env.WHATSAPP_ACCESS_TOKEN}`,
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({
-            messaging_product: 'whatsapp',
-            to: phoneInfo.digitsOnly,
-            type: 'text',
-            text: { body: messageText }
-          })
+          body: JSON.stringify(requestBody)
         }),
         30000,
         'Meta WhatsApp API'
