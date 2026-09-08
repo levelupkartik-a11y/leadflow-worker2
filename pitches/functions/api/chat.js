@@ -76,25 +76,26 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sourabh Electrician",
+  "name": "Advocate Amit Gupta",
   "category": [
-    "Store",
-    "Electrical engineer",
-    "Service establishment",
-    "Water purification company"
+    "Marriage or relationship counselor"
   ],
   "description": "",
-  "address": "",
-  "phone": "+91 78884 74685",
+  "address": "Booth No. 2459C, Himalaya Marg, Sector 22C, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 78887 00485",
   "hours": "tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, monday: Open 24 hours",
   "services": [
     {
-      "name": "Electrical Engineering Services",
-      "description": "Expert support for all your electrical needs. This includes repairs, installations, and regular maintenance for homes and businesses."
+      "name": "Marriage Counseling",
+      "description": "Address conflicts and improve communication within your marriage."
     },
     {
-      "name": "Water Purification Solutions",
-      "description": "Installation and servicing of water purification systems. We ensure clean and safe water for your property."
+      "name": "Relationship Guidance",
+      "description": "Receive supportive guidance for navigating life's complexities together."
+    },
+    {
+      "name": "Conflict Resolution",
+      "description": "Learn effective strategies for peaceful and productive disagreements."
     }
   ]
 };
