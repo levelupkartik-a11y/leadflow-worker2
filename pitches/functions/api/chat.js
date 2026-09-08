@@ -76,26 +76,28 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Advocate Amit Gupta",
-  "category": [
-    "Marriage or relationship counselor"
-  ],
+  "name": "Sourabh Electrician",
+  "category": "Store",
   "description": "",
-  "address": "Booth No. 2459C, Himalaya Marg, Sector 22C, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 78887 00485",
-  "hours": "tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, monday: Open 24 hours",
+  "address": "",
+  "phone": "+91 78884 74685",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Marriage Counseling",
-      "description": "Address conflicts and improve communication within your marriage."
+      "name": "Electrical Repairs",
+      "description": "Address common electrical issues and faults efficiently."
     },
     {
-      "name": "Relationship Guidance",
-      "description": "Receive supportive guidance for navigating life's complexities together."
+      "name": "New Installations",
+      "description": "Handle new electrical setups, fixtures, and appliance wiring."
     },
     {
-      "name": "Conflict Resolution",
-      "description": "Learn effective strategies for peaceful and productive disagreements."
+      "name": "Wiring Solutions",
+      "description": "Expert services for new wiring and complete rewiring projects."
+    },
+    {
+      "name": "Emergency Service",
+      "description": "Available around the clock for urgent electrical problems."
     }
   ]
 };
