@@ -76,28 +76,32 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Cravers",
-  "category": "Bakery",
+  "name": "Sourabh Electrician",
+  "category": "Store",
   "description": "",
-  "address": "1630, Sector 22B, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 98037 37999",
-  "hours": "friday: 9 AM–5 PM, monday: 9 AM–5 PM, saturday: 9 AM–5 PM, sunday: 9 AM–5 PM, thursday: 9 AM–5 PM, tuesday: 9 AM–5 PM, wednesday: 9 AM–5 PM",
+  "address": "",
+  "phone": "+91 78884 74685",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Cakes",
-      "description": "Freshly baked cakes for all occasions."
+      "name": "Electrical Repairs",
+      "description": "Prompt repair of all electrical faults and issues."
     },
     {
-      "name": "Pastries",
-      "description": "Delicious pastries, perfect for a sweet treat."
+      "name": "New Installations",
+      "description": "Safe and efficient installation of new electrical systems."
     },
     {
-      "name": "Breads",
-      "description": "Artisan breads, baked fresh every day."
+      "name": "Wiring Solutions",
+      "description": "Professional wiring for homes and businesses."
     },
     {
-      "name": "Cookies",
-      "description": "Hand-baked cookies in a variety of flavors."
+      "name": "Troubleshooting",
+      "description": "Expert diagnosis and resolution of complex problems."
+    },
+    {
+      "name": "Emergency Services",
+      "description": "24/7 support for urgent electrical needs."
     }
   ]
 };
