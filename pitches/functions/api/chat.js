@@ -76,28 +76,28 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "CHILDREN CLINIC DR.JITENDER . CARE4U",
-  "category": [
-    "Pediatrician",
-    "General practitioner",
-    "Surgeon"
-  ],
+  "name": "Sourabh Electrician",
+  "category": "Store",
   "description": "",
-  "address": "Kothi no.1923, opposite Anil chemist, Sector 22B, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 98148 15947",
-  "hours": "",
+  "address": "",
+  "phone": "+91 78884 74685",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Pediatric Care",
-      "description": "Specialized medical attention for infants, children, and adolescents."
+      "name": "General Electrical Repairs",
+      "description": "Troubleshooting and fixing various electrical issues."
     },
     {
-      "name": "General Practice",
-      "description": "Comprehensive health services for individuals of all ages."
+      "name": "Wiring and Installation",
+      "description": "New wiring installations and fixture setups."
     },
     {
-      "name": "Surgical Consultations",
-      "description": "Expert advice and initial assessments for surgical needs."
+      "name": "Emergency Service",
+      "description": "Immediate help for urgent electrical problems."
+    },
+    {
+      "name": "Maintenance Checks",
+      "description": "Routine inspections to ensure system safety."
     }
   ]
 };
