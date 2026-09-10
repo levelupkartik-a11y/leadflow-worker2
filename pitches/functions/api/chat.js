@@ -76,28 +76,32 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "CHILDREN CLINIC DR.JITENDER . CARE4U",
-  "category": [
-    "Pediatrician",
-    "General practitioner",
-    "Surgeon"
-  ],
+  "name": "Sourabh Electrician",
+  "category": "Store",
   "description": "",
-  "address": "Kothi no.1923, opposite Anil chemist, Sector 22B, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 98148 15947",
-  "hours": "",
+  "address": "",
+  "phone": "+91 78884 74685",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Pediatric Care",
-      "description": "Specialized medical attention for infants, children, and adolescents."
+      "name": "Electrical Repairs",
+      "description": "Expert repairs for various electrical issues."
     },
     {
-      "name": "General Practice",
-      "description": "Comprehensive healthcare services for adults and the entire family."
+      "name": "New Installations",
+      "description": "Safe and correct installation of electrical fixtures."
     },
     {
-      "name": "Surgical Consultations",
-      "description": "Expert advice and initial assessments for various surgical needs."
+      "name": "Wiring Solutions",
+      "description": "Professional wiring and rewiring services."
+    },
+    {
+      "name": "Troubleshooting",
+      "description": "Diagnosing and resolving electrical problems efficiently."
+    },
+    {
+      "name": "General Maintenance",
+      "description": "Keeping your electrical systems running smoothly."
     }
   ]
 };
