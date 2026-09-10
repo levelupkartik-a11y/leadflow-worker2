@@ -76,19 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Avtar Singh Key Maker | Zirakpur Key Maker",
-  "category": [
-    "Key duplication service",
-    "Service establishment"
-  ],
+  "name": "Avin Properties",
+  "category": "Industrial real estate agency",
   "description": "",
   "address": "",
-  "phone": "+91 98781 43038",
-  "hours": "thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "phone": "+91 98151 25155",
+  "hours": "friday: 10 AM–8 PM, monday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: 10 AM–6 PM, thursday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM",
   "services": [
     {
-      "name": "Key Duplication",
-      "description": "We provide professional key duplication services for various key types. Our service is available 24 hours a day, seven days a week. Visit us for prompt and accurate key copies."
+      "name": "Industrial Property Sales",
+      "description": "We help businesses buy industrial land and buildings."
+    },
+    {
+      "name": "Industrial Property Leasing",
+      "description": "Find the right industrial space for lease."
+    },
+    {
+      "name": "Property Consultation",
+      "description": "Get expert advice on your industrial real estate needs."
     }
   ]
 };
