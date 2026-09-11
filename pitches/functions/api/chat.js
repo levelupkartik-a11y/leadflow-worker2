@@ -76,23 +76,26 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "S. S. Jain & Co.",
+  "name": "Mohd Uzair Advocate (law Office of Uzair)",
   "category": [
-    "Tax attorney",
-    "Tax consultant"
+    "Attorney"
   ],
   "description": "",
-  "address": "#720, Sector 22-A, Chandigarh 160022, India",
-  "phone": "+91 87600 00720",
-  "hours": "friday: 10 AM–6 PM, saturday: 10 AM–6 PM, sunday: Closed, monday: 10 AM–6 PM, tuesday: 10 AM–6 PM, wednesday: 10 AM–6 PM, thursday: 10 AM–6 PM",
+  "address": "1469, Sector 22B, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 79867 19325",
+  "hours": "friday: 9 AM–9 PM, saturday: 9 AM–9 PM, sunday: 9 AM–9 PM, monday: 9 AM–9 PM, tuesday: 9 AM–9 PM, wednesday: 9 AM–9 PM, thursday: 9 AM–9 PM",
   "services": [
     {
-      "name": "Tax Consulting",
-      "description": "Receive expert advice for tax planning and compliance. We simplify complex regulations for clarity."
+      "name": "Legal Consultation",
+      "description": "Receive expert advice for your legal questions and concerns. We offer clear guidance."
     },
     {
-      "name": "Tax Attorney Services",
-      "description": "Get legal representation and guidance for all tax-related matters. Protect your interests effectively."
+      "name": "Legal Representation",
+      "description": "Professional representation for various legal matters. We advocate for our clients' best interests."
+    },
+    {
+      "name": "Legal Document Review",
+      "description": "Careful review of legal documents to ensure accuracy and compliance. Get peace of mind."
     }
   ]
 };
