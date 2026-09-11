@@ -76,24 +76,23 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Avin Properties",
-  "category": "Industrial real estate agency",
+  "name": "S. S. Jain & Co.",
+  "category": [
+    "Tax attorney",
+    "Tax consultant"
+  ],
   "description": "",
-  "address": "",
-  "phone": "+91 98151 25155",
-  "hours": "friday: 10 AM–8 PM, monday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: 10 AM–6 PM, thursday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM",
+  "address": "#720, Sector 22-A, Chandigarh 160022, India",
+  "phone": "+91 87600 00720",
+  "hours": "friday: 10 AM–6 PM, saturday: 10 AM–6 PM, sunday: Closed, monday: 10 AM–6 PM, tuesday: 10 AM–6 PM, wednesday: 10 AM–6 PM, thursday: 10 AM–6 PM",
   "services": [
     {
-      "name": "Industrial Property Acquisition",
-      "description": "We help businesses find and acquire industrial properties. This includes warehouses and manufacturing sites."
+      "name": "Tax Consulting",
+      "description": "Receive expert advice for tax planning and compliance. We simplify complex regulations for clarity."
     },
     {
-      "name": "Industrial Property Sales",
-      "description": "We assist clients in selling their industrial real estate. We aim for efficient and fair transactions."
-    },
-    {
-      "name": "Lease & Rental Services",
-      "description": "We facilitate leasing and rental agreements. Find the right industrial space for your operations."
+      "name": "Tax Attorney Services",
+      "description": "Get legal representation and guidance for all tax-related matters. Protect your interests effectively."
     }
   ]
 };
