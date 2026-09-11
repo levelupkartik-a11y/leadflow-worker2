@@ -84,20 +84,16 @@ export async function onRequestPost(context) {
   "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "General Electrical Repairs",
-      "description": "Troubleshooting and fixing various electrical issues."
+      "name": "Electrical Repairs",
+      "description": "Fixing common electrical issues and faults quickly."
     },
     {
-      "name": "Wiring and Installation",
-      "description": "New wiring installations and fixture setups."
+      "name": "Wiring Solutions",
+      "description": "Installation and maintenance of electrical wiring systems."
     },
     {
       "name": "Emergency Service",
-      "description": "Immediate help for urgent electrical problems."
-    },
-    {
-      "name": "Maintenance Checks",
-      "description": "Routine inspections to ensure system safety."
+      "description": "Available 24 hours for urgent electrical needs."
     }
   ]
 };
