@@ -76,26 +76,28 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Mohd Uzair Advocate (law Office of Uzair)",
-  "category": [
-    "Attorney"
-  ],
+  "name": "Sourabh Electrician",
+  "category": "Store",
   "description": "",
-  "address": "1469, Sector 22B, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 79867 19325",
-  "hours": "friday: 9 AM–9 PM, saturday: 9 AM–9 PM, sunday: 9 AM–9 PM, monday: 9 AM–9 PM, tuesday: 9 AM–9 PM, wednesday: 9 AM–9 PM, thursday: 9 AM–9 PM",
+  "address": "",
+  "phone": "+91 78884 74685",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Legal Consultation",
-      "description": "Receive expert advice for your legal questions and concerns. We offer clear guidance."
+      "name": "Electrical Repairs",
+      "description": "We fix common electrical issues. Our team handles various residential and commercial repairs."
     },
     {
-      "name": "Legal Representation",
-      "description": "Professional representation for various legal matters. We advocate for our clients' best interests."
+      "name": "Wiring and Installations",
+      "description": "Expert wiring for new setups or upgrades. We install light fixtures, fans, and outlets safely."
     },
     {
-      "name": "Legal Document Review",
-      "description": "Careful review of legal documents to ensure accuracy and compliance. Get peace of mind."
+      "name": "Emergency Services",
+      "description": "Electrical problems can happen anytime. Our 24-hour service ensures prompt assistance when you need it most."
+    },
+    {
+      "name": "Safety Inspections",
+      "description": "We offer inspections to ensure your electrical systems are safe. Prevent future issues with professional checks."
     }
   ]
 };
