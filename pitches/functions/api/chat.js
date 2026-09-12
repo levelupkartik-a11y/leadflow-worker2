@@ -76,33 +76,19 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sourabh Electrician",
+  "name": "Avtar Singh Key Maker | Zirakpur Key Maker",
   "category": [
-    "Store",
-    "Electrical engineer",
-    "Service establishment",
-    "Water purification company"
+    "Key duplication service",
+    "Service establishment"
   ],
   "description": "",
   "address": "",
-  "phone": "+91 78884 74685",
+  "phone": "+91 98781 43038",
   "hours": "saturday: Open 24 hours, sunday: Open 24 hours, monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours",
   "services": [
     {
-      "name": "Electrical Engineering Services",
-      "description": "Expert solutions for complex electrical systems and designs."
-    },
-    {
-      "name": "General Electrical Services",
-      "description": "Comprehensive electrical work for homes and businesses."
-    },
-    {
-      "name": "Water Purification Services",
-      "description": "Installation and maintenance of water purification systems."
-    },
-    {
-      "name": "24/7 Emergency Support",
-      "description": "Reliable electrical assistance available around the clock, every day."
+      "name": "Key Duplication Service",
+      "description": "We specialize in professional key duplication. Get spare keys made for home, office, or other uses. Our service ensures precise copies every time."
     }
   ]
 };
