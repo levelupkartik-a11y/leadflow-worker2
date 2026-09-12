@@ -12,17 +12,27 @@ function sleep(ms) {
 async function main() {
   const args = process.argv.slice(2);
   const isTestFlag = args.includes('--test');
+  const isLiveFlag = args.includes('--live');
   const limitArg = args.find(a => a.startsWith('--limit='));
-  const maxLimit = limitArg ? parseInt(limitArg.split('=')[1], 10) : (process.env.MAX_OUTREACH_PER_RUN ? parseInt(process.env.MAX_OUTREACH_PER_RUN, 10) : 10);
+  const maxLimit = limitArg ? parseInt(limitArg.split('=')[1], 10) : (process.env.MAX_OUTREACH_PER_RUN ? parseInt(process.env.MAX_OUTREACH_PER_RUN, 10) : 5);
 
-  // If --test flag or TEST_OUTREACH_PHONE is set in env
-  const testPhone = isTestFlag ? (process.env.TEST_OUTREACH_PHONE || '8264922342') : process.env.TEST_OUTREACH_PHONE;
-  if (testPhone) {
-    process.env.TEST_OUTREACH_PHONE = testPhone;
+  // If --live is explicitly requested, clear TEST_OUTREACH_PHONE
+  if (isLiveFlag) {
+    delete process.env.TEST_OUTREACH_PHONE;
     console.log(`\n======================================================`);
-    console.log(`🛡️ SAFE TEST MODE ACTIVE: All pitches divert to ${testPhone}`);
-    console.log(`   (No actual leads will be messaged during this run)`);
+    console.log(`🚀 LIVE OUTREACH ACTIVE: Messages will be dispatched to actual leads!`);
+    console.log(`   Daily Cap: ${maxLimit} messages`);
     console.log(`======================================================\n`);
+  } else {
+    // Test mode safeguard: if --test flag or TEST_OUTREACH_PHONE is set in env
+    const testPhone = isTestFlag ? (process.env.TEST_OUTREACH_PHONE || '8264922342') : process.env.TEST_OUTREACH_PHONE;
+    if (testPhone) {
+      process.env.TEST_OUTREACH_PHONE = testPhone;
+      console.log(`\n======================================================`);
+      console.log(`🛡️ SAFE TEST MODE ACTIVE: All pitches divert to ${testPhone}`);
+      console.log(`   (No actual leads will be messaged during this run)`);
+      console.log(`======================================================\n`);
+    }
   }
 
   console.log('[Outreach Worker] Fetching all sheet names...');

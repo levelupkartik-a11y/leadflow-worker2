@@ -35,5 +35,6 @@ jobs:
           REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
           MAX_RUN_TIME_MINUTES: 300
           MAX_BUILDS_PER_DAY: 100
+          DISABLE_WHATSAPP: 'true'
         run: |
           node run-sheets.js

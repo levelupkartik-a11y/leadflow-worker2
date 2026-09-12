@@ -1,0 +1,43 @@
+name: Daily WhatsApp Outreach Worker
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Maximum number of messages to dispatch'
+        required: false
+        default: '5'
+      live_mode:
+        description: 'Send to real leads (true) or test phone (false)'
+        required: false
+        default: 'false'
+  schedule:
+    # Runs daily at 05:30 UTC (11:00 AM IST)
+    - cron: '30 5 * * *'
+
+jobs:
+  outreach:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run WhatsApp Outreach Worker
+        env:
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+          WHATSAPP_API_URL: ${{ secrets.WHATSAPP_API_URL }}
+          WHATSAPP_TOKEN: ${{ secrets.WHATSAPP_TOKEN }}
+          WHATSAPP_PHONE_NUMBER_ID: ${{ secrets.WHATSAPP_PHONE_NUMBER_ID }}
+          WHATSAPP_ACCESS_TOKEN: ${{ secrets.WHATSAPP_ACCESS_TOKEN }}
+          MAX_OUTREACH_PER_RUN: ${{ github.event.inputs.limit || '5' }}
+          TEST_OUTREACH_PHONE: ${{ (github.event.inputs.live_mode == 'true') && '' || '8264922342' }}
+        run: |
+          node run-outreach.js --limit=${{ github.event.inputs.limit || '5' }}
