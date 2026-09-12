@@ -76,28 +76,23 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "CHILDREN CLINIC DR.JITENDER . CARE4U",
+  "name": "Empire Stores",
   "category": [
-    "Pediatrician",
-    "General practitioner",
-    "Surgeon"
+    "Department store",
+    "Supermarket"
   ],
   "description": "",
-  "address": "Kothi no.1923, opposite Anil chemist, Sector 22B, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 98148 15947",
-  "hours": "",
+  "address": "SCO 10, Shopping Plaza, 17E, Sector 17, Chandigarh, 160017, India",
+  "phone": "+91 76960 51483",
+  "hours": "saturday: 10:30 AM–8:30 PM, sunday: 3:30–8:30 PM, monday: 10:30 AM–8:30 PM, tuesday: 10:30 AM–8:30 PM, wednesday: 10:30 AM–8:30 PM, thursday: 10:30 AM–8:30 PM, friday: 10:30 AM–8:30 PM",
   "services": [
     {
-      "name": "Pediatric Care",
-      "description": "Health services for infants, children, and adolescents. We focus on their well-being and development."
+      "name": "Department Store",
+      "description": "Discover a diverse selection of general merchandise for your home and lifestyle. We stock items for various needs."
     },
     {
-      "name": "General Practitioner Services",
-      "description": "Medical consultations and primary care for patients of all ages. Your family's health is our priority."
-    },
-    {
-      "name": "Surgical Consultations",
-      "description": "Expert advice and assessment for various surgical needs. We guide you through important medical decisions."
+      "name": "Supermarket",
+      "description": "Shop for all your daily groceries and household essentials. Find fresh items and pantry staples here."
     }
   ]
 };
