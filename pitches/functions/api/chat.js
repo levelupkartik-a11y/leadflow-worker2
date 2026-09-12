@@ -84,20 +84,24 @@ export async function onRequestPost(context) {
   "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Electrical Repairs",
-      "description": "We fix common electrical issues. Our team handles various residential and commercial repairs."
+      "name": "Emergency Repairs",
+      "description": "Urgent electrical issue? We offer 24-hour rapid response. Get your power restored safely and quickly."
     },
     {
-      "name": "Wiring and Installations",
-      "description": "Expert wiring for new setups or upgrades. We install light fixtures, fans, and outlets safely."
+      "name": "Electrical Wiring",
+      "description": "From new installations to repairs, we handle all wiring needs. Ensure your property's electrical system is safe."
     },
     {
-      "name": "Emergency Services",
-      "description": "Electrical problems can happen anytime. Our 24-hour service ensures prompt assistance when you need it most."
+      "name": "Fixture Installation",
+      "description": "We install lights, fans, and other electrical fixtures. Enhance your space with professional installation."
     },
     {
-      "name": "Safety Inspections",
-      "description": "We offer inspections to ensure your electrical systems are safe. Prevent future issues with professional checks."
+      "name": "Troubleshooting & Diagnostics",
+      "description": "Experiencing electrical problems? We find and fix faults efficiently. Trust us to identify complex issues."
+    },
+    {
+      "name": "General Maintenance",
+      "description": "Keep your electrical systems running smoothly. Prevent future issues with routine checks."
     }
   ]
 };
