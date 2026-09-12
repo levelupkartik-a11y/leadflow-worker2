@@ -76,23 +76,26 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Empire Stores",
+  "name": "NKG Computers (Sector 22)",
   "category": [
-    "Department store",
-    "Supermarket"
+    "Electronics store"
   ],
   "description": "",
-  "address": "SCO 10, Shopping Plaza, 17E, Sector 17, Chandigarh, 160017, India",
-  "phone": "+91 76960 51483",
-  "hours": "saturday: 10:30 AM–8:30 PM, sunday: 3:30–8:30 PM, monday: 10:30 AM–8:30 PM, tuesday: 10:30 AM–8:30 PM, wednesday: 10:30 AM–8:30 PM, thursday: 10:30 AM–8:30 PM, friday: 10:30 AM–8:30 PM",
+  "address": "SCO 2901 Ground Floor, opposite JW Marriott Hotels Corner Showroom, Sector 22C, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 95825 86662",
+  "hours": "saturday: 11 AM–9 PM, sunday: 11 AM–9 PM, monday: 11 AM–9 PM, tuesday: 11 AM–9 PM, wednesday: 11 AM–9 PM, thursday: 11 AM–9 PM, friday: 11 AM–9 PM",
   "services": [
     {
-      "name": "Department Store",
-      "description": "Discover a diverse selection of general merchandise for your home and lifestyle. We stock items for various needs."
+      "name": "Computers",
+      "description": "Explore our range of desktop and laptop computers. Find models for work, study, and entertainment."
     },
     {
-      "name": "Supermarket",
-      "description": "Shop for all your daily groceries and household essentials. Find fresh items and pantry staples here."
+      "name": "Electronics Accessories",
+      "description": "Discover essential accessories. We offer cables, adapters, peripherals, and more."
+    },
+    {
+      "name": "Computer Components",
+      "description": "Upgrade or build your PC with quality components. Find processors, memory, and storage solutions."
     }
   ]
 };
