@@ -76,32 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "SURAJ",
-  "category": "Grocery store",
+  "name": "Sourabh Electrician",
+  "category": "Store",
   "description": "",
-  "address": "Shastri Market Rd, Sector 22D, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 90410 28303",
-  "hours": "",
+  "address": "",
+  "phone": "+91 78884 74685",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Fresh Produce",
-      "description": "A diverse selection of seasonal fruits and vegetables, delivered fresh."
+      "name": "Electrical Repairs",
+      "description": "Expert solutions for all types of electrical issues."
     },
     {
-      "name": "Pantry Staples",
-      "description": "Essential items like grains, spices, cooking oils, and pulses for your kitchen."
+      "name": "Wiring and Installations",
+      "description": "Professional wiring and new appliance installations."
     },
     {
-      "name": "Dairy & Baked Goods",
-      "description": "Milk, cheese, yogurt, and freshly baked items to complete your meals."
-    },
-    {
-      "name": "Packaged Foods",
-      "description": "A variety of snacks, ready-to-eat meals, and frozen foods."
-    },
-    {
-      "name": "Household Essentials",
-      "description": "Cleaning supplies, personal care items, and other home necessities."
+      "name": "Emergency Service",
+      "description": "Available around the clock for urgent electrical needs."
     }
   ]
 };
