@@ -76,22 +76,32 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Relax Zone Thai Spa",
-  "category": [
-    "Massage spa"
-  ],
+  "name": "SURAJ",
+  "category": "Grocery store",
   "description": "",
-  "address": "2ND FLOOR, Sco-453-54, 35C, Sector 35, Chandigarh, 160022, India",
-  "phone": "+91 99915 35050",
-  "hours": "saturday: 10 AM–9:30 PM, sunday: 10 AM–9:30 PM, monday: 10 AM–9:30 PM, tuesday: 10 AM–9:30 PM, wednesday: 10 AM–9:30 PM, thursday: 10 AM–9:30 PM, friday: 10 AM–9:30 PM",
+  "address": "Shastri Market Rd, Sector 22D, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 90410 28303",
+  "hours": "",
   "services": [
     {
-      "name": "Thai Massage",
-      "description": "Authentic Thai massage techniques promote deep relaxation."
+      "name": "Fresh Produce",
+      "description": "A diverse selection of seasonal fruits and vegetables, delivered fresh."
     },
     {
-      "name": "Relaxation Therapies",
-      "description": "Enjoy a range of soothing treatments for mind and body."
+      "name": "Pantry Staples",
+      "description": "Essential items like grains, spices, cooking oils, and pulses for your kitchen."
+    },
+    {
+      "name": "Dairy & Baked Goods",
+      "description": "Milk, cheese, yogurt, and freshly baked items to complete your meals."
+    },
+    {
+      "name": "Packaged Foods",
+      "description": "A variety of snacks, ready-to-eat meals, and frozen foods."
+    },
+    {
+      "name": "Household Essentials",
+      "description": "Cleaning supplies, personal care items, and other home necessities."
     }
   ]
 };
