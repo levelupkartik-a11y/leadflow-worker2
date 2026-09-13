@@ -76,19 +76,28 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Avtar Singh Key Maker | Zirakpur Key Maker",
+  "name": "CHILDREN CLINIC DR.JITENDER . CARE4U",
   "category": [
-    "Key duplication service",
-    "Service establishment"
+    "Pediatrician",
+    "General practitioner",
+    "Surgeon"
   ],
   "description": "",
-  "address": "",
-  "phone": "+91 98781 43038",
-  "hours": "sunday: Open 24 hours, monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours",
+  "address": "Kothi no.1923, opposite Anil chemist, Sector 22B, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 98148 15947",
+  "hours": "",
   "services": [
     {
-      "name": "Key Duplication Service",
-      "description": "Professional and reliable key cutting and duplication for various types of keys. We ensure accurate copies for your needs."
+      "name": "Pediatrician Services",
+      "description": "Expert care for infants, children, and adolescents."
+    },
+    {
+      "name": "General Practitioner Services",
+      "description": "Medical consultations for adults and general health needs."
+    },
+    {
+      "name": "Surgical Services",
+      "description": "Surgical consultations and minor procedures are available."
     }
   ]
 };
