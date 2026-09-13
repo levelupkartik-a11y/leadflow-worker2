@@ -85,15 +85,19 @@ export async function onRequestPost(context) {
   "services": [
     {
       "name": "Electrical Repairs",
-      "description": "Expert solutions for all types of electrical issues."
+      "description": "Fixing common electrical issues like faulty switches or outlets."
     },
     {
-      "name": "Wiring and Installations",
-      "description": "Professional wiring and new appliance installations."
+      "name": "New Installations",
+      "description": "Setting up new electrical systems and fixtures for homes or businesses."
+    },
+    {
+      "name": "Wiring Services",
+      "description": "Comprehensive wiring and rewiring for safety and efficiency."
     },
     {
       "name": "Emergency Service",
-      "description": "Available around the clock for urgent electrical needs."
+      "description": "Available any time for urgent electrical requirements and breakdowns."
     }
   ]
 };
