@@ -76,24 +76,25 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Avin Properties",
-  "category": "Industrial real estate agency",
+  "name": "Sourabh Electrician",
+  "category": [
+    "Store",
+    "Electrical engineer",
+    "Service establishment",
+    "Water purification company"
+  ],
   "description": "",
   "address": "",
-  "phone": "+91 98151 25155",
-  "hours": "friday: 10 AM–8 PM, monday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: 10 AM–6 PM, thursday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM",
+  "phone": "+91 78884 74685",
+  "hours": "sunday: Open 24 hours, monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours",
   "services": [
     {
-      "name": "Industrial Property Leasing",
-      "description": "We assist businesses in finding and leasing suitable industrial spaces. Our process ensures a smooth transaction for tenants."
+      "name": "Electrical Services",
+      "description": "Expert assistance for all electrical needs. We handle installations and repairs."
     },
     {
-      "name": "Industrial Property Sales",
-      "description": "We facilitate the purchase and sale of industrial properties. Our expertise helps you navigate the market successfully."
-    },
-    {
-      "name": "Property Consultation",
-      "description": "Receive expert advice on industrial property market trends. We help clients make informed real estate decisions."
+      "name": "Water Purification Services",
+      "description": "Professional support for water purification systems. Ensuring clean water for you."
     }
   ]
 };
