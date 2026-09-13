@@ -76,28 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "CHILDREN CLINIC DR.JITENDER . CARE4U",
-  "category": [
-    "Pediatrician",
-    "General practitioner",
-    "Surgeon"
-  ],
+  "name": "Shingar Jewellery",
+  "category": "Jewelry store",
   "description": "",
-  "address": "Kothi no.1923, opposite Anil chemist, Sector 22B, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 98148 15947",
-  "hours": "",
+  "address": "Booths, 222, Shastri Market Rd, Sector 22C, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 84487 77297",
+  "hours": "friday: 10 AM–9 PM, monday: 10 AM–9 PM, saturday: 10 AM–9 PM, sunday: 10 AM–9 PM, thursday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM",
   "services": [
     {
-      "name": "Pediatrician Services",
-      "description": "Expert care for infants, children, and adolescents."
+      "name": "Jewellery Selection",
+      "description": "Discover a range of traditional and modern designs."
     },
     {
-      "name": "General Practitioner Services",
-      "description": "Medical consultations for adults and general health needs."
+      "name": "Expert Assistance",
+      "description": "Our team helps you find the ideal piece."
     },
     {
-      "name": "Surgical Services",
-      "description": "Surgical consultations and minor procedures are available."
+      "name": "Special Occasion Jewellery",
+      "description": "Find perfect gifts for all celebrations."
     }
   ]
 };
