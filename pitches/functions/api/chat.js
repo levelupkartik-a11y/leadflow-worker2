@@ -76,32 +76,29 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "E-Ashwa Automotive",
-  "category": "Auto repair shop",
+  "name": "Sourabh Electrician",
+  "category": [
+    "Store",
+    "Electrical engineer",
+    "Service establishment",
+    "Water purification company"
+  ],
   "description": "",
-  "address": "Booth No. 1084, Sector 22B, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 70091 00924",
-  "hours": "",
+  "address": "",
+  "phone": "+91 78884 74685",
+  "hours": "monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours",
   "services": [
     {
-      "name": "General Vehicle Maintenance",
-      "description": "Keep your car running at its best. Includes oil changes and fluid checks."
+      "name": "Electrical Engineering Services",
+      "description": "Expert electrical support for homes and businesses."
     },
     {
-      "name": "Diagnostic Services",
-      "description": "We accurately identify vehicle issues. Our technicians use effective methods."
+      "name": "Water Purification Solutions",
+      "description": "Installation and maintenance of water purification systems."
     },
     {
-      "name": "Brake System Repairs",
-      "description": "Ensure your brakes are safe and responsive. We service and replace components."
-    },
-    {
-      "name": "Engine Tune-Ups",
-      "description": "Improve performance and fuel efficiency. We inspect and adjust engine parts."
-    },
-    {
-      "name": "Tire Services",
-      "description": "From rotations to replacements, we handle your tire needs."
+      "name": "24/7 Emergency Service",
+      "description": "Reliable help for electrical issues, day or night."
     }
   ]
 };
