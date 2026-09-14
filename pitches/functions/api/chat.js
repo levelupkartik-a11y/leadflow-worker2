@@ -76,28 +76,32 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "CHILDREN CLINIC DR.JITENDER . CARE4U",
-  "category": [
-    "Pediatrician",
-    "General practitioner",
-    "Surgeon"
-  ],
+  "name": "E-Ashwa Automotive",
+  "category": "Auto repair shop",
   "description": "",
-  "address": "Kothi no.1923, opposite Anil chemist, Sector 22B, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 98148 15947",
+  "address": "Booth No. 1084, Sector 22B, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 70091 00924",
   "hours": "",
   "services": [
     {
-      "name": "Pediatric Care",
-      "description": "Specialized medical attention and health services for children."
+      "name": "General Vehicle Maintenance",
+      "description": "Keep your car running at its best. Includes oil changes and fluid checks."
     },
     {
-      "name": "General Practice",
-      "description": "Comprehensive primary healthcare services for individuals and families."
+      "name": "Diagnostic Services",
+      "description": "We accurately identify vehicle issues. Our technicians use effective methods."
     },
     {
-      "name": "Surgical Consultations",
-      "description": "Expert assessments and advice for various surgical needs."
+      "name": "Brake System Repairs",
+      "description": "Ensure your brakes are safe and responsive. We service and replace components."
+    },
+    {
+      "name": "Engine Tune-Ups",
+      "description": "Improve performance and fuel efficiency. We inspect and adjust engine parts."
+    },
+    {
+      "name": "Tire Services",
+      "description": "From rotations to replacements, we handle your tire needs."
     }
   ]
 };
