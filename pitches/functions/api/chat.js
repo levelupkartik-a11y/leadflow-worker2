@@ -76,24 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Shingar Jewellery",
-  "category": "Jewelry store",
+  "name": "Sourabh Electrician",
+  "category": "Store",
   "description": "",
-  "address": "Booths, 222, Shastri Market Rd, Sector 22C, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 84487 77297",
-  "hours": "friday: 10 AM–9 PM, monday: 10 AM–9 PM, saturday: 10 AM–9 PM, sunday: 10 AM–9 PM, thursday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM",
+  "address": "",
+  "phone": "+91 78884 74685",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Jewellery Selection",
-      "description": "Discover a range of traditional and modern designs."
-    },
-    {
-      "name": "Expert Assistance",
-      "description": "Our team helps you find the ideal piece."
-    },
-    {
-      "name": "Special Occasion Jewellery",
-      "description": "Find perfect gifts for all celebrations."
+      "name": "Electrical Services",
+      "description": "We offer general electrical support for homes and businesses. Our team is available 24 hours daily."
     }
   ]
 };
