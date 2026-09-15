@@ -76,22 +76,27 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Kapil Car Electrician & mechanic",
+  "name": "Malwa Tyre Service",
   "category": [
-    "Car repair and maintenance service"
+    "Tire shop",
+    "Wheel alignment service"
   ],
   "description": "",
-  "address": "Bharat petroleum petrol pump, Sector 22C, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 98776 48667",
-  "hours": "tuesday: 9:30 AM–10 PM, wednesday: 9:30 AM–10 PM, thursday: 9:30 AM–10 PM, friday: 9:30 AM–10 PM, saturday: 9:30 AM–10 PM, sunday: 9:30 AM–10 PM, monday: 9:30 AM–10 PM",
+  "address": "SCO 3001, Dakshin Marg, Sector 22D, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 98886 78267",
+  "hours": "tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM, thursday: 9 AM–8 PM, friday: 9 AM–8 PM, saturday: 9 AM–8 PM, sunday: 9 AM–4 PM, monday: 9 AM–8 PM",
   "services": [
     {
-      "name": "Car Mechanical Repairs",
-      "description": "Comprehensive mechanical services to keep your car running smoothly."
+      "name": "Tyre Sales & Fitting",
+      "description": "We offer a wide selection of tyres for all vehicles. Our team handles professional fitting quickly."
     },
     {
-      "name": "Routine Car Maintenance",
-      "description": "Essential checks and servicing to ensure your car's longevity."
+      "name": "Tyre Repair",
+      "description": "Puncture repair and other essential tyre maintenance are available. We get you back on the road fast."
+    },
+    {
+      "name": "Wheel Alignment",
+      "description": "Ensure proper vehicle handling and extend tyre life. Our precise alignment service helps."
     }
   ]
 };
