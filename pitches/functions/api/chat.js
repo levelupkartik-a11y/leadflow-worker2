@@ -76,32 +76,22 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sourabh Electrician",
-  "category": "Store",
+  "name": "Kapil Car Electrician & mechanic",
+  "category": [
+    "Car repair and maintenance service"
+  ],
   "description": "",
-  "address": "",
-  "phone": "+91 78884 74685",
-  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "address": "Bharat petroleum petrol pump, Sector 22C, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 98776 48667",
+  "hours": "tuesday: 9:30 AM–10 PM, wednesday: 9:30 AM–10 PM, thursday: 9:30 AM–10 PM, friday: 9:30 AM–10 PM, saturday: 9:30 AM–10 PM, sunday: 9:30 AM–10 PM, monday: 9:30 AM–10 PM",
   "services": [
     {
-      "name": "Electrical Repairs",
-      "description": "Promptly fixing all common electrical faults and issues."
+      "name": "Car Mechanical Repairs",
+      "description": "Comprehensive mechanical services to keep your car running smoothly."
     },
     {
-      "name": "New Installations",
-      "description": "Installing lights, fans, outlets, and other electrical fixtures."
-    },
-    {
-      "name": "Wiring Solutions",
-      "description": "Providing complete wiring for new builds and system upgrades."
-    },
-    {
-      "name": "Emergency Service",
-      "description": "Available around the clock for urgent electrical problems."
-    },
-    {
-      "name": "Maintenance Checks",
-      "description": "Ensuring your electrical systems are safe and functional."
+      "name": "Routine Car Maintenance",
+      "description": "Essential checks and servicing to ensure your car's longevity."
     }
   ]
 };
