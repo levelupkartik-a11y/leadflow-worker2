@@ -76,27 +76,32 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Malwa Tyre Service",
-  "category": [
-    "Tire shop",
-    "Wheel alignment service"
-  ],
+  "name": "Nant Automible",
+  "category": "Car repair and maintenance service",
   "description": "",
-  "address": "SCO 3001, Dakshin Marg, Sector 22D, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 98886 78267",
-  "hours": "tuesday: 9 AM–8 PM, wednesday: 9 AM–8 PM, thursday: 9 AM–8 PM, friday: 9 AM–8 PM, saturday: 9 AM–8 PM, sunday: 9 AM–4 PM, monday: 9 AM–8 PM",
+  "address": "Kansal Rd, Chandigarh, 160103, India",
+  "phone": "+91 98759 83001",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Tyre Sales & Fitting",
-      "description": "We offer a wide selection of tyres for all vehicles. Our team handles professional fitting quickly."
+      "name": "General Car Repair",
+      "description": "Expert diagnostics and reliable repairs for all types of car issues. We ensure your vehicle runs perfectly."
     },
     {
-      "name": "Tyre Repair",
-      "description": "Puncture repair and other essential tyre maintenance are available. We get you back on the road fast."
+      "name": "Routine Maintenance",
+      "description": "Keep your car in top condition with essential services. This includes oil changes and fluid checks."
     },
     {
-      "name": "Wheel Alignment",
-      "description": "Ensure proper vehicle handling and extend tyre life. Our precise alignment service helps."
+      "name": "Engine Diagnostics",
+      "description": "Identify and resolve engine problems quickly and efficiently. We use advanced tools for accuracy."
+    },
+    {
+      "name": "Brake Services",
+      "description": "Ensure your safety with thorough brake inspections and necessary repairs. From pads to fluid, we cover it all."
+    },
+    {
+      "name": "Tire Services",
+      "description": "We offer tire rotations, repairs, and replacements. Maintain proper traction and vehicle handling."
     }
   ]
 };
