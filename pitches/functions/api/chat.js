@@ -76,32 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Nant Automible",
-  "category": "Car repair and maintenance service",
+  "name": "Sourabh Electrician",
+  "category": "Store",
   "description": "",
-  "address": "Kansal Rd, Chandigarh, 160103, India",
-  "phone": "+91 98759 83001",
+  "address": "",
+  "phone": "+91 78884 74685",
   "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "General Car Repair",
-      "description": "Expert diagnostics and reliable repairs for all types of car issues. We ensure your vehicle runs perfectly."
+      "name": "Electrical Repairs",
+      "description": "Solving common electrical issues safely and efficiently."
     },
     {
-      "name": "Routine Maintenance",
-      "description": "Keep your car in top condition with essential services. This includes oil changes and fluid checks."
+      "name": "Wiring & Installation",
+      "description": "Expert installation of new wiring and electrical fixtures."
     },
     {
-      "name": "Engine Diagnostics",
-      "description": "Identify and resolve engine problems quickly and efficiently. We use advanced tools for accuracy."
-    },
-    {
-      "name": "Brake Services",
-      "description": "Ensure your safety with thorough brake inspections and necessary repairs. From pads to fluid, we cover it all."
-    },
-    {
-      "name": "Tire Services",
-      "description": "We offer tire rotations, repairs, and replacements. Maintain proper traction and vehicle handling."
+      "name": "Emergency Service",
+      "description": "Available 24/7 for urgent electrical problems."
     }
   ]
 };
