@@ -76,16 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sameer Car Mechanic in Chandigarh",
-  "category": "Auto repair shop",
+  "name": "Nant Automible",
+  "category": "Car repair and maintenance service",
   "description": "",
-  "address": "Sector 22C, Sector 22, Chandigarh, 160032, India",
-  "phone": "+91 62837 48685",
+  "address": "Kansal Rd, Chandigarh, 160103, India",
+  "phone": "+91 98759 83001",
   "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Auto Repair and Maintenance",
-      "description": "Expert car services available 24/7 in Chandigarh."
+      "name": "Car Repair",
+      "description": "Experienced technicians diagnose and fix all vehicle issues. We ensure your car performs optimally."
+    },
+    {
+      "name": "Routine Maintenance",
+      "description": "Keep your vehicle in top condition with regular service. This includes oil changes and fluid checks."
+    },
+    {
+      "name": "Emergency Service",
+      "description": "Available 24/7 for unexpected breakdowns. We get you back on the road safely."
     }
   ]
 };
