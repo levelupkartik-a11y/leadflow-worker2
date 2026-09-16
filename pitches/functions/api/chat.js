@@ -76,19 +76,27 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Avtar Singh Key Maker | Zirakpur Key Maker",
+  "name": "Sameer Car Mechanic in Chandigarh",
   "category": [
-    "Key duplication service",
-    "Service establishment"
+    "Auto repair shop",
+    "Car repair and maintenance service"
   ],
   "description": "",
-  "address": "",
-  "phone": "+91 98781 43038",
+  "address": "Sector 22C, Sector 22, Chandigarh, 160032, India",
+  "phone": "+91 62837 48685",
   "hours": "wednesday: Open 24 hours, thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, monday: Open 24 hours, tuesday: Open 24 hours",
   "services": [
     {
-      "name": "Key Duplication",
-      "description": "Get precise copies of your residential or commercial keys. We ensure accurate duplicates every time."
+      "name": "General Car Repair",
+      "description": "We address a wide range of car issues. Our technicians handle various vehicle problems with precision."
+    },
+    {
+      "name": "Car Maintenance Services",
+      "description": "Keep your vehicle running smoothly with our maintenance. This includes routine checks and essential servicing."
+    },
+    {
+      "name": "24/7 Emergency Repairs",
+      "description": "Our services are available around the clock. We are here for unexpected car troubles day or night."
     }
   ]
 };
