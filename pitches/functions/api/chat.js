@@ -76,23 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "JAZ BEAUTY & SPA",
-  "category": [
-    "Spa",
-    "Spa garden"
-  ],
+  "name": "Glamour the luxury spa",
+  "category": "Spa",
   "description": "",
-  "address": "SCO NO 2406, BESIDES OF HOTEL AROMA PARKING, Sector 22C, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 77197 95034",
-  "hours": "thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM, sunday: 10 AM–9 PM, monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM",
+  "address": "Scf 10, 20C, Sector 20, Chandigarh, 160020, India",
+  "phone": "+91 97166 00043",
+  "hours": "friday: 10 AM–9:30 PM, monday: 10 AM–9:30 PM, saturday: 10 AM–9:30 PM, sunday: 10 AM–9:30 PM, thursday: 10 AM–9:30 PM, tuesday: 10 AM–9:30 PM, wednesday: 10 AM–9:30 PM",
   "services": [
     {
-      "name": "Relaxing Spa Experiences",
-      "description": "Discover treatments designed for ultimate relaxation and well-being."
-    },
-    {
-      "name": "Tranquil Spa Garden",
-      "description": "Immerse yourself in the serene beauty of our unique spa garden."
+      "name": "Luxury Spa Treatments",
+      "description": "Indulge in our range of relaxing spa services. Find serenity and renewal with every visit."
     }
   ]
 };
