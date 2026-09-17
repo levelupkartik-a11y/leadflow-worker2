@@ -76,23 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "S. S. Jain & Co.",
-  "category": [
-    "Tax attorney",
-    "Tax consultant"
-  ],
+  "name": "Sameer Car Mechanic in Chandigarh",
+  "category": "Auto repair shop",
   "description": "",
-  "address": "#720, Sector 22-A, Chandigarh 160022, India",
-  "phone": "+91 87600 00720",
-  "hours": "thursday: 10 AM–6 PM, friday: 10 AM–6 PM, saturday: 10 AM–6 PM, sunday: Closed, monday: 10 AM–6 PM, tuesday: 10 AM–6 PM, wednesday: 10 AM–6 PM",
+  "address": "Sector 22C, Sector 22, Chandigarh, 160032, India",
+  "phone": "+91 62837 48685",
+  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Tax Attorney Services",
-      "description": "We offer legal representation for all your tax disputes. Our team helps you navigate tax litigation effectively."
-    },
-    {
-      "name": "Tax Consulting",
-      "description": "Receive expert advice on tax planning and compliance. We help optimize your tax strategies."
+      "name": "General Auto Repair",
+      "description": "Comprehensive repair and maintenance services for various vehicle issues. We handle many common car problems."
     }
   ]
 };
