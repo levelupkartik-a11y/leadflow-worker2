@@ -76,16 +76,23 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sameer Car Mechanic in Chandigarh",
-  "category": "Auto repair shop",
+  "name": "JAZ BEAUTY & SPA",
+  "category": [
+    "Spa",
+    "Spa garden"
+  ],
   "description": "",
-  "address": "Sector 22C, Sector 22, Chandigarh, 160032, India",
-  "phone": "+91 62837 48685",
-  "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "address": "SCO NO 2406, BESIDES OF HOTEL AROMA PARKING, Sector 22C, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 77197 95034",
+  "hours": "thursday: 10 AM–9 PM, friday: 10 AM–9 PM, saturday: 10 AM–9 PM, sunday: 10 AM–9 PM, monday: 10 AM–9 PM, tuesday: 10 AM–9 PM, wednesday: 10 AM–9 PM",
   "services": [
     {
-      "name": "General Auto Repair",
-      "description": "Comprehensive repair and maintenance services for various vehicle issues. We handle many common car problems."
+      "name": "Relaxing Spa Experiences",
+      "description": "Discover treatments designed for ultimate relaxation and well-being."
+    },
+    {
+      "name": "Tranquil Spa Garden",
+      "description": "Immerse yourself in the serene beauty of our unique spa garden."
     }
   ]
 };
