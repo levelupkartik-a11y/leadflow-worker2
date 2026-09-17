@@ -76,16 +76,23 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Glamour the luxury spa",
-  "category": "Spa",
+  "name": "Skin Sense By Pooja",
+  "category": [
+    "Facial spa",
+    "Health and beauty shop"
+  ],
   "description": "",
-  "address": "Scf 10, 20C, Sector 20, Chandigarh, 160020, India",
-  "phone": "+91 97166 00043",
-  "hours": "friday: 10 AM–9:30 PM, monday: 10 AM–9:30 PM, saturday: 10 AM–9:30 PM, sunday: 10 AM–9:30 PM, thursday: 10 AM–9:30 PM, tuesday: 10 AM–9:30 PM, wednesday: 10 AM–9:30 PM",
+  "address": "House Number 779, Sector 22A, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 99153 31131",
+  "hours": "thursday: 10 AM–7 PM, friday: 10 AM–7 PM, saturday: 10 AM–7 PM, sunday: 10 AM–7 PM, monday: 10 AM–7 PM, tuesday: 10 AM–7 PM, wednesday: 10 AM–7 PM",
   "services": [
     {
-      "name": "Luxury Spa Treatments",
-      "description": "Indulge in our range of relaxing spa services. Find serenity and renewal with every visit."
+      "name": "Facial Treatments",
+      "description": "Rejuvenate your skin with our specialized facial services."
+    },
+    {
+      "name": "Beauty Services",
+      "description": "Explore a range of professional beauty treatments."
     }
   ]
 };
