@@ -76,29 +76,19 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sourabh Electrician",
+  "name": "Avtar Singh Key Maker | Zirakpur Key Maker",
   "category": [
-    "Store",
-    "Electrical engineer",
-    "Service establishment",
-    "Water purification company"
+    "Key duplication service",
+    "Service establishment"
   ],
   "description": "",
   "address": "",
-  "phone": "+91 78884 74685",
+  "phone": "+91 98781 43038",
   "hours": "thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Electrical Engineering",
-      "description": "Expert solutions for all your electrical needs."
-    },
-    {
-      "name": "Water Purification Services",
-      "description": "Installation and maintenance for clean water systems."
-    },
-    {
-      "name": "24/7 Service Availability",
-      "description": "We are available around the clock for any emergency."
+      "name": "Key Duplication",
+      "description": "Professional and reliable key duplication services are available 24/7."
     }
   ]
 };
