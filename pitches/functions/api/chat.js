@@ -76,24 +76,24 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Nant Automible",
-  "category": "Car repair and maintenance service",
+  "name": "Sourabh Electrician",
+  "category": "Store",
   "description": "",
-  "address": "Kansal Rd, Chandigarh, 160103, India",
-  "phone": "+91 98759 83001",
+  "address": "",
+  "phone": "+91 78884 74685",
   "hours": "friday: Open 24 hours, monday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, thursday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
   "services": [
     {
-      "name": "Car Repair",
-      "description": "Experienced technicians diagnose and fix all vehicle issues. We ensure your car performs optimally."
+      "name": "Electrical Repairs",
+      "description": "Addressing and fixing all types of electrical faults and issues."
     },
     {
-      "name": "Routine Maintenance",
-      "description": "Keep your vehicle in top condition with regular service. This includes oil changes and fluid checks."
+      "name": "New Installations",
+      "description": "Professional setup for new electrical fixtures and systems."
     },
     {
-      "name": "Emergency Service",
-      "description": "Available 24/7 for unexpected breakdowns. We get you back on the road safely."
+      "name": "Maintenance Checks",
+      "description": "Routine inspections to ensure safe and efficient electrical operation."
     }
   ]
 };
