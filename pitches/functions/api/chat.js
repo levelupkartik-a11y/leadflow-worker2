@@ -76,19 +76,23 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Avtar Singh Key Maker | Zirakpur Key Maker",
+  "name": "S. S. Jain & Co.",
   "category": [
-    "Key duplication service",
-    "Service establishment"
+    "Tax attorney",
+    "Tax consultant"
   ],
   "description": "",
-  "address": "",
-  "phone": "+91 98781 43038",
-  "hours": "thursday: Open 24 hours, friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours",
+  "address": "#720, Sector 22-A, Chandigarh 160022, India",
+  "phone": "+91 87600 00720",
+  "hours": "thursday: 10 AM–6 PM, friday: 10 AM–6 PM, saturday: 10 AM–6 PM, sunday: Closed, monday: 10 AM–6 PM, tuesday: 10 AM–6 PM, wednesday: 10 AM–6 PM",
   "services": [
     {
-      "name": "Key Duplication",
-      "description": "Professional and reliable key duplication services are available 24/7."
+      "name": "Tax Attorney Services",
+      "description": "We offer legal representation for all your tax disputes. Our team helps you navigate tax litigation effectively."
+    },
+    {
+      "name": "Tax Consulting",
+      "description": "Receive expert advice on tax planning and compliance. We help optimize your tax strategies."
     }
   ]
 };
