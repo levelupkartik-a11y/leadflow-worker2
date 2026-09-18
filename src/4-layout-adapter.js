@@ -510,7 +510,7 @@ Format the output strictly as a JSON object with a single key "faqs" containing 
                       'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                      model: 'llama-3.1-8b-instant',
+                      model: 'openai/gpt-oss-20b',
                       messages: [{ role: 'user', content: faqPrompt }],
                       response_format: { type: 'json_object' }
                     })

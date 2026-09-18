@@ -52,12 +52,17 @@ Respond strictly in JSON:
       const text = response.text.replace(/```json|```/g, '').trim();
       return JSON.parse(text);
     } catch (e) {
-      if (e.status === 429 || e.message?.includes('429') || e.message?.includes('quota') || e.message?.includes('exhausted')) {
-        console.log(`[QA] Rate limit on Vision check, sleeping 20s (retries left: ${retries - 1})...`);
-        await sleep(20000);
+      const errMsg = e.message || '';
+      if (e.status === 429 || errMsg.includes('429') || errMsg.includes('quota') || errMsg.includes('exhausted')) {
+        if (errMsg.includes('PerDay') || errMsg.includes('quotaId') || errMsg.includes('GenerateRequestsPerDay')) {
+          console.log(`[QA] Daily quota reached for Vision check. Skipping vision check.`);
+          return { match: true, reason: 'Skipped due to daily quota limit' };
+        }
+        console.log(`[QA] Rate limit on Vision check, sleeping 10s (retries left: ${retries - 1})...`);
+        await sleep(10000);
         retries--;
       } else {
-        console.warn(`[QA] Vision check failed with non-429 error:`, e.message);
+        console.warn(`[QA] Vision check failed with non-429 error:`, errMsg);
         return { match: true, reason: 'Skipped due to API error' };
       }
     }

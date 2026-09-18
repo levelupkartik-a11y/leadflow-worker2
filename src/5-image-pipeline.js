@@ -226,7 +226,7 @@ Output strictly as JSON:
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              model: 'llama-3.1-8b-instant',
+              model: 'openai/gpt-oss-20b',
               messages: [{ role: 'user', content: prompt }],
               response_format: { type: 'json_object' }
             })
@@ -290,7 +290,7 @@ Output strictly as JSON:
           basePrompt = formatPipelinePrompt(rawPrompt, contextText, researchData.category);
           console.log(`Slot ${imgId} -> Generating New: ${basePrompt}`);
           const encodedPrompt = encodeURIComponent(basePrompt);
-          const seed = `${Date.now()}_${i}_${Math.floor(Math.random() * 1000)}`;
+          const seed = Math.floor(Math.random() * 1000000);
           finalUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?nologo=true&seed=${seed}`;
         }
       }
@@ -406,7 +406,7 @@ async function processReactImages(researchData, copyData, buildDir) {
       
       const rawPrompt = `Professional high-end studio commercial photo of product: ${productName}, styled in the aesthetic of a premium retail brand, soft warm studio lighting, highly detailed, photorealistic, 4k`;
       const encodedPrompt = encodeURIComponent(rawPrompt);
-      const seed = `${Date.now()}_prod_${i}_${Math.floor(Math.random() * 1000)}`;
+      const seed = Math.floor(Math.random() * 1000000);
       const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?nologo=true&seed=${seed}`;
 
       const assetsDir = path.join(buildDir, 'assets');
@@ -466,7 +466,7 @@ async function processReactImages(researchData, copyData, buildDir) {
 
       const rawPrompt = `Professional architectural interior editorial photo of a premium ${category} store, modern minimal layout, warm ambient lighting, photorealistic, 4k`;
       const encodedPrompt = encodeURIComponent(rawPrompt);
-      const seed = `${Date.now()}_gal_${i}_${Math.floor(Math.random() * 1000)}`;
+      const seed = Math.floor(Math.random() * 1000000);
       const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?nologo=true&seed=${seed}`;
 
       const assetsDir = path.join(buildDir, 'assets');

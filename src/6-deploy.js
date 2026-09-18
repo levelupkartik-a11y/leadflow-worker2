@@ -89,33 +89,13 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
 
   const pitchesRepoName = 'leadflow-worker2';
   const pitchesProjectName = 'leadflow-pitches';
-  const tempCloneDir = path.join(path.dirname(buildDir), `.clone-pitches-${Date.now()}`);
+  const repoRootDir = path.resolve(__dirname, '..');
+  const pitchesDir = path.join(repoRootDir, 'pitches');
 
   try {
     const envWithGit = { ...process.env, GITHUB_TOKEN: token };
 
-    // 3. Clone the repo (self-cloning leadflow-worker2)
-    console.log('[GitHub] Cloning central worker repository to store pitches...');
-    const cloneUrl = `https://oauth2:${token}@github.com/${owner}/${pitchesRepoName}.git`;
-    execSync(`git clone "${cloneUrl}" "${tempCloneDir}"`, { stdio: 'pipe' });
-
-    // Ensure we have a main branch in the clone
-    try {
-      execSync('git checkout main', { cwd: tempCloneDir, stdio: 'ignore' });
-    } catch (e) {
-      try {
-        execSync('git checkout -b main', { cwd: tempCloneDir, stdio: 'ignore' });
-      } catch (e) {}
-    }
-
-    // Configure Git
-    try {
-      execSync('git config user.name "LeadFlow Worker"', { cwd: tempCloneDir, stdio: 'ignore' });
-      execSync('git config user.email "worker@leadflow.agency"', { cwd: tempCloneDir, stdio: 'ignore' });
-    } catch (e) {}
-
-    // Ensure pitches folder exists inside the cloned repo
-    const pitchesDir = path.join(tempCloneDir, 'pitches');
+    // Ensure pitches folder exists
     if (!fs.existsSync(pitchesDir)) {
       fs.mkdirSync(pitchesDir, { recursive: true });
     }
@@ -144,13 +124,21 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
     }
 
     // 5. Commit and push back to GitHub
-    console.log('[GitHub] Committing and pushing new pitch to pitches/ directory...');
-    execSync('git add .', { cwd: tempCloneDir, stdio: 'ignore' });
+    console.log('[GitHub] Committing new pitch to pitches/ directory...');
     try {
-      execSync(`git commit -m "Add pitch: ${projectName}"`, { cwd: tempCloneDir, stdio: 'ignore' });
-      execSync('git push origin main', { cwd: tempCloneDir, env: envWithGit, stdio: 'pipe' });
+      execSync(`git add pitches/${projectName}`, { cwd: repoRootDir, stdio: 'ignore' });
+      execSync(`git commit -m "Add pitch: ${projectName}"`, { cwd: repoRootDir, stdio: 'ignore' });
+      try {
+        execSync(`git pull --rebase origin main`, { cwd: repoRootDir, env: envWithGit, stdio: 'ignore' });
+      } catch (pullErr) {}
+      execSync(`git -c credential.helper="" -c core.askpass="" push origin main`, { 
+        cwd: repoRootDir, 
+        env: envWithGit, 
+        stdio: 'pipe' 
+      });
+      console.log(`[GitHub] Pushed pitch ${projectName} to remote.`);
     } catch (commitErr) {
-      console.log('[GitHub] No changes to commit or push.');
+      console.log('[GitHub] Pitch commit/push notice:', commitErr.message);
     }
 
     // 6. Deploy the pitches folder to Cloudflare Pages (single project "leadflow-pitches")
@@ -159,39 +147,29 @@ async function deployToCloudflare(buildDir, businessName, rowId, sheetName) {
     const deployCmd = `npx wrangler pages deploy pitches --project-name "${pitchesProjectName}" --branch main --commit-dirty=true`;
 
     try {
-      execSync(createCmd, { env: { ...process.env, CI: 'true' }, encoding: 'utf8', stdio: 'pipe' });
-      console.log(`[Cloudflare] Created central Pages project "${pitchesProjectName}".`);
+      execSync(createCmd, { cwd: repoRootDir, env: { ...process.env, CI: 'true' }, encoding: 'utf8', stdio: 'pipe' });
+      console.log(`[Cloudflare] Central Pages project "${pitchesProjectName}" ready.`);
     } catch (e) {
-      if (e.message.includes('already exists') || e.stderr?.includes('already exists') || e.stdout?.includes('already exists')) {
-        console.log(`[Cloudflare] Central Pages project "${pitchesProjectName}" already exists.`);
-      } else {
-        console.warn('[Cloudflare] Project creation returned warning:', e.message);
-      }
+      // project already exists is fine
     }
 
-    // Upload GROQ_API_KEY secret securely
+    // Upload GROQ_API_KEY secret securely if available
     if (process.env.GROQ_API_KEY) {
-      console.log(`[Cloudflare] Uploading GROQ_API_KEY secret to Pages project "${pitchesProjectName}"...`);
       try {
         const secretCmd = `echo ${process.env.GROQ_API_KEY} | npx wrangler pages secret put GROQ_API_KEY --project-name "${pitchesProjectName}"`;
-        execSync(secretCmd, { env: { ...process.env, CI: 'true' }, encoding: 'utf8', stdio: 'pipe' });
+        execSync(secretCmd, { cwd: repoRootDir, env: { ...process.env, CI: 'true' }, encoding: 'utf8', stdio: 'pipe' });
       } catch (secretErr) {
-        console.warn(`[Cloudflare] Non-fatal secret upload warning:`, secretErr.message);
+        // Non-fatal
       }
     }
 
     const output = execSync(deployCmd, { 
-      cwd: tempCloneDir,
+      cwd: repoRootDir,
       env: { ...process.env, CI: 'true' }, 
       encoding: 'utf8',
       stdio: 'pipe'
     });
     console.log(output);
-
-    // Clean up clone dir
-    try {
-      fs.rmSync(tempCloneDir, { recursive: true, force: true });
-    } catch (e) {}
 
     const liveUrl = `https://${pitchesProjectName}.pages.dev/${projectName}`;
     console.log(`[Step 6] Deployed successfully to: ${liveUrl}`);

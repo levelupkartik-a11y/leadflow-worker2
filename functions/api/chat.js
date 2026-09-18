@@ -96,7 +96,7 @@ ${JSON.stringify(bizFacts, null, 2)}`
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'llama-3.1-8b-instant',
+        model: 'openai/gpt-oss-20b',
         messages: apiMessages,
         max_tokens: 150,
         temperature: 0.5
