@@ -216,82 +216,110 @@ Output strictly as JSON:
 `;
 
       let decision;
-      try {
-        const { withTimeout } = require('./utils');
-        const json = await withTimeout((async () => {
-          const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              model: 'openai/gpt-oss-20b',
-              messages: [{ role: 'user', content: prompt }],
-              response_format: { type: 'json_object' }
-            })
-          });
-          if (!res.ok) {
-            const errorText = await res.text();
-            throw new Error(`HTTP ${res.status}: ${errorText}`);
-          }
-          return await res.json();
-        })(), 60000, 'Groq image prompt selection');
-        
-        decision = JSON.parse(json.choices[0].message.content);
-      } catch (err) {
-        console.warn(`Groq matching failed for slot ${imgId}, defaulting to generate.`);
-        decision = { action: 'generate_new', generation_prompt: `A professional stock photo matching the text: ${contextText.slice(0, 50)}` };
-      }
+      if (!isAvatar) {
+        const prompt = `
+You need to pick or generate the best image for a specific slot on a website.
+Business Name: ${researchData.title}
+Category: ${researchData.category}
+Image Slot Context (Surrounding Text/HTML):
+${contextText}
+${parentHtml}
 
-      basePrompt = '';
-      finalUrl = '';
+Available Real Photos from the Business:
+${availablePhotos.map((url, idx) => `[ID: ${idx}] ${url}`).join('\n')}
 
-      if (decision.action === 'generate_new' && (!decision.generation_prompt || decision.generation_prompt === 'null')) {
-         decision.generation_prompt = `High quality, professional stock photography of ${researchData.category}, matching text: ${contextText.slice(0, 100)}`;
-      }
+Task: Decide if one of the real photos fits this slot perfectly. If so, return its ID. If no real photo fits, or there are no photos left, you must provide a detailed prompt to generate a high-quality, realistic stock photo.
 
-      isUnsplashDirect = false;
+CRITICAL RULE: The generation_prompt MUST strictly and directly reflect the specific heading or text of this section.
+- If the section mentions "Chinese Cuisine", the prompt MUST explicitly describe "Chinese food, stir-fry, noodles".
+- If it mentions "Non-Vegetarian", it MUST describe a "meat dish".
+- DO NOT use generic prompts. Tailor the visual exactly to the text context.
 
-      if (decision.action === 'use_real_photo' && decision.selected_photo_id !== null && availablePhotos[decision.selected_photo_id]) {
-        const originalUrl = availablePhotos[decision.selected_photo_id];
-        console.log(`Slot ${imgId} -> Real Photo [${decision.selected_photo_id}]`);
+Output strictly as JSON:
+{
+  "action": "use_real_photo" | "generate_new",
+  "selected_photo_id": <number or null>,
+  "generation_prompt": "<detailed prompt if action is generate_new, else null>"
+}
+`;
+
         try {
-          if (process.env.REPLICATE_API_TOKEN) {
-            console.log(`Enhancing photo with Real-ESRGAN...`);
-            const { withTimeout } = require('./utils');
-            const output = await withTimeout(
-              replicate.run(
-                "nightmareai/real-esrgan:42fed1c4974146d4d2414e2be2c5277c7fcf05fcc3a73abf41610695738c1d7b",
-                { input: { image: originalUrl, scale: 2 } }
-              ),
-              90000,
-              'Replicate Real-ESRGAN'
-            );
-            finalUrl = output;
-          } else {
+          const { withTimeout } = require('./utils');
+          const json = await withTimeout((async () => {
+            const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                model: 'openai/gpt-oss-20b',
+                messages: [{ role: 'user', content: prompt }],
+                response_format: { type: 'json_object' }
+              })
+            });
+            if (!res.ok) {
+              const errorText = await res.text();
+              throw new Error(`HTTP ${res.status}: ${errorText}`);
+            }
+            return await res.json();
+          })(), 60000, 'Groq image prompt selection');
+          
+          decision = JSON.parse(json.choices[0].message.content);
+        } catch (err) {
+          console.warn(`Groq matching failed for slot ${imgId}, defaulting to generate.`);
+          decision = { action: 'generate_new', generation_prompt: `A professional stock photo matching the text: ${contextText.slice(0, 50)}` };
+        }
+
+        basePrompt = '';
+        finalUrl = '';
+
+        if (decision.action === 'generate_new' && (!decision.generation_prompt || decision.generation_prompt === 'null')) {
+           decision.generation_prompt = `High quality, professional stock photography of ${researchData.category}, matching text: ${contextText.slice(0, 100)}`;
+        }
+
+        isUnsplashDirect = false;
+
+        if (decision.action === 'use_real_photo' && decision.selected_photo_id !== null && availablePhotos[decision.selected_photo_id]) {
+          const originalUrl = availablePhotos[decision.selected_photo_id];
+          console.log(`Slot ${imgId} -> Real Photo [${decision.selected_photo_id}]`);
+          try {
+            if (process.env.REPLICATE_API_TOKEN) {
+              console.log(`Enhancing photo with Real-ESRGAN...`);
+              const { withTimeout } = require('./utils');
+              const output = await withTimeout(
+                replicate.run(
+                  "nightmareai/real-esrgan:42fed1c4974146d4d2414e2be2c5277c7fcf05fcc3a73abf41610695738c1d7b",
+                  { input: { image: originalUrl, scale: 2 } }
+                ),
+                90000,
+                'Replicate Real-ESRGAN'
+              );
+              finalUrl = output;
+            } else {
+              finalUrl = originalUrl;
+            }
+          } catch (e) {
+            console.warn('Real-ESRGAN failed, using original.', e.message);
             finalUrl = originalUrl;
           }
-        } catch (e) {
-          console.warn('Real-ESRGAN failed, using original.', e.message);
-          finalUrl = originalUrl;
-        }
-      } else {
-        if (templateId === 'healthcare-dental') {
-          const list = CURATED_FALLBACKS['healthcare-dental'];
-          finalUrl = list[i % list.length];
-          isUnsplashDirect = true;
-          console.log(`Slot ${imgId} -> Curated Unsplash (Healthcare preference): ${finalUrl}`);
         } else {
-          let rawPrompt = (decision.generation_prompt || '').replace(/\s+/g, ' ').trim();
-          if (!rawPrompt || rawPrompt === 'null') {
-             rawPrompt = contextText || (Array.isArray(researchData.category) ? researchData.category.join(' ') : String(researchData.category || ''));
+          if (templateId === 'healthcare-dental') {
+            const list = CURATED_FALLBACKS['healthcare-dental'];
+            finalUrl = list[i % list.length];
+            isUnsplashDirect = true;
+            console.log(`Slot ${imgId} -> Curated Unsplash (Healthcare preference): ${finalUrl}`);
+          } else {
+            let rawPrompt = (decision.generation_prompt || '').replace(/\s+/g, ' ').trim();
+            if (!rawPrompt || rawPrompt === 'null') {
+               rawPrompt = contextText || (Array.isArray(researchData.category) ? researchData.category.join(' ') : String(researchData.category || ''));
+            }
+            basePrompt = formatPipelinePrompt(rawPrompt, contextText, researchData.category);
+            console.log(`Slot ${imgId} -> Generating New: ${basePrompt}`);
+            const encodedPrompt = encodeURIComponent(basePrompt);
+            const seed = Math.floor(Math.random() * 1000000);
+            finalUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?nologo=true&seed=${seed}`;
           }
-          basePrompt = formatPipelinePrompt(rawPrompt, contextText, researchData.category);
-          console.log(`Slot ${imgId} -> Generating New: ${basePrompt}`);
-          const encodedPrompt = encodeURIComponent(basePrompt);
-          const seed = Math.floor(Math.random() * 1000000);
-          finalUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?nologo=true&seed=${seed}`;
         }
       }
 
@@ -314,9 +342,8 @@ Output strictly as JSON:
         // On retries, generate a fresh Pollinations URL with a simplified prompt
         if (attempt > 1 && basePrompt) {
           const retryPrompt = `Professional photo of ${researchData.category} representing ${contextText.slice(0, 60)}`;
-          console.log(`  Retry ${attempt}/${MAX_ATTEMPTS} with simplified prompt: ${retryPrompt}`);
-          const retryEncoded = encodeURIComponent(retryPrompt + `, photorealistic, 4k`);
-          finalUrl = `https://image.pollinations.ai/prompt/${retryEncoded}?nologo=true&seed=${Date.now()}`;
+          const retrySeed = Math.floor(Math.random() * 1000000);
+          finalUrl = `https://image.pollinations.ai/prompt/${retryEncoded}?nologo=true&seed=${retrySeed}`;
           await sleep(8000); // extra pause before retry
         }
 

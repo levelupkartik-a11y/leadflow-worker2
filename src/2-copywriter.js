@@ -105,31 +105,43 @@ Produce a JSON object with exactly these keys:
 }
 `;
 
-  let text = '';
-  try {
-    const controller = new AbortController();
-    const groqRes = await withTimeout(
-      fetch('https://api.groq.com/openai/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          model: 'openai/gpt-oss-20b',
-          messages: [{ role: 'user', content: prompt }],
-          response_format: { type: 'json_object' }
+  const groqModels = ['qwen/qwen3.8-27b', 'openai/gpt-oss-120b', 'openai/gpt-oss-20b'];
+  for (const model of groqModels) {
+    try {
+      const controller = new AbortController();
+      const groqRes = await withTimeout(
+        fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model: model,
+            messages: [
+              { role: 'system', content: 'You are a professional local business copywriter. Output strictly valid JSON matching the exact requested keys. Do not include markdown codeblocks or explanatory text.' },
+              { role: 'user', content: prompt }
+            ],
+            response_format: { type: 'json_object' }
+          }),
+          signal: controller.signal,
         }),
-        signal: controller.signal,
-      }),
-      60000, // 60s timeout for Groq fetch
-      'Groq fetch'
-    );
-    const json = await withTimeout(groqRes.json(), 30000, 'Groq body read');
-    if (!groqRes.ok) throw new Error(json.error?.message || JSON.stringify(json));
-    text = json.choices[0].message.content;
-  } catch (err) {
-    console.warn(`[Step 2] Groq copywriting failed: ${err.message}. Falling back to Gemini...`);
+        60000,
+        `Groq fetch (${model})`
+      );
+      const json = await withTimeout(groqRes.json(), 30000, `Groq body read (${model})`);
+      if (!groqRes.ok) throw new Error(json.error?.message || JSON.stringify(json));
+      text = json.choices[0].message.content;
+      if (text && text.trim().startsWith('{')) {
+        break; // Successfully got JSON
+      }
+    } catch (groqErr) {
+      console.warn(`[Step 2] Groq model ${model} failed: ${groqErr.message}. Trying next model...`);
+    }
+  }
+
+  if (!text) {
+    console.warn(`[Step 2] All Groq copywriting models failed. Falling back to Gemini...`);
     let retries = 5;
     let success = false;
     while (retries > 0 && !success) {

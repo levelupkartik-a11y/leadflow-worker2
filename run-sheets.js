@@ -1,7 +1,9 @@
 require('dotenv').config();
+process.env.DISABLE_WHATSAPP = 'true'; // Enforce zero outreach during website build batches
 const { exec } = require('child_process');
 const util = require('util');
-const execPromise = util.promisify(exec);
+const fs = require('fs');
+const path = require('path');
 const { composioExecute, normalizePhoneNumber } = require('./src/utils');
 
 const SPREADSHEET_ID = '1fWDfzFew_vKfKErtoBzahlyDbG_NMvcZDpXPSDaMJ9k';
@@ -143,7 +145,7 @@ async function main() {
           return;
         }
         
-        // ── 2. Official website check: Skip if business already has an existing website ──
+        // ── 2. Official website & Service check: Skip if business already has a site or service != website ──
         if (websiteColIdx !== -1) {
           const scrapedWebsite = row[websiteColIdx]?.trim();
           if (scrapedWebsite && scrapedWebsite.startsWith('http')) {
@@ -151,13 +153,36 @@ async function main() {
             return;
           }
         }
+
+        const serviceColIdx = headers.findIndex(h => h.includes('service') || h.includes('pitch type'));
+        if (serviceColIdx !== -1) {
+          const service = (row[serviceColIdx] || '').trim().toLowerCase();
+          if (service && !service.includes('website')) {
+            console.log(`[Skip] Row ${rowId}: "${name}" has service "${service}" (not website).`);
+            return;
+          }
+        }
         
-        // ── 3. Generated website check: Skip if demo website was already created ──
+        // ── 3. Generated website check: Rebuild if failed (NEEDS REVIEW / FAILED / -), skip only if already PASSED ──
         const fallbackGeneratedCol = isSheet1 ? 10 : 13;
-        const generatedWebsite = (generatedSiteColIdx !== -1 ? row[generatedSiteColIdx] : row[fallbackGeneratedCol])?.trim();
-        if (generatedWebsite && generatedWebsite.startsWith('http')) {
-          console.log(`[Skip] Row ${rowId}: "${name}" already has generated website (${generatedWebsite})`);
+        const generatedWebsite = (generatedSiteColIdx !== -1 ? row[generatedSiteColIdx] : row[fallbackGeneratedCol])?.trim() || '';
+        const qaColIdx = headers.findIndex(h => h.includes('qa status'));
+        const qaStatus = (qaColIdx !== -1 ? row[qaColIdx] : (isSheet1 ? row[12] : row[12]))?.trim() || '';
+        const isFailed = qaStatus.includes('NEEDS REVIEW') || qaStatus.includes('FAILED') || generatedWebsite === '-';
+
+        // Check if the site is actually built on disk in pitches/ (prevent skipping phantom 404 links)
+        const siteSlug = generatedWebsite && generatedWebsite.startsWith('http') ? generatedWebsite.split('/').filter(Boolean).pop() : '';
+        const existsOnDisk = Boolean(siteSlug && fs.existsSync(path.join(__dirname, 'pitches', siteSlug, 'index.html')));
+
+        if (!isFailed && generatedWebsite && generatedWebsite.startsWith('http') && existsOnDisk) {
+          console.log(`[Skip] Row ${rowId}: "${name}" already has verified live website (${generatedWebsite})`);
           return;
+        }
+
+        if (generatedWebsite && generatedWebsite.startsWith('http') && !existsOnDisk) {
+          console.log(`[Rebuild] Row ${rowId}: "${name}" has URL in sheet (${generatedWebsite}) but files are missing on disk/Cloudflare (404 phantom link). Queueing for rebuild.`);
+        } else if (isFailed) {
+          console.log(`[Rebuild] Row ${rowId}: "${name}" previously failed (${qaStatus || '-'}). Queueing for rebuild.`);
         }
         
         // ── 4. Build reliable Maps URL query ──
