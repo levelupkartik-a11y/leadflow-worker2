@@ -76,26 +76,22 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Mohd Uzair Advocate (law Office of Uzair)",
+  "name": "Navin Kapur Advocates",
   "category": [
     "Attorney"
   ],
   "description": "",
-  "address": "1469, Sector 22B, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 79867 19325",
-  "hours": "friday: 9 AM–9 PM, saturday: 9 AM–9 PM, sunday: 9 AM–9 PM, monday: 9 AM–9 PM, tuesday: 9 AM–9 PM, wednesday: 9 AM–9 PM, thursday: 9 AM–9 PM",
+  "address": "Corner Park 2, 743, Sector 22A, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 92167 77167",
+  "hours": "",
   "services": [
     {
       "name": "Legal Consultation",
-      "description": "Receive professional advice on your legal concerns. We help you understand your options clearly."
+      "description": "Receive expert advice and clear guidance on your legal matters."
     },
     {
       "name": "Legal Representation",
-      "description": "Get skilled representation for various legal matters. Our team advocates for your best interests."
-    },
-    {
-      "name": "Document Review",
-      "description": "Ensure your legal documents are accurate and complete. We provide thorough review and guidance."
+      "description": "Benefit from dedicated support through court proceedings and negotiations."
     }
   ]
 };
