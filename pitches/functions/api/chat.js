@@ -76,22 +76,44 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Navin Kapur Advocates",
+  "name": "TRI-CITY LEGAL",
   "category": [
-    "Attorney"
+    "Law firm",
+    "Civil law attorney",
+    "Criminal justice attorney",
+    "Divorce lawyer",
+    "Family law attorney",
+    "Immigration attorney",
+    "Real estate attorney"
   ],
   "description": "",
-  "address": "Corner Park 2, 743, Sector 22A, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 92167 77167",
-  "hours": "",
+  "address": "SCO: 845-846 LEVEL-1, Sector, Sector 22A, Chandigarh, 160022, India",
+  "phone": "+91 97797 70620",
+  "hours": "friday: 10:30 AM–7 PM, saturday: 10:30 AM–7 PM, sunday: Closed, monday: 10:30 AM–7 PM, tuesday: 10:30 AM–7 PM, wednesday: 10:30 AM–7 PM, thursday: 10:30 AM–7 PM",
   "services": [
     {
-      "name": "Legal Consultation",
-      "description": "Receive expert advice and clear guidance on your legal matters."
+      "name": "Civil Law",
+      "description": "Expert legal representation for civil disputes and related matters."
     },
     {
-      "name": "Legal Representation",
-      "description": "Benefit from dedicated support through court proceedings and negotiations."
+      "name": "Criminal Justice",
+      "description": "Defense and advocacy services for criminal justice cases."
+    },
+    {
+      "name": "Divorce Law",
+      "description": "Compassionate guidance through all stages of divorce proceedings."
+    },
+    {
+      "name": "Family Law",
+      "description": "Support for various family legal issues and concerns."
+    },
+    {
+      "name": "Immigration Law",
+      "description": "Assistance with immigration-related legal needs and processes."
+    },
+    {
+      "name": "Real Estate Law",
+      "description": "Legal counsel for property and real estate transactions."
     }
   ]
 };
