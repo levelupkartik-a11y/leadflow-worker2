@@ -76,16 +76,25 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Avin Properties",
-  "category": "Industrial real estate agency",
+  "name": "Sourabh Electrician",
+  "category": [
+    "Store",
+    "Electrical engineer",
+    "Service establishment",
+    "Water purification company"
+  ],
   "description": "",
   "address": "",
-  "phone": "+91 98151 25155",
-  "hours": "friday: 10 AM–8 PM, monday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: 10 AM–6 PM, thursday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM",
+  "phone": "+91 78884 74685",
+  "hours": "friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours",
   "services": [
     {
-      "name": "Industrial Property Solutions",
-      "description": "We help clients find and secure industrial real estate. This includes properties for manufacturing or logistics."
+      "name": "Electrical Services",
+      "description": "Expert assistance for all your electrical needs. From installations to repairs, we ensure safe and efficient systems."
+    },
+    {
+      "name": "Water Purification Services",
+      "description": "Solutions for clean and safe drinking water. We install and maintain water purification systems."
     }
   ]
 };
