@@ -76,25 +76,26 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Sourabh Electrician",
+  "name": "Mohd Uzair Advocate (law Office of Uzair)",
   "category": [
-    "Store",
-    "Electrical engineer",
-    "Service establishment",
-    "Water purification company"
+    "Attorney"
   ],
   "description": "",
-  "address": "",
-  "phone": "+91 78884 74685",
-  "hours": "friday: Open 24 hours, saturday: Open 24 hours, sunday: Open 24 hours, monday: Open 24 hours, tuesday: Open 24 hours, wednesday: Open 24 hours, thursday: Open 24 hours",
+  "address": "1469, Sector 22B, Sector 22, Chandigarh, 160022, India",
+  "phone": "+91 79867 19325",
+  "hours": "friday: 9 AM–9 PM, saturday: 9 AM–9 PM, sunday: 9 AM–9 PM, monday: 9 AM–9 PM, tuesday: 9 AM–9 PM, wednesday: 9 AM–9 PM, thursday: 9 AM–9 PM",
   "services": [
     {
-      "name": "Electrical Services",
-      "description": "Expert assistance for all your electrical needs. From installations to repairs, we ensure safe and efficient systems."
+      "name": "Legal Consultation",
+      "description": "Receive professional advice on your legal concerns. We help you understand your options clearly."
     },
     {
-      "name": "Water Purification Services",
-      "description": "Solutions for clean and safe drinking water. We install and maintain water purification systems."
+      "name": "Legal Representation",
+      "description": "Get skilled representation for various legal matters. Our team advocates for your best interests."
+    },
+    {
+      "name": "Document Review",
+      "description": "Ensure your legal documents are accurate and complete. We provide thorough review and guidance."
     }
   ]
 };
