@@ -148,21 +148,21 @@ async function processImages(researchData, copyData, buildDir, templateId) {
       let finalUrl = '';
       let isUnsplashDirect = false;
 
+      const parentHtmlLower = parentHtml.toLowerCase();
+      const contextLower = contextText.toLowerCase();
+
+      // Check if it is a client avatar specifically
+      const isAvatar = img.hasClass('author-avatar') || 
+                       img.hasClass('avatar') ||
+                       parentHtmlLower.includes('author-avatar') || 
+                       parentHtmlLower.includes('testimonial') ||
+                       contextLower.includes('client') || 
+                       contextLower.includes('review') ||
+                       contextLower.includes('avatar');
+
       // --- CURATED LOCAL IMAGE FOLDER CONVENTION ---
       // If a curated folder has files, we dynamically map them to people-facing/branded slots.
       if (curatedImages.length > 0) {
-        const parentHtmlLower = parentHtml.toLowerCase();
-        const contextLower = contextText.toLowerCase();
-
-        // Check if it is a client avatar specifically
-        const isAvatar = img.hasClass('author-avatar') || 
-                         img.hasClass('avatar') ||
-                         parentHtmlLower.includes('author-avatar') || 
-                         parentHtmlLower.includes('testimonial') ||
-                         contextLower.includes('client') || 
-                         contextLower.includes('review') ||
-                         contextLower.includes('avatar');
-
         if (isAvatar) {
           // Testimonial avatars: Use professional, generic portrait headshots from Unsplash (Option A)
           const avatarList = [

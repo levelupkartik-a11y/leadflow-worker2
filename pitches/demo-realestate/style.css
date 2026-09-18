@@ -1,0 +1,176 @@
+/* Style Sheet for Premium Real Estate Landing Page */
+
+/* Custom CSS Variables & Motion Tokens */
+:root {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+    --ease-out-slow: cubic-bezier(0.16, 1, 0.3, 1);
+    
+    --heritage-gold: #D3A550;
+    --onyx-black: #010203;
+}
+
+/* Base resets & styling overrides */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Premium Focus Indicators for Keyboard Nav */
+.focus-visible\:outline-gold:focus-visible {
+    outline: 2px solid var(--heritage-gold);
+    outline-offset: 4px;
+}
+
+/* Header dynamic styles on scroll */
+#main-header.scrolled {
+    background-color: rgba(1, 2, 3, 0.85); /* Translucent Onyx Black */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(211, 165, 80, 0.15);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+#main-header.scrolled #header-logo {
+    height: 1.75rem; /* Shrink logo slightly on scroll */
+}
+
+/* Header Text adjustments on scroll */
+#main-header.scrolled .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+#main-header.scrolled .nav-link:hover {
+    color: var(--heritage-gold);
+}
+
+/* Custom Navigation Link Underlines */
+.nav-link {
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background-color: var(--heritage-gold);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 300ms var(--ease-out);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* Premium Slide Animation for Hero Background */
+.hero-slide {
+    opacity: 0;
+    transform: scale(1.02);
+    transition: opacity 2000ms var(--ease-in-out), transform 8000ms var(--ease-out-slow);
+}
+
+.hero-slide.active {
+    opacity: 1;
+    transform: scale(1.06);
+}
+
+/* Entry animations for Hero text elements */
+.anim-fade-in-up {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeInUp 1200ms var(--ease-out) forwards;
+}
+
+.anim-delay-100 {
+    animation-delay: 150ms;
+    transition-delay: 150ms;
+}
+
+.anim-delay-200 {
+    animation-delay: 300ms;
+    transition-delay: 300ms;
+}
+
+.anim-delay-300 {
+    animation-delay: 450ms;
+    transition-delay: 450ms;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Premium Asymmetric Shadow for Quick Search Card */
+.shadow-premium {
+    box-shadow: 6px 6px 0px 0px var(--heritage-gold);
+    transition: box-shadow 400ms var(--ease-out), transform 400ms var(--ease-out);
+}
+
+.shadow-premium:hover {
+    box-shadow: 12px 12px 0px 0px var(--heritage-gold);
+    transform: translate(-3px, -3px);
+}
+
+/* Button Pressed State Micro-interaction */
+.btn-press {
+    transition: transform 150ms var(--ease-out), background-color 300ms var(--ease-out), color 300ms var(--ease-out);
+}
+
+.btn-press:active {
+    transform: scale(0.97);
+}
+
+/* Scroll-triggered reveal animations via IntersectionObserver */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 1000ms var(--ease-out-slow), transform 1000ms var(--ease-out-slow);
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile Drawer transition speeds and curves */
+.ease-drawer {
+    transition-timing-function: var(--ease-drawer);
+}
+
+#mobile-drawer.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#mobile-drawer.active #drawer-content {
+    transform: translateX(0);
+}
+
+/* Accessibility settings for reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-delay: 0s !important;
+        animation-duration: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-delay: 0s !important;
+        transition-duration: 0s !important;
+        scroll-behavior: auto !important;
+    }
+    .hero-slide {
+        transform: none !important;
+        transition: none !important;
+    }
+    .anim-fade-in-up, .scroll-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+}

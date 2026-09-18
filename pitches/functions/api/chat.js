@@ -76,22 +76,23 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Harchand Singh Batth Advocate & Associates",
+  "name": "Kewal Stores",
   "category": [
-    "Legal services"
+    "Supermarket",
+    "Gourmet grocery store"
   ],
   "description": "",
-  "address": "#1459, Sector 22B, Chandigarh, 160022, India",
-  "phone": "+91 94173 56560",
-  "hours": "friday: 9 AM–7 PM, saturday: Closed, sunday: 11 AM–3 PM, monday: 9 AM–7 PM, tuesday: 9 AM–7 PM, wednesday: 9 AM–7 PM, thursday: 9 AM–7 PM",
+  "address": "S.C.F. No 23, Inner Market, 9D, Sector 9, Chandigarh, 160009, India",
+  "phone": "+91 99140 02000",
+  "hours": "friday: 9:30 AM–9 PM, saturday: 9:30 AM–9 PM, sunday: 9:30 AM–9 PM, monday: 9:30 AM–9 PM, tuesday: 9:30 AM–9 PM, wednesday: 9:30 AM–9 PM, thursday: 9:30 AM–9 PM",
   "services": [
     {
-      "name": "Legal Representation",
-      "description": "We represent clients in legal matters with dedicated advocacy."
+      "name": "Supermarket Shopping",
+      "description": "Stocked with a wide range of daily grocery essentials for your household."
     },
     {
-      "name": "Legal Consultation",
-      "description": "We offer clear and professional legal advice during our operating hours."
+      "name": "Gourmet Groceries",
+      "description": "Access to higher-quality and specialty food items beyond basic staples."
     }
   ]
 };
