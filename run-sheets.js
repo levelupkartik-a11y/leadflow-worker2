@@ -2,6 +2,7 @@ require('dotenv').config();
 process.env.DISABLE_WHATSAPP = 'true'; // Enforce zero outreach during website build batches
 const { exec } = require('child_process');
 const util = require('util');
+const execPromise = util.promisify(exec);
 const fs = require('fs');
 const path = require('path');
 const { composioExecute, normalizePhoneNumber } = require('./src/utils');

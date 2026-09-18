@@ -31,8 +31,7 @@ Description: ${description}
 2. "beauty and salon": Use for hair salons, nail salons, beauty salons, spas, barbershops, personal styling, cosmetics.
 3. "realestate": Use for real estate agents, property management, builders, brokers.
 4. "New folder (4)": Use for restaurants, cafes, bakeries, bars, dhabas, food delivery, catering, and other food/beverage services.
-5. "Landingpagetemplate": Use for gyms, fitness centers, health clubs, yoga/pilates studios, clothing boutiques, online shops, gadget stores, and other transactional e-commerce setups selling specific products or memberships.
-6. "New folder (5)": Generalist fallback template for basic retail or local services (e.g. grocery stores, supermarkets, plumbing, electrical, locksmiths, car mechanics, construction, and professional firms like lawyers, advisors).
+5. "New folder (5)": Use for gyms, fitness centers, sports clubs, retail shops, local services, contractors, and all other business types.
 
 Return ONLY a JSON object with a single key "selected_template" containing the selected template ID.
 Do not output any markdown formatting, explanation, or extra keys.
@@ -85,7 +84,7 @@ Output format: {"selected_template": "New folder (5)"}
     if (isBeauty) {
       selected = 'beauty and salon';
     } else {
-      selected = 'Landingpagetemplate';
+      selected = 'New folder (5)';
     }
   }
 
