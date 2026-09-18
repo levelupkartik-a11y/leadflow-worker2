@@ -76,23 +76,16 @@ export async function onRequestPost(context) {
 
     // 4. Construct System Prompt using compiled or payload-provided business facts
     const bizFacts = payload.facts || {
-  "name": "Skin Sense By Pooja",
-  "category": [
-    "Facial spa",
-    "Health and beauty shop"
-  ],
+  "name": "Avin Properties",
+  "category": "Industrial real estate agency",
   "description": "",
-  "address": "House Number 779, Sector 22A, Sector 22, Chandigarh, 160022, India",
-  "phone": "+91 99153 31131",
-  "hours": "thursday: 10 AM–7 PM, friday: 10 AM–7 PM, saturday: 10 AM–7 PM, sunday: 10 AM–7 PM, monday: 10 AM–7 PM, tuesday: 10 AM–7 PM, wednesday: 10 AM–7 PM",
+  "address": "",
+  "phone": "+91 98151 25155",
+  "hours": "friday: 10 AM–8 PM, monday: 10 AM–8 PM, saturday: 10 AM–8 PM, sunday: 10 AM–6 PM, thursday: 10 AM–8 PM, tuesday: 10 AM–8 PM, wednesday: 10 AM–8 PM",
   "services": [
     {
-      "name": "Facial Treatments",
-      "description": "Rejuvenate your skin with our specialized facial services."
-    },
-    {
-      "name": "Beauty Services",
-      "description": "Explore a range of professional beauty treatments."
+      "name": "Industrial Property Solutions",
+      "description": "We help clients find and secure industrial real estate. This includes properties for manufacturing or logistics."
     }
   ]
 };
